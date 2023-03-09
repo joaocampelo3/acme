@@ -3,7 +3,7 @@ package com.isep.acme.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 
-import com.isep.acme.model.ImageDTO;
+import com.isep.acme.model.DTO.ImageDTO;
 import com.isep.acme.model.ProdImage;
 import com.isep.acme.repositories.ImageRepository;
 

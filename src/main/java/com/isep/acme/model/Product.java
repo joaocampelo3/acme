@@ -1,5 +1,7 @@
 package com.isep.acme.model;
 
+import com.isep.acme.model.DTO.ProductDTO;
+
 import javax.persistence.*;
 import java.util.Objects;
 

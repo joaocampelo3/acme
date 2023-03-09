@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.isep.acme.model.Product;
-import com.isep.acme.model.ProductDTO;
+import com.isep.acme.model.DTO.ProductDTO;
 
-import com.isep.acme.services.ProductService;
+import com.isep.acme.services.interfaces.ProductService;
 
 import org.springframework.web.bind.annotation.RequestBody;
 

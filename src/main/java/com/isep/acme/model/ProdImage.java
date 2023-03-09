@@ -1,5 +1,7 @@
 package com.isep.acme.model;
 
+import com.isep.acme.model.DTO.ImageDTO;
+
 import javax.annotation.Resource;
 import javax.persistence.*;
 

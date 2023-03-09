@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.isep.acme.model.AggregatedRating;
-import com.isep.acme.services.AggregatedRatingService;
+import com.isep.acme.services.interfaces.AggregatedRatingService;
 
 @Tag(name = "AggregatedRating", description = "Endpoints for managing aggregated Rating")
 @RestController
