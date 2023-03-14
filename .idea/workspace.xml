@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4b0fd624-d4c5-4b4a-bd2f-42bf818c213a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Docs/DM.puml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/ACMEApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/Authentication/AuthenticationApi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/Authentication/AuthenticationRequest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/bootstrapper/ProductBootstrapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/bootstrapper/RatingBootstrapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/bootstrapper/UserBootstrapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/controllers/AggregatedRatingController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/controllers/FileController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/controllers/ProductController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/controllers/ResourceNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/controllers/ReviewController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/controllers/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/model/AggregatedRating.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/model/DTO/CreateReviewDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/model/DTO/ImageDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/model/DTO/ProductDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/model/DTO/ProductDetailDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/model/DTO/ReviewDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/model/DTO/VoteReviewDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/model/ProdImage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/model/Product.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/model/Rating.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/model/Review.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/model/ReviewMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/model/Role.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/model/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/model/UserView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/model/UserViewMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/model/Vote.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/property/FileStorageException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/property/FileStorageProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/property/MyFileNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/property/UploadFileResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/repositories/AggregatedRatingRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/repositories/ImageRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/repositories/ProductRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/repositories/RatingRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/repositories/ReviewRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/repositories/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/services/BarCodeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/services/FileStorageService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/services/HttpService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/services/ImageService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/services/RestService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/services/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/services/impl/AggregatedRatingServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/services/impl/ProductServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/services/impl/RatingServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/services/impl/ReviewServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/services/interfaces/AggregatedRatingService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/services/interfaces/ProductService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/services/interfaces/RatingService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/isep/acme/services/interfaces/ReviewService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/rsa.private.key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/rsa.public.key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/ACME.postman_collection.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/isep/acme/ACMEApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="2MhUo4LSlRCOFwshaAkkxIRCYXU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/joaoc/Documents/ISEP/Ano/INSIS/Projeto/acme/Microservices/Votes",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.obiscr.chatgpt.settings.ChatGPT",
+    "spring.configuration.checksum": "3fbeb6a5a3e2f60d2a9c015a6f527a08",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn clean install -U" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="ACMEApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="ACME" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.isep.acme.ACMEApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4b0fd624-d4c5-4b4a-bd2f-42bf818c213a" name="Changes" comment="" />
+      <created>1678219481164</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1678219481164</updated>
+      <workItem from="1678219482371" duration="2803000" />
+      <workItem from="1678569925378" duration="1957000" />
+      <workItem from="1678571973188" duration="94000" />
+      <workItem from="1678572096244" duration="3824000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
