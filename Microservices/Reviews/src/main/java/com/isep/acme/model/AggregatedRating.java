@@ -13,14 +13,19 @@ public class AggregatedRating {
     @Column()
     private double average;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = true)
-    private Product product;
+    @Column()
+    private Long productId;
 
-    protected AggregatedRating() {}
+    @Column()
+    private String sku;
 
-    public AggregatedRating(double average, Product product) {
+    protected AggregatedRating() {
+    }
+
+    public AggregatedRating(double average, Long productId, String sku) {
         this.average = average;
-        this.product = product;
+        this.productId = productId;
+        this.sku = sku;
     }
 
     public double getAverage() {
@@ -31,12 +36,20 @@ public class AggregatedRating {
         this.average = average;
     }
 
-    public Product getProduct() {
-        return product;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
     }
 
     public Long getAggregatedId() {

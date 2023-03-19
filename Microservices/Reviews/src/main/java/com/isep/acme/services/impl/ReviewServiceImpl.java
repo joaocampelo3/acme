@@ -5,7 +5,7 @@ import java.lang.IllegalArgumentException;
 
 import com.isep.acme.model.DTO.CreateReviewDTO;
 import com.isep.acme.model.DTO.ReviewDTO;
-import com.isep.acme.model.DTO.VoteReviewDTO;
+import com.isep.acme.repositories.UserRepository;
 import com.isep.acme.services.RestService;
 import com.isep.acme.services.UserService;
 import com.isep.acme.services.interfaces.RatingService;
@@ -16,8 +16,6 @@ import org.springframework.stereotype.Service;
 import com.isep.acme.model.*;
 
 import com.isep.acme.repositories.ReviewRepository;
-import com.isep.acme.repositories.ProductRepository;
-import com.isep.acme.repositories.UserRepository;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -28,9 +26,6 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Autowired
     ReviewRepository repository;
-
-    @Autowired
-    ProductRepository pRepository;
 
     @Autowired
     UserRepository uRepository;
@@ -52,9 +47,9 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public ReviewDTO create(final CreateReviewDTO createReviewDTO, String sku) {
 
-        final Optional<Product> product = pRepository.findBySku(sku);
+        final Optional<Long> productId = repository.findProductIdBySku(sku);
 
-        if(product.isEmpty()) return null;
+        if(productId.isEmpty()) return null;
 
         final var user = userService.getUserId(createReviewDTO.getUserID());
 
@@ -72,7 +67,7 @@ public class ReviewServiceImpl implements ReviewService {
 
         if (funfact == null) return null;
 
-        Review review = new Review(createReviewDTO.getReviewText(), date, product.get(), funfact, rating, user.get());
+        Review review = new Review(createReviewDTO.getReviewText(), date, productId.get(), funfact, rating, user.get());
 
         review = repository.save(review);
 
@@ -84,10 +79,10 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public List<ReviewDTO> getReviewsOfProduct(String sku, String status) {
 
-        Optional<Product> product = pRepository.findBySku(sku);
-        if( product.isEmpty() ) return null;
+        Optional<Long> productId = repository.findProductIdBySku(sku);
+        if( productId.isEmpty() ) return null;
 
-        Optional<List<Review>> r = repository.findByProductIdStatus(product.get(), status);
+        Optional<List<Review>> r = repository.findByProductIdStatus(productId.get(), status);
 
         if (r.isEmpty()) return null;
 
@@ -95,33 +90,9 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public boolean addVoteToReview(Long reviewID, VoteReviewDTO voteReviewDTO) {
+    public Double getWeightedAverage(Long productId){
 
-        Optional<Review> review = this.repository.findById(reviewID);
-
-        if (review.isEmpty()) return false;
-
-        Vote vote = new Vote(voteReviewDTO.getVote(), voteReviewDTO.getUserID());
-        if (voteReviewDTO.getVote().equalsIgnoreCase("upVote")) {
-            boolean added = review.get().addUpVote(vote);
-            if (added) {
-                Review reviewUpdated = this.repository.save(review.get());
-                return reviewUpdated != null;
-            }
-        } else if (voteReviewDTO.getVote().equalsIgnoreCase("downVote")) {
-            boolean added = review.get().addDownVote(vote);
-            if (added) {
-                Review reviewUpdated = this.repository.save(review.get());
-                return reviewUpdated != null;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public Double getWeightedAverage(Product product){
-
-        Optional<List<Review>> r = repository.findByProductId(product);
+        Optional<List<Review>> r = repository.findByProductId(productId);
 
         if (r.isEmpty()) return 0.0;
 
@@ -148,10 +119,12 @@ public class ReviewServiceImpl implements ReviewService {
         }
         Review r = rev.get();
 
+        /* TODO: Publish this event
+
         if (r.getUpVote().isEmpty() && r.getDownVote().isEmpty()) {
             repository.delete(r);
             return true;
-        }
+        }*/
         return false;
     }
 

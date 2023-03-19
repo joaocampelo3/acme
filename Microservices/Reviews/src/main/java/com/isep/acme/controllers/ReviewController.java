@@ -2,7 +2,6 @@ package com.isep.acme.controllers;
 
 import com.isep.acme.model.DTO.CreateReviewDTO;
 import com.isep.acme.model.DTO.ReviewDTO;
-import com.isep.acme.model.DTO.VoteReviewDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +52,8 @@ class ReviewController {
         return new ResponseEntity<ReviewDTO>(review, HttpStatus.CREATED);
     }
 
+    /*TODO: Recieves a notification of VoteCreated and process it
+
     @Operation(summary = "add vote")
     @PutMapping("/reviews/{reviewID}/vote")
     public ResponseEntity<Boolean> addVote(@PathVariable(value = "reviewID") final Long reviewID, @RequestBody VoteReviewDTO voteReviewDTO){
@@ -64,7 +65,7 @@ class ReviewController {
         }
 
         return new ResponseEntity<Boolean>(added, HttpStatus.CREATED);
-    }
+    }*/
 
     @Operation(summary = "deletes review")
     @DeleteMapping("/reviews/{reviewID}")

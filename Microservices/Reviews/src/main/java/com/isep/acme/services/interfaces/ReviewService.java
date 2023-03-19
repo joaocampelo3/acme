@@ -5,7 +5,6 @@ import java.util.List;
 import com.isep.acme.model.*;
 import com.isep.acme.model.DTO.CreateReviewDTO;
 import com.isep.acme.model.DTO.ReviewDTO;
-import com.isep.acme.model.DTO.VoteReviewDTO;
 
 public interface ReviewService {
 
@@ -15,9 +14,7 @@ public interface ReviewService {
 
     ReviewDTO create(CreateReviewDTO createReviewDTO, String sku);
 
-    boolean addVoteToReview(Long reviewID, VoteReviewDTO voteReviewDTO);
-
-    Double getWeightedAverage(Product product);
+    Double getWeightedAverage(Long productId);
 
     Boolean DeleteReview(Long reviewId);
 

@@ -15,10 +15,10 @@ import java.awt.image.BufferedImage;
 @EnableConfigurationProperties({
 		FileStorageProperties.class
 })
-public class ACMEApplication {
+public class ReviewACMEApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ACMEApplication.class, args);
+		SpringApplication.run(ReviewACMEApplication.class, args);
 	}
 
 	@Bean
