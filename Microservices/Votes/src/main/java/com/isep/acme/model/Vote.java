@@ -1,22 +1,42 @@
 package com.isep.acme.model;
 
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 
 import java.util.Objects;
 
-@Embeddable
+@Entity
 public class Vote {
-    private String vote;
-    private Long userID;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long voteID;
+
+    @Column(nullable = false)
+    private Long voteTempID;
+
+    @Column(nullable = false)
+    private String vote;
+
+    @Column(nullable = false)
+    private Long userID;
 
     protected Vote() {
 
     }
 
-    public Vote(String vote, Long userID) {
+    public Vote(Long voteID, Long voteTempID, String vote, Long userID) {
+        this.voteID = voteID;
+        this.voteTempID = voteTempID;
         this.vote = vote;
         this.userID = userID;
+    }
+
+    public Long getVoteID() {
+        return voteID;
+    }
+
+    public void setVoteID(Long voteID) {
+        this.voteID = voteID;
     }
 
     public String getVote() {
@@ -35,17 +55,17 @@ public class Vote {
         this.userID = userID;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Vote vote1 = (Vote) o;
-        return vote.equals(vote1.vote) && userID.equals(vote1.userID);
+        return Objects.equals(voteID, vote1.voteID) && Objects.equals(vote, vote1.vote) && Objects.equals(userID, vote1.userID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(vote, userID);
+        return Objects.hash(voteID, vote, userID);
     }
-
 }
