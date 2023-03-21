@@ -1,5 +1,7 @@
 package com.isep.acme.model;
 
+import com.isep.acme.model.DTO.VoteReviewDTO;
+
 import javax.persistence.*;
 
 import java.util.Objects;
@@ -67,5 +69,17 @@ public class Vote {
     @Override
     public int hashCode() {
         return Objects.hash(voteID, vote, userID);
+    }
+
+    public Long getVoteTempID() {
+        return voteTempID;
+    }
+
+    public void setVoteTempID(Long voteTempID) {
+        this.voteTempID = voteTempID;
+    }
+
+    public VoteReviewDTO toDto() {
+        return new VoteReviewDTO(this.voteID, this.voteTempID, this.userID, this.vote);
     }
 }
