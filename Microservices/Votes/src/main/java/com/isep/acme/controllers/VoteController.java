@@ -60,7 +60,7 @@ class VoteController {
 
     @Operation(summary = "updates a vote")
     @PatchMapping(value = "/{voteID}")
-    public ResponseEntity<VoteReviewDTO> Update(@PathVariable("voteID") final Long voteID, @RequestBody final Vote vote) {
+    public ResponseEntity<VoteReviewDTO> Update(@PathVariable("voteID") final Long voteID, @RequestBody final Vote vote) throws Exception {
 
         final VoteReviewDTO voteDTO = service.updateByVoteID(voteID, vote);
 
@@ -72,7 +72,7 @@ class VoteController {
 
     @Operation(summary = "deletes a vote")
     @DeleteMapping(value = "/{voteID}")
-    public ResponseEntity<Vote> delete(@PathVariable("voteID") final Long voteID ){
+    public ResponseEntity<Vote> delete(@PathVariable("voteID") final Long voteID ) throws Exception {
 
         service.deleteByVoteID(voteID);
         return ResponseEntity.noContent().build();

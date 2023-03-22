@@ -12,11 +12,11 @@ public interface ReviewService {
 
     List<ReviewDTO> getReviewsOfProduct(String sku, String status);
 
-    ReviewDTO create(CreateReviewDTO createReviewDTO, String sku);
+    ReviewDTO create(CreateReviewDTO createReviewDTO, String sku) throws Exception;
 
     Double getWeightedAverage(Long productId);
 
-    Boolean DeleteReview(Long reviewId);
+    Boolean DeleteReview(Long reviewId) throws Exception;
 
     List<ReviewDTO> findPendingReview();
 

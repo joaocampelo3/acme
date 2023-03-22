@@ -1,4 +1,4 @@
-package com.isep.acme.services.impl;
+package com.isep.acme.services;
 
 import com.rabbitmq.client.*;
 

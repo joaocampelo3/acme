@@ -18,9 +18,9 @@ public interface ProductService {
 
     ProductDetailDTO getDetails(final String sku);
 
-    ProductDTO create(final Product manager);
+    ProductDTO create(final Product manager) throws Exception;
 
-    ProductDTO updateBySku(final String sku, final Product product);
+    ProductDTO updateBySku(final String sku, final Product product) throws Exception;
 
-    void deleteBySku(final String sku);
+    void deleteBySku(final String sku) throws Exception;
 }

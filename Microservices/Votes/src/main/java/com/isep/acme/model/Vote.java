@@ -66,6 +66,10 @@ public class Vote {
         return Objects.equals(voteID, vote1.voteID) && Objects.equals(vote, vote1.vote) && Objects.equals(userID, vote1.userID);
     }
 
+    public void updateVote(Vote v) {
+        setVote(v.vote);
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(voteID, vote, userID);

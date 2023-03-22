@@ -12,9 +12,9 @@ public interface VoteService {
 
     VoteReviewDTO create(final Vote vote) throws Exception;
 
-    VoteReviewDTO updateByVoteID(final Long voteID, final Vote vote);
+    VoteReviewDTO updateByVoteID(final Long voteID, final Vote vote) throws Exception;
 
-    void deleteByVoteID(final Long vote);
+    void deleteByVoteID(final Long vote) throws Exception;
 
     List<VoteReviewDTO> getAll();
 }

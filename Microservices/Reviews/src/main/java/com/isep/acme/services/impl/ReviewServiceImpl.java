@@ -6,6 +6,7 @@ import java.lang.IllegalArgumentException;
 import com.isep.acme.model.DTO.CreateReviewDTO;
 import com.isep.acme.model.DTO.ReviewDTO;
 import com.isep.acme.repositories.UserRepository;
+import com.isep.acme.services.Publisher;
 import com.isep.acme.services.RestService;
 import com.isep.acme.services.UserService;
 import com.isep.acme.services.interfaces.RatingService;
@@ -45,7 +46,7 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public ReviewDTO create(final CreateReviewDTO createReviewDTO, String sku) {
+    public ReviewDTO create(final CreateReviewDTO createReviewDTO, String sku) throws Exception {
 
         final Optional<Long> productId = repository.findProductIdBySku(sku);
 
@@ -73,7 +74,11 @@ public class ReviewServiceImpl implements ReviewService {
 
         if (review == null) return null;
 
-        return ReviewMapper.toDto(review);
+        ReviewDTO reviewDTO = ReviewMapper.toDto(review);
+
+        Publisher.main("Review Create");
+
+        return reviewDTO;
     }
 
     @Override
@@ -110,22 +115,24 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public Boolean DeleteReview(Long reviewId)  {
+    public Boolean DeleteReview(Long reviewId) throws Exception {
 
         Optional<Review> rev = repository.findById(reviewId);
 
         if (rev.isEmpty()){
             return null;
         }
+
         Review r = rev.get();
+        repository.delete(r);
+        Publisher.main("Review Delete");
 
-        /* TODO: Publish this event
+/*        if (r.getUpVote().isEmpty() && r.getDownVote().isEmpty()) {
 
-        if (r.getUpVote().isEmpty() && r.getDownVote().isEmpty()) {
-            repository.delete(r);
             return true;
         }*/
-        return false;
+
+        return true;
     }
 
     @Override

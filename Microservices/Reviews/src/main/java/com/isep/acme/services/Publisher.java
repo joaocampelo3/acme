@@ -1,12 +1,11 @@
-package com.isep.acme.services.impl;
+package com.isep.acme.services;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
-import org.apache.logging.log4j.message.Message;
 
 public class Publisher {
-    private final static String EXCHANGE_NAME = "votes";
+    private final static String EXCHANGE_NAME = "reviews";
     private final static String ROUTING_KEY = "my_routing_key";
 
     public static void main(String message) throws Exception {

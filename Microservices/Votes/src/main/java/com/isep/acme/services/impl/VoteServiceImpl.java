@@ -3,6 +3,7 @@ package com.isep.acme.services.impl;
 import com.isep.acme.model.DTO.VoteReviewDTO;
 import com.isep.acme.model.Vote;
 import com.isep.acme.repositories.VoteRepository;
+import com.isep.acme.services.Publisher;
 import com.isep.acme.services.interfaces.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,13 +35,24 @@ public class VoteServiceImpl implements VoteService {
     }
 
     @Override
-    public VoteReviewDTO updateByVoteID(Long voteID, Vote vote) {
-        return null;
+    public VoteReviewDTO updateByVoteID(Long voteID, Vote vote) throws Exception {
+        final Optional<Vote> voteToUpdate = repository.findByID(voteID);
+
+        if( voteToUpdate.isEmpty() ) return null;
+
+        voteToUpdate.get().updateVote(vote);
+
+        VoteReviewDTO voteReviewDTO = repository.save(voteToUpdate.get()).toDto();
+
+        Publisher.main("Vote Updated");
+
+        return voteReviewDTO;
     }
 
     @Override
-    public void deleteByVoteID(Long vote) {
-
+    public void deleteByVoteID(Long voteID) throws Exception {
+        repository.deleteByVoteID(voteID);
+        Publisher.main("Vote Deleted");
     }
 
     @Override
