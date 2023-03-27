@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: products-service-app
+spec:
+  selector:
+    matchLabels:
+      app: products-productservice
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: products-productservice
+    spec:
+      containers:
+        - name: products-service-app
+          image: 1151386/products-productservice:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: production
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: products-service-app
+spec:
+  selector:
+    app: products-productservice
+  ports:
+    - name: amqp
+      port: 5672
+      targetPort: 5672
+      nodePort: 30002
+    - name: http
+      port: 8080
+      targetPort: 8080
+      nodePort: 30003
+  type: NodePort
