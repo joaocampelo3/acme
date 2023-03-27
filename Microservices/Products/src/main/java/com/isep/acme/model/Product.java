@@ -8,8 +8,6 @@ import java.util.Objects;
 @Entity
 public class Product {
 
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long productID;

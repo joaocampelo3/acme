@@ -5,6 +5,7 @@ import com.isep.acme.model.DTO.ProductDTO;
 import com.isep.acme.model.DTO.ProductDetailDTO;
 import com.isep.acme.repositories.ProductRepository;
 
+import com.isep.acme.services.Publisher;
 import com.isep.acme.services.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -70,14 +71,18 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public ProductDTO create(final Product product) {
+    public ProductDTO create(final Product product) throws Exception {
         final Product p = new Product(product.getSku(), product.getDesignation(), product.getDescription());
 
-        return repository.save(p).toDto();
+        ProductDTO productDTO = repository.save(p).toDto();
+
+        Publisher.main("Product Created");
+
+        return productDTO;
     }
 
     @Override
-    public ProductDTO updateBySku(String sku, Product product) {
+    public ProductDTO updateBySku(String sku, Product product) throws Exception {
         
         final Optional<Product> productToUpdate = repository.findBySku(sku);
 
@@ -85,13 +90,17 @@ public class ProductServiceImpl implements ProductService {
 
         productToUpdate.get().updateProduct(product);
 
-        Product productUpdated = repository.save(productToUpdate.get());
-        
-        return productUpdated.toDto();
+        ProductDTO productUpdatedDto = repository.save(productToUpdate.get()).toDto();
+
+        Publisher.main("Product Updated");
+
+        return productUpdatedDto;
     }
 
     @Override
-    public void deleteBySku(String sku) {
+    public void deleteBySku(String sku) throws Exception {
         repository.deleteBySku(sku);
+
+        Publisher.main("Product Deleted");
     }
 }

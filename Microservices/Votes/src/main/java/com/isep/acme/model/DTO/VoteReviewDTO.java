@@ -3,6 +3,15 @@ package com.isep.acme.model.DTO;
 public class VoteReviewDTO {
 
     private Long voteID;
+
+    public Long getVoteTempID() {
+        return voteTempID;
+    }
+
+    public void setVoteTempID(Long voteTempID) {
+        this.voteTempID = voteTempID;
+    }
+
     private Long voteTempID;
     private Long userID;
     private String vote;

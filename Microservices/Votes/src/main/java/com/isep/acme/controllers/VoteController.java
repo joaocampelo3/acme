@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +22,16 @@ class VoteController {
 
     private static final Logger logger = LoggerFactory.getLogger(VoteController.class);
 
-
+    @Autowired
     private VoteService service;
+
+    @Operation(summary = "gets all votes")
+    @GetMapping
+    public ResponseEntity<Iterable<VoteReviewDTO>> getAll() {
+        final var votes = service.getAll();
+
+        return ResponseEntity.ok().body( votes );
+    }
 
     @Operation(summary = "finds votes by voteID")
     @GetMapping(value = "/{voteID}")
@@ -38,11 +47,11 @@ class VoteController {
 
     @Operation(summary = "creates a vote")
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<VoteReviewDTO> create(@RequestBody Vote vote) {
         try {
             final VoteReviewDTO voteDto = service.create(vote);
-            return new ResponseEntity<VoteReviewDTO>(voteDto, HttpStatus.CREATED);
+            return new ResponseEntity<VoteReviewDTO>(voteDto, HttpStatus.ACCEPTED);
         }
         catch( Exception e ) {
             throw new ResponseStatusException(HttpStatus.CONFLICT,"Vote must have a unique ID.");
@@ -51,7 +60,7 @@ class VoteController {
 
     @Operation(summary = "updates a vote")
     @PatchMapping(value = "/{voteID}")
-    public ResponseEntity<VoteReviewDTO> Update(@PathVariable("voteID") final Long voteID, @RequestBody final Vote vote) {
+    public ResponseEntity<VoteReviewDTO> Update(@PathVariable("voteID") final Long voteID, @RequestBody final Vote vote) throws Exception {
 
         final VoteReviewDTO voteDTO = service.updateByVoteID(voteID, vote);
 
@@ -63,7 +72,7 @@ class VoteController {
 
     @Operation(summary = "deletes a vote")
     @DeleteMapping(value = "/{voteID}")
-    public ResponseEntity<Vote> delete(@PathVariable("voteID") final Long voteID ){
+    public ResponseEntity<Vote> delete(@PathVariable("voteID") final Long voteID ) throws Exception {
 
         service.deleteByVoteID(voteID);
         return ResponseEntity.noContent().build();
