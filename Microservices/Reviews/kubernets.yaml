@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reviews-service-app
+spec:
+  selector:
+    matchLabels:
+      app: reviews-reviewservice
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: reviews-reviewservice
+    spec:
+      containers:
+        - name: reviews-service-app
+          image: 1151386/reviews-reviewservice:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: production
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: reviews-service-app
+spec:
+  selector:
+    app: reviews-reviewservice
+  ports:
+    - name: amqp
+      port: 5672
+      targetPort: 5672
+      nodePort: 30004
+    - name: http
+      port: 8080
+      targetPort: 8080
+      nodePort: 30005
+  type: NodePort

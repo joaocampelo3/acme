@@ -15,10 +15,10 @@ import java.awt.image.BufferedImage;
 @EnableConfigurationProperties({
 		FileStorageProperties.class
 })
-public class VoteApplication {
+public class ProductACMEApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(VoteApplication.class, args);
+		SpringApplication.run(ProductACMEApplication.class, args);
 	}
 
 	@Bean

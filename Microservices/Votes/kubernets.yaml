@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: votes-service-app
+spec:
+  selector:
+    matchLabels:
+      app: votes-voteservice
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: votes-voteservice
+    spec:
+      containers:
+        - name: votes-service-app
+          image: 1151386/votes-voteservice:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: production
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: votes-service-app
+spec:
+  selector:
+    app: votes-voteservice
+  ports:
+    - name: amqp
+      port: 5672
+      targetPort: 5672
+      nodePort: 30006
+    - name: http
+      port: 8080
+      targetPort: 8080
+      nodePort: 30007
+  type: NodePort
