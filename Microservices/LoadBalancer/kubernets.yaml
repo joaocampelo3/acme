@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: load-balancer-app
+spec:
+  selector:
+    matchLabels:
+      app: loadbalancer-loadbalancer
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: loadbalancer-loadbalancer
+    spec:
+      containers:
+        - name: load-balancer-app
+          image: 1151386/loadbalancer-loadbalancer:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: production
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: load-balancer-app
+spec:
+  selector:
+    app: loadbalancer-loadbalancer
+  ports:
+    - name: amqp
+      port: 5672
+      targetPort: 5672
+      nodePort: 30004
+    - name: http
+      port: 8080
+      targetPort: 8080
+      nodePort: 30005
+  type: NodePort
