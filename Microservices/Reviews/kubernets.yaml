@@ -29,12 +29,8 @@ spec:
   selector:
     app: reviews-reviewservice
   ports:
-    - name: amqp
-      port: 5672
-      targetPort: 5672
-      nodePort: 30004
     - name: http
       port: 8080
       targetPort: 8080
-      nodePort: 30005
+      nodePort: 30006
   type: NodePort

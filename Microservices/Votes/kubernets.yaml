@@ -29,10 +29,6 @@ spec:
   selector:
     app: votes-voteservice
   ports:
-    - name: amqp
-      port: 5672
-      targetPort: 5672
-      nodePort: 30006
     - name: http
       port: 8080
       targetPort: 8080

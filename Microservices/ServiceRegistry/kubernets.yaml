@@ -16,7 +16,7 @@ spec:
         - name: service-registry-app
           image: 1151386/serviceregistry-serviceregistry:latest
           ports:
-            - containerPort: 8080
+            - containerPort: 8761
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: production
@@ -29,12 +29,8 @@ spec:
   selector:
     app: serviceregistry-serviceregistry
   ports:
-    - name: amqp
-      port: 5672
-      targetPort: 5672
-      nodePort: 30004
     - name: http
-      port: 8080
-      targetPort: 8080
+      port: 8761
+      targetPort: 8761
       nodePort: 30005
   type: NodePort

@@ -29,12 +29,8 @@ spec:
   selector:
     app: products-productservice
   ports:
-    - name: amqp
-      port: 5672
-      targetPort: 5672
-      nodePort: 30002
     - name: http
       port: 8080
       targetPort: 8080
-      nodePort: 30003
+      nodePort: 30002
   type: NodePort
