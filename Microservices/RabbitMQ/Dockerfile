@@ -1,0 +1,9 @@
+FROM rabbitmq:3.11.9-management
+
+ENV RABBITMQ_DEFAULT_USER="guest"
+ENV RABBITMQ_DEFAULT_PASS="guest"
+
+EXPOSE 5672
+EXPOSE 15672
+
+CMD ["rabbitmq-server"]
