@@ -1,6 +1,5 @@
 package com.isep.acme.repositories;
 
-import com.isep.acme.controllers.ResourceNotFoundException;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -9,6 +8,7 @@ import org.springframework.cache.annotation.Caching;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import com.isep.acme.controllers.ResourceNotFoundException;
 import com.isep.acme.model.User;
 
 import java.util.Optional;

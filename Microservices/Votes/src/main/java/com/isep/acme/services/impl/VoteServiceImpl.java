@@ -1,6 +1,6 @@
 package com.isep.acme.services.impl;
 
-import com.isep.acme.model.DTO.VoteReviewDTO;
+import com.isep.acme.model.DTO.VoteDTO;
 import com.isep.acme.model.Vote;
 import com.isep.acme.repositories.VoteRepository;
 import com.isep.acme.services.Publisher;
@@ -19,34 +19,34 @@ public class VoteServiceImpl implements VoteService {
     private VoteRepository repository;
 
     @Override
-    public Optional<VoteReviewDTO> findByVoteID(Long voteID) {
+    public Optional<VoteDTO> findByVoteID(Long voteID) {
         return Optional.empty();
     }
 
     @Override
-    public VoteReviewDTO create(Vote vote) throws Exception {
-        final Vote v = new Vote(vote.getVoteID(), vote.getVoteTempID(), vote.getVote(), vote.getUserID());
+    public VoteDTO create(Vote vote) throws Exception {
+        final Vote v = new Vote(vote.getVoteID(), vote.getVote(), vote.getUserID());
 
-        VoteReviewDTO voteReviewDTO = repository.save(v).toDto();
+        VoteDTO voteDTO = repository.save(v).toDto();
 
-        Publisher.main("Vote Created");
+        //Publisher.main("Vote Created");
 
-        return voteReviewDTO;
+        return voteDTO;
     }
 
     @Override
-    public VoteReviewDTO updateByVoteID(Long voteID, Vote vote) throws Exception {
+    public VoteDTO updateByVoteID(Long voteID, Vote vote) throws Exception {
         final Optional<Vote> voteToUpdate = repository.findByID(voteID);
 
         if( voteToUpdate.isEmpty() ) return null;
 
         voteToUpdate.get().updateVote(vote);
 
-        VoteReviewDTO voteReviewDTO = repository.save(voteToUpdate.get()).toDto();
+        VoteDTO voteDTO = repository.save(voteToUpdate.get()).toDto();
 
         Publisher.main("Vote Updated");
 
-        return voteReviewDTO;
+        return voteDTO;
     }
 
     @Override
@@ -56,9 +56,9 @@ public class VoteServiceImpl implements VoteService {
     }
 
     @Override
-    public List<VoteReviewDTO> getAll() {
+    public List<VoteDTO> getAll() {
         Iterable<Vote> v = repository.findAll();
-        List<VoteReviewDTO> vDto = new ArrayList();
+        List<VoteDTO> vDto = new ArrayList();
         for (Vote vote:v) {
             vDto.add(vote.toDto());
         }

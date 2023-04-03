@@ -1,6 +1,6 @@
 package com.isep.acme.services.interfaces;
 
-import com.isep.acme.model.DTO.VoteReviewDTO;
+import com.isep.acme.model.DTO.VoteDTO;
 import com.isep.acme.model.Vote;
 
 import java.util.List;
@@ -8,13 +8,13 @@ import java.util.Optional;
 
 public interface VoteService {
 
-    Optional<VoteReviewDTO> findByVoteID(final Long voteID);
+    Optional<VoteDTO> findByVoteID(final Long voteID);
 
-    VoteReviewDTO create(final Vote vote) throws Exception;
+    VoteDTO create(final Vote vote) throws Exception;
 
-    VoteReviewDTO updateByVoteID(final Long voteID, final Vote vote) throws Exception;
+    VoteDTO updateByVoteID(final Long voteID, final Vote vote) throws Exception;
 
     void deleteByVoteID(final Long vote) throws Exception;
 
-    List<VoteReviewDTO> getAll();
+    List<VoteDTO> getAll();
 }
