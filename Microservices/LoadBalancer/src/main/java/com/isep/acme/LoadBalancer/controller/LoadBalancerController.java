@@ -8,6 +8,6 @@ public class LoadBalancerController {
 
 
     @LoadBalanced
-    @Bean
-    public RestTemplate
+    //@Bean
+    public RestTemplate restTemplate;
 }
