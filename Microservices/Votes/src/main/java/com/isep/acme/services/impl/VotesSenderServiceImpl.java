@@ -16,9 +16,9 @@ import java.util.logging.Logger;
 public class VotesSenderServiceImpl implements VoteSenderService {
 
     private static final Logger LOGGER = Logger.getLogger(VotesSenderServiceImpl.class.getName());
+    private final Queue queue = new Queue("votes");
     @Autowired
     private RabbitTemplate template;
-    private final Queue queue = new Queue("votes");
 
 /*    public static ConnectionFactory factory = new ConnectionFactory();
 

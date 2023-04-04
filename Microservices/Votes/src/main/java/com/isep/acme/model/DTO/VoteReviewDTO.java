@@ -11,20 +11,25 @@ public class VoteReviewDTO {
 
     private String review;
 
-    public Long getVoteTempID() {
-        return voteTempID;
-    }
-
-    public void setVoteTempID(Long voteTempID) {
-        this.voteTempID = voteTempID;
-    }
-
     public VoteReviewDTO(Long voteID, Long voteTempID, Long userID, String vote, String review) {
         this.voteID = voteID;
         this.voteTempID = voteTempID;
         this.userID = userID;
         this.vote = vote;
         this.review = review;
+    }
+
+    public static VoteReviewDTO fromJson(String json) {
+        Gson gson = new Gson();
+        return gson.fromJson(json, VoteReviewDTO.class);
+    }
+
+    public Long getVoteTempID() {
+        return voteTempID;
+    }
+
+    public void setVoteTempID(Long voteTempID) {
+        this.voteTempID = voteTempID;
     }
 
     public Long getUserID() {
@@ -62,10 +67,5 @@ public class VoteReviewDTO {
     public String toJson() {
         Gson gson = new Gson();
         return gson.toJson(this);
-    }
-
-    public static VoteReviewDTO fromJson(String json) {
-        Gson gson = new Gson();
-        return gson.fromJson(json, VoteReviewDTO.class);
     }
 }

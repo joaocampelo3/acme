@@ -5,7 +5,6 @@ import com.isep.acme.model.VoteTemp;
 import com.isep.acme.repositories.VoteTempRepository;
 import com.isep.acme.services.interfaces.VoteListenerService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +14,9 @@ import java.util.logging.Logger;
 @Service
 @RequiredArgsConstructor
 public class VotesListenerServiceImpl implements VoteListenerService {
+    private static final Logger LOGGER = Logger.getLogger(VotesListenerServiceImpl.class.getName());
     @Autowired
     private final VoteTempRepository voteTempRepository;
-
-    private static final Logger LOGGER = Logger.getLogger(VotesListenerServiceImpl.class.getName());
 
 
     /*private final static String EXCHANGE_NAME = "votes";

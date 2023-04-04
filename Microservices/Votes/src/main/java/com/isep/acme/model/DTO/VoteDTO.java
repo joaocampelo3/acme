@@ -18,6 +18,11 @@ public class VoteDTO {
         this.vote = vote;
     }
 
+    public static VoteDTO fromJson(String json) {
+        Gson gson = new Gson();
+        return gson.fromJson(json, VoteDTO.class);
+    }
+
     public Long getId() {
         return id;
     }
@@ -49,10 +54,5 @@ public class VoteDTO {
     public String toJson() {
         Gson gson = new Gson();
         return gson.toJson(this);
-    }
-
-    public static VoteDTO fromJson(String json) {
-        Gson gson = new Gson();
-        return gson.fromJson(json, VoteDTO.class);
     }
 }

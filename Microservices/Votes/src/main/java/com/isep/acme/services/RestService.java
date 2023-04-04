@@ -19,6 +19,6 @@ public class RestService {
 
     public String getFunFact(LocalDate date) {
         String url = "http://numbersapi.com/{month}/{day}/date";
-        return this.restTemplate.getForObject(url, String.class, date.getMonthValue(),date.getDayOfMonth());
+        return this.restTemplate.getForObject(url, String.class, date.getMonthValue(), date.getDayOfMonth());
     }
 }
