@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: service-registry-app
+  name: service-registry
 spec:
   selector:
     matchLabels:
@@ -13,8 +13,8 @@ spec:
         app: serviceregistry-serviceregistry
     spec:
       containers:
-        - name: service-registry-app
-          image: 1151386/serviceregistry-serviceregistry:latest
+        - name: service-registry
+          image: 1151386/serviceregistry:latest
           ports:
             - containerPort: 8761
           env:
@@ -27,7 +27,7 @@ metadata:
   name: service-registry-app
 spec:
   selector:
-    app: serviceregistry-serviceregistry
+    app: serviceregistry
   ports:
     - name: http
       port: 8761
