@@ -25,7 +25,7 @@ public class VoteServiceImpl implements VoteService {
 
     @Override
     public VoteDTO create(Vote vote) throws Exception {
-        final Vote v = new Vote(vote.getVoteID(), vote.getVote(), vote.getUserID());
+        final Vote v = new Vote(vote.getID(), vote.getVoteID(), vote.getVote(), vote.getUserID());
 
         VoteDTO voteDTO = repository.save(v).toDto();
 
@@ -38,7 +38,7 @@ public class VoteServiceImpl implements VoteService {
     public VoteDTO updateByVoteID(Long voteID, Vote vote) throws Exception {
         final Optional<Vote> voteToUpdate = repository.findByID(voteID);
 
-        if( voteToUpdate.isEmpty() ) return null;
+        if (voteToUpdate.isEmpty()) return null;
 
         voteToUpdate.get().updateVote(vote);
 
@@ -59,7 +59,7 @@ public class VoteServiceImpl implements VoteService {
     public List<VoteDTO> getAll() {
         Iterable<Vote> v = repository.findAll();
         List<VoteDTO> vDto = new ArrayList();
-        for (Vote vote:v) {
+        for (Vote vote : v) {
             vDto.add(vote.toDto());
         }
         return vDto;

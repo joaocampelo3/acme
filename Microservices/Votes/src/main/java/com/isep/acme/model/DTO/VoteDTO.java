@@ -2,16 +2,32 @@ package com.isep.acme.model.DTO;
 
 import com.google.gson.Gson;
 
+import java.util.UUID;
+
 public class VoteDTO {
 
-    private Long voteID;
+    private Long id;
+    private UUID voteID;
     private Long userID;
     private String vote;
 
-    public VoteDTO(Long voteID, Long userID, String vote) {
+    public VoteDTO(Long id, UUID voteID, Long userID, String vote) {
+        this.id = id;
         this.voteID = voteID;
         this.userID = userID;
         this.vote = vote;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setVoteID(UUID voteID) {
+        this.voteID = voteID;
     }
 
     public Long getUserID() {
@@ -28,14 +44,6 @@ public class VoteDTO {
 
     public void setVote(String vote) {
         this.vote = vote;
-    }
-
-    public Long getVoteID() {
-        return voteID;
-    }
-
-    public void setVoteID(Long voteID) {
-        this.voteID = voteID;
     }
 
     public String toJson() {
