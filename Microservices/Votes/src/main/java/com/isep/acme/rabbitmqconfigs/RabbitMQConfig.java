@@ -4,6 +4,7 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -24,15 +25,27 @@ public class RabbitMQConfig {
     public Channel publishChannel;
     public Channel receiveChannel;
 
+    //@Autowired
+    //private RabbitMQHost rabbitMQHost;
+
     //@PostConstruct
     @Bean
     public void declareQueue() throws Exception {
         // Create a connection factory with RabbitMQ server details
+        //rabbitMQHost = new RabbitMQHost();
         factory = new ConnectionFactory();
-        factory.setHost("localhost");
-        factory.setPort(30000);
-        factory.setUsername("guest");
-        factory.setPassword("guest");
+
+        //if (rabbitMQHost.host.isEmpty() || rabbitMQHost.host == null){
+            factory.setHost("localhost");
+            factory.setPort(30000);
+            factory.setUsername("guest");
+            factory.setPassword("guest");
+        /*} else {
+            factory.setHost(rabbitMQHost.host);
+            factory.setPort(Integer.parseInt(rabbitMQHost.port));
+            factory.setUsername(rabbitMQHost.username);
+            factory.setPassword(rabbitMQHost.password);
+        }*/
 
         // Create a new connection to the server
         connectionPublish = factory.newConnection();

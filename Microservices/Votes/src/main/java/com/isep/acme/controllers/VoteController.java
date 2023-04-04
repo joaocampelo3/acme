@@ -2,7 +2,6 @@ package com.isep.acme.controllers;
 
 import com.isep.acme.model.DTO.VoteDTO;
 import com.isep.acme.model.Vote;
-import com.isep.acme.rabbitmqconfigs.RabbitMQHost;
 import com.isep.acme.services.interfaces.VoteService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -12,6 +11,7 @@ import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,23 +27,26 @@ import static com.isep.acme.rabbitmqconfigs.RabbitMQMacros.EXCHANGE_NAME;
 class VoteController {
 
     private static final Logger logger = LoggerFactory.getLogger(VoteController.class);
-    private RabbitTemplate rabbitTemplate = new RabbitTemplate();
+    private RabbitTemplate rabbitTemplate;
     @Autowired
     private VoteService service;
 
-    @Autowired
-    private RabbitMQHost rabbitMQHost;
+//    private RabbitMQHost rabbitMQHost;
 
     public VoteController() {
-        System.out.println(rabbitMQHost.getHost());
-        System.out.println(rabbitMQHost.getPort());
-        System.out.println(rabbitMQHost.getUsername());
-        System.out.println(rabbitMQHost.getPassword());
+        /*rabbitMQHost = new RabbitMQHost();*/
+        ConnectionFactory connectionFactory;
+        connectionFactory = new CachingConnectionFactory("localhost", 30000);
+        ((CachingConnectionFactory) connectionFactory).setUsername("guest");
+        ((CachingConnectionFactory) connectionFactory).setPassword("guest");
+        /*if (rabbitMQHost.host.isEmpty() || rabbitMQHost.host == null){
 
-        ConnectionFactory connectionFactory = new CachingConnectionFactory(rabbitMQHost.getHost(),
-                rabbitMQHost.getPort());
-        ((CachingConnectionFactory) connectionFactory).setUsername(rabbitMQHost.getUsername());
-        ((CachingConnectionFactory) connectionFactory).setPassword(rabbitMQHost.getPassword());
+        } else {
+            connectionFactory = new CachingConnectionFactory(rabbitMQHost.getHost(), rabbitMQHost.getPort());
+            ((CachingConnectionFactory) connectionFactory).setUsername(rabbitMQHost.getUsername());
+            ((CachingConnectionFactory) connectionFactory).setPassword(rabbitMQHost.getPassword());
+        }*/
+
         this.rabbitTemplate = new RabbitTemplate(connectionFactory);
     }
 
