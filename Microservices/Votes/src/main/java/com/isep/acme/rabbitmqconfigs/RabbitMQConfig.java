@@ -1,4 +1,4 @@
-package com.isep.acme.rabbitMQConfigs;
+package com.isep.acme.rabbitmqconfigs;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static com.isep.acme.rabbitMQConfigs.RabbitMQMacros.*;
+import static com.isep.acme.rabbitmqconfigs.RabbitMQMacros.*;
 
 @Configuration("rabbitMQConfig")
 @EnableRabbit
@@ -34,14 +34,26 @@ public class RabbitMQConfig {
         factory.setUsername("guest");
         factory.setPassword("guest");
 
-        LOGGER.log(Level.INFO, " Connection: '" + factory.newConnection().toString() + "'");
-
         // Create a new connection to the server
         connectionPublish = factory.newConnection();
         connectionReceive = factory.newConnection();
 
-        LOGGER.log(Level.INFO, " Channel Publish: '" + connectionPublish.createChannel().toString() + "'");
-        LOGGER.log(Level.INFO, " Channel Receive: '" + connectionReceive.createChannel().toString() + "'");
+
+        try {
+            LOGGER.log(Level.INFO, " Connection: '" + connectionPublish.toString() + "'");
+            LOGGER.log(Level.INFO, " Channel Publish: '" + connectionPublish.createChannel().toString() + "'");
+        } catch (Exception e) {
+            connectionPublish.close();
+            throw e;
+        }
+
+        try {
+            LOGGER.log(Level.INFO, " Connection: '" + connectionReceive.toString() + "'");
+            LOGGER.log(Level.INFO, " Channel Receive: '" + connectionReceive.createChannel().toString() + "'");
+        } catch (Exception e) {
+            connectionReceive.close();
+            throw e;
+        }
 
         // Create a new channel on the connection
         publishChannel = connectionPublish.createChannel();

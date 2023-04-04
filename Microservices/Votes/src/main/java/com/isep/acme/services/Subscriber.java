@@ -2,7 +2,7 @@ package com.isep.acme.services;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 
-import static com.isep.acme.rabbitMQConfigs.RabbitMQMacros.SUBSCRIBE_QUEUE_NAME;
+import static com.isep.acme.rabbitmqconfigs.RabbitMQMacros.SUBSCRIBE_QUEUE_NAME;
 
 public class Subscriber {
 

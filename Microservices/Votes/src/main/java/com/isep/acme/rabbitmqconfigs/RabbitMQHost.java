@@ -1,4 +1,4 @@
-package com.isep.acme.rabbitMQConfigs;
+package com.isep.acme.rabbitmqconfigs;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;

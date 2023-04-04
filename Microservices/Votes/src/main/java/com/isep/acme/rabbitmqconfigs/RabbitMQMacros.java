@@ -1,4 +1,4 @@
-package com.isep.acme.rabbitMQConfigs;
+package com.isep.acme.rabbitmqconfigs;
 
 public class RabbitMQMacros {
 

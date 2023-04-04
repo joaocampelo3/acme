@@ -2,7 +2,7 @@ package com.isep.acme.controllers;
 
 import com.isep.acme.model.DTO.VoteDTO;
 import com.isep.acme.model.Vote;
-import com.isep.acme.rabbitMQConfigs.RabbitMQHost;
+import com.isep.acme.rabbitmqconfigs.RabbitMQHost;
 import com.isep.acme.services.interfaces.VoteService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -19,7 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
-import static com.isep.acme.rabbitMQConfigs.RabbitMQMacros.EXCHANGE_NAME;
+import static com.isep.acme.rabbitmqconfigs.RabbitMQMacros.EXCHANGE_NAME;
 
 @Tag(name = "Vote", description = "Endpoints for managing  votes")
 @RestController
