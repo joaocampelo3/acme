@@ -29,8 +29,8 @@ public class Review {
     @Column(nullable = false)
     private String funFact;
 
-    @Column(name = "product_id", nullable = false)
-    private Long productId;
+    @Column(name = "sku", nullable = false)
+    private String sku;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
@@ -50,19 +50,19 @@ public class Review {
         setFunFact(funFact);
     }
 
-    public Review(final Long idReview, final long version, final String approvalStatus, final  String reviewText, final String report, final LocalDate publishingDate, final String funFact, Long productId, Rating rating, User user) {
+    public Review(final Long idReview, final long version, final String approvalStatus, final  String reviewText, final String report, final LocalDate publishingDate, final String funFact, String sku, Rating rating, User user) {
         this(idReview, version, approvalStatus, reviewText, publishingDate, funFact);
 
         setReport(report);
-        setProductId(productId);
+        setSku(sku);
         setRating(rating);
         setUser(user);
 
     }
 
-    public Review(final String reviewText, LocalDate publishingDate, Long productId, String funFact, Rating rating, User user) {
+    public Review(final String reviewText, LocalDate publishingDate, String sku, String funFact, Rating rating, User user) {
         setReviewText(reviewText);
-        setProductId(productId);
+        setSku(sku);
         setPublishingDate(publishingDate);
         setApprovalStatus("pending");
         setFunFact(funFact);
@@ -132,12 +132,12 @@ public class Review {
         this.funFact = funFact;
     }
 
-    public void setProductId(Long productId) {
-        this.productId = productId;
+    public String getSku() {
+        return sku;
     }
 
-    public Long getProductId() {
-        return productId;
+    public void setSku(String sku) {
+        this.sku = sku;
     }
 
     public User getUser() {

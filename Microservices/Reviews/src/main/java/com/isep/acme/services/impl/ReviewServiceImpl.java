@@ -5,6 +5,7 @@ import java.lang.IllegalArgumentException;
 
 import com.isep.acme.model.DTO.CreateReviewDTO;
 import com.isep.acme.model.DTO.ReviewDTO;
+import com.isep.acme.repositories.ProductRepository;
 import com.isep.acme.repositories.UserRepository;
 import com.isep.acme.services.Publisher;
 import com.isep.acme.services.RestService;
@@ -29,6 +30,9 @@ public class ReviewServiceImpl implements ReviewService {
     ReviewRepository repository;
 
     @Autowired
+    ProductRepository productRepository;
+
+    @Autowired
     UserRepository uRepository;
 
     @Autowired
@@ -48,9 +52,9 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public ReviewDTO create(final CreateReviewDTO createReviewDTO, String sku) throws Exception {
 
-        final Optional<Long> productId = repository.findProductIdBySku(sku);
+        final Optional<Product> product = productRepository.getProductBySku(sku);
 
-        if(productId.isEmpty()) return null;
+        if(product.isEmpty()) return null;
 
         final var user = userService.getUserId(createReviewDTO.getUserID());
 
@@ -68,7 +72,7 @@ public class ReviewServiceImpl implements ReviewService {
 
         if (funfact == null) return null;
 
-        Review review = new Review(createReviewDTO.getReviewText(), date, productId.get(), funfact, rating, user.get());
+        Review review = new Review(createReviewDTO.getReviewText(), date, sku, funfact, rating, user.get());
 
         review = repository.save(review);
 
@@ -82,12 +86,21 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
+    public String createProduct(Product product) throws Exception
+    {
+        product = productRepository.save(product);
+        return product.getSku();
+    }
+
+    ;
+
+    @Override
     public List<ReviewDTO> getReviewsOfProduct(String sku, String status) {
 
-        Optional<Long> productId = repository.findProductIdBySku(sku);
+        Optional<String> productId = repository.findBySku(sku);
         if( productId.isEmpty() ) return null;
 
-        Optional<List<Review>> r = repository.findByProductIdStatus(productId.get(), status);
+        Optional<List<Review>> r = repository.findBySkuStatus(sku, status);
 
         if (r.isEmpty()) return null;
 
@@ -95,9 +108,9 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public Double getWeightedAverage(Long productId){
+    public Double getWeightedAverage(String sku){
 
-        Optional<List<Review>> r = repository.findByProductId(productId);
+        Optional<List<Review>> r = repository.findBySkuList(sku);
 
         if (r.isEmpty()) return 0.0;
 

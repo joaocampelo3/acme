@@ -13,8 +13,8 @@ public interface ReviewRepository extends CrudRepository<Review, Long> {
 
     //Optional<Review> findById(Long productId);
 
-    @Query("SELECT r FROM Review r WHERE r.productId=:productId ORDER BY r.publishingDate DESC")
-    Optional<List<Review>> findByProductId(Long productId);
+    @Query("SELECT r FROM Review r WHERE r.sku=:sku ORDER BY r.publishingDate DESC")
+    Optional<List<Review>> findBySky(String sku);
 
     @Query("SELECT r FROM Review r WHERE r.approvalStatus='pending'")
     Optional<List<Review>> findPendingReviews();
@@ -22,13 +22,16 @@ public interface ReviewRepository extends CrudRepository<Review, Long> {
     @Query("SELECT r FROM Review r WHERE r.approvalStatus='active'")
     Optional<List<Review>> findActiveReviews();
 
-    @Query("SELECT r FROM Review r WHERE r.productId=:productId AND r.approvalStatus=:status ORDER BY r.publishingDate DESC")
-    Optional<List<Review>> findByProductIdStatus(Long productId, String status);
+    @Query("SELECT r FROM Review r WHERE r.sku=:sku AND r.approvalStatus=:status ORDER BY r.publishingDate DESC")
+    Optional<List<Review>> findBySkuStatus(String sku, String status);
 
     @Query("SELECT r FROM Review r WHERE r.user=:user ORDER BY r.publishingDate DESC")
     Optional<List<Review>> findByUserId(User user);
 
 
-    @Query("SELECT r.productId FROM Review r, AggregatedRating a WHERE r.productId=a.productId AND a.sku=:sku")
-    Optional<Long> findProductIdBySku(String sku);
+    @Query("SELECT r FROM Review r, Product p WHERE r.sku=p.sku AND p.sku=:sku")
+    Optional<String> findBySku(String sku);
+
+    @Query("SELECT r FROM Review r, Product p WHERE r.sku=p.sku AND p.sku=:sku")
+    Optional<List<Review>> findBySkuList(String sku);
 }

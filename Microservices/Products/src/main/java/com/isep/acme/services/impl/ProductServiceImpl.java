@@ -1,5 +1,6 @@
 package com.isep.acme.services.impl;
 
+import com.isep.acme.events.ProductEvent;
 import com.isep.acme.model.Product;
 import com.isep.acme.model.DTO.ProductDTO;
 import com.isep.acme.model.DTO.ProductDetailDTO;
@@ -76,7 +77,7 @@ public class ProductServiceImpl implements ProductService {
 
         ProductDTO productDTO = repository.save(p).toDto();
 
-        Publisher.main("Product Created");
+        Publisher.main(new ProductEvent(p.getSku()), "product.product_created");
 
         return productDTO;
     }
@@ -92,7 +93,7 @@ public class ProductServiceImpl implements ProductService {
 
         ProductDTO productUpdatedDto = repository.save(productToUpdate.get()).toDto();
 
-        Publisher.main("Product Updated");
+        Publisher.main(new ProductEvent(productUpdatedDto.getSku()), "product.product_updated");
 
         return productUpdatedDto;
     }
@@ -101,6 +102,6 @@ public class ProductServiceImpl implements ProductService {
     public void deleteBySku(String sku) throws Exception {
         repository.deleteBySku(sku);
 
-        Publisher.main("Product Deleted");
+        Publisher.main(new ProductEvent(sku), "product.product_deleted");
     }
 }

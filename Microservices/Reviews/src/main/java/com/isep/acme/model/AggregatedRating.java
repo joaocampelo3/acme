@@ -14,17 +14,13 @@ public class AggregatedRating {
     private double average;
 
     @Column()
-    private Long productId;
-
-    @Column()
     private String sku;
 
     protected AggregatedRating() {
     }
 
-    public AggregatedRating(double average, Long productId, String sku) {
+    public AggregatedRating(double average, String sku) {
         this.average = average;
-        this.productId = productId;
         this.sku = sku;
     }
 
@@ -34,14 +30,6 @@ public class AggregatedRating {
 
     public void setAverage(double average) {
         this.average = average;
-    }
-
-    public Long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
     }
 
     public String getSku() {
