@@ -4,6 +4,7 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -20,28 +21,22 @@ public class RabbitMQConfig {
     public ConnectionFactory factory;
     public Connection connectionPublish;
     public Connection connectionReceive;
-
     public Channel publishChannel;
     public Channel receiveChannel;
 
-    //@Qualifier("rabbitMQHost")
-    //@Autowired
-    //private RabbitMQHost rabbitMQHost;
-
-    //@PostConstruct
     @Bean
-    public void declareQueue() throws Exception {
+    public ConnectionFactory declareQueue(RabbitMQHost rabbitMQHost) throws Exception {
         // Create a connection factory with RabbitMQ server details
         //rabbitMQHost = new RabbitMQHost();
         factory = new ConnectionFactory();
-        factory.setHost("localhost");
+        /*factory.setHost("localhost");
         factory.setPort(30000);
         factory.setUsername("guest");
-        factory.setPassword("guest");
-            //factory.setHost(rabbitMQHost.host);
-            //factory.setPort(Integer.parseInt(rabbitMQHost.port));
-            //factory.setUsername(rabbitMQHost.username);
-            //factory.setPassword(rabbitMQHost.password);
+        factory.setPassword("guest");*/
+        factory.setHost(rabbitMQHost.getHost());
+        factory.setPort(Integer.parseInt(rabbitMQHost.getPort()));
+        factory.setUsername(rabbitMQHost.getUsername());
+        factory.setPassword(rabbitMQHost.getPassword());
 
         // Create a new connection to the server
         connectionPublish = factory.newConnection();
@@ -80,6 +75,7 @@ public class RabbitMQConfig {
 
         // Bind the publish queue to the exchange with a routing key
         //channel.queueBind(PUBLISH_QUEUE_NAME, EXCHANGE_NAME, VOTES_PUBLISH_KEY);
+        return factory;
     }
 
     /*@Bean

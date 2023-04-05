@@ -2,7 +2,6 @@ package com.isep.acme.controllers;
 
 import com.isep.acme.model.DTO.VoteDTO;
 import com.isep.acme.model.Vote;
-import com.isep.acme.rabbitmqconfigs.RabbitMQConfig;
 import com.isep.acme.rabbitmqconfigs.RabbitMQHost;
 import com.isep.acme.services.interfaces.VoteService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,19 +31,14 @@ class VoteController {
     @Autowired
     private VoteService service;
 
-    public VoteController() {
-        ConnectionFactory connectionFactory;
-        connectionFactory = new CachingConnectionFactory("localhost", 30000);
-        ((CachingConnectionFactory) connectionFactory).setUsername("guest");
-        ((CachingConnectionFactory) connectionFactory).setPassword("guest");
-        /*if (rabbitMQHost.host.isEmpty() || rabbitMQHost.host == null){
+    @Autowired
+    private RabbitMQHost rabbitMQHost;
 
-        } else {
-            connectionFactory = new CachingConnectionFactory(rabbitMQHost.getHost(),
-                    30000);//Integer.parseInt(rabbitMQHost.getPort().toString()));
-            ((CachingConnectionFactory) connectionFactory).setUsername(rabbitMQHost.getUsername());
-            ((CachingConnectionFactory) connectionFactory).setPassword(rabbitMQHost.getPassword());
-        //}*/
+    public VoteController(RabbitMQHost rabbitMQHost) {
+        ConnectionFactory connectionFactory = new CachingConnectionFactory(rabbitMQHost.getHost(),
+                Integer.parseInt(rabbitMQHost.getPort()));
+        ((CachingConnectionFactory) connectionFactory).setUsername(rabbitMQHost.getUsername());
+        ((CachingConnectionFactory) connectionFactory).setPassword(rabbitMQHost.getPassword());
 
         this.rabbitTemplate = new RabbitTemplate(connectionFactory);
     }
