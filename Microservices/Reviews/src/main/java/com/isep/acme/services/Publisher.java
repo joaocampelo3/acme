@@ -9,7 +9,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
 
 @Component
-@EnableAsync
 public class Publisher {
     private final static String EXCHANGE_NAME = "reviews";
     private final static String ROUTING_KEY = "my_routing_key";

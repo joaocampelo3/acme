@@ -21,6 +21,9 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository repository;
 
+    @Autowired
+    Publisher publisher;
+
     @Override
     public Optional<Product> getProductBySku( final String sku ) {
 
@@ -77,7 +80,7 @@ public class ProductServiceImpl implements ProductService {
 
         ProductDTO productDTO = repository.save(p).toDto();
 
-        Publisher.main(new ProductEvent(p.getSku()), "product.product_created");
+        publisher.mainPublish(new ProductEvent(p.getSku()), "product.product_created");
 
         return productDTO;
     }
@@ -93,7 +96,7 @@ public class ProductServiceImpl implements ProductService {
 
         ProductDTO productUpdatedDto = repository.save(productToUpdate.get()).toDto();
 
-        Publisher.main(new ProductEvent(productUpdatedDto.getSku()), "product.product_updated");
+        publisher.mainPublish(new ProductEvent(productUpdatedDto.getSku()), "product.product_updated");
 
         return productUpdatedDto;
     }
@@ -102,6 +105,6 @@ public class ProductServiceImpl implements ProductService {
     public void deleteBySku(String sku) throws Exception {
         repository.deleteBySku(sku);
 
-        Publisher.main(new ProductEvent(sku), "product.product_deleted");
+        publisher.mainPublish(new ProductEvent(sku), "product.product_deleted");
     }
 }
