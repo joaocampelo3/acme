@@ -19,25 +19,25 @@ public class AggregatedRatingServiceImpl implements AggregatedRatingService {
     ReviewService rService;
 
     @Override
-    public AggregatedRating save(String sku) {
+    public AggregatedRating save(String skuIn) {
 
-        Optional<Long> productId = arRepository.findProductIdBySku(sku);
+        Optional<String> sku = arRepository.findSku(skuIn);
 
         if (sku.isEmpty()) {
             return null;
         }
 
-        Double average = rService.getWeightedAverage(productId.get());
+        Double average = rService.getWeightedAverage(skuIn);
 
 
-        Optional<AggregatedRating> r = arRepository.findByProductId(productId.get());
+        Optional<AggregatedRating> r = arRepository.findBySku(skuIn);
         AggregatedRating aggregateF;
 
         if (r.isPresent()) {
             r.get().setAverage(average);
             aggregateF = arRepository.save(r.get());
         } else {
-            AggregatedRating f = new AggregatedRating(average, productId.get(), sku);
+            AggregatedRating f = new AggregatedRating(average, skuIn);
             aggregateF = arRepository.save(f);
         }
 

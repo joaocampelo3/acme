@@ -1,22 +1,30 @@
 package com.isep.acme.services;
 
+import com.isep.acme.events.ProductEvent;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 
 public class Publisher {
-    private final static String EXCHANGE_NAME = "products";
-    private final static String ROUTING_KEY = "my_routing_key";
+    private final static String EXCHANGE_NAME = "product_events";
 
-    public static void main(String message) throws Exception {
+    public static void main(ProductEvent productEvent, String routingKey) throws Exception {
+        // create a connection to the RabbitMQ server
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
-        try (Connection connection = factory.newConnection();
-             Channel channel = connection.createChannel()) {
-            channel.exchangeDeclare(EXCHANGE_NAME, "fanout");
+        Connection connection = factory.newConnection();
+        Channel channel = connection.createChannel();
 
-            channel.basicPublish(EXCHANGE_NAME, ROUTING_KEY, null, message.getBytes("UTF-8"));
-            System.out.println(" [x] Sent '" + message + "'");
-        }
+        // declare the exchange for the product events
+        channel.exchangeDeclare(EXCHANGE_NAME, "topic");
+
+        // publish the event
+        String message = productEvent.toJson();
+        channel.basicPublish(EXCHANGE_NAME, routingKey, null, message.getBytes("UTF-8"));
+        System.out.println("Sent event '" + routingKey + "' with message '" + message + "'");
+
+        // close the channel and connection
+        channel.close();
+        connection.close();
     }
 }

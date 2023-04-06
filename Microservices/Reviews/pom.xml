@@ -121,6 +121,10 @@
             <artifactId>spring-security-core</artifactId>
             <!-- <version>5.1.6.RELEASE</version> -->
         </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
 
     </dependencies>
 

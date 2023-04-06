@@ -51,10 +51,8 @@ class ReviewController {
 
         return new ResponseEntity<ReviewDTO>(review, HttpStatus.CREATED);
     }
-
-    /*TODO: Recieves a notification of VoteCreated and process it
-
-    @Operation(summary = "add vote")
+    
+/*    @Operation(summary = "add vote")
     @PutMapping("/reviews/{reviewID}/vote")
     public ResponseEntity<Boolean> addVote(@PathVariable(value = "reviewID") final Long reviewID, @RequestBody VoteReviewDTO voteReviewDTO){
 
