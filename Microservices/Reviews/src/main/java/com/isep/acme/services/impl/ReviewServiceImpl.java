@@ -44,6 +44,9 @@ public class ReviewServiceImpl implements ReviewService {
     @Autowired
     RestService restService;
 
+    @Autowired
+    Publisher publisher;
+
     @Override
     public Iterable<Review> getAll() {
         return repository.findAll();
@@ -80,7 +83,7 @@ public class ReviewServiceImpl implements ReviewService {
 
         ReviewDTO reviewDTO = ReviewMapper.toDto(review);
 
-        Publisher.main("Review Create");
+        publisher.mainPublish("Review Create");
 
         return reviewDTO;
     }
@@ -138,7 +141,7 @@ public class ReviewServiceImpl implements ReviewService {
 
         Review r = rev.get();
         repository.delete(r);
-        Publisher.main("Review Delete");
+        publisher.mainPublish("Review Delete");
 
 /*        if (r.getUpVote().isEmpty() && r.getDownVote().isEmpty()) {
 

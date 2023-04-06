@@ -3,6 +3,7 @@ package com.isep.acme.services;
 import com.isep.acme.events.ProductEvent;
 import com.isep.acme.events.ReviewEvent;
 import com.isep.acme.model.Product;
+import com.isep.acme.rabbitmqconfigs.RabbitMQHost;
 import com.isep.acme.repositories.ProductRepository;
 import com.rabbitmq.client.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,18 @@ public class ReviewEventSubscriber {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private RabbitMQHost rabbitMQHost;
 
     public void start() throws IOException, TimeoutException {
 
         // create a connection to the RabbitMQ server
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("localhost");
+        factory.setHost(rabbitMQHost.getHost());
+        factory.setPort(Integer.parseInt(rabbitMQHost.getPort()));
+        factory.setUsername(rabbitMQHost.getUsername());
+        factory.setPassword(rabbitMQHost.getPassword());
+
         Connection connection = factory.newConnection();
         Channel channel = connection.createChannel();
 
@@ -101,7 +108,7 @@ public class ReviewEventSubscriber {
 
     @Bean
     @Async
-    public void mainBean() throws IOException, TimeoutException {
+    public void mainSubscription() throws IOException, TimeoutException {
         this.start();
     }
 
