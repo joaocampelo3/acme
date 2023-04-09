@@ -28,7 +28,6 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: production
-      restartPolicy: Never
 ---
 apiVersion: v1
 kind: Service
