@@ -42,7 +42,7 @@ spec:
       nodePort: 30007
   type: NodePort
 ---
-apiVersion: autoscaling/v2beta2
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: votes-service-hpa
