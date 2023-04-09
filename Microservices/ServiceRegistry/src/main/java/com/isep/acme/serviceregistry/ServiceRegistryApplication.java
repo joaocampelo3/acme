@@ -1,4 +1,4 @@
-package com.isep.acme;
+package com.isep.acme.serviceregistry;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
