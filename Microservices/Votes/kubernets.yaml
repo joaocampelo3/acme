@@ -17,13 +17,13 @@ spec:
           image: 1151386/votes:latest
           ports:
             - containerPort: 8080
-          resources:
-            limits:
-              cpu: "0.2"
-              memory: "200k"
-            requests:
-              cpu: "0.1"
-              memory: "100k"
+          #resources:
+          #  limits:
+          #    cpu: "0.2"
+          #    memory: "200k"
+          #  requests:
+          #    cpu: "0.1"
+          #    memory: "100k"
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: production
@@ -42,21 +42,21 @@ spec:
       nodePort: 30007
   type: NodePort
 ---
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: votes-service-hpa
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: votes
-  minReplicas: 2
-  maxReplicas: 3
-  metrics:
-    - type: Resource
-      resource:
-        name: cpu
-        target:
-          type: Utilization
-          averageUtilization: 50
+#apiVersion: autoscaling/v2
+#kind: HorizontalPodAutoscaler
+#metadata:
+#  name: votes-service-hpa
+#spec:
+#  scaleTargetRef:
+#    apiVersion: apps/v1
+#    kind: Deployment
+#    name: votes
+#  minReplicas: 2
+#  maxReplicas: 3
+#  metrics:
+#    - type: Resource
+#      resource:
+#        name: cpu
+#        target:
+#          type: Utilization
+#          averageUtilization: 50
