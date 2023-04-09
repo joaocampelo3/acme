@@ -1,37 +1,37 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: service-registry
+  name: service-registry-deployment
 spec:
   selector:
     matchLabels:
-      app: serviceregistry-serviceregistry
+      app: serviceregistry
   replicas: 1
   template:
     metadata:
       labels:
-        app: serviceregistry-serviceregistry
+        app: serviceregistry
     spec:
       containers:
-        - name: service-registry
-          image: 1151386/serviceregistry
-          imagePullPolicy: Never
-          ports:
-            - containerPort: 8761
-          env:
-            - name: SPRING_PROFILES_ACTIVE
-              value: production
+      - name: service-registry-container
+        image: 1151386/serviceregistry
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8761
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: production
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: service-registry-app
+  name: service-registry-service
 spec:
   selector:
     app: serviceregistry
   ports:
-    - name: http
-      port: 8761
-      targetPort: 8761
-      nodePort: 30005
+  - name: http
+    port: 8761
+    targetPort: 8761
+    nodePort: 30005
   type: NodePort

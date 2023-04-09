@@ -1,4 +1,4 @@
-package com.isep.acme.LoadBalancer;
+package com.isep.acme.loadbalancer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
