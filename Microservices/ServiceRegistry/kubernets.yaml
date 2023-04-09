@@ -14,12 +14,14 @@ spec:
     spec:
       containers:
         - name: service-registry
-          image: 1151386/serviceregistry:latest
+          image: 1151386/serviceregistry
+          imagePullPolicy: Never
           ports:
             - containerPort: 8761
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: production
+      restartPolicy: Never
 ---
 apiVersion: v1
 kind: Service

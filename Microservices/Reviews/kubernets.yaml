@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: reviews
-          image: 1151386/reviews:latest
+          image: 1151386/reviews
           imagePullPolicy: Never
           ports:
             - containerPort: 8080
@@ -28,6 +28,7 @@ spec:
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: production
+      restartPolicy: Never
 ---
 apiVersion: v1
 kind: Service
