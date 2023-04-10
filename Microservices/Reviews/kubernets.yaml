@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: reviews-deployment
 spec:
+  restartPolicy: "OnFailure"
+  maxRetries: "3"
   selector:
     matchLabels:
       app: reviews
