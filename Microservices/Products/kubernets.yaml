@@ -3,8 +3,6 @@ kind: Deployment
 metadata:
   name: products-deployment
 spec:
-  restartPolicy: "OnFailure"
-  maxRetries: "3"
   selector:
     matchLabels:
       app: products
