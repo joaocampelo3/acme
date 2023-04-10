@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: products
+  name: products-deployment
 spec:
   selector:
     matchLabels:
@@ -13,7 +13,7 @@ spec:
         app: products
     spec:
       containers:
-      - name: products
+      - name: products-container
         image: 1151386/products
         imagePullPolicy: Never
         ports:
@@ -26,17 +26,14 @@ spec:
           requests:
             cpu: 100m
             memory: 256Mi
-        env:
-        - name: SPRING_PROFILES_ACTIVE
-          value: production
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: products-service-app
+  name: products-service
 spec:
   selector:
-    app: products-productservice
+    app: products
   ports:
   - name: amqp
     port: 5672

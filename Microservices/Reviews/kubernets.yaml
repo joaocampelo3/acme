@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: reviews
+  name: reviews-deployment
 spec:
   selector:
     matchLabels:
@@ -13,7 +13,7 @@ spec:
         app: reviews
     spec:
       containers:
-      - name: reviews
+      - name: reviews-container
         image: 1151386/reviews
         imagePullPolicy: Never
         ports:
@@ -26,14 +26,11 @@ spec:
           requests:
             cpu: 100m
             memory: 256Mi
-        env:
-        - name: SPRING_PROFILES_ACTIVE
-          value: production
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: reviews-service-app
+  name: reviews-service
 spec:
   selector:
     app: reviews

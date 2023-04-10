@@ -18,9 +18,6 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 8761
-        env:
-        - name: SPRING_PROFILES_ACTIVE
-          value: production
 ---
 apiVersion: v1
 kind: Service

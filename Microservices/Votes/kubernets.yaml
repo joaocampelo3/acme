@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: votes
+  name: votes-deployment
 spec:
   selector:
     matchLabels:
@@ -13,7 +13,7 @@ spec:
         app: votes
     spec:
       containers:
-      - name: votes
+      - name: votes-container
         image: 1151386/votes
         imagePullPolicy: Never
         ports:
@@ -26,14 +26,11 @@ spec:
           requests:
             cpu: 100m
             memory: 256Mi
-        env:
-        - name: SPRING_PROFILES_ACTIVE
-          value: production
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: votes-service-app
+  name: votes-service
 spec:
   selector:
     app: votes
