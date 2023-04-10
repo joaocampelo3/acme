@@ -13,21 +13,22 @@ spec:
         app: reviews
     spec:
       containers:
-        - name: reviews
-          image: 1151386/reviews
-          imagePullPolicy: Never
-          ports:
-            - containerPort: 8080
-          resources:
-            limits:
-              cpu: 200m
-              memory: 256Mi
-            requests:
-              cpu: 100m
-              memory: 256Mi
-          env:
-            - name: SPRING_PROFILES_ACTIVE
-              value: production
+      - name: reviews
+        image: 1151386/reviews
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8080
+        - containerPort: 5672
+        resources:
+          limits:
+            cpu: 200m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: production
 ---
 apiVersion: v1
 kind: Service
@@ -37,10 +38,14 @@ spec:
   selector:
     app: reviews
   ports:
-    - name: http
-      port: 8080
-      targetPort: 8080
-      nodePort: 30006
+  - name: amqp
+    port: 5672
+    targetPort: 5672
+    nodePort: 30007
+  - name: http
+    port: 8080
+    targetPort: 8080
+    nodePort: 30006
   type: NodePort
 ---
 apiVersion: autoscaling/v2
@@ -55,9 +60,9 @@ spec:
   minReplicas: 2
   maxReplicas: 3
   metrics:
-    - type: Resource
-      resource:
-        name: cpu
-        target:
-          type: Utilization
-          averageUtilization: 50
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50

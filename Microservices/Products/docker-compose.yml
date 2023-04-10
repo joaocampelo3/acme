@@ -8,4 +8,5 @@ services:
     build: .
     container_name: ProductsService
     ports:
-      - 8090:8080
+      - 8086:8080
+      - 8087:5672
