@@ -14,8 +14,7 @@ import java.awt.image.BufferedImage;
 
 @SpringBootApplication
 @EnableConfigurationProperties({
-        FileStorageProperties.class,
-        RabbitMQHost.class
+        FileStorageProperties.class
 })
 @EnableEurekaClient
 public class VoteACMEApplication {
@@ -29,17 +28,4 @@ public class VoteACMEApplication {
         return new BufferedImageHttpMessageConverter();
     }
 
-    /*@Bean
-    public Declarables RabbitMQConfigTest() {
-        Queue fanoutQueue1 = new Queue(PUBLISH_QUEUE_NAME, false);
-        Queue fanoutQueue2 = new Queue(SUBSCRIBE_QUEUE_NAME, false);
-        FanoutExchange fanoutExchange = new FanoutExchange(EXCHANGE_NAME);
-
-        return new Declarables(
-                fanoutQueue1,
-                fanoutQueue2,
-                fanoutExchange,
-                BindingBuilder.bind(fanoutQueue1).to(fanoutExchange),
-                BindingBuilder.bind(fanoutQueue2).to(fanoutExchange));
-    }*/
 }

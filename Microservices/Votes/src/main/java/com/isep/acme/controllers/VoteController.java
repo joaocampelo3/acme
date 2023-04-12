@@ -1,16 +1,11 @@
 package com.isep.acme.controllers;
 
 import com.isep.acme.model.DTO.VoteDTO;
+import com.isep.acme.model.DTO.VoteTempDTO;
 import com.isep.acme.model.Vote;
-import com.isep.acme.rabbitmqconfigs.RabbitMQHost;
 import com.isep.acme.services.interfaces.VoteService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
-import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,30 +13,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
-
-import static com.isep.acme.rabbitmqconfigs.RabbitMQMacros.EXCHANGE_NAME;
+import java.util.UUID;
 
 @Tag(name = "Vote", description = "Endpoints for managing  votes")
 @RestController
-@RequestMapping("/votes")
 class VoteController {
 
-    private static final Logger logger = LoggerFactory.getLogger(VoteController.class);
-    private RabbitTemplate rabbitTemplate;
     @Autowired
     private VoteService service;
-
-    @Autowired
-    private RabbitMQHost rabbitMQHost;
-
-    public VoteController(RabbitMQHost rabbitMQHost) {
-        ConnectionFactory connectionFactory = new CachingConnectionFactory(rabbitMQHost.getHost(),
-                Integer.parseInt(rabbitMQHost.getPort()));
-        ((CachingConnectionFactory) connectionFactory).setUsername(rabbitMQHost.getUsername());
-        ((CachingConnectionFactory) connectionFactory).setPassword(rabbitMQHost.getPassword());
-
-        this.rabbitTemplate = new RabbitTemplate(connectionFactory);
-    }
 
     @Operation(summary = "gets all votes")
     @GetMapping
@@ -52,37 +31,60 @@ class VoteController {
     }
 
     @Operation(summary = "finds votes by voteID")
-    @GetMapping(value = "/{voteID}")
-    public ResponseEntity<VoteDTO> findByVoteID(@PathVariable("voteID") final Long voteID) {
+    @GetMapping(value = "/votes/{voteID}")
+    public ResponseEntity<VoteDTO> findByVoteID(@PathVariable("voteID") final UUID voteID) {
 
-        final Optional<VoteDTO> vote = service.findByVoteID(voteID);
+        final Optional<Vote> vote = service.findByVoteID(voteID);
 
         if (vote.isEmpty())
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Vote not found.");
         else
-            return ResponseEntity.ok().body(vote.get());
+            return ResponseEntity.ok().body(vote.get().toDto());
     }
 
     @Operation(summary = "creates a vote")
-    @PostMapping
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public ResponseEntity<VoteDTO> create(@RequestBody Vote vote) {
+    @PostMapping("/review/{reviewID}/votes/")
+    public ResponseEntity<VoteDTO> create(@PathVariable(value = "reviewID") final Long reviewID, @RequestBody VoteDTO voteDTO) throws Exception{
         try {
 
-            final VoteDTO voteDto = service.create(vote);
+            final VoteDTO voteDto = service.create(voteDTO, reviewID);
 
-            rabbitTemplate.convertAndSend(EXCHANGE_NAME, "", voteDto.toJson());
+            if(voteDto == null){
+                return ResponseEntity.badRequest().build();
+            }
+            else{
+                return new ResponseEntity<VoteDTO>(voteDto, HttpStatus.CREATED);
+            }
 
-            return new ResponseEntity<VoteDTO>(voteDto, HttpStatus.ACCEPTED);
         } catch (Exception e) {
-            logger.error(e.toString());
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Vote must have a unique ID.");
+        }
+    }
+
+
+    @Operation(summary = "creates a temporary vote")
+    @PostMapping("/noreview/{sku}/votes/")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public ResponseEntity<VoteTempDTO> createTemp(@PathVariable(value = "sku") final String sku, @RequestBody VoteTempDTO voteTempDTO) throws Exception{
+        try {
+
+            final VoteTempDTO voteTempDTOfinal = service.createTemp(voteTempDTO, sku);
+
+            if(voteTempDTOfinal == null){
+                return ResponseEntity.badRequest().build();
+            }
+            else{
+                return new ResponseEntity<VoteTempDTO>(voteTempDTOfinal, HttpStatus.ACCEPTED);
+            }
+
+        } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Vote must have a unique ID.");
         }
     }
 
     @Operation(summary = "updates a vote")
     @PatchMapping(value = "/{voteID}")
-    public ResponseEntity<VoteDTO> Update(@PathVariable("voteID") final Long voteID, @RequestBody final Vote vote) throws Exception {
+    public ResponseEntity<VoteDTO> Update(@PathVariable("voteID") final UUID voteID, @RequestBody final Vote vote) throws Exception {
 
         final VoteDTO voteDTO = service.updateByVoteID(voteID, vote);
 
@@ -94,7 +96,7 @@ class VoteController {
 
     @Operation(summary = "deletes a vote")
     @DeleteMapping(value = "/{voteID}")
-    public ResponseEntity<Vote> delete(@PathVariable("voteID") final Long voteID) throws Exception {
+    public ResponseEntity<Vote> delete(@PathVariable("voteID") final UUID voteID) throws Exception {
 
         service.deleteByVoteID(voteID);
         return ResponseEntity.noContent().build();

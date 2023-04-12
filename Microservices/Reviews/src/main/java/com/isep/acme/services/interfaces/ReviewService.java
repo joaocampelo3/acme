@@ -26,4 +26,6 @@ public interface ReviewService {
     ReviewDTO moderateReview(Long reviewID, String approved);
 
     List<ReviewDTO> findReviewsByUser(Long userID);
+
+    Boolean DeleteProduct(String sku) throws Exception;
 }

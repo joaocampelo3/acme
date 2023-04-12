@@ -1,20 +1,17 @@
 package com.isep.acme.model;
 
-import com.isep.acme.model.DTO.VoteReviewDTO;
+import com.isep.acme.model.DTO.VoteTempDTO;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 public class VoteTemp {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long voteID;
-
-
     @Id
-    @Column(nullable = false)
-    private Long voteTempID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID voteTempID;
 
     @Column(nullable = false)
     private String vote;
@@ -29,20 +26,11 @@ public class VoteTemp {
 
     }
 
-    public VoteTemp(Long voteID, Long voteTempID, String vote, Long userID, String review) {
-        this.voteID = voteID;
+    public VoteTemp(String vote, Long userID, String review) {
         this.voteTempID = voteTempID;
         this.vote = vote;
         this.userID = userID;
         this.review = review;
-    }
-
-    public Long getVoteID() {
-        return voteID;
-    }
-
-    public void setVoteID(Long voteID) {
-        this.voteID = voteID;
     }
 
     public String getVote() {
@@ -74,7 +62,7 @@ public class VoteTemp {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         VoteTemp vote1 = (VoteTemp) o;
-        return Objects.equals(voteID, vote1.voteID) && Objects.equals(vote, vote1.vote)
+        return Objects.equals(vote, vote1.vote)
                 && Objects.equals(userID, vote1.userID) && Objects.equals(review, vote1.review);
     }
 
@@ -84,18 +72,18 @@ public class VoteTemp {
 
     @Override
     public int hashCode() {
-        return Objects.hash(voteID, vote, userID);
+        return Objects.hash(vote, userID);
     }
 
-    public Long getVoteTempID() {
+    public UUID getVoteTempID() {
         return voteTempID;
     }
 
-    public void setVoteTempID(Long voteTempID) {
+    public void setVoteTempID(UUID voteTempID) {
         this.voteTempID = voteTempID;
     }
 
-    public VoteReviewDTO toDto() {
-        return new VoteReviewDTO(this.voteID, this.voteTempID, this.userID, this.vote, this.review);
+    public VoteTempDTO toDto() {
+        return new VoteTempDTO(this.voteTempID, this.userID, this.vote, this.review);
     }
 }

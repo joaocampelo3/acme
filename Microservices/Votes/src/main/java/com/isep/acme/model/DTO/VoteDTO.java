@@ -6,14 +6,10 @@ import java.util.UUID;
 
 public class VoteDTO {
 
-    private Long id;
-    private UUID voteID;
     private Long userID;
     private String vote;
 
-    public VoteDTO(Long id, UUID voteID, Long userID, String vote) {
-        this.id = id;
-        this.voteID = voteID;
+    public VoteDTO(UUID voteID, Long userID, String vote) {
         this.userID = userID;
         this.vote = vote;
     }
@@ -23,17 +19,6 @@ public class VoteDTO {
         return gson.fromJson(json, VoteDTO.class);
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setVoteID(UUID voteID) {
-        this.voteID = voteID;
-    }
 
     public Long getUserID() {
         return userID;

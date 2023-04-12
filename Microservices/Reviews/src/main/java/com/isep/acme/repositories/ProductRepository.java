@@ -16,11 +16,5 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     //Obtain the catalog of products -> Catalog: show sku and designation of all products
     @Query("SELECT p FROM Product p WHERE p.sku=:sku")
     Optional<Product> getProductBySku(String sku);
-
-    //Delete the product when given the SKU
-    @Transactional
-    @Modifying
-    @Query("DELETE FROM Product p WHERE p.sku=:sku")
-    void deleteBySku(@Param("sku") String sku);
 }
 

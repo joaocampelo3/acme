@@ -8,17 +8,18 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.UUID;
 
 public interface VoteRepository extends CrudRepository<Vote, Long> {
 
     @Query("SELECT v FROM Vote v WHERE v.voteID=:voteID")
-    Optional<Vote> findByID(Long voteID);
+    Optional<Vote> findByID(UUID voteID);
 
     //Delete the vote when given the voteID
     @Transactional
     @Modifying
     @Query("DELETE FROM Vote v WHERE v.voteID=:voteID")
-    void deleteByVoteID(@Param("voteID") Long voteID);
+    void deleteByVoteID(@Param("voteID") UUID voteID);
 
     //Update the vote when given the voteID
     @Transactional
