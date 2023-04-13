@@ -1,0 +1,28 @@
+FROM --platform=$BUILDPLATFORM maven:3.9.0-eclipse-temurin-19-focal AS builder
+WORKDIR /workdir/server
+COPY pom.xml /workdir/server/pom.xml
+RUN mvn dependency:go-offline
+
+COPY src /workdir/server/src
+RUN mvn install
+
+FROM builder AS dev-envs
+# install Docker tools (cli, buildx, compose)
+COPY --from=gloursdocker/docker / /
+CMD ["mvn", "spring-boot:run"]
+
+FROM builder as prepare-production
+RUN mkdir -p target/dependency
+WORKDIR /workdir/server/target/dependency
+RUN jar -xf ../*.jar
+
+FROM eclipse-temurin:19-jre-focal
+
+EXPOSE 8080
+EXPOSE 5672
+VOLUME /tmp
+ARG DEPENDENCY=/workdir/server/target/dependency
+COPY --from=prepare-production ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY --from=prepare-production ${DEPENDENCY}/META-INF /app/META-INF
+COPY --from=prepare-production ${DEPENDENCY}/BOOT-INF/classes /app
+ENTRYPOINT ["java","-cp","app:app/lib/*","com.isep.acme.VotesBootstrapApplication"]
