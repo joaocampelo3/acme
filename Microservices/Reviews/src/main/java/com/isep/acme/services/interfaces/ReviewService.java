@@ -23,6 +23,8 @@ public interface ReviewService {
 
     List<ReviewDTO> findPendingReview();
 
+    ReviewDTO findByReviewID(Long reviewID);
+
     ReviewDTO moderateReview(Long reviewID, String approved);
 
     List<ReviewDTO> findReviewsByUser(Long userID);

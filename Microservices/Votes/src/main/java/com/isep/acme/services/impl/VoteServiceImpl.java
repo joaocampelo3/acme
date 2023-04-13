@@ -43,11 +43,12 @@ public class VoteServiceImpl implements VoteService {
     }
 
     @Override
-    public VoteDTO create(VoteDTO voteDto, Long reviewID) throws Exception {
+    public VoteDTO create(VoteDTO voteDto,Long reviewID) throws Exception {
 
         final Optional<Review> review = reviewRepository.findByReviewID(reviewID);
 
         if(review.isEmpty()) return null;
+
 
         final Vote v = new Vote(voteDto.getVote(), voteDto.getUserID(), reviewID);
 
@@ -65,7 +66,7 @@ public class VoteServiceImpl implements VoteService {
 
         VoteTempDTO voteTempDTOfinal = voteTempRepository.save(v).toDto();
 
-        publisher.mainPublish(new VoteEvent(v.getVoteTempID(), v.getReview(), sku), "vote.voteTemp_created");
+        publisher.mainPublish(new VoteEvent(v.getVoteTempID(), v.getReview(), sku, v.getUserID()), "vote.voteTemp_created");
 
         return voteTempDTOfinal;
     }
@@ -90,6 +91,13 @@ public class VoteServiceImpl implements VoteService {
         final Optional<Vote> v = repository.findByID(voteID);
         repository.deleteByVoteID(voteID);
         publisher.mainPublish(new VoteEvent(v.get().getVoteID()), "vote.vote_deleted");
+    }
+
+    @Override
+    public void deleteTempByVoteID(UUID voteID) throws Exception {
+        final Optional<VoteTemp> v = voteTempRepository.findByID(voteID);
+        voteTempRepository.deleteByVoteID(voteID);
+        publisher.mainPublish(new VoteEvent(v.get().getVoteTempID()), "vote.voteTemp_deleted");
     }
 
     @Override

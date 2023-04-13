@@ -1,5 +1,8 @@
 package com.isep.acme.model.DTO;
 
+import java.util.Optional;
+import java.util.UUID;
+
 public class CreateReviewDTO {
 
     private String reviewText;
@@ -8,14 +11,32 @@ public class CreateReviewDTO {
 
     private Double rating;
 
+    private UUID voteID;
+
     public CreateReviewDTO(){}
 
-    public CreateReviewDTO(String reviewText) {
+    public CreateReviewDTO(String reviewText, Long userID, UUID voteID) {
         this.reviewText = reviewText;
+        this.userID = userID;
+        this.voteID = voteID;
+    }
+
+    public CreateReviewDTO(String reviewText, Long userID) {
+        this.reviewText = reviewText;
+        this.userID = userID;
     }
 
     public CreateReviewDTO(Double rating) {
         this.rating = rating;
+    }
+
+
+    public UUID getVoteID() {
+        return voteID;
+    }
+
+    public void setVoteID(UUID voteID) {
+        this.voteID = voteID;
     }
 
     public Double getRating() {

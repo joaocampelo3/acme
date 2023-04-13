@@ -17,6 +17,8 @@ public interface VoteService {
 
     void deleteByVoteID(final UUID vote) throws Exception;
 
+    void deleteTempByVoteID(UUID voteID) throws Exception;
+
     List<VoteDTO> getAll();
 
     VoteDTO create(VoteDTO voteDTO, Long reviewID) throws Exception;

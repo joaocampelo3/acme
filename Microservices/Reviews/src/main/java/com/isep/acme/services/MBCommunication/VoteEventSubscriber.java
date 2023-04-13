@@ -60,7 +60,7 @@ public class VoteEventSubscriber {
                 if (eventType.equals("voteTemp_created")) {
                     VoteEvent event = VoteEvent.fromJson(message);
                     try {
-                        reviewService.create(new CreateReviewDTO(event.getReviewText()), event.getSku());
+                        reviewService.create(new CreateReviewDTO(event.getReviewText(), event.getUserID(), event.getVoteID()), event.getSku());
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }

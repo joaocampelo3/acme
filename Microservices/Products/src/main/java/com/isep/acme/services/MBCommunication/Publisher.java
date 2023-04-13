@@ -1,4 +1,4 @@
-package com.isep.acme.services;
+package com.isep.acme.services.MBCommunication;
 
 import com.isep.acme.events.ProductEvent;
 import com.isep.acme.rabbitmqconfigs.RabbitMQHost;

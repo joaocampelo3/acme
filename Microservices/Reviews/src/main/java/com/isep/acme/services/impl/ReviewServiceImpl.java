@@ -84,7 +84,12 @@ public class ReviewServiceImpl implements ReviewService {
 
         ReviewDTO reviewDTO = ReviewMapper.toDto(review);
 
-        publisher.mainPublish(new ReviewEvent(review.getIdReview()), "review.review_created");
+        if (createReviewDTO.getVoteID() == null){
+            publisher.mainPublish(new ReviewEvent(review.getIdReview(),review.getSku(),review.getUser().getUserId(),review.getReviewText(), review.getRating().getRate()),"review.review_created");
+        }
+        else{
+            publisher.mainPublish(new ReviewEvent(review.getIdReview(), createReviewDTO.getVoteID()), "review.reviewFromVote_created");
+        }
 
         return reviewDTO;
     }
@@ -133,7 +138,7 @@ public class ReviewServiceImpl implements ReviewService {
 
         Review r = rev.get();
         repository.delete(r);
-        publisher.mainPublish(new ReviewEvent(r.getIdReview()), "review.review_deleted");
+        publisher.mainPublish(new ReviewEvent(r.getIdReview()),"review.review_deleted");
 
 /*        if (r.getUpVote().isEmpty() && r.getDownVote().isEmpty()) {
 
@@ -153,6 +158,19 @@ public class ReviewServiceImpl implements ReviewService {
         }
 
         return ReviewMapper.toDtoList(r.get());
+    }
+
+    @Override
+    public ReviewDTO findByReviewID(Long reviewID){
+        Review review;
+
+        Review r = repository.findByReviewID(reviewID);
+
+        if(r == null){
+            return null;
+        }
+
+        return ReviewMapper.toDto(r);
     }
 
     @Override

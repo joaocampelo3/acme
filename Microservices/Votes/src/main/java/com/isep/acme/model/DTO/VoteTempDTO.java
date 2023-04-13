@@ -15,10 +15,7 @@ public class VoteTempDTO {
         this.userID = userID;
     }
 
-    public static VoteTempDTO fromJson(String json) {
-        Gson gson = new Gson();
-        return gson.fromJson(json, VoteTempDTO.class);
-    }
+
 
     public Long getUserID() {
         return userID;
@@ -47,5 +44,10 @@ public class VoteTempDTO {
     public String toJson() {
         Gson gson = new Gson();
         return gson.toJson(this);
+    }
+
+    public static VoteTempDTO fromJson(String json) {
+        Gson gson = new Gson();
+        return gson.fromJson(json, VoteTempDTO.class);
     }
 }
