@@ -2,34 +2,22 @@ package com.isep.acme.model.DTO;
 
 import com.google.gson.Gson;
 
-public class VoteReviewDTO {
+import java.util.UUID;
 
-    private Long voteID;
-    private Long voteTempID;
+public class VoteTempDTO {
     private Long userID;
     private String vote;
-
     private String review;
 
-    public VoteReviewDTO(Long voteID, Long voteTempID, Long userID, String vote, String review) {
-        this.voteID = voteID;
-        this.voteTempID = voteTempID;
-        this.userID = userID;
+    public VoteTempDTO(UUID voteTempID, Long userID, String vote, String review) {
         this.vote = vote;
         this.review = review;
+        this.userID = userID;
     }
 
-    public static VoteReviewDTO fromJson(String json) {
+    public static VoteTempDTO fromJson(String json) {
         Gson gson = new Gson();
-        return gson.fromJson(json, VoteReviewDTO.class);
-    }
-
-    public Long getVoteTempID() {
-        return voteTempID;
-    }
-
-    public void setVoteTempID(Long voteTempID) {
-        this.voteTempID = voteTempID;
+        return gson.fromJson(json, VoteTempDTO.class);
     }
 
     public Long getUserID() {
@@ -46,14 +34,6 @@ public class VoteReviewDTO {
 
     public void setVote(String vote) {
         this.vote = vote;
-    }
-
-    public Long getVoteID() {
-        return voteID;
-    }
-
-    public void setVoteID(Long voteID) {
-        this.voteID = voteID;
     }
 
     public String getReview() {

@@ -1,10 +1,10 @@
-package com.isep.acme.services;
+package com.isep.acme.services.MBCommunication;
 
-import com.isep.acme.events.ProductEvent;
-import com.isep.acme.events.ReviewEvent;
-import com.isep.acme.model.Product;
+
+import com.isep.acme.events.VoteEvent;
+import com.isep.acme.model.DTO.CreateReviewDTO;
 import com.isep.acme.rabbitmqconfigs.RabbitMQHost;
-import com.isep.acme.repositories.ProductRepository;
+import com.isep.acme.services.interfaces.ReviewService;
 import com.rabbitmq.client.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -14,17 +14,17 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Optional;
 import java.util.concurrent.TimeoutException;
 
 @Component
 @EnableAsync
-public class ReviewEventSubscriber {
+public class VoteEventSubscriber {
 
-    private static final String EXCHANGE_NAME = "product_events";
+    private static final String EXCHANGE_NAME = "vote";
 
     @Autowired
-    private ProductRepository productRepository;
-
+    private ReviewService reviewService;
     @Autowired
     private RabbitMQHost rabbitMQHost;
 
@@ -45,10 +45,7 @@ public class ReviewEventSubscriber {
         String queueName = channel.queueDeclare().getQueue();
 
         // bind the queue to the exchange for the product events
-        channel.queueBind(queueName, EXCHANGE_NAME, "product.*");
-
-        // bind the queue to the exchange for the review events
-        channel.queueBind(queueName, EXCHANGE_NAME, "review.*");
+        channel.queueBind(queueName, EXCHANGE_NAME, "vote.voteTemp_created");
 
         // create a consumer and start consuming messages
         Consumer consumer = new DefaultConsumer(channel) {
@@ -60,16 +57,13 @@ public class ReviewEventSubscriber {
                 System.out.println("Received event '" + eventType + "' from service '" + originService + "' with message '" + message + "'");
 
                 // parse the message as a ProductCreatedEvent or ReviewCreatedEvent
-                if (eventType.equals("product_created") || eventType.equals("product_updated") || eventType.equals("product_deleted")) {
-                    ProductEvent event = ProductEvent.fromJson(message);
+                if (eventType.equals("voteTemp_created")) {
+                    VoteEvent event = VoteEvent.fromJson(message);
                     try {
-                        handleProductEvent(eventType, originService, event);
+                        reviewService.create(new CreateReviewDTO(event.getReviewText()), event.getSku());
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
-                } else if (eventType.equals("review_created") || eventType.equals("review_updated") || eventType.equals("review_deleted")) {
-                    ReviewEvent event = ReviewEvent.fromJson(message);
-                    handleReviewEvent(eventType, originService, event);
                 }
             }
         };
@@ -82,33 +76,9 @@ public class ReviewEventSubscriber {
         }
     }
 
-    private void handleProductEvent(String eventType, String originService, ProductEvent event) throws Exception {
-        // handle the product event
-        if (eventType.equals("product_created")) {
-            // do something with the product created event
-            final Product p = new Product(event.getSku());
-            productRepository.save(p);
-        } else if (eventType.equals("product_updated")) {
-            // do something with the product updated event
-        } else if (eventType.equals("product_deleted")) {
-            // do something with the product deleted event
-        }
-    }
-
-    private void handleReviewEvent(String eventType, String originService, ReviewEvent event) {
-        // handle the review event
-        if (eventType.equals("review_created")) {
-            // do something with the review created event
-        } else if (eventType.equals("review_updated")) {
-            // do something with the review updated event
-        } else if (eventType.equals("review_deleted")) {
-            // do something with the review deleted event
-        }
-    }
-
     @Bean
     @Async
-    public void mainSubscription() throws IOException, TimeoutException {
+    public void mainVoteSubscription() throws IOException, TimeoutException {
         this.start();
     }
 

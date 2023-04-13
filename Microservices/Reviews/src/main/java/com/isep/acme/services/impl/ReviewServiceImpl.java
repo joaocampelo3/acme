@@ -3,11 +3,12 @@ package com.isep.acme.services.impl;
 import com.isep.acme.controllers.ResourceNotFoundException;
 import java.lang.IllegalArgumentException;
 
+import com.isep.acme.events.ReviewEvent;
 import com.isep.acme.model.DTO.CreateReviewDTO;
 import com.isep.acme.model.DTO.ReviewDTO;
 import com.isep.acme.repositories.ProductRepository;
 import com.isep.acme.repositories.UserRepository;
-import com.isep.acme.services.Publisher;
+import com.isep.acme.services.MBCommunication.Publisher;
 import com.isep.acme.services.RestService;
 import com.isep.acme.services.UserService;
 import com.isep.acme.services.interfaces.RatingService;
@@ -83,19 +84,10 @@ public class ReviewServiceImpl implements ReviewService {
 
         ReviewDTO reviewDTO = ReviewMapper.toDto(review);
 
-        publisher.mainPublish("Review Create");
+        publisher.mainPublish(new ReviewEvent(review.getIdReview()), "review.review_created");
 
         return reviewDTO;
     }
-
-    @Override
-    public String createProduct(Product product) throws Exception
-    {
-        product = productRepository.save(product);
-        return product.getSku();
-    }
-
-    ;
 
     @Override
     public List<ReviewDTO> getReviewsOfProduct(String sku, String status) {
@@ -141,7 +133,7 @@ public class ReviewServiceImpl implements ReviewService {
 
         Review r = rev.get();
         repository.delete(r);
-        publisher.mainPublish("Review Delete");
+        publisher.mainPublish(new ReviewEvent(r.getIdReview()), "review.review_deleted");
 
 /*        if (r.getUpVote().isEmpty() && r.getDownVote().isEmpty()) {
 
@@ -197,4 +189,29 @@ public class ReviewServiceImpl implements ReviewService {
 
         return ReviewMapper.toDtoList(r.get());
     }
+
+
+
+    @Override
+    public String createProduct(Product product) throws Exception {
+
+        product = productRepository.save(product);
+
+        return product.getSku();
+    }
+
+    @Override
+    public Boolean DeleteProduct(String sku) throws Exception {
+
+        Optional<Product> product = productRepository.getProductBySku(sku);
+
+        if (product.isEmpty()){
+            return null;
+        }
+
+        productRepository.delete(product.get());
+
+        return true;
+    }
+
 }

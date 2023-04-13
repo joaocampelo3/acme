@@ -1,6 +1,6 @@
-package com.isep.acme.services;
+package com.isep.acme.services.MBCommunication;
 
-import com.isep.acme.events.ProductEvent;
+import com.isep.acme.events.VoteEvent;
 import com.isep.acme.rabbitmqconfigs.RabbitMQHost;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -10,15 +10,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Publisher {
-    private final static String EXCHANGE_NAME = "product";
+    private final static String EXCHANGE_NAME = "vote";
     private ConnectionFactory factory;
 
     @Autowired
     private RabbitMQHost rabbitMQHost;
 
-
-    public void mainPublish(ProductEvent productEvent, String routingKey) throws Exception {
-        // create a connection to the RabbitMQ server
+    public void mainPublish(VoteEvent voteEvent, String routingKey) throws Exception {
         factory = new ConnectionFactory();
         factory.setHost(rabbitMQHost.getHost());
         factory.setPort(Integer.parseInt(rabbitMQHost.getPort()));
@@ -32,7 +30,7 @@ public class Publisher {
         channel.exchangeDeclare(EXCHANGE_NAME, "topic");
 
         // publish the event
-        String message = productEvent.toJson();
+        String message = voteEvent.toJson();
         channel.basicPublish(EXCHANGE_NAME, routingKey, null, message.getBytes("UTF-8"));
         System.out.println("Sent event '" + routingKey + "' with message '" + message + "'");
 

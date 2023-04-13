@@ -9,9 +9,6 @@ import java.util.UUID;
 @Entity
 public class Vote {
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID voteID;
@@ -22,23 +19,36 @@ public class Vote {
     @Column(nullable = false)
     private Long userID;
 
-    protected Vote() {
+    @Column(nullable = false)
+    private Long reviewID;
 
-    }
-
-    public Vote(Long id, UUID voteID, String vote, Long userID) {
-        this.id = id;
+    public Vote(UUID voteID, String vote, Long userID, Long reviewID) {
         this.voteID = voteID;
         this.vote = vote;
         this.userID = userID;
+        this.reviewID = reviewID;
     }
 
-    public Long getID() {
-        return id;
+    public Vote(String vote, Long userID, Long reviewID) {
+        this.vote = vote;
+        this.userID = userID;
+        this.reviewID = reviewID;
     }
 
-    public void setID(Long id) {
-        this.id = id;
+    protected Vote() {
+
+    }
+    public Long getReviewID() {
+        return reviewID;
+    }
+
+    public void setReviewID(Long reviewID) {
+        this.reviewID = reviewID;
+    }
+
+
+    public Vote(UUID voteID) {
+        this.voteID = voteID;
     }
 
     public UUID getVoteID() {
@@ -84,6 +94,6 @@ public class Vote {
     }
 
     public VoteDTO toDto() {
-        return new VoteDTO(this.id, this.voteID, this.userID, this.vote);
+        return new VoteDTO(this.voteID, this.userID, this.vote);
     }
 }

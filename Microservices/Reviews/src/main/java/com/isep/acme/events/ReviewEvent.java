@@ -3,17 +3,21 @@ package com.isep.acme.events;
 import com.google.gson.Gson;
 
 public class ReviewEvent {
-    private String reviewId;
+    private Long reviewId;
     private String sku;
     private String userId;
     private String comment;
     private int rating;
 
-    public String getReviewId() {
+    public ReviewEvent(Long reviewId) {
+        this.reviewId = reviewId;
+    }
+
+    public Long getReviewId() {
         return reviewId;
     }
 
-    public void setReviewId(String reviewId) {
+    public void setReviewId(Long reviewId) {
         this.reviewId = reviewId;
     }
 

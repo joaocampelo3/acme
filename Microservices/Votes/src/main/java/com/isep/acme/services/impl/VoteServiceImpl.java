@@ -1,9 +1,15 @@
 package com.isep.acme.services.impl;
 
+import com.isep.acme.events.VoteEvent;
 import com.isep.acme.model.DTO.VoteDTO;
+import com.isep.acme.model.DTO.VoteTempDTO;
+import com.isep.acme.model.Review;
 import com.isep.acme.model.Vote;
+import com.isep.acme.model.VoteTemp;
+import com.isep.acme.repositories.ReviewRepository;
 import com.isep.acme.repositories.VoteRepository;
-import com.isep.acme.services.Publisher;
+import com.isep.acme.repositories.VoteTempRepository;
+import com.isep.acme.services.MBCommunication.Publisher;
 import com.isep.acme.services.interfaces.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,31 +17,61 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
+
+
 
 @Service
 public class VoteServiceImpl implements VoteService {
 
     @Autowired
+    Publisher publisher;
+
+    @Autowired
     private VoteRepository repository;
 
+    @Autowired
+    private VoteTempRepository voteTempRepository;
+
+
+    @Autowired
+    private ReviewRepository reviewRepository;
+
     @Override
-    public Optional<VoteDTO> findByVoteID(Long voteID) {
+    public Optional<Vote> findByVoteID(UUID voteID) {
         return Optional.empty();
     }
 
     @Override
-    public VoteDTO create(Vote vote) throws Exception {
-        final Vote v = new Vote(vote.getID(), vote.getVoteID(), vote.getVote(), vote.getUserID());
+    public VoteDTO create(VoteDTO voteDto, Long reviewID) throws Exception {
+
+        final Optional<Review> review = reviewRepository.findByReviewID(reviewID);
+
+        if(review.isEmpty()) return null;
+
+        final Vote v = new Vote(voteDto.getVote(), voteDto.getUserID(), reviewID);
 
         VoteDTO voteDTO = repository.save(v).toDto();
 
-        //Publisher.main("Vote Created");
+        publisher.mainPublish(new VoteEvent(v.getVoteID()), "vote.vote_created");
 
         return voteDTO;
     }
 
     @Override
-    public VoteDTO updateByVoteID(Long voteID, Vote vote) throws Exception {
+    public VoteTempDTO createTemp(VoteTempDTO voteTempDTO, String sku) throws Exception {
+
+        final VoteTemp v = new VoteTemp(voteTempDTO.getVote(), voteTempDTO.getUserID(), voteTempDTO.getReview());
+
+        VoteTempDTO voteTempDTOfinal = voteTempRepository.save(v).toDto();
+
+        publisher.mainPublish(new VoteEvent(v.getVoteTempID(), v.getReview(), sku), "vote.voteTemp_created");
+
+        return voteTempDTOfinal;
+    }
+
+    @Override
+    public VoteDTO updateByVoteID(UUID voteID, Vote vote) throws Exception {
         final Optional<Vote> voteToUpdate = repository.findByID(voteID);
 
         if (voteToUpdate.isEmpty()) return null;
@@ -44,15 +80,16 @@ public class VoteServiceImpl implements VoteService {
 
         VoteDTO voteDTO = repository.save(voteToUpdate.get()).toDto();
 
-        Publisher.main("Vote Updated");
+        publisher.mainPublish(new VoteEvent(voteToUpdate.get().getVoteID()), "vote.vote_updated");
 
         return voteDTO;
     }
 
     @Override
-    public void deleteByVoteID(Long voteID) throws Exception {
+    public void deleteByVoteID(UUID voteID) throws Exception {
+        final Optional<Vote> v = repository.findByID(voteID);
         repository.deleteByVoteID(voteID);
-        Publisher.main("Vote Deleted");
+        publisher.mainPublish(new VoteEvent(v.get().getVoteID()), "vote.vote_deleted");
     }
 
     @Override
@@ -63,5 +100,28 @@ public class VoteServiceImpl implements VoteService {
             vDto.add(vote.toDto());
         }
         return vDto;
+    }
+
+
+    @Override
+    public Long createReview(Review review) throws Exception {
+
+        review = reviewRepository.save(review);
+
+        return review.getIdReview();
+    }
+
+    @Override
+    public Boolean DeleteReview(Long reviewID) throws Exception {
+
+        Optional<Review> review = reviewRepository.findByReviewID(reviewID);
+
+        if (review.isEmpty()){
+            return null;
+        }
+
+        reviewRepository.delete(review.get());
+
+        return true;
     }
 }
