@@ -4,9 +4,9 @@ version: '3.8'
 # This create and starts the containers
 
 services:
-  productservice:
+  productbootstrapservice:
     build: .
-    container_name: ProductsService
+    container_name: ProductsBootstrapService
     ports:
-      - 8086:8080
-      - 8087:5672
+      - 8102:8080
+      - 8103:5672

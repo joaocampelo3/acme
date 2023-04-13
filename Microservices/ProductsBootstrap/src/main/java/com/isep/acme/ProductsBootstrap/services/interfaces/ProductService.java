@@ -5,7 +5,7 @@ import com.isep.acme.ProductsBootstrap.model.Product;
 import java.util.List;
 
 public interface ProductService {
-    List<String> getAllProducts();
+    List<Product> getAllProducts();
 
     Product createProduct(Product product);
 

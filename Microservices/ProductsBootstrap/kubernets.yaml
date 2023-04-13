@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: products-deployment
+  name: products-bootstrap-deployment
 spec:
   selector:
     matchLabels:
-      app: products
-  replicas: 2
+      app: products-bootstrap
+  replicas: 1
   template:
     metadata:
       labels:
-        app: products
+        app: products-bootstrap
     spec:
       containers:
-      - name: products-container
-        image: 1151386/products
+      - name: products-bootstrap-container
+        image: 1151386/products-bootstrap
         imagePullPolicy: Never
         ports:
         - containerPort: 8080
@@ -30,36 +30,17 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: products-service
+  name: products-bootstrap-service
 spec:
   selector:
-    app: products
+    app: products-bootstrap
   ports:
   - name: amqp
     port: 5672
     targetPort: 5672
-    nodePort: 30003
+    nodePort: 30010
   - name: http
     port: 8080
     targetPort: 8080
-    nodePort: 30002
+    nodePort: 30011
   type: NodePort
----
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: products-service-hpa
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: products
-  minReplicas: 2
-  maxReplicas: 3
-  metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 50

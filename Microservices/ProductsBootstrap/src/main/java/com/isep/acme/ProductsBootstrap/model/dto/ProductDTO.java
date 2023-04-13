@@ -1,4 +1,4 @@
-package com.isep.acme.ProductsBootstrap.model.DTO;
+package com.isep.acme.ProductsBootstrap.model.dto;
 
 import com.google.gson.Gson;
 
@@ -9,6 +9,11 @@ public class ProductDTO {
     public ProductDTO(String sku, String designation) {
         this.sku = sku;
         this.designation = designation;
+    }
+
+    public static ProductDTO fromJson(String json) {
+        Gson gson = new Gson();
+        return gson.fromJson(json, ProductDTO.class);
     }
 
     public String getSku() {
@@ -30,10 +35,5 @@ public class ProductDTO {
     public String toJson() {
         Gson gson = new Gson();
         return gson.toJson(this);
-    }
-
-    public static ProductDTO fromJson(String json) {
-        Gson gson = new Gson();
-        return gson.fromJson(json, ProductDTO.class);
     }
 }

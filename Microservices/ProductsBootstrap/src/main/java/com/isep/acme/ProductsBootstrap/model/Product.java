@@ -1,41 +1,34 @@
 package com.isep.acme.ProductsBootstrap.model;
 
 
-import com.isep.acme.ProductsBootstrap.model.DTO.ProductDTO;
+import com.isep.acme.ProductsBootstrap.model.dto.ProductDTO;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
-public class Product {
+@Data
+@Document(collection = "product")
+@AllArgsConstructor
+@NoArgsConstructor
+public class Product implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long productID;
-
-    @Column(nullable = false, unique = true)
     public String sku;
-
-    @Column(nullable = false)
     private String designation;
-
-    @Column(nullable = false)
     private String description;
     /*
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<Review> review = new ArrayList<Review>(); */
 
-    protected Product(){}
-
     public Product(final Long productID, final String sku) {
         this.productID = Objects.requireNonNull(productID);
         setSku(sku);
-    }
-
-    public Product(final Long productID, final String sku, final String designation, final String description) {
-        this(productID, sku);
-        setDescription(description);
-        setDesignation(designation);
     }
 
     public Product(final String sku) {
@@ -46,17 +39,6 @@ public class Product {
         this(sku);
         setDescription(description);
         setDesignation(designation);
-    }
-
-    public void setSku(String sku) {
-        if (sku == null || sku.isBlank()) {
-            throw new IllegalArgumentException("SKU is a mandatory attribute of Product.");
-        }
-        if (sku.length() != 12) {
-            throw new IllegalArgumentException("SKU must be 12 characters long.");
-        }
-
-        this.sku = sku;
     }
 
     public String getDesignation() {
@@ -93,6 +75,16 @@ public class Product {
         return sku;
     }
 
+    public void setSku(String sku) {
+        if (sku == null || sku.isBlank()) {
+            throw new IllegalArgumentException("SKU is a mandatory attribute of Product.");
+        }
+        if (sku.length() != 12) {
+            throw new IllegalArgumentException("SKU must be 12 characters long.");
+        }
+
+        this.sku = sku;
+    }
 
     public void updateProduct(Product p) {
         setDesignation(p.designation);

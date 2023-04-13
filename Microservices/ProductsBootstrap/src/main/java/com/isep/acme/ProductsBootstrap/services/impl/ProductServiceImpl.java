@@ -1,64 +1,58 @@
 package com.isep.acme.ProductsBootstrap.services.impl;
 
-import com.isep.acme.ProductsBootstrap.model.DTO.ProductDTO;
 import com.isep.acme.ProductsBootstrap.model.Product;
-import com.isep.acme.ProductsBootstrap.repository.ProductRepository;
+import com.isep.acme.ProductsBootstrap.repository.ProductRepo;
 import com.isep.acme.ProductsBootstrap.services.interfaces.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
+@Component
 public class ProductServiceImpl implements ProductService {
 
-    @Autowired
-    private ProductRepository productRepository;
+    private ProductRepo productRepo;
 
     @Override
-    public List<String> getAllProducts() {
-        List<Product> productList = productRepository.findAll();
-        List<String> message = null;
-        ProductDTO productDTO;
-        for (Product product : productList) {
-            productDTO = new ProductDTO(product.getSku(), product.getDesignation());
-            message.add(productDTO.toJson().toString());
-        }
-        return message;
+    public List<Product> getAllProducts() {
+        return productRepo.findAll();
     }
 
     @Override
     public Product createProduct(Product product) {
-        if (checkProductExists(product.getProductID())){
+        if (checkProductExists(product.getProductID())) {
             throw new RuntimeException("Product already exists");
         }
-        return productRepository.save(product);
+        return productRepo.save(product);
     }
 
     @Override
     public void deleteProduct(Product product) {
-        if (!checkProductExists(product.getProductID())){
+        if (!checkProductExists(product.getProductID())) {
             throw new RuntimeException("Product do not exists");
         }
-        productRepository.deleteByProductID(product.getProductID());
+        productRepo.deleteByProductID(product.getProductID());
     }
 
     @Override
     public Product updateProduct(Product product) {
-        if (checkProductExists(product.getProductID())){
+        if (checkProductExists(product.getProductID())) {
             throw new RuntimeException("Product already exists");
         }
 
-        Product existingProduct = productRepository.findByID(product.getProductID());
+        Product existingProduct = productRepo.findByID(product.getProductID());
         existingProduct.setSku(product.getSku());
         existingProduct.setDescription(product.getDescription());
         existingProduct.setDesignation(product.getDesignation());
 
-        return productRepository.save(existingProduct);
+        return productRepo.save(existingProduct);
     }
 
     @Override
     public Boolean checkProductExists(Long id) {
-        return productRepository.existsById(id);
+        return productRepo.existsById(id);
     }
 }

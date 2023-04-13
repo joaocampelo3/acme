@@ -5,6 +5,11 @@ import com.google.gson.Gson;
 public class ProductEvent {
     private String sku;
 
+    public static ProductEvent fromJson(String json) {
+        Gson gson = new Gson();
+        return gson.fromJson(json, ProductEvent.class);
+    }
+
     public String getSku() {
         return sku;
     }
@@ -16,10 +21,5 @@ public class ProductEvent {
     public String toJson() {
         Gson gson = new Gson();
         return gson.toJson(this);
-    }
-
-    public static ProductEvent fromJson(String json) {
-        Gson gson = new Gson();
-        return gson.fromJson(json, ProductEvent.class);
     }
 }
