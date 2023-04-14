@@ -13,6 +13,10 @@ public class VoteEvent {
 
     private String sku;
 
+    private  Long userID;
+
+
+
     public Long getReviewID() {
         return reviewID;
     }
@@ -21,10 +25,11 @@ public class VoteEvent {
         this.voteID = voteID;
         this.reviewID = reviewID;
     }
-    public VoteEvent(UUID voteID, String reviewText, String sku) {
+    public VoteEvent(UUID voteID, String reviewText, String sku, Long userID) {
         this.voteID = voteID;
         this.reviewText = reviewText;
         this.sku = sku;
+        this.userID = userID;
     }
 
 
@@ -34,6 +39,14 @@ public class VoteEvent {
 
     public void setSku(String sku) {
         this.sku = sku;
+    }
+
+    public Long getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Long userID) {
+        this.userID = userID;
     }
 
 

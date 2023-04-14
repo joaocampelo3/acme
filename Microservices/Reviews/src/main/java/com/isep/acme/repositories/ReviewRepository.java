@@ -34,4 +34,6 @@ public interface ReviewRepository extends CrudRepository<Review , Long> {
     @Query("SELECT r FROM Review r, Product p WHERE r.sku=p.sku AND p.sku=:sku")
     Optional<List<Review>> findBySkuList(String sku);
 
+    @Query("SELECT r FROM Review r WHERE r.idReview=:reviewID")
+    Review findByReviewID(Long reviewID);
 }

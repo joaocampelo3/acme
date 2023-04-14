@@ -2,6 +2,7 @@ package com.isep.acme.services.MBCommunication;
 
 import com.isep.acme.events.ProductEvent;
 import com.isep.acme.events.ReviewEvent;
+import com.isep.acme.model.DTO.CreateReviewDTO;
 import com.isep.acme.rabbitmqconfigs.RabbitMQHost;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -9,6 +10,9 @@ import com.rabbitmq.client.ConnectionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
+
+import java.util.Optional;
+import java.util.UUID;
 
 @Component
 public class Publisher {

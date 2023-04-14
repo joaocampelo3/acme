@@ -2,15 +2,32 @@ package com.isep.acme.events;
 
 import com.google.gson.Gson;
 
+import java.util.UUID;
+
 public class ReviewEvent {
     private Long reviewId;
     private String sku;
-    private String userId;
+    private Long userId;
     private String comment;
-    private int rating;
+    private Double rating;
+
+    private UUID voteTempID;
 
     public ReviewEvent(Long reviewId) {
         this.reviewId = reviewId;
+    }
+
+    public ReviewEvent(Long reviewId, String sku, Long userId, String comment, Double rating) {
+        this.reviewId = reviewId;
+        this.sku = sku;
+        this.userId = userId;
+        this.comment = comment;
+        this.rating = rating;
+    }
+
+    public ReviewEvent(Long reviewId, UUID voteTempID) {
+        this.reviewId = reviewId;
+        this.voteTempID = voteTempID;
     }
 
     public Long getReviewId() {
@@ -21,20 +38,20 @@ public class ReviewEvent {
         this.reviewId = reviewId;
     }
 
+    public UUID getVoteTempID() {
+        return voteTempID;
+    }
+
+    public void setVoteTempID(UUID voteTempID) {
+        this.voteTempID = voteTempID;
+    }
+
     public String getSku() {
         return sku;
     }
 
     public void setSku(String sku) {
         this.sku = sku;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public String getComment() {
@@ -45,11 +62,19 @@ public class ReviewEvent {
         this.comment = comment;
     }
 
-    public int getRating() {
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public Double getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
     }
 

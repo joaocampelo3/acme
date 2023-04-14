@@ -6,7 +6,7 @@ import com.isep.acme.model.DTO.ProductDTO;
 import com.isep.acme.model.DTO.ProductDetailDTO;
 import com.isep.acme.repositories.ProductRepository;
 
-import com.isep.acme.services.Publisher;
+import com.isep.acme.services.MBCommunication.Publisher;
 import com.isep.acme.services.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -80,7 +80,7 @@ public class ProductServiceImpl implements ProductService {
 
         ProductDTO productDTO = repository.save(p).toDto();
 
-        publisher.mainPublish(new ProductEvent(p.getSku()), "product.product_created");
+        publisher.mainPublish(new ProductEvent(p.getSku(), p.getDesignation(), p.getDescription()), "product.product_created");
 
         return productDTO;
     }
@@ -96,7 +96,7 @@ public class ProductServiceImpl implements ProductService {
 
         ProductDTO productUpdatedDto = repository.save(productToUpdate.get()).toDto();
 
-        publisher.mainPublish(new ProductEvent(productUpdatedDto.getSku()), "product.product_updated");
+        publisher.mainPublish(new ProductEvent(productUpdatedDto.getSku(), productUpdatedDto.getDesignation()), "product.product_updated");
 
         return productUpdatedDto;
     }

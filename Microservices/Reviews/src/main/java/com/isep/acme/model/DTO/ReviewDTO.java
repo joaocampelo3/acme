@@ -1,5 +1,7 @@
 package com.isep.acme.model.DTO;
 
+import com.isep.acme.model.Rating;
+
 import java.time.LocalDate;
 
 public class ReviewDTO {

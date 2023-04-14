@@ -2,7 +2,10 @@ package com.isep.acme.services.MBCommunication;
 
 import com.isep.acme.events.ProductEvent;
 import com.isep.acme.events.ReviewEvent;
+import com.isep.acme.model.DTO.CreateReviewDTO;
+import com.isep.acme.model.DTO.ReviewDTO;
 import com.isep.acme.model.Product;
+import com.isep.acme.model.Review;
 import com.isep.acme.rabbitmqconfigs.RabbitMQHost;
 import com.isep.acme.repositories.ReviewRepository;
 import com.isep.acme.services.interfaces.ReviewService;
@@ -15,6 +18,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Optional;
 import java.util.concurrent.TimeoutException;
 
 @Component
@@ -77,14 +81,17 @@ public class ReviewEventSubscriber {
         }
     }
 
-    private void handleReviewEvent(String eventType, String originService, ReviewEvent event) {
+    private void handleReviewEvent(String eventType, String originService, ReviewEvent event) throws Exception {
         // handle the review event
         if (eventType.equals("review_created")) {
-            // do something with the review created event
+            ReviewDTO review = reviewService.findByReviewID(event.getReviewId());
+            if (review == null){
+                reviewService.create(new CreateReviewDTO(event.getComment(), event.getUserId()), event.getSku());
+            }
         } else if (eventType.equals("review_updated")) {
             // do something with the review updated event
         } else if (eventType.equals("review_deleted")) {
-            // do something with the review deleted event
+            reviewService.DeleteReview(event.getReviewId());
         }
     }
 
