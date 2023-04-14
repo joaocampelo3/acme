@@ -1,13 +1,13 @@
 package com.isep.acme.ProductsBootstrap.model;
 
 
-import com.isep.acme.ProductsBootstrap.model.dto.ProductDTO;
+import com.isep.acme.ProductsBootstrap.model.dto.ProductEventDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -15,27 +15,28 @@ import java.util.Objects;
 @Document(collection = "product")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product implements Serializable {
+public class ProductEvent implements Serializable {
 
+    public String sku;
     @Id
     private Long productID;
-    public String sku;
     private String designation;
     private String description;
+    private EventType eventType;
     /*
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<Review> review = new ArrayList<Review>(); */
 
-    public Product(final Long productID, final String sku) {
+    public ProductEvent(final Long productID, final String sku) {
         this.productID = Objects.requireNonNull(productID);
         setSku(sku);
     }
 
-    public Product(final String sku) {
+    public ProductEvent(final String sku) {
         setSku(sku);
     }
 
-    public Product(final String sku, final String designation, final String description) {
+    public ProductEvent(final String sku, final String designation, final String description) {
         this(sku);
         setDescription(description);
         setDesignation(designation);
@@ -86,7 +87,7 @@ public class Product implements Serializable {
         this.sku = sku;
     }
 
-    public void updateProduct(Product p) {
+    public void updateProduct(ProductEvent p) {
         setDesignation(p.designation);
         setDescription(p.description);
     }
@@ -95,17 +96,15 @@ public class Product implements Serializable {
         return productID;
     }
 
-    public ProductDTO toDto() {
-        return new ProductDTO(this.sku, this.designation);
-    }
-/*
-    public List<Review> getReview() {
-        return review;
+    public ProductEventDTO toDto() {
+        return new ProductEventDTO(this.sku, this.designation);
     }
 
-    public void setReview(List<Review> review) {
-        this.review = review;
+    public EventType getEventType() {
+        return eventType;
     }
-*/
 
+    public void setEventType(EventType eventType) {
+        this.eventType = eventType;
+    }
 }

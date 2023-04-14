@@ -2,18 +2,18 @@ package com.isep.acme.ProductsBootstrap.model.dto;
 
 import com.google.gson.Gson;
 
-public class ProductDTO {
+public class ProductEventDTO {
     private String sku;
     private String designation;
 
-    public ProductDTO(String sku, String designation) {
+    public ProductEventDTO(String sku, String designation) {
         this.sku = sku;
         this.designation = designation;
     }
 
-    public static ProductDTO fromJson(String json) {
+    public static ProductEventDTO fromJson(String json) {
         Gson gson = new Gson();
-        return gson.fromJson(json, ProductDTO.class);
+        return gson.fromJson(json, ProductEventDTO.class);
     }
 
     public String getSku() {

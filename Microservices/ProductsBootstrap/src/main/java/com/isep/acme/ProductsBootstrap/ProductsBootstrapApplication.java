@@ -1,8 +1,8 @@
 package com.isep.acme.ProductsBootstrap;
 
-import com.isep.acme.ProductsBootstrap.model.Product;
+import com.isep.acme.ProductsBootstrap.model.ProductEvent;
 import com.isep.acme.ProductsBootstrap.rabbitmqconfigs.RabbitMQHost;
-import com.isep.acme.ProductsBootstrap.services.impl.ProductServiceImpl;
+import com.isep.acme.ProductsBootstrap.repository.ProductEventRepo;
 import com.rabbitmq.client.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.ApplicationContext;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -21,19 +21,20 @@ import java.util.concurrent.TimeoutException;
 
 @EnableConfigurationProperties({RabbitMQHost.class})
 @SpringBootApplication
+@EnableMongoRepositories("com.isep.acme.ProductsBootstrap")
 public class ProductsBootstrapApplication {
     private static final String RPC_QUEUE_NAME = "q.products_rpc_queue";
     private static final Logger logger = LoggerFactory.getLogger(ProductsBootstrapApplication.class);
 
     @Autowired
+    private static ProductEventRepo productEventRepo;
+    @Autowired
     private static RabbitMQHost rabbitMQHost;
-
-    private static ProductServiceImpl productService;
     private static ConnectionFactory factory;
 
-    public ProductsBootstrapApplication(RabbitMQHost rabbitMQHost) {
+    public ProductsBootstrapApplication(ProductEventRepo productEventRepo, RabbitMQHost rabbitMQHost) {
+        ProductsBootstrapApplication.productEventRepo = productEventRepo;
         ProductsBootstrapApplication.rabbitMQHost = rabbitMQHost;
-        productService = new ProductServiceImpl();
     }
 
     public static void main(String[] args) {
@@ -64,12 +65,12 @@ public class ProductsBootstrapApplication {
                     String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
                     logger.info(" [.] Products Bootstrap RPC Service got: " + message + ", replying to:" + delivery.getProperties().getReplyTo() + " with correlation ID: " + delivery.getEnvelope().getDeliveryTag());
 
-                    List<Product> response = null;
+                    List<ProductEvent> response = null;
 
                     if (message.compareTo("GetAllProducts") == 0) {
                         /*ProductRepo productRepo = ctx.getBean(ProductRepo.class);
                         response = productRepo.findAll();*/
-                        response = productService.getAllProducts();
+                        response = productEventRepo.findAll();//productService.getAllProducts();
                     }
 
                     // Replying to the client
