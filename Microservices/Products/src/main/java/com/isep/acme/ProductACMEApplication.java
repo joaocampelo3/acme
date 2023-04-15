@@ -21,6 +21,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -111,7 +112,7 @@ public class ProductACMEApplication {
                     .replyTo(exclusiveQueueName)
                     .build();
 
-            channel.basicPublish(/*exchange*/"", RPC_QUEUE_NAME, props, "GetAllProducts".getBytes("UTF-8"));
+            channel.basicPublish(/*exchange*/"", RPC_QUEUE_NAME, props, "GetAllProducts".getBytes(StandardCharsets.UTF_8));
 
             // Code to consume only one message and stop consuming more messages
             final CompletableFuture<Object> response = new CompletableFuture<>();
@@ -129,21 +130,23 @@ public class ProductACMEApplication {
             });
 
             Object result = response.get();
-            List<Product> productList = (List<Product>) convertObjectToList(result);
+            List<ProductEvent> productEventList = (List<ProductEvent>) convertObjectToList(result);
+            List<Product> productList = new ArrayList<>();
 
             channel.basicCancel(ctag);
 
             productRepository.deleteAll();
 
-            if (productList != null && !productList.isEmpty()) {
+            if (productEventList != null && !productEventList.isEmpty()) {
                 Optional<Product> productAux;
-                for (Product product : productList) {
-                    productAux = productRepository.findById(product.getProductID());
+                for (ProductEvent productEvent : productEventList) {
+                    productAux = productRepository.findBySku(productEvent.getSku());
                     if (productAux.isPresent()){
-                        productRepository.updateBySku(product.getSku());
+                        productRepository.updateBySku(productEvent.getSku());
                     } else {
-                        productRepository.save(product);
+                        productRepository.save(productEvent.toProduct());
                     }
+                    productList.add(productEvent.toProduct());
                 }
             }
 

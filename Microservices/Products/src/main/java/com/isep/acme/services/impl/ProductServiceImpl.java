@@ -96,7 +96,7 @@ public class ProductServiceImpl implements ProductService {
 
         ProductDTO productUpdatedDto = repository.save(productToUpdate.get()).toDto();
 
-        publisher.mainPublish(new ProductEvent(productUpdatedDto.getSku(), productUpdatedDto.getDesignation()), "product.product_updated");
+        publisher.mainPublish(new ProductEvent(productUpdatedDto.getSku(), productUpdatedDto.getDesignation(), productUpdatedDto.getDescription()), "product.product_updated");
 
         return productUpdatedDto;
     }
