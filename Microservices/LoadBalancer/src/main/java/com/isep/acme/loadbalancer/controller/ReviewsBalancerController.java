@@ -19,19 +19,19 @@ public class ReviewsBalancerController {
     private RestTemplate restTemplate;
 
     @GetMapping("/products/{sku}/reviews/{status}")
-    public ResponseEntity<List<ReviewDTO>> findById(@PathVariable(value = "sku") final String sku, @PathVariable(value = "status") final String status) {
-        return restTemplate.getForObject("http://REVIEWSACMEAPPLICATION/products/" + sku + "/reviews/" + status, ResponseEntity.class);
+    public List<ReviewDTO> findById(@PathVariable(value = "sku") final String sku, @PathVariable(value = "status") final String status) {
+        return restTemplate.getForObject("http://REVIEWSACMEAPPLICATION/products/" + sku + "/reviews/" + status, List.class);
     }
 
     @GetMapping("/reviews/{userID}")
-    public ResponseEntity<List<ReviewDTO>> findReviewByUser(@PathVariable(value = "userID") final Long userID) {
-        return restTemplate.getForObject("http://REVIEWSACMEAPPLICATION/reviews/" + userID, ResponseEntity.class);
+    public List<ReviewDTO> findReviewByUser(@PathVariable(value = "userID") final Long userID) {
+        return restTemplate.getForObject("http://REVIEWSACMEAPPLICATION/reviews/" + userID, List.class);
     }
 
     @PostMapping("/products/{sku}/reviews")
-    public ResponseEntity<ReviewDTO> createReview(@PathVariable(value = "sku") final String sku, @RequestBody CreateReviewDTO createReviewDTO) throws Exception {
+    public ReviewDTO createReview(@PathVariable(value = "sku") final String sku, @RequestBody CreateReviewDTO createReviewDTO) throws Exception {
         HttpEntity<CreateReviewDTO> request = new HttpEntity<>(createReviewDTO);
-        return restTemplate.postForObject("http://REVIEWSACMEAPPLICATION/products/"+sku+"/review", request, ResponseEntity.class);
+        return restTemplate.postForObject("http://REVIEWSACMEAPPLICATION/products/"+sku+"/review", request, ReviewDTO.class);
     }
 
     @DeleteMapping("/reviews/{reviewID}")
@@ -40,13 +40,13 @@ public class ReviewsBalancerController {
     }
 
     @GetMapping("/reviews/pending")
-    public ResponseEntity<List<ReviewDTO>> getPendingReview(){
-        return restTemplate.getForObject("http://REVIEWSACMEAPPLICATION/reviews/pending", ResponseEntity.class);
+    public List<ReviewDTO> getPendingReview(){
+        return restTemplate.getForObject("http://REVIEWSACMEAPPLICATION/reviews/pending", List.class);
     }
 
     @PutMapping("/reviews/acceptreject/{reviewID}")
-    public ResponseEntity<ReviewDTO> putAcceptRejectReview(@PathVariable(value = "reviewID") final Long reviewID, @RequestBody String approved){
-        return restTemplate.exchange("http://REVIEWSACMEAPPLICATION/reviews/acceptreject/"+ reviewID, HttpMethod.PUT, new HttpEntity<>(approved), ReviewDTO.class);
+    public ReviewDTO putAcceptRejectReview(@PathVariable(value = "reviewID") final Long reviewID, @RequestBody String approved){
+        return restTemplate.exchange("http://REVIEWSACMEAPPLICATION/reviews/acceptreject/"+ reviewID, HttpMethod.PUT, new HttpEntity<>(approved), ReviewDTO.class).getBody();
     }
 
 
