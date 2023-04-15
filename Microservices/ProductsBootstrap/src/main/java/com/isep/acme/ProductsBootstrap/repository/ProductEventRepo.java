@@ -8,7 +8,7 @@ import java.util.List;
 
 @Repository
 public interface ProductEventRepo extends MongoRepository<ProductEvent, Long> {
-    List<ProductEvent> findByProductID(Long aggregateID);
+    List<ProductEvent> findByProductID(Long productID);
 
     List<ProductEvent> findAll();
 }

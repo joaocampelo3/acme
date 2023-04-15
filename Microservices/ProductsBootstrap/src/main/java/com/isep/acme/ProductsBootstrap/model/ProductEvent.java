@@ -22,7 +22,7 @@ public class ProductEvent implements Serializable {
     private Long productID;
     private String designation;
     private String description;
-    private EventType eventType;
+    private EventTypeEnum eventTypeEnum;
     /*
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<Review> review = new ArrayList<Review>(); */
@@ -100,11 +100,11 @@ public class ProductEvent implements Serializable {
         return new ProductEventDTO(this.sku, this.designation);
     }
 
-    public EventType getEventType() {
-        return eventType;
+    public EventTypeEnum getEventTypeEnum() {
+        return eventTypeEnum;
     }
 
-    public void setEventType(EventType eventType) {
-        this.eventType = eventType;
+    public void setEventTypeEnum(EventTypeEnum eventTypeEnum) {
+        this.eventTypeEnum = eventTypeEnum;
     }
 }

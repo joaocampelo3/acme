@@ -1,8 +1,8 @@
 package com.isep.acme;
 
-import com.isep.acme.model.Review;
+import com.isep.acme.model.ReviewEvent;
 import com.isep.acme.rabbitmqconfigs.RabbitMQHost;
-import com.isep.acme.services.impl.ReviewServiceImpl;
+import com.isep.acme.repository.ReviewEventRepo;
 import com.rabbitmq.client.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -20,19 +21,20 @@ import java.util.concurrent.TimeoutException;
 
 @EnableConfigurationProperties({RabbitMQHost.class})
 @SpringBootApplication
+@EnableMongoRepositories("com.isep.acme")
 public class ReviewsBootstrapApplication {
     private static final String RPC_QUEUE_NAME = "q.reviews_rpc_queue";
     private static final Logger logger = LoggerFactory.getLogger(ReviewsBootstrapApplication.class);
 
     @Autowired
     private static RabbitMQHost rabbitMQHost;
-
-    private static ReviewServiceImpl reviewService;
+    @Autowired
+    private static ReviewEventRepo reviewEventRepo;
     private static ConnectionFactory factory;
 
-    public ReviewsBootstrapApplication(RabbitMQHost rabbitMQHost) {
+    public ReviewsBootstrapApplication(RabbitMQHost rabbitMQHost, ReviewEventRepo reviewEventRepo) {
         ReviewsBootstrapApplication.rabbitMQHost = rabbitMQHost;
-        reviewService = new ReviewServiceImpl();
+        ReviewsBootstrapApplication.reviewEventRepo = reviewEventRepo;
     }
 
     public static void main(String[] args) {
@@ -63,12 +65,12 @@ public class ReviewsBootstrapApplication {
                     String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
                     logger.info(" [.] Reviews Bootstrap RPC Service got: " + message + ", replying to:" + delivery.getProperties().getReplyTo() + " with correlation ID: " + delivery.getEnvelope().getDeliveryTag());
 
-                    List<Review> response = null;
+                    List<ReviewEvent> response = null;
 
                     if (message.compareTo("GetAllReviews") == 0) {
                         /*ReviewRepo reviewRepo = ctx.getBean(ReviewRepo.class);
                         response = reviewRepo.findAll();*/
-                        response = reviewService.getAllReviews();
+                        response = reviewEventRepo.findAll();
                     }
 
                     // Replying to the client

@@ -1,6 +1,6 @@
 package com.isep.acme.ProductsBootstrap.services.impl;
 
-import com.isep.acme.ProductsBootstrap.model.EventType;
+import com.isep.acme.ProductsBootstrap.model.EventTypeEnum;
 import com.isep.acme.ProductsBootstrap.model.ProductEvent;
 import com.isep.acme.ProductsBootstrap.repository.ProductEventRepo;
 import com.isep.acme.ProductsBootstrap.services.interfaces.ProductEventService;
@@ -28,7 +28,7 @@ public class ProductEventEventServiceImpl implements ProductEventService {
     public ProductEvent addProductEvent(ProductEvent productEvent) {
         boolean flag = false;
         for (ProductEvent p : getAllProducts()) {
-            if (p.getSku() == productEvent.getSku() && p.getEventType() == EventType.DELETE) {
+            if (p.getSku() == productEvent.getSku() && p.getEventTypeEnum() == EventTypeEnum.DELETE) {
                 flag = true;
                 break;
             }

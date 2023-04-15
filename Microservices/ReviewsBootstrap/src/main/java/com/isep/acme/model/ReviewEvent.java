@@ -13,7 +13,7 @@ import java.util.Objects;
 @Document(collection = "review")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Review {
+public class ReviewEvent {
 
     @Id
     private Long idReview;
@@ -26,9 +26,10 @@ public class Review {
     private String sku;
     private Long userId;
     private Double rating;
+    private EventTypeEnum eventTypeEnum;
 
-    public Review(final Long idReview, final long version, final String approvalStatus, final String reviewText,
-                  final LocalDate publishingDate, final String funFact) {
+    public ReviewEvent(final Long idReview, final long version, final String approvalStatus, final String reviewText,
+                       final LocalDate publishingDate, final String funFact) {
         this.idReview = Objects.requireNonNull(idReview);
         this.version = Objects.requireNonNull(version);
         setApprovalStatus(approvalStatus);
@@ -37,9 +38,9 @@ public class Review {
         setFunFact(funFact);
     }
 
-    public Review(final Long idReview, final long version, final String approvalStatus, final  String reviewText,
-                  final String report, final LocalDate publishingDate, final String funFact, String sku, Double rating,
-                  Long userId) {
+    public ReviewEvent(final Long idReview, final long version, final String approvalStatus, final  String reviewText,
+                       final String report, final LocalDate publishingDate, final String funFact, String sku, Double rating,
+                       Long userId) {
         this(idReview, version, approvalStatus, reviewText, publishingDate, funFact);
 
         setReport(report);
@@ -49,8 +50,8 @@ public class Review {
 
     }
 
-    public Review(final String reviewText, LocalDate publishingDate, String sku, String funFact, Double rating,
-                  Long userId) {
+    public ReviewEvent(final String reviewText, LocalDate publishingDate, String sku, String funFact, Double rating,
+                       Long userId) {
         setReviewText(reviewText);
         setSku(sku);
         setPublishingDate(publishingDate);
@@ -144,5 +145,13 @@ public class Review {
 
     public void setRating(Double rating) {
         this.rating = rating;
+    }
+
+    public EventTypeEnum getEventTypeEnum() {
+        return eventTypeEnum;
+    }
+
+    public void setEventTypeEnum(EventTypeEnum eventTypeEnum) {
+        this.eventTypeEnum = eventTypeEnum;
     }
 }
