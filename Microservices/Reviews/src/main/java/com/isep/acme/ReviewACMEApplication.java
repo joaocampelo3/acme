@@ -136,8 +136,6 @@ public class ReviewACMEApplication {
 
 			channel.basicCancel(ctag);
 
-			reviewRepository.deleteAll();
-
 			if (reviewList != null && !reviewList.isEmpty()) {
 				Review reviewAux;
 				for (Review review : reviewList) {
