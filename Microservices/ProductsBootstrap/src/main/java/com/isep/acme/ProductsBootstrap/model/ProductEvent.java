@@ -113,5 +113,9 @@ public class ProductEvent implements Serializable {
         Gson gson = new Gson();
         return gson.fromJson(json, ProductEvent.class);
     }
+    public String toJson() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
 
 }

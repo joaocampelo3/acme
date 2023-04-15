@@ -10,6 +10,8 @@ import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,9 +27,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
+import java.util.concurrent.atomic.AtomicReference;
 
 @SpringBootApplication
 @EnableConfigurationProperties({
@@ -37,6 +39,7 @@ import java.util.concurrent.TimeoutException;
 public class ProductACMEApplication {
 
     private static final String RPC_QUEUE_NAME = "q.products_rpc_queue";
+    private static final Logger logger = LoggerFactory.getLogger(ProductACMEApplication.class);
 
     @Autowired
     private static RabbitMQHost rabbitMQHost;
@@ -117,33 +120,39 @@ public class ProductACMEApplication {
             channel.basicPublish(/*exchange*/"", RPC_QUEUE_NAME, props, "GetAllProducts".getBytes(StandardCharsets.UTF_8));
 
             // Code to consume only one message and stop consuming more messages
-            final CompletableFuture<Object> response = new CompletableFuture<>();
+            AtomicReference<List<String>> response = new AtomicReference<>();
 
             String ctag = channel.basicConsume(exclusiveQueueName, true, (consumerTag, delivery) -> {
-                // System.out.println("Got corelation id " + delivery.getProperties().getCorrelationId() + ", expected: " + corrId);
                 if (delivery.getProperties().getCorrelationId().equals(corrId)) {
-                    try {
-                        response.complete(deserialize(delivery.getBody()));
-                    } catch (ClassNotFoundException e) {
-                        throw new RuntimeException(e);
-                    }
+                        String decodedString = new String(delivery.getBody(), StandardCharsets.UTF_8);
+                        response.set(Arrays.asList(decodedString.split(";")));
                 }
             }, consumerTag -> {
             });
 
-            Object result = response.get();
-            List<ProductEvent> productEventList = (List<ProductEvent>) convertObjectToList(result);
             List<Product> productList = new ArrayList<>();
-
+            List<ProductEvent> productEventList = new ArrayList<>();
+            List<String> productEventStringList = new ArrayList<>();
+            productEventStringList = response.get();
             channel.basicCancel(ctag);
+            productEventStringList = response.get();
+
+            if (productEventStringList != null && !productEventStringList.isEmpty()) {
+                for (String s : productEventStringList) {
+                    productEventList.add(ProductEvent.fromJson(s));
+                }
+            }
 
             if (productEventList != null && !productEventList.isEmpty()) {
                 for (ProductEvent productEvent : productEventList) {
                     if (EventTypeEnum.CREATE.compareTo(productEvent.getEventTypeEnum())==0){
+                        logger.info("CREATE ACTION: "+ productEvent.getSku());
                         productRepository.save(productEvent.toProduct());
                     } else if (EventTypeEnum.UPDATE.compareTo(productEvent.getEventTypeEnum())==0) {
+                        logger.info("UPDATE ACTION: "+ productEvent.getSku());
                         productRepository.updateBySku(productEvent.toProduct().getSku());
                     } else if (EventTypeEnum.DELETE.compareTo(productEvent.getEventTypeEnum())==0) {
+                        logger.info("DELETE ACTION: "+ productEvent.getSku());
                         productRepository.deleteBySku(productEvent.toProduct().getSku());
                     }
                     productList.add(productEvent.toProduct());
