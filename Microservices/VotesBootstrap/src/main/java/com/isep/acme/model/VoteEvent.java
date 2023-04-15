@@ -1,5 +1,6 @@
 package com.isep.acme.model;
 
+import com.google.gson.Gson;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -39,5 +40,10 @@ public class VoteEvent {
     @Override
     public int hashCode() {
         return Objects.hash(voteID, vote, userID);
+    }
+
+    public static VoteEvent fromJson(String json) {
+        Gson gson = new Gson();
+        return gson.fromJson(json, VoteEvent.class);
     }
 }

@@ -3,7 +3,6 @@ package com.isep.acme;
 import com.isep.acme.model.VoteEvent;
 import com.isep.acme.rabbitmqconfigs.RabbitMQHost;
 import com.isep.acme.repository.VoteEventRepo;
-import com.isep.acme.services.impl.VoteEventServiceImpl;
 import com.rabbitmq.client.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
