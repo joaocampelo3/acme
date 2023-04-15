@@ -56,7 +56,7 @@ public class ReviewEventSubscriber {
                 System.out.println("Received event '" + eventType + "' from service '" + originService + "' with message '" + message + "'");
 
                 // parse the message as a ProductCreatedEvent or ReviewCreatedEvent
-                if (eventType.equals("review_created") || eventType.equals("review_updated") || eventType.equals("review_deleted")) {
+                if (eventType.equals("review_created") || eventType.equals("reviewFromVote_created") || eventType.equals("review_updated") || eventType.equals("review_deleted")) {
                     ReviewEvent event = ReviewEvent.fromJson(message);
                     try {
                         handleReviewEvent(eventType, originService, event);
@@ -78,6 +78,9 @@ public class ReviewEventSubscriber {
     private void handleReviewEvent(String eventType, String originService, ReviewEvent event) throws Exception {
         // handle the review event
         if (eventType.equals("review_created")) {
+            reviewEventRepo.save(new ReviewEvent(event.getIdReview(), event.getVersion(), event.getApprovalStatus(), event.getReviewText(), event.getReport(),
+                    event.getPublishingDate(), event.getFunFact(), event.getSku(), event.getUserId(), event.getRating(), EventTypeEnum.CREATE));
+        } else if (eventType.equals("reviewFromVote_created")) {
             reviewEventRepo.save(new ReviewEvent(event.getIdReview(), event.getVersion(), event.getApprovalStatus(), event.getReviewText(), event.getReport(),
                     event.getPublishingDate(), event.getFunFact(), event.getSku(), event.getUserId(), event.getRating(), EventTypeEnum.CREATE));
         } else if (eventType.equals("review_updated")) {
