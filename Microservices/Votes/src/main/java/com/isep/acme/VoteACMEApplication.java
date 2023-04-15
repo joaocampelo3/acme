@@ -136,8 +136,6 @@ public class VoteACMEApplication {
 
             channel.basicCancel(ctag);
 
-            voteRepository.deleteAll();
-
             if (voteEventList != null && !voteEventList.isEmpty()) {
                 Optional<Vote> voteAux;
                 for (VoteEvent voteEvent : voteEventList) {

@@ -136,8 +136,6 @@ public class ProductACMEApplication {
 
             channel.basicCancel(ctag);
 
-            productRepository.deleteAll();
-
             if (productEventList != null && !productEventList.isEmpty()) {
                 Optional<Product> productAux;
                 for (ProductEvent productEvent : productEventList) {
