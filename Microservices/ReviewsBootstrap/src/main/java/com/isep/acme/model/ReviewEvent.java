@@ -22,7 +22,7 @@ public class ReviewEvent {
     private String approvalStatus;
     private String reviewText;
     private String report;
-    private LocalDate publishingDate;
+    private String publishingDate;
     private String funFact;
     private String sku;
     private Long userId;
@@ -30,7 +30,7 @@ public class ReviewEvent {
     private EventTypeEnum eventTypeEnum;
 
     public ReviewEvent(final Long idReview, final long version, final String approvalStatus, final String reviewText,
-                       final LocalDate publishingDate, final String funFact) {
+                       final String publishingDate, final String funFact) {
         this.idReview = Objects.requireNonNull(idReview);
         this.version = Objects.requireNonNull(version);
         setApprovalStatus(approvalStatus);
@@ -40,7 +40,7 @@ public class ReviewEvent {
     }
 
     public ReviewEvent(final Long idReview, final long version, final String approvalStatus, final  String reviewText,
-                       final String report, final LocalDate publishingDate, final String funFact, String sku, Double rating,
+                       final String report, final String publishingDate, final String funFact, String sku, Double rating,
                        Long userId) {
         this(idReview, version, approvalStatus, reviewText, publishingDate, funFact);
 
@@ -51,7 +51,7 @@ public class ReviewEvent {
 
     }
 
-    public ReviewEvent(final String reviewText, LocalDate publishingDate, String sku, String funFact, Double rating,
+    public ReviewEvent(final String reviewText, String publishingDate, String sku, String funFact, Double rating,
                        Long userId) {
         setReviewText(reviewText);
         setSku(sku);
@@ -104,11 +104,11 @@ public class ReviewEvent {
         this.report = report;
     }
 
-    public LocalDate getPublishingDate() {
+    public String getPublishingDate() {
         return publishingDate;
     }
 
-    public void setPublishingDate(LocalDate publishingDate) {
+    public void setPublishingDate(String publishingDate) {
         this.publishingDate = publishingDate;
     }
 
