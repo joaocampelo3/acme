@@ -19,15 +19,15 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Component
+@RestController
 public class VotesBalancerController {
 
     @Autowired
     private RestTemplate restTemplate;
 
-    @GetMapping("/votes/")
+    @GetMapping("/votes")
     public ResponseEntity<Iterable<VoteDTO>> getAll() {
-        return restTemplate.getForObject("http://VOTEACMEAPPLICATION/votes/", ResponseEntity.class);
+        return restTemplate.getForObject("http://VOTEACMEAPPLICATION/votes", ResponseEntity.class);
     }
 
     @GetMapping(value = "/votes/{voteID}")

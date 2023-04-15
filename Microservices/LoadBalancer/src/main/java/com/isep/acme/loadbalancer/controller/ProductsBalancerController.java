@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Component
+@RestController
 public class ProductsBalancerController {
 
     @Autowired
@@ -21,15 +21,15 @@ public class ProductsBalancerController {
 
     @GetMapping
     public ResponseEntity<Iterable<ProductDTO>> getCatalog() {
-        return restTemplate.getForObject("http://PRODUCTACMEAPPLICATION/products/", ResponseEntity.class);
+        return restTemplate.getForObject("http://PRODUCTACMEAPPLICATION/products", ResponseEntity.class);
     }
 
-    @GetMapping(value = "/{sku}")
+    @GetMapping(value = "/products/{sku}")
     public ResponseEntity<ProductDTO> getProductBySku(@PathVariable("sku") final String sku) {
         return restTemplate.getForObject("http://PRODUCTACMEAPPLICATION/products/" + sku, ResponseEntity.class);
     }
 
-    @GetMapping(value = "/designation/{designation}")
+    @GetMapping(value = "/products/designation/{designation}")
     public ResponseEntity<Iterable<ProductDTO>> findAllByDesignation(@PathVariable("designation") final String designation){
         return restTemplate.getForObject("http://PRODUCTACMEAPPLICATION/products/designation/" + designation, ResponseEntity.class);
     }
@@ -38,15 +38,15 @@ public class ProductsBalancerController {
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<ProductDTO> create(@RequestBody Product manager) {
         HttpEntity<Product> request = new HttpEntity<>(manager);
-        return restTemplate.postForObject("http://REVIEWSACMEAPPLICATION/products/", request, ResponseEntity.class);
+        return restTemplate.postForObject("http://REVIEWSACMEAPPLICATION/products", request, ResponseEntity.class);
     }
 
-    @PatchMapping(value = "/{sku}")
+    @PatchMapping(value = "/products/{sku}")
     public ResponseEntity<ProductDTO> Update(@PathVariable("sku") final String sku, @RequestBody final Product product) throws Exception {
         return restTemplate.exchange("http://PRODUCTACMEAPPLICATION/products/" + sku, HttpMethod.PUT, new HttpEntity<>(product), ProductDTO.class);
     }
 
-    @DeleteMapping(value = "/{sku}")
+    @DeleteMapping(value = "/products/{sku}")
     public void delete(@PathVariable("sku") final String sku ) throws Exception {
        restTemplate.delete("http://PRODUCTACMEAPPLICATION/products/" + sku);
     }

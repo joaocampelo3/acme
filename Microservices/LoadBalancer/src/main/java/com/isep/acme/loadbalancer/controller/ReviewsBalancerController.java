@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
-@Component
+@RestController
 public class ReviewsBalancerController {
 
     @Autowired
@@ -31,7 +31,7 @@ public class ReviewsBalancerController {
     @PostMapping("/products/{sku}/reviews")
     public ResponseEntity<ReviewDTO> createReview(@PathVariable(value = "sku") final String sku, @RequestBody CreateReviewDTO createReviewDTO) throws Exception {
         HttpEntity<CreateReviewDTO> request = new HttpEntity<>(createReviewDTO);
-        return restTemplate.postForObject("http://REVIEWSACMEAPPLICATION/products/", request, ResponseEntity.class);
+        return restTemplate.postForObject("http://REVIEWSACMEAPPLICATION/products/"+sku+"/review", request, ResponseEntity.class);
     }
 
     @DeleteMapping("/reviews/{reviewID}")
