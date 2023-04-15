@@ -56,7 +56,7 @@ public class VoteEventSubscriber {
                 String originService = envelope.getRoutingKey().substring(0, envelope.getRoutingKey().indexOf("."));
                 System.out.println("Received event '" + eventType + "' from service '" + originService + "' with message '" + message + "'");
 
-                // parse the message as a ProductCreatedEvent or ReviewCreatedEvent
+                // parse the message as a ReviewCreatedEvent
                 if (eventType.equals("voteTemp_created")) {
                     VoteEvent event = VoteEvent.fromJson(message);
                     try {

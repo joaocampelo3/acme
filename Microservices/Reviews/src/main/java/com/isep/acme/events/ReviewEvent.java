@@ -12,7 +12,7 @@ public class ReviewEvent {
     private Long version;
     private String approvalStatus;
     private String reviewText;
-    private LocalDate publishingDate;
+    private String publishingDate;
     private String funFact;
     private String sku;
     private Long userId;
@@ -39,7 +39,7 @@ public class ReviewEvent {
         this.eventTypeEnum = eventTypeEnum;
     }
 
-    public ReviewEvent(Long reviewId, Long version, String approvalStatus, String reviewText, LocalDate publishingDate, String funFact, String sku, Long userId, String comment, Double rating) {
+    public ReviewEvent(Long reviewId, Long version, String approvalStatus, String reviewText, String publishingDate, String funFact, String sku, Long userId, String comment, Double rating) {
         this.reviewId = reviewId;
         this.version = version;
         this.approvalStatus = approvalStatus;
@@ -52,7 +52,7 @@ public class ReviewEvent {
         this.rating = rating;
     }
 
-    public ReviewEvent(Long reviewId, Long version, String approvalStatus, String reviewText, LocalDate publishingDate, String funFact, String sku, Long userId, String comment, Double rating, EventTypeEnum eventTypeEnum) {
+    public ReviewEvent(Long reviewId, Long version, String approvalStatus, String reviewText, String publishingDate, String funFact, String sku, Long userId, String comment, Double rating, EventTypeEnum eventTypeEnum) {
         this.reviewId = reviewId;
         this.version = version;
         this.approvalStatus = approvalStatus;
@@ -133,7 +133,7 @@ public class ReviewEvent {
     }
 
     public Review toReview(){
-        Review review = new Review(this.reviewId, this.version, this.approvalStatus, this.reviewText, this.publishingDate, this.funFact);
+        Review review = new Review(this.reviewId, this.version, this.approvalStatus, this.reviewText, LocalDate.parse(this.publishingDate), this.funFact);
         review.setSku(this.sku);
         review.setRating(new Rating(this.rating));
         return review;
