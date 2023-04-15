@@ -1,5 +1,6 @@
 package com.isep.acme.model;
 
+import com.google.gson.Gson;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -153,5 +154,10 @@ public class ReviewEvent {
 
     public void setEventTypeEnum(EventTypeEnum eventTypeEnum) {
         this.eventTypeEnum = eventTypeEnum;
+    }
+
+    public static ReviewEvent fromJson(String json) {
+        Gson gson = new Gson();
+        return gson.fromJson(json, ReviewEvent.class);
     }
 }

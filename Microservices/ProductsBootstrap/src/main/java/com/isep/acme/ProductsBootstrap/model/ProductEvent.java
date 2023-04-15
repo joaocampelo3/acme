@@ -1,6 +1,7 @@
 package com.isep.acme.ProductsBootstrap.model;
 
 
+import com.google.gson.Gson;
 import com.isep.acme.ProductsBootstrap.model.dto.ProductEventDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -107,4 +108,10 @@ public class ProductEvent implements Serializable {
     public void setEventTypeEnum(EventTypeEnum eventTypeEnum) {
         this.eventTypeEnum = eventTypeEnum;
     }
+
+    public static ProductEvent fromJson(String json) {
+        Gson gson = new Gson();
+        return gson.fromJson(json, ProductEvent.class);
+    }
+
 }
