@@ -160,4 +160,9 @@ public class ReviewEvent {
         Gson gson = new Gson();
         return gson.fromJson(json, ReviewEvent.class);
     }
+
+    public String toJson() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
 }

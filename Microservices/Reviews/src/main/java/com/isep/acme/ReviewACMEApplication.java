@@ -9,6 +9,8 @@ import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,10 +26,12 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
+import java.util.concurrent.atomic.AtomicReference;
 
 @SpringBootApplication
 @EnableConfigurationProperties({
@@ -37,6 +41,8 @@ import java.util.concurrent.TimeoutException;
 public class ReviewACMEApplication {
 
 	private static final String RPC_QUEUE_NAME = "q.reviews_rpc_queue";
+
+	private static final Logger logger = LoggerFactory.getLogger(ReviewACMEApplication.class);
 
 	@Autowired
 	private static RabbitMQHost rabbitMQHost;
@@ -118,33 +124,42 @@ public class ReviewACMEApplication {
 			channel.basicPublish(/*exchange*/"", RPC_QUEUE_NAME, props, "GetAllReviews".getBytes("UTF-8"));
 
 			// Code to consume only one message and stop consuming more messages
-			final CompletableFuture<Object> response = new CompletableFuture<>();
+			AtomicReference<List<String>> response = new AtomicReference<>();
 
 			String ctag = channel.basicConsume(exclusiveQueueName, true, (consumerTag, delivery) -> {
-				// System.out.println("Got corelation id " + delivery.getProperties().getCorrelationId() + ", expected: " + corrId);
 				if (delivery.getProperties().getCorrelationId().equals(corrId)) {
-					try {
-						response.complete(deserialize(delivery.getBody()));
-					} catch (ClassNotFoundException e) {
-						throw new RuntimeException(e);
-					}
+					String decodedString = new String(delivery.getBody(), StandardCharsets.UTF_8);
+					response.set(Arrays.asList(decodedString.split(";")));
 				}
 			}, consumerTag -> {
 			});
 
-			Object result = response.get();
-			List<ReviewEvent> reviewEventList = (List<ReviewEvent>) convertObjectToList(result);
+
 			List<Review> reviewList = new ArrayList<>();
 
+			List<ReviewEvent> reviewEventList = new ArrayList<>();
+			List<String> reviewEventStringList = new ArrayList<>();
+			reviewEventStringList = response.get();
 			channel.basicCancel(ctag);
+			reviewEventStringList = response.get();
 
-			if (reviewEventList != null && !reviewEventList.isEmpty()) {
+			if (reviewEventStringList != null && !reviewEventStringList.isEmpty()) {
+				for (String s : reviewEventStringList) {
+					reviewEventList.add(ReviewEvent.fromJson(s));
+				}
+			}
+
+
+			if (reviewEventStringList != null && !reviewEventStringList.isEmpty()) {
 				for (ReviewEvent reviewEvent : reviewEventList) {
 					if (EventTypeEnum.CREATE.compareTo(reviewEvent.getEventTypeEnum())==0){
+						logger.info("CREATE ACTION: "+ reviewEvent.getReviewId());
 						reviewRepository.save(reviewEvent.toReview());
 					} else if (EventTypeEnum.UPDATE.compareTo(reviewEvent.getEventTypeEnum())==0) {
+						logger.info("UPDATE ACTION: "+ reviewEvent.getReviewId());
 						reviewRepository.save(reviewEvent.toReview());
 					} else if (EventTypeEnum.DELETE.compareTo(reviewEvent.getEventTypeEnum())==0) {
+						logger.info("DELETE ACTION: "+ reviewEvent.getReviewId());
 						reviewRepository.delete(reviewEvent.toReview());
 					}
 					reviewList.add(reviewEvent.toReview());

@@ -16,6 +16,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
@@ -65,16 +66,20 @@ public class ReviewsBootstrapApplication {
                     String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
                     logger.info(" [.] Reviews Bootstrap RPC Service got: " + message + ", replying to:" + delivery.getProperties().getReplyTo() + " with correlation ID: " + delivery.getEnvelope().getDeliveryTag());
 
-                    List<ReviewEvent> response = null;
+                    List<String> response = new ArrayList<>();
 
                     if (message.compareTo("GetAllReviews") == 0) {
-                        /*ReviewRepo reviewRepo = ctx.getBean(ReviewRepo.class);
-                        response = reviewRepo.findAll();*/
-                        response = reviewEventRepo.findAll();
+                        List<ReviewEvent> reviewEvents = reviewEventRepo.findAll();
+                        for (ReviewEvent re: reviewEvents) {
+                            response.add(re.toJson());
+                        }
                     }
 
+                    String joinedString = String.join(";", response);
+                    byte[] messageToSend = joinedString.getBytes(StandardCharsets.UTF_8);
+
                     // Replying to the client
-                    channel.basicPublish(/*exchange*/"", delivery.getProperties().getReplyTo(), replyProps, serialize(response));
+                    channel.basicPublish(/*exchange*/"", delivery.getProperties().getReplyTo(), replyProps, messageToSend);
                     channel.basicAck(delivery.getEnvelope().getDeliveryTag(), /*multiple*/false);
 
                     // Allow to process next message

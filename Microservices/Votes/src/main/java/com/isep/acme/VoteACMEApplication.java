@@ -11,6 +11,8 @@ import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -29,6 +31,7 @@ import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
+import java.util.concurrent.atomic.AtomicReference;
 
 @SpringBootApplication
 @EnableConfigurationProperties({
@@ -39,6 +42,7 @@ public class VoteACMEApplication {
 
     private static final String RPC_QUEUE_NAME = "q.votes_rpc_queue";
 
+    private static final Logger logger = LoggerFactory.getLogger(VoteACMEApplication.class);
     @Autowired
     private static RabbitMQHost rabbitMQHost;
     @Autowired
@@ -118,33 +122,40 @@ public class VoteACMEApplication {
             channel.basicPublish(/*exchange*/"", RPC_QUEUE_NAME, props, "GetAllVotes".getBytes(StandardCharsets.UTF_8));
 
             // Code to consume only one message and stop consuming more messages
-            final CompletableFuture<Object> response = new CompletableFuture<>();
+            AtomicReference<List<String>> response = new AtomicReference<>();
 
             String ctag = channel.basicConsume(exclusiveQueueName, true, (consumerTag, delivery) -> {
-                // System.out.println("Got corelation id " + delivery.getProperties().getCorrelationId() + ", expected: " + corrId);
                 if (delivery.getProperties().getCorrelationId().equals(corrId)) {
-                    try {
-                        response.complete(deserialize(delivery.getBody()));
-                    } catch (ClassNotFoundException e) {
-                        throw new RuntimeException(e);
-                    }
+                    String decodedString = new String(delivery.getBody(), StandardCharsets.UTF_8);
+                    response.set(Arrays.asList(decodedString.split(";")));
                 }
             }, consumerTag -> {
             });
 
-            Object result = response.get();
-            List<VoteEvent> voteEventList = (List<VoteEvent>) convertObjectToList(result);
             List<Vote> voteList = new ArrayList<>();
 
+            List<VoteEvent> voteEventList = new ArrayList<>();
+            List<String> voteEventStringList = new ArrayList<>();
+            voteEventStringList = response.get();
             channel.basicCancel(ctag);
+            voteEventStringList = response.get();
+
+            if (voteEventStringList != null && !voteEventStringList.isEmpty()) {
+                for (String s : voteEventStringList) {
+                    voteEventList.add(VoteEvent.fromJson(s));
+                }
+            }
 
             if (voteEventList != null && !voteEventList.isEmpty()) {
                 for (VoteEvent voteEvent : voteEventList) {
                     if (EventTypeEnum.CREATE.compareTo(voteEvent.getEventTypeEnum())==0){
+                        logger.info("CREATE ACTION: "+ voteEvent.getVoteID());
                         voteRepository.save(voteEvent.toVote());
                     } else if (EventTypeEnum.UPDATE.compareTo(voteEvent.getEventTypeEnum())==0) {
+                        logger.info("UPDATE ACTION: "+ voteEvent.getVoteID());
                         voteRepository.updateByVoteID(voteEvent.toVote().getVoteID());
                     } else if (EventTypeEnum.DELETE.compareTo(voteEvent.getEventTypeEnum())==0) {
+                        logger.info("DELETE ACTION: "+ voteEvent.getVoteID());
                         voteRepository.deleteByVoteID(voteEvent.toVote().getVoteID());
                     }
                     voteList.add(voteEvent.toVote());

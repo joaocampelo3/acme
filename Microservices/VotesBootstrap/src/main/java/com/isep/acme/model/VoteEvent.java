@@ -46,4 +46,9 @@ public class VoteEvent {
         Gson gson = new Gson();
         return gson.fromJson(json, VoteEvent.class);
     }
+
+    public String toJson() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
 }
