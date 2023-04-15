@@ -1,0 +1,12 @@
+version: '3.8'
+# To run this file, execute the following command:
+# docker compose -f {compose file name} up
+# This create and starts the containers
+
+services:
+  votesbootstrapservice:
+    build: .
+    container_name: VotesBootstrapService
+    ports:
+      - 8104:8080
+      - 8105:5672

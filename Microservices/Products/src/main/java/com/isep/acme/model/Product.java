@@ -103,7 +103,7 @@ public class Product {
     }
 
     public ProductDTO toDto() {
-        return new ProductDTO(this.sku, this.designation);
+        return new ProductDTO(this.sku, this.designation, this.description);
     }
 /*
     public List<Review> getReview() {

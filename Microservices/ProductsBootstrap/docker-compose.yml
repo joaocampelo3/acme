@@ -1,0 +1,12 @@
+version: '3.8'
+# To run this file, execute the following command:
+# docker compose -f {compose file name} up
+# This create and starts the containers
+
+services:
+  productbootstrapservice:
+    build: .
+    container_name: ProductsBootstrapService
+    ports:
+      - 8102:8080
+      - 8103:5672

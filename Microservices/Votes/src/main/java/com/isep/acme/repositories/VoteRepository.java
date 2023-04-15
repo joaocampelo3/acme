@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface VoteRepository extends CrudRepository<Vote, Long> {
+public interface VoteRepository extends CrudRepository<Vote, UUID> {
 
     @Query("SELECT v FROM Vote v WHERE v.voteID=:voteID")
     Optional<Vote> findByID(UUID voteID);
@@ -25,9 +25,9 @@ public interface VoteRepository extends CrudRepository<Vote, Long> {
     @Transactional
     @Modifying
     @Query("UPDATE Vote v SET v.voteID = :voteID WHERE v.voteID=:voteID")
-    Vote updateByVoteID(@Param("voteID") String voteID);
+    Vote updateByVoteID(@Param("voteID") UUID voteID);
 
     @Query("SELECT v FROM Vote v WHERE v.voteID=:voteID")
-    Optional<Vote> findById(Long voteID);
+    Optional<Vote> findById(UUID voteID);
 
 }

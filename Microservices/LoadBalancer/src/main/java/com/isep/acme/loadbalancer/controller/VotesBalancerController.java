@@ -19,39 +19,39 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Component
+@RestController
 public class VotesBalancerController {
 
     @Autowired
     private RestTemplate restTemplate;
 
-    @GetMapping("/votes/")
-    public ResponseEntity<Iterable<VoteDTO>> getAll() {
-        return restTemplate.getForObject("http://VOTEACMEAPPLICATION/votes/", ResponseEntity.class);
+    @GetMapping("/votes")
+    public List<VoteDTO> getAll() {
+        return restTemplate.getForObject("http://VOTEACMEAPPLICATION/votes", List.class);
     }
 
     @GetMapping(value = "/votes/{voteID}")
-    public ResponseEntity<VoteDTO> findByVoteID(@PathVariable("voteID") final UUID voteID) {
-        return restTemplate.getForObject("http://VOTEACMEAPPLICATION/votes/" + voteID, ResponseEntity.class);
+    public VoteDTO findByVoteID(@PathVariable("voteID") final UUID voteID) {
+        return restTemplate.getForObject("http://VOTEACMEAPPLICATION/votes/" + voteID, VoteDTO.class);
     }
 
     @PostMapping("/review/{reviewID}/votes/")
-    public ResponseEntity<VoteDTO> create(@PathVariable(value = "reviewID") final Long reviewID, @RequestBody VoteDTO voteDTO) throws Exception{
+    public VoteDTO create(@PathVariable(value = "reviewID") final Long reviewID, @RequestBody VoteDTO voteDTO) throws Exception{
         HttpEntity<VoteDTO> request = new HttpEntity<>(voteDTO);
-        return restTemplate.postForObject("http://REVIEWSACMEAPPLICATION/review/" + reviewID + "/votes/", request, ResponseEntity.class);
+        return restTemplate.postForObject("http://REVIEWSACMEAPPLICATION/review/" + reviewID + "/votes/", request, VoteDTO.class);
     }
 
     @PostMapping("/noreview/{sku}/votes/")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public ResponseEntity<VoteTempDTO> createTemp(@PathVariable(value = "sku") final String sku, @RequestBody VoteTempDTO voteTempDTO) throws Exception{
+    public VoteTempDTO createTemp(@PathVariable(value = "sku") final String sku, @RequestBody VoteTempDTO voteTempDTO) throws Exception{
         HttpEntity<VoteTempDTO> request = new HttpEntity<>(voteTempDTO);
-        return restTemplate.postForObject("http://REVIEWSACMEAPPLICATION/noreview/" + sku + "/votes/", request, ResponseEntity.class);
+        return restTemplate.postForObject("http://REVIEWSACMEAPPLICATION/noreview/" + sku + "/votes/", request, VoteTempDTO.class);
     }
 
 
     @PatchMapping(value = "/votes/{voteID}")
-    public ResponseEntity<VoteDTO> Update(@PathVariable("voteID") final UUID voteID, @RequestBody final Vote vote) throws Exception {
-        return restTemplate.exchange("http://REVIEWSACMEAPPLICATION/votes/"+ voteID, HttpMethod.PUT, new HttpEntity<>(vote), VoteDTO.class);
+    public VoteDTO Update(@PathVariable("voteID") final UUID voteID, @RequestBody final Vote vote) throws Exception {
+        return restTemplate.exchange("http://REVIEWSACMEAPPLICATION/votes/"+ voteID, HttpMethod.PUT, new HttpEntity<>(vote), VoteDTO.class).getBody();
     }
 
 

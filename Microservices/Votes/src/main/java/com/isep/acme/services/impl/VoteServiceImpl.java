@@ -54,7 +54,7 @@ public class VoteServiceImpl implements VoteService {
 
         VoteDTO voteDTO = repository.save(v).toDto();
 
-        publisher.mainPublish(new VoteEvent(v.getVoteID()), "vote.vote_created");
+        publisher.mainPublish(new VoteEvent(v.getVoteID(), v.getVote()), "vote.vote_created");
 
         return voteDTO;
     }
@@ -66,7 +66,7 @@ public class VoteServiceImpl implements VoteService {
 
         VoteTempDTO voteTempDTOfinal = voteTempRepository.save(v).toDto();
 
-        publisher.mainPublish(new VoteEvent(v.getVoteTempID(), v.getReview(), sku, v.getUserID()), "vote.voteTemp_created");
+        publisher.mainPublish(new VoteEvent(v.getVoteTempID(), v.getVote(), v.getReview(), sku, v.getUserID()), "vote.voteTemp_created");
 
         return voteTempDTOfinal;
     }
@@ -81,7 +81,7 @@ public class VoteServiceImpl implements VoteService {
 
         VoteDTO voteDTO = repository.save(voteToUpdate.get()).toDto();
 
-        publisher.mainPublish(new VoteEvent(voteToUpdate.get().getVoteID()), "vote.vote_updated");
+        publisher.mainPublish(new VoteEvent(voteToUpdate.get().getVoteID(), voteToUpdate.get().getVote()), "vote.vote_updated");
 
         return voteDTO;
     }
