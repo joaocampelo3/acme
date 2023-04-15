@@ -85,7 +85,9 @@ public class ReviewServiceImpl implements ReviewService {
         ReviewDTO reviewDTO = ReviewMapper.toDto(review);
 
         if (createReviewDTO.getVoteID() == null){
-            publisher.mainPublish(new ReviewEvent(review.getIdReview(),review.getSku(),review.getUser().getUserId(),review.getReviewText(), review.getRating().getRate()),"review.review_created");
+            publisher.mainPublish(new ReviewEvent(review.getIdReview(),review.getVersion(), review.getApprovalStatus(),
+                    review.getReviewText(), review.getPublishingDate(), review.getFunFact(), review.getSku(),
+                    review.getUser().getUserId(),review.getReviewText(), review.getRating().getRate()),"review.review_created");
         }
         else{
             publisher.mainPublish(new ReviewEvent(review.getIdReview(), createReviewDTO.getVoteID()), "review.reviewFromVote_created");

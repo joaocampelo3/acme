@@ -1,5 +1,7 @@
 package com.isep.acme;
 
+import com.isep.acme.events.EventTypeEnum;
+import com.isep.acme.events.ReviewEvent;
 import com.isep.acme.model.Review;
 import com.isep.acme.rabbitmqconfigs.RabbitMQHost;
 import com.isep.acme.repositories.ReviewRepository;
@@ -61,7 +63,6 @@ public class ReviewACMEApplication {
 	public HttpMessageConverter<BufferedImage> createImageHttpMessageConverter() {
 		return new BufferedImageHttpMessageConverter();
 	}
-
 
 
 	public static class RPCClientImpl implements AutoCloseable {
@@ -132,22 +133,24 @@ public class ReviewACMEApplication {
 			});
 
 			Object result = response.get();
-			List<Review> reviewList = (List<Review>) convertObjectToList(result);
+			List<ReviewEvent> reviewEvents = (List<ReviewEvent>) convertObjectToList(result);
+			List<Review> reviewList = new ArrayList<>();
 
 			channel.basicCancel(ctag);
 
-			if (reviewList != null && !reviewList.isEmpty()) {
+			if (reviewEvents != null && !reviewEvents.isEmpty()) {
 				Review reviewAux;
-				for (Review review : reviewList) {
-					reviewAux = reviewRepository.findByReviewID(review.getIdReview());
-					if (reviewAux != null){
-						reviewRepository.save(review);
-					} else {
-						reviewRepository.save(review);
+				for (ReviewEvent reviewEvent : reviewEvents) {
+					if (EventTypeEnum.CREATE.compareTo(reviewEvent.getEventTypeEnum())==0){
+						reviewRepository.save(reviewEvent.toReview());
+					} else if (EventTypeEnum.UPDATE.compareTo(reviewEvent.getEventTypeEnum())==0) {
+						reviewRepository.save(reviewEvent.toReview());
+					} else if (EventTypeEnum.DELETE.compareTo(reviewEvent.getEventTypeEnum())==0) {
+						reviewRepository.delete(reviewEvent.toReview());
 					}
+					reviewList.add(reviewEvent.toReview());
 				}
 			}
-
 			// return results from RPC service
 			return reviewList;
 		}
