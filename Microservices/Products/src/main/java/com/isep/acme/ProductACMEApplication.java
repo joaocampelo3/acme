@@ -1,5 +1,6 @@
 package com.isep.acme;
 
+import com.isep.acme.events.EventTypeEnum;
 import com.isep.acme.events.ProductEvent;
 import com.isep.acme.model.Product;
 import com.isep.acme.property.FileStorageProperties;
@@ -137,13 +138,13 @@ public class ProductACMEApplication {
             channel.basicCancel(ctag);
 
             if (productEventList != null && !productEventList.isEmpty()) {
-                Optional<Product> productAux;
                 for (ProductEvent productEvent : productEventList) {
-                    productAux = productRepository.findBySku(productEvent.getSku());
-                    if (productAux.isPresent()){
-                        productRepository.updateBySku(productEvent.getSku());
-                    } else {
+                    if (EventTypeEnum.CREATE.compareTo(productEvent.getEventTypeEnum())==0){
                         productRepository.save(productEvent.toProduct());
+                    } else if (EventTypeEnum.UPDATE.compareTo(productEvent.getEventTypeEnum())==0) {
+                        productRepository.updateBySku(productEvent.toProduct().getSku());
+                    } else if (EventTypeEnum.DELETE.compareTo(productEvent.getEventTypeEnum())==0) {
+                        productRepository.deleteBySku(productEvent.toProduct().getSku());
                     }
                     productList.add(productEvent.toProduct());
                 }

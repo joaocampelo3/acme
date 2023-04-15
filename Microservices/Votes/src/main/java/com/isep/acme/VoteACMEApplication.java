@@ -1,6 +1,8 @@
 package com.isep.acme;
 
+import com.isep.acme.events.EventTypeEnum;
 import com.isep.acme.events.VoteEvent;
+import com.isep.acme.model.Review;
 import com.isep.acme.model.Vote;
 import com.isep.acme.property.FileStorageProperties;
 import com.isep.acme.rabbitmqconfigs.RabbitMQHost;
@@ -137,13 +139,13 @@ public class VoteACMEApplication {
             channel.basicCancel(ctag);
 
             if (voteEventList != null && !voteEventList.isEmpty()) {
-                Optional<Vote> voteAux;
                 for (VoteEvent voteEvent : voteEventList) {
-                    voteAux = voteRepository.findById(voteEvent.getVoteID());
-                    if (voteAux.isPresent()) {
-                        voteRepository.updateByVoteID(voteEvent.getVoteID());
-                    } else {
+                    if (EventTypeEnum.CREATE.compareTo(voteEvent.getEventTypeEnum())==0){
                         voteRepository.save(voteEvent.toVote());
+                    } else if (EventTypeEnum.UPDATE.compareTo(voteEvent.getEventTypeEnum())==0) {
+                        voteRepository.updateByVoteID(voteEvent.toVote().getVoteID());
+                    } else if (EventTypeEnum.DELETE.compareTo(voteEvent.getEventTypeEnum())==0) {
+                        voteRepository.deleteByVoteID(voteEvent.toVote().getVoteID());
                     }
                     voteList.add(voteEvent.toVote());
                 }

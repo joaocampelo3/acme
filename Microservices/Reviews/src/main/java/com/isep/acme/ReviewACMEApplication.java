@@ -133,14 +133,13 @@ public class ReviewACMEApplication {
 			});
 
 			Object result = response.get();
-			List<ReviewEvent> reviewEvents = (List<ReviewEvent>) convertObjectToList(result);
+			List<ReviewEvent> reviewEventList = (List<ReviewEvent>) convertObjectToList(result);
 			List<Review> reviewList = new ArrayList<>();
 
 			channel.basicCancel(ctag);
 
-			if (reviewEvents != null && !reviewEvents.isEmpty()) {
-				Review reviewAux;
-				for (ReviewEvent reviewEvent : reviewEvents) {
+			if (reviewEventList != null && !reviewEventList.isEmpty()) {
+				for (ReviewEvent reviewEvent : reviewEventList) {
 					if (EventTypeEnum.CREATE.compareTo(reviewEvent.getEventTypeEnum())==0){
 						reviewRepository.save(reviewEvent.toReview());
 					} else if (EventTypeEnum.UPDATE.compareTo(reviewEvent.getEventTypeEnum())==0) {
