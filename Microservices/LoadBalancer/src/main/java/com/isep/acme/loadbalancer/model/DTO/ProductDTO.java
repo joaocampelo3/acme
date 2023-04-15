@@ -1,4 +1,4 @@
-package com.isep.acme.model.DTO;
+package com.isep.acme.loadbalancer.model.DTO;
 
 public class ProductDTO {
     private String sku;

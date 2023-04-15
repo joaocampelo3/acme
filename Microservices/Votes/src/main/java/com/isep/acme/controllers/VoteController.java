@@ -23,7 +23,7 @@ class VoteController {
     private VoteService service;
 
     @Operation(summary = "gets all votes")
-    @GetMapping
+    @GetMapping("/votes/")
     public ResponseEntity<Iterable<VoteDTO>> getAll() {
         final var votes = service.getAll();
 
@@ -83,7 +83,7 @@ class VoteController {
     }
 
     @Operation(summary = "updates a vote")
-    @PatchMapping(value = "/{voteID}")
+    @PatchMapping(value = "/votes/{voteID}")
     public ResponseEntity<VoteDTO> Update(@PathVariable("voteID") final UUID voteID, @RequestBody final Vote vote) throws Exception {
 
         final VoteDTO voteDTO = service.updateByVoteID(voteID, vote);
@@ -95,7 +95,7 @@ class VoteController {
     }
 
     @Operation(summary = "deletes a vote")
-    @DeleteMapping(value = "/{voteID}")
+    @DeleteMapping(value = "/votes/{voteID}")
     public ResponseEntity<Vote> delete(@PathVariable("voteID") final UUID voteID) throws Exception {
 
         service.deleteByVoteID(voteID);
