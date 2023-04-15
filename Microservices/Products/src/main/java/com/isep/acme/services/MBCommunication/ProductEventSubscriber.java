@@ -57,7 +57,7 @@ public class ProductEventSubscriber {
                 String originService = envelope.getRoutingKey().substring(0, envelope.getRoutingKey().indexOf("."));
                 System.out.println("Received event '" + eventType + "' from service '" + originService + "' with message '" + message + "'");
 
-                // parse the message as a ProductCreatedEvent or ReviewCreatedEvent
+                // parse the message as a ProductEvent
                 if (eventType.equals("product_created") || eventType.equals("product_updated") || eventType.equals("product_deleted")) {
                     ProductEvent event = ProductEvent.fromJson(message);
                     try {
@@ -87,13 +87,16 @@ public class ProductEventSubscriber {
         } else if (eventType.equals("product_updated")) {
             // do something with the product updated event
         } else if (eventType.equals("product_deleted")) {
-            productService.deleteBySku(event.getSku());
+            Optional<ProductDTO> product = productService.findBySku(event.getSku());
+            if (!product.isEmpty()){
+                productService.deleteBySku(event.getSku());
+            }
         }
     }
 
     @Bean
     @Async
-    public void mainReviewSubscription() throws IOException, TimeoutException {
+    public void mainProductSubscription() throws IOException, TimeoutException {
         this.start();
     }
 

@@ -76,10 +76,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductDTO create(final Product product) throws Exception {
+
         final Product p = new Product(product.getSku(), product.getDesignation(), product.getDescription());
 
         ProductDTO productDTO = repository.save(p).toDto();
-
         publisher.mainPublish(new ProductEvent(p.getSku(), p.getDesignation(), p.getDescription()), "product.product_created");
 
         return productDTO;
@@ -103,8 +103,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void deleteBySku(String sku) throws Exception {
+
         repository.deleteBySku(sku);
 
         publisher.mainPublish(new ProductEvent(sku), "product.product_deleted");
+
     }
 }

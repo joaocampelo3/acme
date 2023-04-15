@@ -1,6 +1,7 @@
 package com.isep.acme.events;
 
 import com.google.gson.Gson;
+import com.isep.acme.model.Product;
 
 public class ProductEvent {
     private String sku;
@@ -77,5 +78,9 @@ public class ProductEvent {
     public static ProductEvent fromJson(String json) {
         Gson gson = new Gson();
         return gson.fromJson(json, ProductEvent.class);
+    }
+
+    public Product toProduct() {
+        return new Product(this.getSku(),this.designation, this.description);
     }
 }

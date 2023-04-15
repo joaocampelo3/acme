@@ -1,14 +1,12 @@
-package com.isep.acme.model.DTO;
+package com.isep.acme.loadbalancer.model.DTO;
 
 public class ProductDTO {
     private String sku;
     private String designation;
-    private String description;
 
-    public ProductDTO(String sku, String designation, String description) {
+    public ProductDTO(String sku, String designation) {
         this.sku = sku;
         this.designation = designation;
-        this.description = description;
     }
 
     public ProductDTO() {
@@ -29,13 +27,5 @@ public class ProductDTO {
 
     public void setDesignation(String designation) {
         this.designation = designation;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }

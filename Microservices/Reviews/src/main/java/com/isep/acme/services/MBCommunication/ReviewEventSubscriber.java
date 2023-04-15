@@ -91,7 +91,10 @@ public class ReviewEventSubscriber {
         } else if (eventType.equals("review_updated")) {
             // do something with the review updated event
         } else if (eventType.equals("review_deleted")) {
-            reviewService.DeleteReview(event.getReviewId());
+            ReviewDTO review = reviewService.findByReviewID(event.getReviewId());
+            if (review != null){
+                reviewService.DeleteReview(event.getReviewId());
+            }
         }
     }
 

@@ -1,5 +1,6 @@
 package com.isep.acme;
 
+import com.isep.acme.events.ProductEvent;
 import com.isep.acme.model.Product;
 import com.isep.acme.property.FileStorageProperties;
 import com.isep.acme.rabbitmqconfigs.RabbitMQHost;
