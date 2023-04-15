@@ -13,23 +13,26 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Vote {
+public class VoteEvent {
     @Id
     private UUID voteID;
-    private Long id;
+    private Long reviewID;
+    private String reviewText;
+    private String sku;
     private String vote;
     private Long userID;
+    private EventTypeEnum eventTypeEnum;
 
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Vote vote1 = (Vote) o;
-        return Objects.equals(voteID, vote1.voteID) && Objects.equals(vote, vote1.vote) && Objects.equals(userID, vote1.userID);
+        VoteEvent voteEvent1 = (VoteEvent) o;
+        return Objects.equals(voteID, voteEvent1.voteID) && Objects.equals(vote, voteEvent1.vote) && Objects.equals(userID, voteEvent1.userID);
     }
 
-    public void updateVote(Vote v) {
+    public void updateVote(VoteEvent v) {
         setVote(v.vote);
     }
 

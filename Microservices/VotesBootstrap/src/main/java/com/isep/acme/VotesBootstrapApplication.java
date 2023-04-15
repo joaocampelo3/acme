@@ -1,8 +1,9 @@
 package com.isep.acme;
 
-import com.isep.acme.model.Vote;
+import com.isep.acme.model.VoteEvent;
 import com.isep.acme.rabbitmqconfigs.RabbitMQHost;
-import com.isep.acme.services.impl.VoteServiceImpl;
+import com.isep.acme.repository.VoteEventRepo;
+import com.isep.acme.services.impl.VoteEventServiceImpl;
 import com.rabbitmq.client.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -20,19 +22,22 @@ import java.util.concurrent.TimeoutException;
 
 @EnableConfigurationProperties({RabbitMQHost.class})
 @SpringBootApplication
+@EnableMongoRepositories("com.isep.acme")
 public class VotesBootstrapApplication {
     private static final String RPC_QUEUE_NAME = "q.votes_rpc_queue";
     private static final Logger logger = LoggerFactory.getLogger(VotesBootstrapApplication.class);
 
     @Autowired
+    private static VoteEventRepo voteEventRepo;
+
+    @Autowired
     private static RabbitMQHost rabbitMQHost;
 
-    private static VoteServiceImpl voteService;
     private static ConnectionFactory factory;
 
-    public VotesBootstrapApplication(RabbitMQHost rabbitMQHost) {
+    public VotesBootstrapApplication(VoteEventRepo voteEventRepo, RabbitMQHost rabbitMQHost) {
+        VotesBootstrapApplication.voteEventRepo = voteEventRepo;
         VotesBootstrapApplication.rabbitMQHost = rabbitMQHost;
-        voteService = new VoteServiceImpl();
     }
 
     public static void main(String[] args) {
@@ -63,12 +68,11 @@ public class VotesBootstrapApplication {
                     String message = new String(delivery.getBody(), StandardCharsets.UTF_8);
                     logger.info(" [.] Votes Bootstrap RPC Service got: " + message + ", replying to:" + delivery.getProperties().getReplyTo() + " with correlation ID: " + delivery.getEnvelope().getDeliveryTag());
 
-                    List<Vote> response = null;
+                    List<VoteEvent> response = null;
 
                     if (message.compareTo("GetAllVotes") == 0) {
-                        /*VoteRepo voteRepo = ctx.getBean(VoteRepo.class);
-                        response = voteRepo.findAll();*/
-                        response = voteService.getAllVotes();
+                        /*VoteRepo voteRepo = ctx.getBean(VoteRepo.class);*/
+                        response = voteEventRepo.findAll();
                     }
 
                     // Replying to the client

@@ -9,10 +9,12 @@ public class ReviewEvent {
     private Long reviewId;
 
     private UUID voteTempID;
+    private EventTypeEnum eventTypeEnum;
 
-    public ReviewEvent(Long reviewId, UUID voteTempID) {
+    public ReviewEvent(Long reviewId, UUID voteTempID, EventTypeEnum eventTypeEnum) {
         this.reviewId = reviewId;
         this.voteTempID = voteTempID;
+        this.eventTypeEnum = eventTypeEnum;
     }
 
     public ReviewEvent(Long reviewId) {
@@ -33,6 +35,14 @@ public class ReviewEvent {
 
     public void setVoteTempID(UUID voteTempID) {
         this.voteTempID = voteTempID;
+    }
+
+    public EventTypeEnum getEventTypeEnum() {
+        return eventTypeEnum;
+    }
+
+    public void setEventTypeEnum(EventTypeEnum eventTypeEnum) {
+        this.eventTypeEnum = eventTypeEnum;
     }
 
     public String toJson() {
