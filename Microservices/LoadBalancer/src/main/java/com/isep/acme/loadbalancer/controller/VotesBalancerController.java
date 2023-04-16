@@ -35,13 +35,13 @@ public class VotesBalancerController {
         return restTemplate.getForObject("http://VOTEQUERIESACMEAPPLICATION/votes/" + voteID, VoteDTO.class);
     }
 
-    @PostMapping("/review/{reviewID}/votes/")
+    @PostMapping("/review/{reviewID}/votes")
     public VoteDTO create(@PathVariable(value = "reviewID") final Long reviewID, @RequestBody VoteDTO voteDTO) throws Exception{
         HttpEntity<VoteDTO> request = new HttpEntity<>(voteDTO);
         return restTemplate.postForObject("http://REVIEWSACMEAPPLICATION/review/" + reviewID + "/votes/", request, VoteDTO.class);
     }
 
-    @PostMapping("/noreview/{sku}/votes/")
+    @PostMapping("/noreview/{sku}/votes")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public VoteTempDTO createTemp(@PathVariable(value = "sku") final String sku, @RequestBody VoteTempDTO voteTempDTO) throws Exception{
         HttpEntity<VoteTempDTO> request = new HttpEntity<>(voteTempDTO);

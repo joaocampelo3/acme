@@ -23,7 +23,7 @@ class VoteController {
     private VoteService service;
 
     @Operation(summary = "gets all votes")
-    @GetMapping("/votes/")
+    @GetMapping("/votes")
     public ResponseEntity<Iterable<VoteDTO>> getAll() {
         final var votes = service.getAll();
 
@@ -43,7 +43,7 @@ class VoteController {
     }
 
     @Operation(summary = "creates a vote")
-    @PostMapping("/review/{reviewID}/votes/")
+    @PostMapping("/review/{reviewID}/votes")
     public ResponseEntity<VoteDTO> create(@PathVariable(value = "reviewID") final Long reviewID, @RequestBody VoteDTO voteDTO) throws Exception{
         try {
 
@@ -63,7 +63,7 @@ class VoteController {
 
 
     @Operation(summary = "creates a temporary vote")
-    @PostMapping("/noreview/{sku}/votes/")
+    @PostMapping("/noreview/{sku}/votes")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<VoteTempDTO> createTemp(@PathVariable(value = "sku") final String sku, @RequestBody VoteTempDTO voteTempDTO) throws Exception{
         try {

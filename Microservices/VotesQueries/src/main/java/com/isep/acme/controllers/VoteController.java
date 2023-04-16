@@ -23,7 +23,7 @@ class VoteController {
     private VoteService service;
 
     @Operation(summary = "gets all votes")
-    @GetMapping("/votes/")
+    @GetMapping("/votes")
     public ResponseEntity<Iterable<VoteDTO>> getAll() {
         final var votes = service.getAll();
 
