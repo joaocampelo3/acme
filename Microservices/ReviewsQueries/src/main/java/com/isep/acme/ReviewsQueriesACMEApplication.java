@@ -116,7 +116,7 @@ public class ReviewsQueriesACMEApplication {
 			return list;
 		}
 
-		public List<Review> call() throws IOException, InterruptedException, ExecutionException {
+		public void call() throws IOException, InterruptedException, ExecutionException {
 			String corrId = UUID.randomUUID().toString();
 
 			AMQP.BasicProperties props = new AMQP.BasicProperties
@@ -138,8 +138,8 @@ public class ReviewsQueriesACMEApplication {
 			}, consumerTag -> {
 			});
 
-
-			List<Review> reviewList = new ArrayList<>();
+			//Simple delay
+			Thread.sleep(5000);
 
 			List<ReviewEvent> reviewEventList = new ArrayList<>();
 			List<String> reviewEventStringList = new ArrayList<>();
@@ -169,11 +169,8 @@ public class ReviewsQueriesACMEApplication {
 						logger.info("DELETE ACTION: "+ reviewEvent.getIdReview());
 						reviewRepository.delete(reviewEvent.toReview(user));
 					}
-					reviewList.add(reviewEvent.toReview(user));
 				}
 			}
-			// return results from RPC service
-			return reviewList;
 		}
 
 		public void close() throws IOException {
@@ -201,11 +198,7 @@ public class ReviewsQueriesACMEApplication {
 				m_clientImpl = new RPCClientImpl();
 
 				System.out.println(" [x] " + m_name + " requesting GetAllReviews()");
-				List<Review> response = m_clientImpl.call();
-
-				if (response != null) {
-					System.out.println(" [.] " + m_name + " got '" + response.toString() + "'");
-				}
+				m_clientImpl.call();
 
 				Thread.sleep(getRandomNumber(0, 10) * 1000);
 

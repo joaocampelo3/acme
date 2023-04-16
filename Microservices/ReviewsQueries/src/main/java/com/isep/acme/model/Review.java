@@ -47,6 +47,7 @@ public class Review {
     public Review(final Long idReview, final UUID reviewUuid, final long version, final String approvalStatus, final String reviewText, final LocalDate publishingDate, final String funFact) {
         this.idReview = idReview;
         this.version = version;
+        setReviewUuid(reviewUuid);
         setApprovalStatus(approvalStatus);
         setReviewText(reviewText);
         setPublishingDate(publishingDate);

@@ -1,6 +1,7 @@
 package com.isep.acme.events;
 
 import com.google.gson.GsonBuilder;
+import com.isep.acme.model.User;
 import com.isep.acme.model.Vote;
 
 import java.util.UUID;
@@ -15,7 +16,7 @@ public class VoteEvent {
 
     private String sku;
 
-    private  Long userID;
+    private Long userID;
     private EventTypeEnum eventTypeEnum;
 
     public Long getReviewID() {
@@ -103,7 +104,9 @@ public class VoteEvent {
         return new GsonBuilder().serializeNulls().create().fromJson(json, VoteEvent.class);
     }
 
-    public Vote toVote(){
-        return new Vote(this.voteUuid, this.vote, this.userID, this.reviewID);
+    public Vote toVote(User user){
+        Vote v = new Vote(this.voteUuid, this.vote, this.userID, this.reviewID);
+        v.setUserID(user.getUserId());
+        return v;
     }
 }
