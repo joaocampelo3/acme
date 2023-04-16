@@ -9,7 +9,6 @@ import com.isep.acme.model.VoteTemp;
 import com.isep.acme.repositories.ReviewRepository;
 import com.isep.acme.repositories.VoteRepository;
 import com.isep.acme.repositories.VoteTempRepository;
-import com.isep.acme.services.MBCommunication.Publisher;
 import com.isep.acme.services.interfaces.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,9 +22,6 @@ import java.util.UUID;
 
 @Service
 public class VoteServiceImpl implements VoteService {
-
-    @Autowired
-    Publisher publisher;
 
     @Autowired
     private VoteRepository repository;
@@ -54,8 +50,6 @@ public class VoteServiceImpl implements VoteService {
 
         VoteDTO voteDTO = repository.save(v).toDto();
 
-        publisher.mainPublish(new VoteEvent(v.getVoteUuid(), v.getVote(), v.getReviewID(), v.getUserID()), "vote.vote_created");
-
         return voteDTO;
     }
 
@@ -66,9 +60,7 @@ public class VoteServiceImpl implements VoteService {
 
         VoteTempDTO voteTempDTOfinal = voteTempRepository.save(v).toDto();
 
-        publisher.mainPublish(new VoteEvent(v.getVoteTempUuid(), v.getVote(), v.getReview(), sku, v.getUserID()), "vote.voteTemp_created");
-
-        return voteTempDTOfinal;
+       return voteTempDTOfinal;
     }
 
     @Override
@@ -81,8 +73,6 @@ public class VoteServiceImpl implements VoteService {
 
         VoteDTO voteDTO = repository.save(voteToUpdate.get()).toDto();
 
-        publisher.mainPublish(new VoteEvent(voteToUpdate.get().getVoteUuid(), voteToUpdate.get().getVote()), "vote.vote_updated");
-
         return voteDTO;
     }
 
@@ -90,14 +80,12 @@ public class VoteServiceImpl implements VoteService {
     public void deleteByVoteID(UUID voteID) throws Exception {
         final Optional<Vote> v = repository.findByID(voteID);
         repository.deleteByVoteID(voteID);
-        publisher.mainPublish(new VoteEvent(v.get().getVoteUuid()), "vote.vote_deleted");
     }
 
     @Override
     public void deleteTempByVoteID(UUID voteID) throws Exception {
         final Optional<VoteTemp> v = voteTempRepository.findByID(voteID);
         voteTempRepository.deleteByVoteID(voteID);
-        publisher.mainPublish(new VoteEvent(v.get().getVoteTempUuid()), "vote.voteTemp_deleted");
     }
 
     @Override
