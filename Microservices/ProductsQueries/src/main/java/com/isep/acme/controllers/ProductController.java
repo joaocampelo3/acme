@@ -58,37 +58,4 @@ class ProductController {
         
         return ResponseEntity.ok().body( products );
     }
-
-    @Operation(summary = "creates a product")
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<ProductDTO> create(@RequestBody Product manager) {
-        try {
-            final ProductDTO product = service.create(manager);
-            return new ResponseEntity<ProductDTO>(product, HttpStatus.CREATED);
-        }
-        catch( Exception e ) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT,"Product must have a unique SKU.");
-        }
-    }
-
-    @Operation(summary = "updates a product")
-    @PatchMapping(value = "/{sku}")
-    public ResponseEntity<ProductDTO> Update(@PathVariable("sku") final String sku, @RequestBody final Product product) throws Exception {
-
-        final ProductDTO productDTO = service.updateBySku(sku, product);
-
-        if( productDTO == null )
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"Product not found.");
-        else
-            return ResponseEntity.ok().body(productDTO);
-    }
-
-    @Operation(summary = "deletes a product")
-    @DeleteMapping(value = "/{sku}")
-    public ResponseEntity<Product> delete(@PathVariable("sku") final String sku ) throws Exception {
-
-        service.deleteBySku(sku);
-        return ResponseEntity.noContent().build();
-    }
 }

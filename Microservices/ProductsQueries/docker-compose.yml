@@ -4,9 +4,9 @@ version: '3.8'
 # This create and starts the containers
 
 services:
-  productservice:
+  productqueriesservice:
     build: .
-    container_name: ProductsService
+    container_name: ProductsQueriesService
     ports:
       - 8086:8080
       - 8087:5672

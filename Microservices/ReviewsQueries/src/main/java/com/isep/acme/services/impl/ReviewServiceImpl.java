@@ -8,7 +8,6 @@ import com.isep.acme.model.DTO.CreateReviewDTO;
 import com.isep.acme.model.DTO.ReviewDTO;
 import com.isep.acme.repositories.ProductRepository;
 import com.isep.acme.repositories.UserRepository;
-import com.isep.acme.services.MBCommunication.Publisher;
 import com.isep.acme.services.RestService;
 import com.isep.acme.services.UserService;
 import com.isep.acme.services.interfaces.RatingService;
@@ -45,9 +44,6 @@ public class ReviewServiceImpl implements ReviewService {
     @Autowired
     RestService restService;
 
-    @Autowired
-    Publisher publisher;
-
     @Override
     public Iterable<Review> getAll() {
         return repository.findAll();
@@ -83,15 +79,6 @@ public class ReviewServiceImpl implements ReviewService {
         if (review == null) return null;
 
         ReviewDTO reviewDTO = ReviewMapper.toDto(review);
-
-        if (createReviewDTO.getVoteID() == null){
-            publisher.mainPublish(new ReviewEvent(review.getIdReview(), review.getReviewUuid().toString(), review.getVersion(), review.getApprovalStatus(),
-                    review.getReviewText(), review.getPublishingDate().toString(), review.getFunFact(), review.getSku(),
-                    review.getUser().getUserId(),review.getReviewText(), review.getRating().getRate()),"review.review_created");
-        }
-        else{
-            publisher.mainPublish(new ReviewEvent(review.getIdReview(), createReviewDTO.getVoteID()), "review.reviewFromVote_created");
-        }
 
         return reviewDTO;
     }
@@ -140,7 +127,6 @@ public class ReviewServiceImpl implements ReviewService {
 
         Review r = rev.get();
         repository.delete(r);
-        publisher.mainPublish(new ReviewEvent(r.getIdReview()),"review.review_deleted");
 
 /*        if (r.getUpVote().isEmpty() && r.getDownVote().isEmpty()) {
 

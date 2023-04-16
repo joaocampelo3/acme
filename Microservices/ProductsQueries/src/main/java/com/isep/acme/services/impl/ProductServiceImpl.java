@@ -6,7 +6,6 @@ import com.isep.acme.model.DTO.ProductDTO;
 import com.isep.acme.model.DTO.ProductDetailDTO;
 import com.isep.acme.repositories.ProductRepository;
 
-import com.isep.acme.services.MBCommunication.Publisher;
 import com.isep.acme.services.interfaces.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,9 +19,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository repository;
-
-    @Autowired
-    Publisher publisher;
 
     @Override
     public Optional<Product> getProductBySku( final String sku ) {
@@ -80,7 +76,6 @@ public class ProductServiceImpl implements ProductService {
         final Product p = new Product(product.getSku(), product.getDesignation(), product.getDescription());
 
         ProductDTO productDTO = repository.save(p).toDto();
-        publisher.mainPublish(new ProductEvent(p.getSku(), p.getDesignation(), p.getDescription()), "product.product_created");
 
         return productDTO;
     }
@@ -96,8 +91,6 @@ public class ProductServiceImpl implements ProductService {
 
         ProductDTO productUpdatedDto = repository.save(productToUpdate.get()).toDto();
 
-        publisher.mainPublish(new ProductEvent(productUpdatedDto.getSku(), productUpdatedDto.getDesignation(), productUpdatedDto.getDescription()), "product.product_updated");
-
         return productUpdatedDto;
     }
 
@@ -105,8 +98,6 @@ public class ProductServiceImpl implements ProductService {
     public void deleteBySku(String sku) throws Exception {
 
         repository.deleteBySku(sku);
-
-        publisher.mainPublish(new ProductEvent(sku), "product.product_deleted");
 
     }
 }
