@@ -27,12 +27,12 @@ public class VotesBalancerController {
 
     @GetMapping("/votes")
     public List<VoteDTO> getAll() {
-        return restTemplate.getForObject("http://VOTEACMEAPPLICATION/votes", List.class);
+        return restTemplate.getForObject("http://VOTEQUERIESACMEAPPLICATION/votes", List.class);
     }
 
     @GetMapping(value = "/votes/{voteID}")
     public VoteDTO findByVoteID(@PathVariable("voteID") final UUID voteID) {
-        return restTemplate.getForObject("http://VOTEACMEAPPLICATION/votes/" + voteID, VoteDTO.class);
+        return restTemplate.getForObject("http://VOTEQUERIESACMEAPPLICATION/votes/" + voteID, VoteDTO.class);
     }
 
     @PostMapping("/review/{reviewID}/votes/")

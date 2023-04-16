@@ -20,12 +20,17 @@ public class ReviewsBalancerController {
 
     @GetMapping("/products/{sku}/reviews/{status}")
     public List<ReviewDTO> findById(@PathVariable(value = "sku") final String sku, @PathVariable(value = "status") final String status) {
-        return restTemplate.getForObject("http://REVIEWSACMEAPPLICATION/products/" + sku + "/reviews/" + status, List.class);
+        return restTemplate.getForObject("http://REVIEWSQUERIESACMEAPPLICATION/products/" + sku + "/reviews/" + status, List.class);
     }
 
     @GetMapping("/reviews/{userID}")
     public List<ReviewDTO> findReviewByUser(@PathVariable(value = "userID") final Long userID) {
-        return restTemplate.getForObject("http://REVIEWSACMEAPPLICATION/reviews/" + userID, List.class);
+        return restTemplate.getForObject("http://REVIEWSQUERIESACMEAPPLICATION/reviews/" + userID, List.class);
+    }
+
+    @GetMapping("/reviews/pending")
+    public List<ReviewDTO> getPendingReview(){
+        return restTemplate.getForObject("http://REVIEWSQUERIESACMEAPPLICATION/reviews/pending", List.class);
     }
 
     @PostMapping("/products/{sku}/reviews")
@@ -37,11 +42,6 @@ public class ReviewsBalancerController {
     @DeleteMapping("/reviews/{reviewID}")
     public void deleteReview(@PathVariable(value = "reviewID") final Long reviewID) throws Exception {
         restTemplate.delete("http://REVIEWSACMEAPPLICATION/reviews/" + reviewID);
-    }
-
-    @GetMapping("/reviews/pending")
-    public List<ReviewDTO> getPendingReview(){
-        return restTemplate.getForObject("http://REVIEWSACMEAPPLICATION/reviews/pending", List.class);
     }
 
     @PutMapping("/reviews/acceptreject/{reviewID}")

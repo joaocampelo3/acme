@@ -23,17 +23,17 @@ public class ProductsBalancerController {
 
     @GetMapping("/products")
     public List<ProductDTO> getCatalog() {
-        return restTemplate.getForObject("http://PRODUCTACMEAPPLICATION/products", List.class);
+        return restTemplate.getForObject("http://PRODUCTQUERIESACMEAPPLICATION/products", List.class);
     }
 
     @GetMapping(value = "/products/{sku}")
     public ProductDTO getProductBySku(@PathVariable("sku") final String sku) {
-        return restTemplate.getForObject("http://PRODUCTACMEAPPLICATION/products/" + sku, ProductDTO.class);
+        return restTemplate.getForObject("http://PRODUCTQUERIESACMEAPPLICATION/products/" + sku, ProductDTO.class);
     }
 
     @GetMapping(value = "/products/designation/{designation}")
     public List<ProductDTO> findAllByDesignation(@PathVariable("designation") final String designation){
-        return restTemplate.getForObject("http://PRODUCTACMEAPPLICATION/products/designation/" + designation, List.class);
+        return restTemplate.getForObject("http://PRODUCTQUERIESACMEAPPLICATION/products/designation/" + designation, List.class);
     }
 
     @PostMapping
