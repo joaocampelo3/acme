@@ -13,6 +13,7 @@ public class Vote {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long voteID;
 
+    @Column(nullable = false)
     private UUID voteUuid;
 
     @Column(nullable = false)

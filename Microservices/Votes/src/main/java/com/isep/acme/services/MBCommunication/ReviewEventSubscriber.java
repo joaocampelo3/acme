@@ -85,10 +85,10 @@ public class ReviewEventSubscriber {
     private void handleReviewEvent(String eventType, String originService, ReviewEvent event) throws Exception {
         // handle the review event
         if (eventType.equals("review_created")) {
-            final Review r = new Review(event.getReviewId());
+            final Review r = new Review(event.getVoteTempID());
             voteService.createReview(r);
         } else if (eventType.equals("reviewFromVote_created")) {
-            final Review r = new Review(event.getReviewId());
+            final Review r = new Review(event.getVoteTempID());
             voteService.createReview(r);
 
             final Optional<VoteTemp> voteTemp = voteTempRepository.findByID(event.getVoteTempID());

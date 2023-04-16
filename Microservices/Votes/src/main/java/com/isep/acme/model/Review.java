@@ -3,15 +3,20 @@ package com.isep.acme.model;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 public class Review {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idReview;
 
-    public Review(Long idReview) {
-        this.idReview = idReview;
+    @Column(nullable = false)
+    private UUID reviewUuid;
+
+    public Review(UUID reviewUuid) {
+        this.reviewUuid = reviewUuid;
     }
 
     public Review() {
@@ -22,7 +27,11 @@ public class Review {
         return idReview;
     }
 
-    public void setIdReview(Long idReview) {
-        this.idReview = idReview;
+    public UUID getReviewUuid() {
+        return reviewUuid;
+    }
+
+    public void setReviewUuid(UUID reviewUuid) {
+        this.reviewUuid = reviewUuid;
     }
 }
