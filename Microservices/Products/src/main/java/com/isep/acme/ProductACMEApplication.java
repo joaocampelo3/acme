@@ -108,7 +108,7 @@ public class ProductACMEApplication {
             return list;
         }
 
-        public List<Product> call() throws IOException, InterruptedException, ExecutionException {
+        public void call() throws IOException, InterruptedException, ExecutionException {
             String corrId = UUID.randomUUID().toString();
 
             AMQP.BasicProperties props = new AMQP.BasicProperties
@@ -130,7 +130,9 @@ public class ProductACMEApplication {
             }, consumerTag -> {
             });
 
-            List<Product> productList = new ArrayList<>();
+            //Simple delay
+			Thread.sleep(5000);
+
             List<ProductEvent> productEventList = new ArrayList<>();
             List<String> productEventStringList = new ArrayList<>();
             productEventStringList = response.get();
@@ -153,14 +155,10 @@ public class ProductACMEApplication {
                         productRepository.updateBySku(productEvent.toProduct().getSku());
                     } else if (EventTypeEnum.DELETE.compareTo(productEvent.getEventTypeEnum())==0) {
                         logger.info("DELETE ACTION: "+ productEvent.getSku());
-                        productRepository.deleteBySku(productEvent.toProduct().getSku());
+                        productRepository.deleteBySku(productEvent.getSku());
                     }
-                    productList.add(productEvent.toProduct());
                 }
             }
-
-            // return results from RPC service
-            return productList;
         }
 
         public void close() throws IOException {
@@ -188,11 +186,7 @@ public class ProductACMEApplication {
                 m_clientImpl = new RPCClientImpl();
 
                 System.out.println(" [x] " + m_name + " requesting GetAllProducts()");
-                List<Product> response = m_clientImpl.call();
-
-                if (response != null) {
-                    System.out.println(" [.] " + m_name + " got '" + response.toString() + "'");
-                }
+                m_clientImpl.call();
 
                 Thread.sleep(getRandomNumber(0, 10) * 1000);
 

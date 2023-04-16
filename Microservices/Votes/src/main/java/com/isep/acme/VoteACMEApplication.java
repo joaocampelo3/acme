@@ -2,9 +2,11 @@ package com.isep.acme;
 
 import com.isep.acme.events.EventTypeEnum;
 import com.isep.acme.events.VoteEvent;
+import com.isep.acme.model.User;
 import com.isep.acme.model.Vote;
 import com.isep.acme.property.FileStorageProperties;
 import com.isep.acme.rabbitmqconfigs.RabbitMQHost;
+import com.isep.acme.repositories.UserRepository;
 import com.isep.acme.repositories.VoteRepository;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
@@ -45,10 +47,13 @@ public class VoteACMEApplication {
     private static RabbitMQHost rabbitMQHost;
     @Autowired
     private static VoteRepository voteRepository;
+    @Autowired
+    private static UserRepository userRepository;
 
-    public VoteACMEApplication(RabbitMQHost rabbitMQHost, VoteRepository voteRepository) {
+    public VoteACMEApplication(RabbitMQHost rabbitMQHost, VoteRepository voteRepository, UserRepository userRepository) {
         VoteACMEApplication.rabbitMQHost = rabbitMQHost;
         VoteACMEApplication.voteRepository = voteRepository;
+        VoteACMEApplication.userRepository = userRepository;
     }
 
     public static void main(String[] args) throws InterruptedException {
@@ -108,7 +113,7 @@ public class VoteACMEApplication {
             return list;
         }
 
-        public List<Vote> call() throws IOException, InterruptedException, ExecutionException {
+        public void call() throws IOException, InterruptedException, ExecutionException {
             String corrId = UUID.randomUUID().toString();
 
             AMQP.BasicProperties props = new AMQP.BasicProperties
@@ -130,7 +135,8 @@ public class VoteACMEApplication {
             }, consumerTag -> {
             });
 
-            List<Vote> voteList = new ArrayList<>();
+            //Simple delay
+			Thread.sleep(5000);
 
             List<VoteEvent> voteEventList = new ArrayList<>();
             List<String> voteEventStringList = new ArrayList<>();
@@ -145,23 +151,22 @@ public class VoteACMEApplication {
             }
 
             if (voteEventList != null && !voteEventList.isEmpty()) {
+                User user;
                 for (VoteEvent voteEvent : voteEventList) {
+                    user = userRepository.getById(voteEvent.getUserID());
+
                     if (EventTypeEnum.CREATE.compareTo(voteEvent.getEventTypeEnum())==0){
                         logger.info("CREATE ACTION: "+ voteEvent.getVoteUuid());
-                        voteRepository.save(voteEvent.toVote());
+                        voteRepository.save(voteEvent.toVote(user));
                     } else if (EventTypeEnum.UPDATE.compareTo(voteEvent.getEventTypeEnum())==0) {
                         logger.info("UPDATE ACTION: "+ voteEvent.getVoteUuid());
-                        voteRepository.updateByVoteID(voteEvent.toVote().getVoteUuid());
+                        voteRepository.updateByVoteID(voteEvent.toVote(user).getVoteUuid());
                     } else if (EventTypeEnum.DELETE.compareTo(voteEvent.getEventTypeEnum())==0) {
                         logger.info("DELETE ACTION: "+ voteEvent.getVoteUuid());
-                        voteRepository.deleteByVoteID(voteEvent.toVote().getVoteUuid());
+                        voteRepository.deleteByVoteID(voteEvent.getVoteUuid());
                     }
-                    voteList.add(voteEvent.toVote());
                 }
             }
-
-            // return results from RPC service
-            return voteList;
         }
 
         public void close() throws IOException {
@@ -189,11 +194,7 @@ public class VoteACMEApplication {
                 m_clientImpl = new RPCClientImpl();
 
                 System.out.println(" [x] " + m_name + " requesting GetAllVotes()");
-                List<Vote> response = m_clientImpl.call();
-
-                if (response != null) {
-                    System.out.println(" [.] " + m_name + " got '" + response + "'");
-                }
+                m_clientImpl.call();
 
                 Thread.sleep(getRandomNumber(0, 10) * 1000L);
 

@@ -23,7 +23,7 @@ public class UserBootstrapper implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        if (userRepo.findByUsername("1").isEmpty()) {
+        if (userRepo.findByUsername("u1@u1.com").isEmpty()) {
             User u1 = new User("u1@u1.com","u1", "u1", "123456789", "xpto");
             userRepo.save(u1);
         }

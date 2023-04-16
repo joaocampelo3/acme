@@ -18,7 +18,7 @@ public class UserBootstrapper implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         
-        if (uRepository.findByUsername("1").isEmpty()) {
+        if (uRepository.findByUsername("u1@u1.com").isEmpty()) {
             User u1 = new User("u1@u1.com","u1", "u1", "123456789", "xpto");
             uRepository.save(u1);
         }
