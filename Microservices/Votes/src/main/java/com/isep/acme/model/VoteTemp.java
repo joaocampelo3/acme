@@ -11,7 +11,9 @@ public class VoteTemp {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID voteTempID;
+    private Long voteTempID;
+
+    private UUID voteTempUuid;
 
     @Column(nullable = false)
     private String vote;
@@ -26,11 +28,19 @@ public class VoteTemp {
 
     }
 
-    public VoteTemp(String vote, Long userID, String review) {
-        this.voteTempID = voteTempID;
+    public VoteTemp(UUID voteTempUuid, String vote, Long userID, String review) {
+        this.voteTempUuid = voteTempUuid;
         this.vote = vote;
         this.userID = userID;
         this.review = review;
+    }
+
+    public UUID getVoteTempUuid() {
+        return voteTempUuid;
+    }
+
+    public void setVoteTempUuid(UUID voteTempUuid) {
+        this.voteTempUuid = voteTempUuid;
     }
 
     public String getVote() {
@@ -75,15 +85,15 @@ public class VoteTemp {
         return Objects.hash(vote, userID);
     }
 
-    public UUID getVoteTempID() {
+    public Long getVoteTempID() {
         return voteTempID;
     }
 
-    public void setVoteTempID(UUID voteTempID) {
+    public void setVoteTempID(Long voteTempID) {
         this.voteTempID = voteTempID;
     }
 
     public VoteTempDTO toDto() {
-        return new VoteTempDTO(this.voteTempID, this.userID, this.vote, this.review);
+        return new VoteTempDTO(this.voteTempUuid.toString(), this.userID, this.vote, this.review);
     }
 }

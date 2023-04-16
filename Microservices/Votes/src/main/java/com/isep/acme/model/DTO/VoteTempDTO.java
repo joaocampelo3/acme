@@ -5,17 +5,25 @@ import com.google.gson.Gson;
 import java.util.UUID;
 
 public class VoteTempDTO {
+    private String voteTempUuid;
     private Long userID;
     private String vote;
     private String review;
 
-    public VoteTempDTO(UUID voteTempID, Long userID, String vote, String review) {
+    public VoteTempDTO(String voteTempUuid, Long userID, String vote, String review) {
+        this.voteTempUuid = voteTempUuid;
         this.vote = vote;
         this.review = review;
         this.userID = userID;
     }
 
+    public String getVoteTempUuid() {
+        return voteTempUuid;
+    }
 
+    public void setVoteTempUuid(String voteTempUuid) {
+        this.voteTempUuid = voteTempUuid;
+    }
 
     public Long getUserID() {
         return userID;

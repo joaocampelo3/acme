@@ -2,7 +2,6 @@ package com.isep.acme.services.MBCommunication;
 
 
 import com.isep.acme.events.VoteEvent;
-import com.isep.acme.model.DTO.VoteDTO;
 import com.isep.acme.model.Vote;
 import com.isep.acme.rabbitmqconfigs.RabbitMQHost;
 import com.isep.acme.services.interfaces.VoteService;
@@ -82,7 +81,7 @@ public class VoteEventSubscriber {
         // handle the product event
         if (eventType.equals("vote_created")) {
             // do something with the product created event
-            Optional<Vote> vote = voteService.findByVoteID(event.getVoteID());
+            Optional<Vote> vote = voteService.findByVoteID(event.getVoteUuid());
             if (vote == null){
                 voteService.create(vote.get().toDto(), vote.get().getReviewID());
             }
@@ -90,7 +89,7 @@ public class VoteEventSubscriber {
             // do something with the product updated event
         } else if (eventType.equals("vote_deleted")) {
             // do something with the product deleted event
-            voteService.deleteByVoteID(event.getVoteID());
+            voteService.deleteByVoteID(event.getVoteUuid());
         }
     }
 

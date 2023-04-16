@@ -10,6 +10,7 @@ import java.util.UUID;
 
 public class ReviewEvent {
     private Long idReview;
+    private String reviewUuid;
     private Long version;
     private String approvalStatus;
     private String reviewText;
@@ -31,7 +32,7 @@ public class ReviewEvent {
         this.voteTempID = voteTempID;
     }
 
-    public ReviewEvent(Long idReview, String sku, Long userId, String comment, Double rating, EventTypeEnum eventTypeEnum) {
+    public ReviewEvent(Long idReview, String reviewUuid, String sku, Long userId, String comment, Double rating, EventTypeEnum eventTypeEnum) {
         this.idReview = idReview;
         this.sku = sku;
         this.userId = userId;
@@ -40,7 +41,7 @@ public class ReviewEvent {
         this.eventTypeEnum = eventTypeEnum;
     }
 
-    public ReviewEvent(Long idReview, Long version, String approvalStatus, String reviewText, String publishingDate, String funFact, String sku, Long userId, String comment, Double rating) {
+    public ReviewEvent(Long idReview, String reviewUuid, Long version, String approvalStatus, String reviewText, String publishingDate, String funFact, String sku, Long userId, String comment, Double rating) {
         this.idReview = idReview;
         this.version = version;
         this.approvalStatus = approvalStatus;
@@ -53,7 +54,7 @@ public class ReviewEvent {
         this.rating = rating;
     }
 
-    public ReviewEvent(Long idReview, Long version, String approvalStatus, String reviewText, String publishingDate, String funFact, String sku, Long userId, String comment, Double rating, EventTypeEnum eventTypeEnum) {
+    public ReviewEvent(Long idReview, String reviewUuid, Long version, String approvalStatus, String reviewText, String publishingDate, String funFact, String sku, Long userId, String comment, Double rating, EventTypeEnum eventTypeEnum) {
         this.idReview = idReview;
         this.version = version;
         this.approvalStatus = approvalStatus;
@@ -73,6 +74,14 @@ public class ReviewEvent {
 
     public void setIdReview(Long idReview) {
         this.idReview = idReview;
+    }
+
+    public String getReviewUuid() {
+        return reviewUuid;
+    }
+
+    public void setReviewUuid(String reviewUuid) {
+        this.reviewUuid = reviewUuid;
     }
 
     public UUID getVoteTempID() {
@@ -132,7 +141,7 @@ public class ReviewEvent {
     }
 
     public Review toReview(User user){
-        Review review = new Review(this.idReview, this.version, this.approvalStatus, this.reviewText, LocalDate.parse(this.publishingDate), this.funFact);
+        Review review = new Review(this.idReview, UUID.fromString(this.reviewUuid), this.version, this.approvalStatus, this.reviewText, LocalDate.parse(this.publishingDate), this.funFact);
         review.setSku(this.sku);
         review.setRating(new Rating(this.rating));
         review.setUser(user);

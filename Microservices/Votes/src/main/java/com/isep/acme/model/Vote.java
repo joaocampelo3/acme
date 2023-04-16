@@ -11,7 +11,9 @@ public class Vote {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID voteID;
+    private Long voteID;
+
+    private UUID voteUuid;
 
     @Column(nullable = false)
     private String vote;
@@ -22,8 +24,16 @@ public class Vote {
     @Column(nullable = false)
     private Long reviewID;
 
-    public Vote(UUID voteID, String vote, Long userID, Long reviewID) {
+    public Vote(UUID voteUuid, String vote, Long userID, Long reviewID) {
+        this.voteUuid = voteUuid;
+        this.vote = vote;
+        this.userID = userID;
+        this.reviewID = reviewID;
+    }
+
+    public Vote(Long voteID, UUID voteUuid, String vote, Long userID, Long reviewID) {
         this.voteID = voteID;
+        this.voteUuid = voteUuid;
         this.vote = vote;
         this.userID = userID;
         this.reviewID = reviewID;
@@ -38,6 +48,11 @@ public class Vote {
     protected Vote() {
 
     }
+
+    public Long getVoteID() {
+        return voteID;
+    }
+
     public Long getReviewID() {
         return reviewID;
     }
@@ -46,17 +61,12 @@ public class Vote {
         this.reviewID = reviewID;
     }
 
-
-    public Vote(UUID voteID) {
-        this.voteID = voteID;
+    public UUID getVoteUuid() {
+        return voteUuid;
     }
 
-    public UUID getVoteID() {
-        return voteID;
-    }
-
-    public void setVoteID(UUID voteID) {
-        this.voteID = voteID;
+    public void setVoteUuid(UUID voteUuid) {
+        this.voteUuid = voteUuid;
     }
 
     public String getVote() {
@@ -94,6 +104,6 @@ public class Vote {
     }
 
     public VoteDTO toDto() {
-        return new VoteDTO(this.voteID, this.userID, this.vote);
+        return new VoteDTO(this.voteUuid.toString(), this.userID, this.vote);
     }
 }

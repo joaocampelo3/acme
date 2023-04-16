@@ -1,12 +1,12 @@
 package com.isep.acme.events;
 
-import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.UUID;
 
 public class VoteEvent {
-    private UUID voteID;
+    private UUID voteUuid;
+    private String vote;
 
     private Long reviewID;
 
@@ -20,17 +20,41 @@ public class VoteEvent {
         return reviewID;
     }
 
-    public VoteEvent(UUID voteID, Long reviewID) {
-        this.voteID = voteID;
+    public VoteEvent(UUID voteUuid) {
+        this.voteUuid = voteUuid;
+    }
+
+    public VoteEvent(UUID voteUuid, Long reviewID) {
+        this.voteUuid = voteUuid;
         this.reviewID = reviewID;
     }
-    public VoteEvent(UUID voteID, String reviewText, String sku, Long userID) {
-        this.voteID = voteID;
+
+    public VoteEvent(UUID voteUuid, String vote) {
+        this.voteUuid = voteUuid;
+        this.vote = vote;
+    }
+
+    public VoteEvent(UUID voteUuid, String vote, Long reviewID, Long userID) {
+        this.voteUuid = voteUuid;
+        this.vote = vote;
+        this.reviewID = reviewID;
+        this.userID = userID;
+    }
+
+    public VoteEvent(UUID voteUuid, String reviewText, String sku, Long userID) {
+        this.voteUuid = voteUuid;
         this.reviewText = reviewText;
         this.sku = sku;
         this.userID = userID;
     }
 
+    public UUID getVoteUuid() {
+        return voteUuid;
+    }
+
+    public void setVoteUuid(UUID voteUuid) {
+        this.voteUuid = voteUuid;
+    }
 
     public Long getUserID() {
         return userID;
@@ -56,22 +80,8 @@ public class VoteEvent {
         this.reviewText = reviewText;
     }
 
-
     public void setReviewID(Long reviewID) {
         this.reviewID = reviewID;
-    }
-
-
-    public VoteEvent(UUID voteID) {
-        this.voteID = voteID;
-    }
-
-    public UUID getVoteID() {
-        return voteID;
-    }
-
-    public void setVoteID(UUID voteID) {
-        this.voteID = voteID;
     }
 
     public String toJson() {

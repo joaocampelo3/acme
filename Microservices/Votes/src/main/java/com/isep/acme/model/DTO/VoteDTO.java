@@ -10,9 +10,20 @@ public class VoteDTO {
     private Long userID;
     private String vote;
 
-    public VoteDTO(UUID voteID, Long userID, String vote) {
+    private String voteUuid;
+
+    public VoteDTO(String voteUuid, Long userID, String vote) {
+        this.voteUuid=voteUuid;
         this.userID = userID;
         this.vote = vote;
+    }
+
+    public String getVoteUuid() {
+        return voteUuid;
+    }
+
+    public void setVoteUuid(String voteUuid) {
+        this.voteUuid = voteUuid;
     }
 
     public Long getUserID() {

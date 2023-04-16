@@ -54,7 +54,7 @@ public class VoteServiceImpl implements VoteService {
 
         VoteDTO voteDTO = repository.save(v).toDto();
 
-        publisher.mainPublish(new VoteEvent(v.getVoteID(), v.getVote(), v.getReviewID(), v.getUserID()), "vote.vote_created");
+        publisher.mainPublish(new VoteEvent(v.getVoteUuid(), v.getVote(), v.getReviewID(), v.getUserID()), "vote.vote_created");
 
         return voteDTO;
     }
@@ -62,11 +62,11 @@ public class VoteServiceImpl implements VoteService {
     @Override
     public VoteTempDTO createTemp(VoteTempDTO voteTempDTO, String sku) throws Exception {
 
-        final VoteTemp v = new VoteTemp(voteTempDTO.getVote(), voteTempDTO.getUserID(), voteTempDTO.getReview());
+        final VoteTemp v = new VoteTemp(UUID.fromString(voteTempDTO.getVoteTempUuid()),voteTempDTO.getVote(), voteTempDTO.getUserID(), voteTempDTO.getReview());
 
         VoteTempDTO voteTempDTOfinal = voteTempRepository.save(v).toDto();
 
-        publisher.mainPublish(new VoteEvent(v.getVoteTempID(), v.getVote(), v.getReview(), sku, v.getUserID()), "vote.voteTemp_created");
+        publisher.mainPublish(new VoteEvent(v.getVoteTempUuid(), v.getVote(), v.getReview(), sku, v.getUserID()), "vote.voteTemp_created");
 
         return voteTempDTOfinal;
     }
@@ -81,7 +81,7 @@ public class VoteServiceImpl implements VoteService {
 
         VoteDTO voteDTO = repository.save(voteToUpdate.get()).toDto();
 
-        publisher.mainPublish(new VoteEvent(voteToUpdate.get().getVoteID(), voteToUpdate.get().getVote()), "vote.vote_updated");
+        publisher.mainPublish(new VoteEvent(voteToUpdate.get().getVoteUuid(), voteToUpdate.get().getVote()), "vote.vote_updated");
 
         return voteDTO;
     }
@@ -90,14 +90,14 @@ public class VoteServiceImpl implements VoteService {
     public void deleteByVoteID(UUID voteID) throws Exception {
         final Optional<Vote> v = repository.findByID(voteID);
         repository.deleteByVoteID(voteID);
-        publisher.mainPublish(new VoteEvent(v.get().getVoteID()), "vote.vote_deleted");
+        publisher.mainPublish(new VoteEvent(v.get().getVoteUuid()), "vote.vote_deleted");
     }
 
     @Override
     public void deleteTempByVoteID(UUID voteID) throws Exception {
         final Optional<VoteTemp> v = voteTempRepository.findByID(voteID);
         voteTempRepository.deleteByVoteID(voteID);
-        publisher.mainPublish(new VoteEvent(v.get().getVoteTempID()), "vote.voteTemp_deleted");
+        publisher.mainPublish(new VoteEvent(v.get().getVoteTempUuid()), "vote.voteTemp_deleted");
     }
 
     @Override

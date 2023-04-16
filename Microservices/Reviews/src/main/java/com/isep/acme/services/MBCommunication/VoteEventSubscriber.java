@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Optional;
 import java.util.concurrent.TimeoutException;
 
 @Component
@@ -60,7 +59,7 @@ public class VoteEventSubscriber {
                 if (eventType.equals("voteTemp_created")) {
                     VoteEvent event = VoteEvent.fromJson(message);
                     try {
-                        reviewService.create(new CreateReviewDTO(event.getReviewText(), event.getUserID(), event.getVoteID()), event.getSku());
+                        reviewService.create(new CreateReviewDTO(event.getReviewText(), event.getUserID(), event.getVoteUuid()), event.getSku());
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }

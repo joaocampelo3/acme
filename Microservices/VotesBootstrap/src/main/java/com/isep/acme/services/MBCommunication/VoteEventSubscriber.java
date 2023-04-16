@@ -80,13 +80,13 @@ public class VoteEventSubscriber {
     private void handleVoteEvent(String eventType, String originService, VoteEvent event) throws Exception {
         // handle the product event
         if (eventType.equals("vote_created")) {
-            voteEventRepo.save(new VoteEvent(event.getVoteID(), event.getVote(), event.getReviewID(), event.getReviewText(),
+            voteEventRepo.save(new VoteEvent(event.getVoteID(), event.getVoteUuid(), event.getVote(), event.getReviewID(), event.getReviewText(),
                     event.getSku(), event.getUserID(), EventTypeEnum.CREATE));
         } else if (eventType.equals("vote_updated")) {
-            voteEventRepo.save(new VoteEvent(event.getVoteID(),event.getVote(), event.getReviewID(), event.getReviewText(),
+            voteEventRepo.save(new VoteEvent(event.getVoteID(), event.getVoteUuid(),event.getVote(), event.getReviewID(), event.getReviewText(),
                     event.getSku(), event.getUserID(), EventTypeEnum.UPDATE));
         } else if (eventType.equals("vote_deleted")) {
-            voteEventRepo.save(new VoteEvent(event.getVoteID(), event.getVote(), event.getReviewID(), event.getReviewText(),
+            voteEventRepo.save(new VoteEvent(event.getVoteID(), event.getVoteUuid(), event.getVote(), event.getReviewID(), event.getReviewText(),
                     event.getSku(), event.getUserID(), EventTypeEnum.DELETE));
         }
     }

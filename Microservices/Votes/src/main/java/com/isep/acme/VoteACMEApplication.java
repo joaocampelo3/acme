@@ -2,7 +2,6 @@ package com.isep.acme;
 
 import com.isep.acme.events.EventTypeEnum;
 import com.isep.acme.events.VoteEvent;
-import com.isep.acme.model.Review;
 import com.isep.acme.model.Vote;
 import com.isep.acme.property.FileStorageProperties;
 import com.isep.acme.rabbitmqconfigs.RabbitMQHost;
@@ -28,7 +27,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicReference;
@@ -149,14 +147,14 @@ public class VoteACMEApplication {
             if (voteEventList != null && !voteEventList.isEmpty()) {
                 for (VoteEvent voteEvent : voteEventList) {
                     if (EventTypeEnum.CREATE.compareTo(voteEvent.getEventTypeEnum())==0){
-                        logger.info("CREATE ACTION: "+ voteEvent.getVoteID());
+                        logger.info("CREATE ACTION: "+ voteEvent.getVoteUuid());
                         voteRepository.save(voteEvent.toVote());
                     } else if (EventTypeEnum.UPDATE.compareTo(voteEvent.getEventTypeEnum())==0) {
-                        logger.info("UPDATE ACTION: "+ voteEvent.getVoteID());
-                        voteRepository.updateByVoteID(voteEvent.toVote().getVoteID());
+                        logger.info("UPDATE ACTION: "+ voteEvent.getVoteUuid());
+                        voteRepository.updateByVoteID(voteEvent.toVote().getVoteUuid());
                     } else if (EventTypeEnum.DELETE.compareTo(voteEvent.getEventTypeEnum())==0) {
-                        logger.info("DELETE ACTION: "+ voteEvent.getVoteID());
-                        voteRepository.deleteByVoteID(voteEvent.toVote().getVoteID());
+                        logger.info("DELETE ACTION: "+ voteEvent.getVoteUuid());
+                        voteRepository.deleteByVoteID(voteEvent.toVote().getVoteUuid());
                     }
                     voteList.add(voteEvent.toVote());
                 }

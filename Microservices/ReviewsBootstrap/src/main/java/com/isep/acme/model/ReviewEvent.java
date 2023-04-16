@@ -19,6 +19,7 @@ public class ReviewEvent {
 
     @Id
     private Long idReview;
+    private String reviewUuid;
     private long version;
     private String approvalStatus;
     private String reviewText;
@@ -30,7 +31,7 @@ public class ReviewEvent {
     private Double rating;
     private EventTypeEnum eventTypeEnum;
 
-    public ReviewEvent(final Long idReview, final long version, final String approvalStatus, final String reviewText,
+    public ReviewEvent(final Long idReview, final String reviewUuid, final long version, final String approvalStatus, final String reviewText,
                        final String publishingDate, final String funFact) {
         this.idReview = Objects.requireNonNull(idReview);
         this.version = Objects.requireNonNull(version);
@@ -40,11 +41,10 @@ public class ReviewEvent {
         setFunFact(funFact);
     }
 
-    public ReviewEvent(final Long idReview, final long version, final String approvalStatus, final  String reviewText,
+    public ReviewEvent(final Long idReview, final String reviewUuid, final long version, final String approvalStatus, final  String reviewText,
                        final String report, final String publishingDate, final String funFact, String sku, Double rating,
                        Long userId) {
-        this(idReview, version, approvalStatus, reviewText, publishingDate, funFact);
-
+        this(idReview, reviewUuid, version, approvalStatus, reviewText, publishingDate, funFact);
         setReport(report);
         setSku(sku);
         setRating(rating);
@@ -52,19 +52,16 @@ public class ReviewEvent {
 
     }
 
-    public ReviewEvent(final String reviewText, String publishingDate, String sku, String funFact, Double rating,
-                       Long userId) {
-        setReviewText(reviewText);
-        setSku(sku);
-        setPublishingDate(publishingDate);
-        setApprovalStatus("pending");
-        setFunFact(funFact);
-        setRating(rating);
-        setUserId(userId);
-    }
-
     public Long getIdReview() {
         return idReview;
+    }
+
+    public String getReviewUuid() {
+        return reviewUuid;
+    }
+
+    public void setReviewUuid(String reviewUuid) {
+        this.reviewUuid = reviewUuid;
     }
 
     public String getApprovalStatus() {

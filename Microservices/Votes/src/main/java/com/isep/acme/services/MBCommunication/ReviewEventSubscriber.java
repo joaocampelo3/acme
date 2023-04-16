@@ -93,7 +93,7 @@ public class ReviewEventSubscriber {
 
             final Optional<VoteTemp> voteTemp = voteTempRepository.findByID(event.getVoteTempID());
 
-            final VoteDTO voteDTO = voteService.create(new VoteDTO(voteTemp.get().getVoteTempID(), voteTemp.get().getUserID(), voteTemp.get().getVote()), event.getReviewId());
+            final VoteDTO voteDTO = voteService.create(new VoteDTO(voteTemp.get().getVoteTempUuid().toString(), voteTemp.get().getUserID(), voteTemp.get().getVote()), event.getReviewId());
 
             if (voteDTO != null){
                 voteService.deleteTempByVoteID(event.getVoteTempID());

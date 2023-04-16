@@ -11,6 +11,9 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idReview;
 
+    @Column(nullable = false)
+    private UUID reviewUuid;
+
     @Version
     private long version;
 
@@ -41,7 +44,7 @@ public class Review {
 
     protected Review(){}
 
-    public Review(final Long idReview, final long version, final String approvalStatus, final String reviewText, final LocalDate publishingDate, final String funFact) {
+    public Review(final Long idReview, final UUID reviewUuid, final long version, final String approvalStatus, final String reviewText, final LocalDate publishingDate, final String funFact) {
         this.idReview = idReview;
         this.version = version;
         setApprovalStatus(approvalStatus);
@@ -50,9 +53,8 @@ public class Review {
         setFunFact(funFact);
     }
 
-    public Review(final Long idReview, final long version, final String approvalStatus, final  String reviewText, final String report, final LocalDate publishingDate, final String funFact, String sku, Rating rating, User user) {
-        this(idReview, version, approvalStatus, reviewText, publishingDate, funFact);
-
+    public Review(final Long idReview, final UUID reviewUuid, final long version, final String approvalStatus, final  String reviewText, final String report, final LocalDate publishingDate, final String funFact, String sku, Rating rating, User user) {
+        this(idReview, reviewUuid, version, approvalStatus, reviewText, publishingDate, funFact);
         setReport(report);
         setSku(sku);
         setRating(rating);
@@ -61,6 +63,7 @@ public class Review {
     }
 
     public Review(final String reviewText, LocalDate publishingDate, String sku, String funFact, Rating rating, User user) {
+        setReviewUuid(UUID.randomUUID());
         setReviewText(reviewText);
         setSku(sku);
         setPublishingDate(publishingDate);
@@ -72,6 +75,14 @@ public class Review {
 
     public Long getIdReview() {
         return idReview;
+    }
+
+    public UUID getReviewUuid() {
+        return reviewUuid;
+    }
+
+    public void setReviewUuid(UUID reviewUuid) {
+        this.reviewUuid = reviewUuid;
     }
 
     public String getApprovalStatus() {

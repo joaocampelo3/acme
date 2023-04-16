@@ -17,7 +17,8 @@ import java.util.UUID;
 @Setter
 public class VoteEvent {
     @Id
-    private UUID voteID;
+    private Long voteID;
+    private String voteUuid;
     private String vote;
     private Long reviewID;
     private String reviewText;
