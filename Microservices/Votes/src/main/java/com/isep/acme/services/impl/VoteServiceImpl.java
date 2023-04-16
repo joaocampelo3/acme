@@ -1,5 +1,6 @@
 package com.isep.acme.services.impl;
 
+import com.isep.acme.events.EventTypeEnum;
 import com.isep.acme.events.VoteEvent;
 import com.isep.acme.model.DTO.VoteDTO;
 import com.isep.acme.model.DTO.VoteTempDTO;
@@ -54,7 +55,7 @@ public class VoteServiceImpl implements VoteService {
 
         VoteDTO voteDTO = repository.save(v).toDto();
 
-        publisher.mainPublish(new VoteEvent(v.getVoteUuid(), v.getVote(), v.getReviewID(), v.getUserID()), "vote.vote_created");
+        publisher.mainPublish(new VoteEvent(v.getVoteUuid(), v.getVote(), v.getReviewID(), v.getUserID(), EventTypeEnum.CREATE), "vote.vote_created");
 
         return voteDTO;
     }
@@ -81,7 +82,7 @@ public class VoteServiceImpl implements VoteService {
 
         VoteDTO voteDTO = repository.save(voteToUpdate.get()).toDto();
 
-        publisher.mainPublish(new VoteEvent(voteToUpdate.get().getVoteUuid(), voteToUpdate.get().getVote()), "vote.vote_updated");
+        publisher.mainPublish(new VoteEvent(voteToUpdate.get().getVoteUuid(), voteToUpdate.get().getVote(), EventTypeEnum.UPDATE), "vote.vote_updated");
 
         return voteDTO;
     }
@@ -90,7 +91,7 @@ public class VoteServiceImpl implements VoteService {
     public void deleteByVoteID(UUID voteID) throws Exception {
         final Optional<Vote> v = repository.findByID(voteID);
         repository.deleteByVoteID(voteID);
-        publisher.mainPublish(new VoteEvent(v.get().getVoteUuid()), "vote.vote_deleted");
+        publisher.mainPublish(new VoteEvent(v.get().getVoteUuid(), EventTypeEnum.DELETE), "vote.vote_deleted");
     }
 
     @Override

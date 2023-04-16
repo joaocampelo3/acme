@@ -1,5 +1,6 @@
 package com.isep.acme.services.impl;
 
+import com.isep.acme.events.EventTypeEnum;
 import com.isep.acme.events.ProductEvent;
 import com.isep.acme.model.Product;
 import com.isep.acme.model.DTO.ProductDTO;
@@ -80,7 +81,7 @@ public class ProductServiceImpl implements ProductService {
         final Product p = new Product(product.getSku(), product.getDesignation(), product.getDescription());
 
         ProductDTO productDTO = repository.save(p).toDto();
-        publisher.mainPublish(new ProductEvent(p.getSku(), p.getDesignation(), p.getDescription()), "product.product_created");
+        publisher.mainPublish(new ProductEvent(p.getSku(), p.getDesignation(), p.getDescription(), EventTypeEnum.CREATE), "product.product_created");
 
         return productDTO;
     }
@@ -96,7 +97,7 @@ public class ProductServiceImpl implements ProductService {
 
         ProductDTO productUpdatedDto = repository.save(productToUpdate.get()).toDto();
 
-        publisher.mainPublish(new ProductEvent(productUpdatedDto.getSku(), productUpdatedDto.getDesignation(), productUpdatedDto.getDescription()), "product.product_updated");
+        publisher.mainPublish(new ProductEvent(productUpdatedDto.getSku(), productUpdatedDto.getDesignation(), productUpdatedDto.getDescription(), EventTypeEnum.UPDATE), "product.product_updated");
 
         return productUpdatedDto;
     }
@@ -106,7 +107,7 @@ public class ProductServiceImpl implements ProductService {
 
         repository.deleteBySku(sku);
 
-        publisher.mainPublish(new ProductEvent(sku), "product.product_deleted");
+        publisher.mainPublish(new ProductEvent(sku, EventTypeEnum.DELETE), "product.product_deleted");
 
     }
 }

@@ -35,8 +35,9 @@ public class ProductEvent {
         this.eventTypeEnum = eventTypeEnum;
     }
 
-    public ProductEvent(String sku) {
+    public ProductEvent(String sku, EventTypeEnum eventTypeEnum) {
         this.sku = sku;
+        this.eventTypeEnum = eventTypeEnum;
     }
 
     public String getDesignation() {

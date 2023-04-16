@@ -27,20 +27,27 @@ public class VoteEvent {
         this.voteUuid = voteUuid;
     }
 
+    public VoteEvent(UUID voteUuid, EventTypeEnum eventTypeEnum) {
+        this.voteUuid = voteUuid;
+        this.eventTypeEnum = eventTypeEnum;
+    }
+
     public VoteEvent(UUID voteUuid, Long reviewID) {
         this.voteUuid = voteUuid;
         this.reviewID = reviewID;
     }
 
-    public VoteEvent(UUID voteUuid, String vote) {
+    public VoteEvent(UUID voteUuid, String vote, EventTypeEnum eventTypeEnum) {
         this.voteUuid = voteUuid;
         this.vote = vote;
+        this.eventTypeEnum = eventTypeEnum;
     }
-    public VoteEvent(UUID voteUuid, String vote, Long reviewID, Long userID) {
+    public VoteEvent(UUID voteUuid, String vote, Long reviewID, Long userID, EventTypeEnum eventTypeEnum) {
         this.voteUuid = voteUuid;
         this.vote = vote;
         this.reviewID = reviewID;
         this.userID = userID;
+        this.eventTypeEnum = eventTypeEnum;
     }
 
     public VoteEvent(UUID voteUuid, String vote, String reviewText, String sku, Long userID) {

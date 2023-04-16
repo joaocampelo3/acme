@@ -23,8 +23,9 @@ public class ReviewEvent {
     private UUID voteTempID;
     private EventTypeEnum eventTypeEnum;
 
-    public ReviewEvent(Long idReview) {
+    public ReviewEvent(Long idReview, EventTypeEnum eventTypeEnum) {
         this.idReview = idReview;
+        this.eventTypeEnum = eventTypeEnum;
     }
 
     public ReviewEvent(Long idReview, UUID voteTempID) {

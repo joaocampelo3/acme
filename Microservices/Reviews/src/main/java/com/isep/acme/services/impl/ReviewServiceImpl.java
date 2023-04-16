@@ -3,6 +3,7 @@ package com.isep.acme.services.impl;
 import com.isep.acme.controllers.ResourceNotFoundException;
 import java.lang.IllegalArgumentException;
 
+import com.isep.acme.events.EventTypeEnum;
 import com.isep.acme.events.ReviewEvent;
 import com.isep.acme.model.DTO.CreateReviewDTO;
 import com.isep.acme.model.DTO.ReviewDTO;
@@ -87,7 +88,7 @@ public class ReviewServiceImpl implements ReviewService {
         if (createReviewDTO.getVoteID() == null){
             publisher.mainPublish(new ReviewEvent(review.getIdReview(), review.getReviewUuid().toString(), review.getVersion(), review.getApprovalStatus(),
                     review.getReviewText(), review.getPublishingDate().toString(), review.getFunFact(), review.getSku(),
-                    review.getUser().getUserId(),review.getReviewText(), review.getRating().getRate()),"review.review_created");
+                    review.getUser().getUserId(),review.getReviewText(), review.getRating().getRate(), EventTypeEnum.CREATE),"review.review_created");
         }
         else{
             publisher.mainPublish(new ReviewEvent(review.getIdReview(), createReviewDTO.getVoteID()), "review.reviewFromVote_created");
@@ -140,7 +141,7 @@ public class ReviewServiceImpl implements ReviewService {
 
         Review r = rev.get();
         repository.delete(r);
-        publisher.mainPublish(new ReviewEvent(r.getIdReview()),"review.review_deleted");
+        publisher.mainPublish(new ReviewEvent(r.getIdReview(), EventTypeEnum.DELETE),"review.review_deleted");
 
 /*        if (r.getUpVote().isEmpty() && r.getDownVote().isEmpty()) {
 
