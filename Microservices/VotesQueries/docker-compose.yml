@@ -4,9 +4,9 @@ version: '3.8'
 # This create and starts the containers
 
 services:
-  voteservice:
+  votequeriesservice:
     build: .
-    container_name: VotesService
+    container_name: VotesQueriesService
     ports:
       - 8088:8080
       - 8089:5672

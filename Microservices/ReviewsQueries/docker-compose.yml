@@ -4,9 +4,9 @@ version: '3.8'
 # This create and starts the containers
 
 services:
-  reviewservice:
+  reviewqueriesservice:
     build: .
-    container_name: ReviewsService
+    container_name: ReviewsQueriesService
     ports:
       - 8083:8080
       - 8084:5672

@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: votes-deployment
+  name: votes-queries-deployment
 spec:
   selector:
     matchLabels:
-      app: votes
+      app: votes-queries
   replicas: 2
   template:
     metadata:
       labels:
-        app: votes
+        app: votes-queries
     spec:
       containers:
-      - name: votes-container
-        image: 1151386/votes
+      - name: votes-queries-container
+        image: 1151386/votes-queries
         imagePullPolicy: Never
         ports:
         - containerPort: 8080
@@ -30,10 +30,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: votes-service
+  name: votes-queries-service
 spec:
   selector:
-    app: votes
+    app: votes-queries
   ports:
   - name: amqp
     port: 5672
@@ -48,12 +48,12 @@ spec:
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: votes-service-hpa
+  name: votes-queries-service-hpa
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: votes
+    name: votes-queries
   minReplicas: 2
   maxReplicas: 3
   metrics:

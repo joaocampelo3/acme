@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: reviews-deployment
+  name: reviews-queries-deployment
 spec:
   selector:
     matchLabels:
-      app: reviews
+      app: reviews-queries
   replicas: 2
   template:
     metadata:
       labels:
-        app: reviews
+        app: reviews-queries
     spec:
       containers:
-      - name: reviews-container
-        image: 1151386/reviews
+      - name: reviews-queries-container
+        image: 1151386/reviews-queries
         imagePullPolicy: Never
         ports:
         - containerPort: 8080
@@ -30,10 +30,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: reviews-service
+  name: reviews-queries-service
 spec:
   selector:
-    app: reviews
+    app: reviews-queries
   ports:
   - name: amqp
     port: 5672
@@ -48,12 +48,12 @@ spec:
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: reviews-service-hpa
+  name: reviews-queries-service-hpa
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: reviews
+    name: reviews-queries
   minReplicas: 2
   maxReplicas: 3
   metrics:
