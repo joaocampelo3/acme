@@ -136,7 +136,7 @@ public class VoteACMEApplication {
             });
 
             //Simple delay
-			Thread.sleep(5000);
+			Thread.sleep(7000);
 
             List<VoteEvent> voteEventList = new ArrayList<>();
             List<String> voteEventStringList = new ArrayList<>();
@@ -189,7 +189,7 @@ public class VoteACMEApplication {
         public void run() {
             try {
                 // Simple delay
-                Thread.sleep(5000);
+                Thread.sleep(7000);
 
                 m_clientImpl = new RPCClientImpl();
 

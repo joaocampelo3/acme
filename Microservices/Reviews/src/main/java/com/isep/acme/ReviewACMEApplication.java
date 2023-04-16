@@ -139,7 +139,7 @@ public class ReviewACMEApplication {
 			});
 
 			//Simple delay
-			Thread.sleep(5000);
+			Thread.sleep(7000);
 
 			List<ReviewEvent> reviewEventList = new ArrayList<>();
 			List<String> reviewEventStringList = new ArrayList<>();
@@ -193,7 +193,7 @@ public class ReviewACMEApplication {
 		public void run() {
 			try {
 				// Simple delay
-				Thread.sleep(5000);
+				Thread.sleep(7000);
 
 				m_clientImpl = new RPCClientImpl();
 

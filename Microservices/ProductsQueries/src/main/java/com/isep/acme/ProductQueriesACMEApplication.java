@@ -131,7 +131,7 @@ public class ProductQueriesACMEApplication {
             });
 
             //Simple delay
-            Thread.sleep(5000);
+            Thread.sleep(7000);
 
             List<ProductEvent> productEventList = new ArrayList<>();
             List<String> productEventStringList = new ArrayList<>();
@@ -181,7 +181,7 @@ public class ProductQueriesACMEApplication {
         public void run() {
             try {
                 // Simple delay
-                Thread.sleep(5000);
+                Thread.sleep(7000);
 
                 m_clientImpl = new RPCClientImpl();
 
