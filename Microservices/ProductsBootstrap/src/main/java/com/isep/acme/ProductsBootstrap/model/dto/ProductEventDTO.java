@@ -11,11 +11,6 @@ public class ProductEventDTO {
         this.designation = designation;
     }
 
-    public static ProductEventDTO fromJson(String json) {
-        Gson gson = new Gson();
-        return gson.fromJson(json, ProductEventDTO.class);
-    }
-
     public String getSku() {
         return sku;
     }
@@ -30,10 +25,5 @@ public class ProductEventDTO {
 
     public void setDesignation(String designation) {
         this.designation = designation;
-    }
-
-    public String toJson() {
-        Gson gson = new Gson();
-        return gson.toJson(this);
     }
 }

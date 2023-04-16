@@ -1,14 +1,15 @@
 package com.isep.acme.events;
 
-import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.isep.acme.model.Rating;
 import com.isep.acme.model.Review;
+import com.isep.acme.model.User;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
 public class ReviewEvent {
-    private Long reviewId;
+    private Long idReview;
     private Long version;
     private String approvalStatus;
     private String reviewText;
@@ -21,17 +22,17 @@ public class ReviewEvent {
     private UUID voteTempID;
     private EventTypeEnum eventTypeEnum;
 
-    public ReviewEvent(Long reviewId) {
-        this.reviewId = reviewId;
+    public ReviewEvent(Long idReview) {
+        this.idReview = idReview;
     }
 
-    public ReviewEvent(Long reviewId, UUID voteTempID) {
-        this.reviewId = reviewId;
+    public ReviewEvent(Long idReview, UUID voteTempID) {
+        this.idReview = idReview;
         this.voteTempID = voteTempID;
     }
 
-    public ReviewEvent(Long reviewId, String sku, Long userId, String comment, Double rating, EventTypeEnum eventTypeEnum) {
-        this.reviewId = reviewId;
+    public ReviewEvent(Long idReview, String sku, Long userId, String comment, Double rating, EventTypeEnum eventTypeEnum) {
+        this.idReview = idReview;
         this.sku = sku;
         this.userId = userId;
         this.comment = comment;
@@ -39,8 +40,8 @@ public class ReviewEvent {
         this.eventTypeEnum = eventTypeEnum;
     }
 
-    public ReviewEvent(Long reviewId, Long version, String approvalStatus, String reviewText, String publishingDate, String funFact, String sku, Long userId, String comment, Double rating) {
-        this.reviewId = reviewId;
+    public ReviewEvent(Long idReview, Long version, String approvalStatus, String reviewText, String publishingDate, String funFact, String sku, Long userId, String comment, Double rating) {
+        this.idReview = idReview;
         this.version = version;
         this.approvalStatus = approvalStatus;
         this.reviewText = reviewText;
@@ -52,8 +53,8 @@ public class ReviewEvent {
         this.rating = rating;
     }
 
-    public ReviewEvent(Long reviewId, Long version, String approvalStatus, String reviewText, String publishingDate, String funFact, String sku, Long userId, String comment, Double rating, EventTypeEnum eventTypeEnum) {
-        this.reviewId = reviewId;
+    public ReviewEvent(Long idReview, Long version, String approvalStatus, String reviewText, String publishingDate, String funFact, String sku, Long userId, String comment, Double rating, EventTypeEnum eventTypeEnum) {
+        this.idReview = idReview;
         this.version = version;
         this.approvalStatus = approvalStatus;
         this.reviewText = reviewText;
@@ -66,12 +67,12 @@ public class ReviewEvent {
         this.eventTypeEnum = eventTypeEnum;
     }
 
-    public Long getReviewId() {
-        return reviewId;
+    public Long getIdReview() {
+        return idReview;
     }
 
-    public void setReviewId(Long reviewId) {
-        this.reviewId = reviewId;
+    public void setIdReview(Long idReview) {
+        this.idReview = idReview;
     }
 
     public UUID getVoteTempID() {
@@ -123,19 +124,18 @@ public class ReviewEvent {
     }
 
     public String toJson() {
-        Gson gson = new Gson();
-        return gson.toJson(this);
+        return new GsonBuilder().serializeNulls().create().toJson(this);
     }
 
     public static ReviewEvent fromJson(String json) {
-        Gson gson = new Gson();
-        return gson.fromJson(json, ReviewEvent.class);
+        return new GsonBuilder().serializeNulls().create().fromJson(json, ReviewEvent.class);
     }
 
-    public Review toReview(){
-        Review review = new Review(this.reviewId, this.version, this.approvalStatus, this.reviewText, LocalDate.parse(this.publishingDate), this.funFact);
+    public Review toReview(User user){
+        Review review = new Review(this.idReview, this.version, this.approvalStatus, this.reviewText, LocalDate.parse(this.publishingDate), this.funFact);
         review.setSku(this.sku);
         review.setRating(new Rating(this.rating));
+        review.setUser(user);
         return review;
     }
 }

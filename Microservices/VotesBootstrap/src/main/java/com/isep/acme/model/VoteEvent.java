@@ -1,6 +1,7 @@
 package com.isep.acme.model;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,10 +18,10 @@ import java.util.UUID;
 public class VoteEvent {
     @Id
     private UUID voteID;
+    private String vote;
     private Long reviewID;
     private String reviewText;
     private String sku;
-    private String vote;
     private Long userID;
     private EventTypeEnum eventTypeEnum;
 
@@ -43,12 +44,10 @@ public class VoteEvent {
     }
 
     public static VoteEvent fromJson(String json) {
-        Gson gson = new Gson();
-        return gson.fromJson(json, VoteEvent.class);
+        return new GsonBuilder().serializeNulls().create().fromJson(json, VoteEvent.class);
     }
 
     public String toJson() {
-        Gson gson = new Gson();
-        return gson.toJson(this);
+        return new GsonBuilder().serializeNulls().create().toJson(this);
     }
 }

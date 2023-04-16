@@ -42,8 +42,8 @@ public class Review {
     protected Review(){}
 
     public Review(final Long idReview, final long version, final String approvalStatus, final String reviewText, final LocalDate publishingDate, final String funFact) {
-        this.idReview = Objects.requireNonNull(idReview);
-        this.version = Objects.requireNonNull(version);
+        this.idReview = idReview;
+        this.version = version;
         setApprovalStatus(approvalStatus);
         setReviewText(reviewText);
         setPublishingDate(publishingDate);

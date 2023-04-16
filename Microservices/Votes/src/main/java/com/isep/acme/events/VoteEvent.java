@@ -1,6 +1,7 @@
 package com.isep.acme.events;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.isep.acme.model.Vote;
 
 import java.util.UUID;
@@ -37,6 +38,12 @@ public class VoteEvent {
     public VoteEvent(UUID voteID, String vote) {
         this.voteID = voteID;
         this.vote = vote;
+    }
+    public VoteEvent(UUID voteID, String vote, Long reviewID, Long userID) {
+        this.voteID = voteID;
+        this.vote = vote;
+        this.reviewID = reviewID;
+        this.userID = userID;
     }
 
     public VoteEvent(UUID voteID, String vote, EventTypeEnum eventTypeEnum) {
@@ -106,13 +113,11 @@ public class VoteEvent {
     }
 
     public String toJson() {
-        Gson gson = new Gson();
-        return gson.toJson(this);
+        return new GsonBuilder().serializeNulls().create().toJson(this);
     }
 
     public static VoteEvent fromJson(String json) {
-        Gson gson = new Gson();
-        return gson.fromJson(json, VoteEvent.class);
+        return new GsonBuilder().serializeNulls().create().fromJson(json, VoteEvent.class);
     }
 
     public Vote toVote(){

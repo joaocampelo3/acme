@@ -3,8 +3,10 @@ package com.isep.acme;
 import com.isep.acme.events.EventTypeEnum;
 import com.isep.acme.events.ReviewEvent;
 import com.isep.acme.model.Review;
+import com.isep.acme.model.User;
 import com.isep.acme.rabbitmqconfigs.RabbitMQHost;
 import com.isep.acme.repositories.ReviewRepository;
+import com.isep.acme.repositories.UserRepository;
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -28,7 +30,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicReference;
@@ -48,10 +49,13 @@ public class ReviewACMEApplication {
 	private static RabbitMQHost rabbitMQHost;
 	@Autowired
 	private static ReviewRepository reviewRepository;
+	@Autowired
+	private static UserRepository userRepository;
 
-	public ReviewACMEApplication(RabbitMQHost rabbitMQHost, ReviewRepository reviewRepository) {
+	public ReviewACMEApplication(RabbitMQHost rabbitMQHost, ReviewRepository reviewRepository, UserRepository userRepository) {
 		ReviewACMEApplication.rabbitMQHost = rabbitMQHost;
 		ReviewACMEApplication.reviewRepository = reviewRepository;
+		ReviewACMEApplication.userRepository = userRepository;
 	}
 
 	public static void main(String[] args) throws InterruptedException {
@@ -150,19 +154,22 @@ public class ReviewACMEApplication {
 			}
 
 
-			if (reviewEventStringList != null && !reviewEventStringList.isEmpty()) {
+			if (reviewEventList != null && !reviewEventList.isEmpty()) {
+				User user;
 				for (ReviewEvent reviewEvent : reviewEventList) {
+					user = userRepository.getById(reviewEvent.getUserId());
+
 					if (EventTypeEnum.CREATE.compareTo(reviewEvent.getEventTypeEnum())==0){
-						logger.info("CREATE ACTION: "+ reviewEvent.getReviewId());
-						reviewRepository.save(reviewEvent.toReview());
+						logger.info("CREATE ACTION: "+ reviewEvent.getIdReview());
+						reviewRepository.save(reviewEvent.toReview(user));
 					} else if (EventTypeEnum.UPDATE.compareTo(reviewEvent.getEventTypeEnum())==0) {
-						logger.info("UPDATE ACTION: "+ reviewEvent.getReviewId());
-						reviewRepository.save(reviewEvent.toReview());
+						logger.info("UPDATE ACTION: "+ reviewEvent.getIdReview());
+						reviewRepository.save(reviewEvent.toReview(user));
 					} else if (EventTypeEnum.DELETE.compareTo(reviewEvent.getEventTypeEnum())==0) {
-						logger.info("DELETE ACTION: "+ reviewEvent.getReviewId());
-						reviewRepository.delete(reviewEvent.toReview());
+						logger.info("DELETE ACTION: "+ reviewEvent.getIdReview());
+						reviewRepository.delete(reviewEvent.toReview(user));
 					}
-					reviewList.add(reviewEvent.toReview());
+					reviewList.add(reviewEvent.toReview(user));
 				}
 			}
 			// return results from RPC service

@@ -80,14 +80,14 @@ public class VoteEventSubscriber {
     private void handleVoteEvent(String eventType, String originService, VoteEvent event) throws Exception {
         // handle the product event
         if (eventType.equals("vote_created")) {
-            voteEventRepo.save(new VoteEvent(event.getVoteID(), event.getReviewID(), event.getReviewText(), event.getSku(),
-                    event.getVote(), event.getUserID(), EventTypeEnum.CREATE));
+            voteEventRepo.save(new VoteEvent(event.getVoteID(), event.getVote(), event.getReviewID(), event.getReviewText(),
+                    event.getSku(), event.getUserID(), EventTypeEnum.CREATE));
         } else if (eventType.equals("vote_updated")) {
-            voteEventRepo.save(new VoteEvent(event.getVoteID(), event.getReviewID(), event.getReviewText(), event.getSku(),
-                    event.getVote(), event.getUserID(), EventTypeEnum.UPDATE));
+            voteEventRepo.save(new VoteEvent(event.getVoteID(),event.getVote(), event.getReviewID(), event.getReviewText(),
+                    event.getSku(), event.getUserID(), EventTypeEnum.UPDATE));
         } else if (eventType.equals("vote_deleted")) {
-            voteEventRepo.save(new VoteEvent(event.getVoteID(), event.getReviewID(), event.getReviewText(), event.getSku(),
-                    event.getVote(), event.getUserID(), EventTypeEnum.DELETE));
+            voteEventRepo.save(new VoteEvent(event.getVoteID(), event.getVote(), event.getReviewID(), event.getReviewText(),
+                    event.getSku(), event.getUserID(), EventTypeEnum.DELETE));
         }
     }
 

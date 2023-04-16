@@ -1,6 +1,7 @@
 package com.isep.acme.model;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -157,12 +158,10 @@ public class ReviewEvent {
     }
 
     public static ReviewEvent fromJson(String json) {
-        Gson gson = new Gson();
-        return gson.fromJson(json, ReviewEvent.class);
+        return new GsonBuilder().serializeNulls().create().fromJson(json, ReviewEvent.class);
     }
 
     public String toJson() {
-        Gson gson = new Gson();
-        return gson.toJson(this);
+        return new GsonBuilder().serializeNulls().create().toJson(this);
     }
 }

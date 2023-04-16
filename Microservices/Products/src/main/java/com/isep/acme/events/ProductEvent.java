@@ -1,6 +1,7 @@
 package com.isep.acme.events;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.isep.acme.model.Product;
 
 public class ProductEvent {
@@ -71,13 +72,12 @@ public class ProductEvent {
     }
 
     public String toJson() {
-        Gson gson = new Gson();
-        return gson.toJson(this);
+        return new GsonBuilder().serializeNulls().create().toJson(this);
     }
 
     public static ProductEvent fromJson(String json) {
         Gson gson = new Gson();
-        return gson.fromJson(json, ProductEvent.class);
+        return new GsonBuilder().serializeNulls().create().fromJson(json, ProductEvent.class);
     }
 
     public Product toProduct() {

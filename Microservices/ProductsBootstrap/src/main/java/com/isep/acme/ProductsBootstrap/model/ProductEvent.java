@@ -2,6 +2,7 @@ package com.isep.acme.ProductsBootstrap.model;
 
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.isep.acme.ProductsBootstrap.model.dto.ProductEventDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -110,12 +111,10 @@ public class ProductEvent implements Serializable {
     }
 
     public static ProductEvent fromJson(String json) {
-        Gson gson = new Gson();
-        return gson.fromJson(json, ProductEvent.class);
+        return new GsonBuilder().serializeNulls().create().fromJson(json, ProductEvent.class);
     }
     public String toJson() {
-        Gson gson = new Gson();
-        return gson.toJson(this);
+        return new GsonBuilder().serializeNulls().create().toJson(this);
     }
 
 }

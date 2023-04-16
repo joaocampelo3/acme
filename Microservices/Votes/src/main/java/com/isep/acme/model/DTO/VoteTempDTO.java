@@ -40,14 +40,4 @@ public class VoteTempDTO {
     public void setReview(String review) {
         this.review = review;
     }
-
-    public String toJson() {
-        Gson gson = new Gson();
-        return gson.toJson(this);
-    }
-
-    public static VoteTempDTO fromJson(String json) {
-        Gson gson = new Gson();
-        return gson.fromJson(json, VoteTempDTO.class);
-    }
 }

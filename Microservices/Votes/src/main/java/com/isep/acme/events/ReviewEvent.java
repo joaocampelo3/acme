@@ -1,6 +1,7 @@
 package com.isep.acme.events;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -46,12 +47,10 @@ public class ReviewEvent {
     }
 
     public String toJson() {
-        Gson gson = new Gson();
-        return gson.toJson(this);
+        return new GsonBuilder().serializeNulls().create().toJson(this);
     }
 
     public static ReviewEvent fromJson(String json) {
-        Gson gson = new Gson();
-        return gson.fromJson(json, ReviewEvent.class);
+        return new GsonBuilder().serializeNulls().create().fromJson(json, ReviewEvent.class);
     }
 }

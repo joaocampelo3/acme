@@ -54,7 +54,7 @@ public class VoteServiceImpl implements VoteService {
 
         VoteDTO voteDTO = repository.save(v).toDto();
 
-        publisher.mainPublish(new VoteEvent(v.getVoteID(), v.getVote()), "vote.vote_created");
+        publisher.mainPublish(new VoteEvent(v.getVoteID(), v.getVote(), v.getReviewID(), v.getUserID()), "vote.vote_created");
 
         return voteDTO;
     }
