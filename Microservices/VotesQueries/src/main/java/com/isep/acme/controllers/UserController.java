@@ -21,10 +21,4 @@ public class UserController {
         return userService.getUser(userId);
     }
 
-    @GetMapping("/username/{username}")
-    public ResponseEntity<UserDetails> create(@PathVariable final String username) {
-        UserDetails userDetails = userService.loadUserByUsername(username);
-
-        return ResponseEntity.ok().body(userDetails);
-    }
 }
