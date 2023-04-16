@@ -88,12 +88,13 @@ public class ReviewEventSubscriber {
             final Review r = new Review(event.getVoteTempID());
             voteService.createReview(r);
         } else if (eventType.equals("reviewFromVote_created")) {
+
             final Review r = new Review(event.getVoteTempID());
             voteService.createReview(r);
 
             final Optional<VoteTemp> voteTemp = voteTempRepository.findByID(event.getVoteTempID());
 
-            final VoteDTO voteDTO = voteService.create(new VoteDTO(voteTemp.get().getVoteTempUuid().toString(), voteTemp.get().getUserID(), voteTemp.get().getVote()), event.getReviewId());
+            final VoteDTO voteDTO = voteService.create(new VoteDTO(voteTemp.get().getVoteTempUuid().toString(), voteTemp.get().getUserID(), voteTemp.get().getVote()), event.getReviewUuid());
 
             if (voteDTO != null){
                 voteService.deleteTempByVoteID(event.getVoteTempID());
@@ -102,7 +103,7 @@ public class ReviewEventSubscriber {
         } else if (eventType.equals("review_updated")) {
             // do something with the review updated event
         } else if (eventType.equals("review_deleted")) {
-            voteService.DeleteReview(event.getReviewId());
+            voteService.DeleteReview(event.getReviewUuid());
         }
     }
 

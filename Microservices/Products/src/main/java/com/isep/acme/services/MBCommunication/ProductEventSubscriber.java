@@ -81,7 +81,7 @@ public class ProductEventSubscriber {
         // handle the product event
         if (eventType.equals("product_created")) {
             Optional<ProductDTO> product = productService.findBySku(event.getSku());
-            if (product == null){
+            if (product.isEmpty()){
                 productService.create(new Product(event.getSku(), event.getDesignation(), event.getDescription()));
             }
         } else if (eventType.equals("product_updated")) {

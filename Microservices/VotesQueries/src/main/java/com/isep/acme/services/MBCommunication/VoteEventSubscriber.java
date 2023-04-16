@@ -2,7 +2,9 @@ package com.isep.acme.services.MBCommunication;
 
 
 import com.isep.acme.events.VoteEvent;
+import com.isep.acme.model.DTO.VoteTempDTO;
 import com.isep.acme.model.Vote;
+import com.isep.acme.model.VoteTemp;
 import com.isep.acme.rabbitmqconfigs.RabbitMQHost;
 import com.isep.acme.services.interfaces.VoteService;
 import com.rabbitmq.client.*;
@@ -58,7 +60,7 @@ public class VoteEventSubscriber {
                 System.out.println("Received event '" + eventType + "' from service '" + originService + "' with message '" + message + "'");
 
                 // parse the message as a ProductCreatedEvent or ReviewCreatedEvent
-                if (eventType.equals("vote_created") || eventType.equals("vote_updated") || eventType.equals("vote_deleted")) {
+                if (eventType.equals("vote_created") || eventType.equals("voteTemp_created") ||eventType.equals("vote_updated") || eventType.equals("vote_deleted")) {
                     VoteEvent event = VoteEvent.fromJson(message);
                     try {
                         handleVoteEvent(eventType, originService, event);
@@ -82,8 +84,14 @@ public class VoteEventSubscriber {
         if (eventType.equals("vote_created")) {
             // do something with the product created event
             Optional<Vote> vote = voteService.findByVoteID(event.getVoteUuid());
-            if (vote == null){
-                voteService.create(vote.get().toDto(), vote.get().getReviewID());
+            if (vote.isEmpty()){
+                voteService.create(vote.get().toDto(), vote.get().getReviewUuid());
+            }
+        } else if (eventType.equals("voteTemp_created")) {
+            // do something with the product created event
+            Optional<VoteTemp> voteTemp = voteService.findTempByVoteID(event.getVoteUuid());
+            if (voteTemp.isEmpty()){
+                voteService.createTemp(new VoteTempDTO(event.getVoteUuid().toString(), event.getUserID(), event.getVote(), event.getReviewText()), event.getSku());
             }
         } else if (eventType.equals("vote_updated")) {
             // do something with the product updated event

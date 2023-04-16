@@ -43,11 +43,11 @@ class VoteController {
     }
 
     @Operation(summary = "creates a vote")
-    @PostMapping("/review/{reviewID}/votes")
-    public ResponseEntity<VoteDTO> create(@PathVariable(value = "reviewID") final Long reviewID, @RequestBody VoteDTO voteDTO) throws Exception{
+    @PostMapping("/review/{reviewUuid}/votes")
+    public ResponseEntity<VoteDTO> create(@PathVariable(value = "reviewUuid") final UUID reviewUuid, @RequestBody VoteDTO voteDTO) throws Exception{
         try {
 
-            final VoteDTO voteDto = service.create(voteDTO, reviewID);
+            final VoteDTO voteDto = service.create(voteDTO, reviewUuid);
 
             if(voteDto == null){
                 return ResponseEntity.badRequest().build();

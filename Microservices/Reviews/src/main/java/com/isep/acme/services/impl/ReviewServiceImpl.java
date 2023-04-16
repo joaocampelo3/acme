@@ -91,7 +91,7 @@ public class ReviewServiceImpl implements ReviewService {
                     review.getUser().getUserId(),review.getReviewText(), review.getRating().getRate(), EventTypeEnum.CREATE),"review.review_created");
         }
         else{
-            publisher.mainPublish(new ReviewEvent(review.getIdReview(), createReviewDTO.getVoteID()), "review.reviewFromVote_created");
+            publisher.mainPublish(new ReviewEvent(review.getReviewUuid().toString(), createReviewDTO.getVoteID()), "review.reviewFromVote_created");
         }
 
         return reviewDTO;

@@ -10,17 +10,21 @@ public class VoteEvent {
     private UUID voteUuid;
     private String vote;
 
-    private Long reviewID;
-
     private String reviewText;
+    private UUID reviewUuid;
+
 
     private String sku;
 
     private Long userID;
     private EventTypeEnum eventTypeEnum;
 
-    public Long getReviewID() {
-        return reviewID;
+    public UUID getReviewUuid() {
+        return reviewUuid;
+    }
+
+    public void setReviewUuid(UUID reviewUuid) {
+        this.reviewUuid = reviewUuid;
     }
 
     public VoteEvent(UUID voteUuid) {
@@ -32,9 +36,9 @@ public class VoteEvent {
         this.eventTypeEnum = eventTypeEnum;
     }
 
-    public VoteEvent(UUID voteUuid, Long reviewID) {
+    public VoteEvent(UUID voteUuid, UUID reviewUuid) {
         this.voteUuid = voteUuid;
-        this.reviewID = reviewID;
+        this.reviewUuid = reviewUuid;
     }
 
     public VoteEvent(UUID voteUuid, String vote, EventTypeEnum eventTypeEnum) {
@@ -42,10 +46,10 @@ public class VoteEvent {
         this.vote = vote;
         this.eventTypeEnum = eventTypeEnum;
     }
-    public VoteEvent(UUID voteUuid, String vote, Long reviewID, Long userID, EventTypeEnum eventTypeEnum) {
+    public VoteEvent(UUID voteUuid, String vote, UUID reviewUuid, Long userID, EventTypeEnum eventTypeEnum) {
         this.voteUuid = voteUuid;
         this.vote = vote;
-        this.reviewID = reviewID;
+        this.reviewUuid = reviewUuid;
         this.userID = userID;
         this.eventTypeEnum = eventTypeEnum;
     }
@@ -83,8 +87,8 @@ public class VoteEvent {
     }
 
 
-    public void setReviewID(Long reviewID) {
-        this.reviewID = reviewID;
+    public void setreviewUuid(UUID reviewUuid) {
+        this.reviewUuid = reviewUuid;
     }
 
     public UUID getVoteUuid() {
@@ -107,12 +111,20 @@ public class VoteEvent {
         return new GsonBuilder().serializeNulls().create().toJson(this);
     }
 
+    public String getVote() {
+        return vote;
+    }
+
+    public void setVote(String vote) {
+        this.vote = vote;
+    }
+
     public static VoteEvent fromJson(String json) {
         return new GsonBuilder().serializeNulls().create().fromJson(json, VoteEvent.class);
     }
 
     public Vote toVote(User user){
-        Vote v = new Vote(this.voteUuid, this.vote, this.userID, this.reviewID);
+        Vote v = new Vote(this.voteUuid, this.vote, this.userID, this.reviewUuid);
         v.setUserID(user.getUserId());
         return v;
     }

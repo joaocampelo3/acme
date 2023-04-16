@@ -54,12 +54,12 @@ public class ProductACMEApplication {
     public static void main(String[] args) throws InterruptedException {
         SpringApplication.run(ProductACMEApplication.class, args);
 
-        // Create 1 clients
+      /*  // Create 1 clients
         RPCClient rpcClient1 = new RPCClient("Product RPC Client");
         rpcClient1.start();
 
         // Finalize
-        rpcClient1.join();
+        rpcClient1.join();*/
     }
 
     @Bean

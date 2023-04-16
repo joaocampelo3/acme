@@ -4,6 +4,7 @@ import com.isep.acme.model.DTO.VoteDTO;
 import com.isep.acme.model.DTO.VoteTempDTO;
 import com.isep.acme.model.Review;
 import com.isep.acme.model.Vote;
+import com.isep.acme.model.VoteTemp;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +14,8 @@ public interface VoteService {
 
     Optional<Vote> findByVoteID(final UUID voteID);
 
+    Optional<VoteTemp> findTempByVoteID(UUID voteID);
+
     VoteDTO updateByVoteID(final UUID voteID, final Vote vote) throws Exception;
 
     void deleteByVoteID(final UUID vote) throws Exception;
@@ -21,11 +24,13 @@ public interface VoteService {
 
     List<VoteDTO> getAll();
 
-    VoteDTO create(VoteDTO voteDTO, Long reviewID) throws Exception;
+
+
+    VoteDTO create(VoteDTO voteDTO, UUID reviewUuid) throws Exception;
 
     VoteTempDTO createTemp(VoteTempDTO voteTempDTO, String sku)throws Exception;
 
     Long createReview(Review review) throws Exception;
 
-    Boolean DeleteReview(Long reviewID) throws Exception;
+    Boolean DeleteReview(UUID reviewUuid) throws Exception;
 }

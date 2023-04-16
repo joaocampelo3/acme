@@ -23,28 +23,28 @@ public class Vote {
     private Long userID;
 
     @Column(nullable = false)
-    private Long reviewID;
+    private UUID reviewUuid;
 
-    public Vote(UUID voteUuid, String vote, Long userID, Long reviewID) {
+    public Vote(UUID voteUuid, String vote, Long userID, UUID reviewUuid) {
         this.voteUuid = voteUuid;
         this.vote = vote;
         this.userID = userID;
-        this.reviewID = reviewID;
+        this.reviewUuid = reviewUuid;
     }
 
-    public Vote(Long voteID, UUID voteUuid, String vote, Long userID, Long reviewID) {
+    public Vote(Long voteID, UUID voteUuid, String vote, Long userID, UUID reviewUuid) {
         this.voteID = voteID;
         this.voteUuid = voteUuid;
         this.vote = vote;
         this.userID = userID;
-        this.reviewID = reviewID;
+        this.reviewUuid = reviewUuid;
     }
 
-    public Vote(String vote, Long userID, Long reviewID) {
+    public Vote(String vote, Long userID, UUID reviewUuid) {
         setVoteUuid(UUID.randomUUID());
         this.vote = vote;
         this.userID = userID;
-        this.reviewID = reviewID;
+        this.reviewUuid = reviewUuid;
     }
 
     protected Vote() {
@@ -55,13 +55,6 @@ public class Vote {
         return voteID;
     }
 
-    public Long getReviewID() {
-        return reviewID;
-    }
-
-    public void setReviewID(Long reviewID) {
-        this.reviewID = reviewID;
-    }
 
     public UUID getVoteUuid() {
         return voteUuid;
@@ -87,6 +80,13 @@ public class Vote {
         this.userID = userID;
     }
 
+    public UUID getReviewUuid() {
+        return reviewUuid;
+    }
+
+    public void setReviewUuid(UUID reviewUuid) {
+        this.reviewUuid = reviewUuid;
+    }
 
     @Override
     public boolean equals(Object o) {

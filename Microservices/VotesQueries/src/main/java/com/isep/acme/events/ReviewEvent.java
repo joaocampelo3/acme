@@ -9,6 +9,7 @@ import java.util.UUID;
 public class ReviewEvent {
     private Long reviewId;
 
+    private UUID reviewUuid;
     private UUID voteTempID;
     private EventTypeEnum eventTypeEnum;
 
@@ -18,13 +19,10 @@ public class ReviewEvent {
         this.eventTypeEnum = eventTypeEnum;
     }
 
-    public ReviewEvent(Long reviewId) {
-        this.reviewId = reviewId;
+    public UUID getReviewUuid() {
+        return reviewUuid;
     }
 
-    public Long getReviewId() {
-        return reviewId;
-    }
 
     public void setReviewId(Long reviewId) {
         this.reviewId = reviewId;

@@ -12,22 +12,23 @@ import java.util.UUID;
 
 public interface VoteRepository extends CrudRepository<Vote, UUID> {
 
-    @Query("SELECT v FROM Vote v WHERE v.voteID=:voteID")
-    Optional<Vote> findByID(UUID voteID);
+    @Query("SELECT v FROM Vote v WHERE v.voteUuid=:voteUuid")
+    Optional<Vote> findByID(UUID voteUuid);
 
     //Delete the vote when given the voteID
     @Transactional
     @Modifying
-    @Query("DELETE FROM Vote v WHERE v.voteID=:voteID")
-    void deleteByVoteID(@Param("voteID") UUID voteID);
+    @Query("DELETE FROM Vote v WHERE v.voteUuid=:voteUuid")
+    void deleteByVoteID(@Param("voteUuid") UUID voteUuid);
 
     //Update the vote when given the voteID
     @Transactional
     @Modifying
-    @Query("UPDATE Vote v SET v.voteID = :voteID WHERE v.voteID=:voteID")
-    Vote updateByVoteID(@Param("voteID") UUID voteID);
+    @Query("UPDATE Vote v SET v.voteUuid = :voteUuid WHERE v.voteUuid=:voteUuid")
+    Vote updateByVoteID(@Param("voteUuid") UUID voteUuid);
 
-    @Query("SELECT v FROM Vote v WHERE v.voteID=:voteID")
-    Optional<Vote> findById(UUID voteID);
+    @Query("SELECT v FROM Vote v WHERE v.voteUuid=:voteUuid")
+    Optional<Vote> findById(UUID voteUuid);
+
 
 }

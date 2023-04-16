@@ -1,5 +1,6 @@
 package com.isep.acme.services.impl;
 
+import com.isep.acme.events.EventTypeEnum;
 import com.isep.acme.events.VoteEvent;
 import com.isep.acme.model.DTO.VoteDTO;
 import com.isep.acme.model.DTO.VoteTempDTO;
@@ -35,18 +36,24 @@ public class VoteServiceImpl implements VoteService {
 
     @Override
     public Optional<Vote> findByVoteID(UUID voteID) {
-        return Optional.empty();
+        return repository.findByID(voteID);
     }
 
     @Override
-    public VoteDTO create(VoteDTO voteDto,Long reviewID) throws Exception {
+    public Optional<VoteTemp> findTempByVoteID(UUID voteID) {
+        return voteTempRepository.findByID(voteID);
+    }
 
-        final Optional<Review> review = reviewRepository.findByReviewID(reviewID);
+    @Override
+    public VoteDTO create(VoteDTO voteDto,UUID reviewUuid) throws Exception {
 
-        if(review.isEmpty()) return null;
+        final Optional<Review> review = reviewRepository.findByReviewID(reviewUuid);
 
+        if(review.isEmpty()){
+            reviewRepository.save(new Review(reviewUuid));
+        }
 
-        final Vote v = new Vote(voteDto.getVote(), voteDto.getUserID(), reviewID);
+        final Vote v = new Vote(voteDto.getVote(), voteDto.getUserID(), reviewUuid);
 
         VoteDTO voteDTO = repository.save(v).toDto();
 
@@ -108,9 +115,9 @@ public class VoteServiceImpl implements VoteService {
     }
 
     @Override
-    public Boolean DeleteReview(Long reviewID) throws Exception {
+    public Boolean DeleteReview(UUID reviewUuid) throws Exception {
 
-        Optional<Review> review = reviewRepository.findByReviewID(reviewID);
+        Optional<Review> review = reviewRepository.findByReviewID(reviewUuid);
 
         if (review.isEmpty()){
             return null;

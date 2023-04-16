@@ -28,8 +28,8 @@ public class ReviewEvent {
         this.eventTypeEnum = eventTypeEnum;
     }
 
-    public ReviewEvent(Long idReview, UUID voteTempID) {
-        this.idReview = idReview;
+    public ReviewEvent(String reviewUuid, UUID voteTempID) {
+        this.reviewUuid = reviewUuid;
         this.voteTempID = voteTempID;
     }
 
