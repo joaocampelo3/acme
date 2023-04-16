@@ -1,0 +1,12 @@
+version: '3.8'
+# To run this file, execute the following command:
+# docker compose -f {compose file name} up
+# This create and starts the containers
+
+services:
+  reviewservice:
+    build: .
+    container_name: ReviewsService
+    ports:
+      - 8083:8080
+      - 8084:5672
