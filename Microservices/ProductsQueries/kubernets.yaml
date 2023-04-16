@@ -38,11 +38,11 @@ spec:
   - name: amqp
     port: 5672
     targetPort: 5672
-    nodePort: 30014
+    nodePort: 30016
   - name: http
     port: 8080
     targetPort: 8080
-    nodePort: 30015
+    nodePort: 30017
   type: NodePort
 ---
 apiVersion: autoscaling/v2
