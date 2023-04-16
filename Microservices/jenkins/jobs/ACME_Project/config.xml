@@ -1,0 +1,396 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@1289.vd1c337fd5354">
+  <actions>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobAction plugin="pipeline-model-definition@2.2125.vddb_a_44a_d605e"/>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction plugin="pipeline-model-definition@2.2125.vddb_a_44a_d605e">
+      <jobProperties/>
+      <triggers/>
+      <parameters/>
+      <options/>
+    </org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction>
+  </actions>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@3653.v07ea_433c90b_4">
+    <script>pipeline {
+    agent any
+    
+    environment {
+        branchName = &quot;master&quot; // default branch name
+        DOCKERHUB_CREDENTIALS = credentials(&apos;92c11f64-327c-4c99-a8cc-8e5ae47be81c&apos;)
+    }
+    
+    stages {
+        stage(&apos;Git Checkout&apos;) {
+            steps{
+                checkout([$class: &apos;GitSCM&apos;, branches: [[name: &apos;*/&apos;+env.branchName]], extensions: [], userRemoteConfigs: [[credentialsId: &apos;1b1ae6b7-0d66-4201-9efc-c63fd7b8d2f5&apos;, url: &apos;https://bitbucket.org/joaocampelo3/acme/&apos;]]])
+            }
+        }
+        
+        stage(&apos;Docker Login&apos;){
+            steps{
+                script {
+                    env.DOCKERHUB_USERNAME = &apos;${DOCKERHUB_CREDENTIALS_USR}&apos;
+                    
+                    if (isUnix()) {
+                        sh &quot;echo ${DOCKERHUB_CREDENTIALS_PSW} | docker login -u ${DOCKERHUB_CREDENTIALS_USR} --password-stdin&quot;
+	                    echo &apos;Login Completed&apos;
+                    } else {
+                        bat &quot;docker login -u ${DOCKERHUB_CREDENTIALS_USR} -p ${DOCKERHUB_CREDENTIALS_PSW}&quot;
+	                    echo &quot;Login Completed&quot;
+                    }
+                }
+            }
+        }
+        
+        stage(&apos;Build &amp; Deploy RabbitMQ&apos;) {
+            steps{
+                script {
+                    if (isUnix()) {
+                        dir(&apos;Microservices/RabbitMQ&apos;) {
+                            sh &apos;kubectl apply -f RabbitMQ.yaml&apos;
+                        }
+                    } else {
+                        dir(&apos;Microservices\\RabbitMQ&apos;) {
+                            bat &apos;kubectl apply -f RabbitMQ.yaml&apos;
+                        }
+                    }
+                }
+            }
+        }
+        
+        stage(&apos;Build &amp; Deploy ServiceRegistry&apos;) {
+            steps{
+                script {
+                    PROJECT_TAG = &apos;serviceregistry&apos;
+                    echo &quot;${PROJECT_TAG}&quot;
+                    if (isUnix()) {
+                        dir(&apos;Microservices/ServiceRegistry&apos;) {
+                            echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                            echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${PROJECT_TAG}&quot;
+                            //Build ServiceRegistry
+                            sh &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${PROJECT_TAG} .&quot;
+                            //Create Kubernetes Service
+                            sh &apos;kubectl apply -f kubernets.yaml&apos;
+                        }
+                    } else {
+                        dir(&apos;Microservices\\ServiceRegistry&apos;) {
+                            echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                            echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${PROJECT_TAG}&quot;
+                            //Build ServiceRegistry
+                            bat &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${PROJECT_TAG} .&quot;
+                            //Create Kubernetes Service
+                            bat &apos;kubectl apply -f kubernets.yaml&apos;
+                        }
+                    }
+                }
+            }
+        }
+
+        stage(&apos;Build &amp; Deploy LoadBalancer&apos;) {
+            steps{
+                script {
+                    PROJECT_TAG = &apos;load-balancer&apos;
+                    echo &quot;${PROJECT_TAG}&quot;
+                    if (isUnix()) {
+                        dir(&apos;Microservices/LoadBalancer&apos;) {
+                            echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                            echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${PROJECT_TAG}&quot;
+                            //Build LoadBalancer
+                            sh &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${PROJECT_TAG} .&quot;
+                            //Create Kubernetes Service
+                            sh &apos;kubectl apply -f kubernets.yaml&apos;
+                        }
+                    } else {
+                        dir(&apos;Microservices\\LoadBalancer&apos;) {
+                            echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                            echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${PROJECT_TAG}&quot;
+                            //Build LoadBalancer
+                            bat &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${PROJECT_TAG} .&quot;
+                            //Create Kubernetes Service
+                            bat &apos;kubectl apply -f kubernets.yaml&apos;
+                        }
+                    }
+                }
+            }
+        }
+
+        stage(&apos;Build Microservices Bootstraps&apos;) {
+            parallel{                
+                stage(&apos;Build &amp; Deploy Products Bootstrap&apos;) {
+                    steps{
+                        script {
+                            PRODUCTS_BOOTSTRAP_PROJECT_TAG = &apos;products-bootstrap&apos;
+                            echo &quot;${PRODUCTS_BOOTSTRAP_PROJECT_TAG}&quot;
+                            if (isUnix()) {
+                                dir(&apos;Microservices/ProductsBootstrap&apos;) {
+                                    echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                                    echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${PRODUCTS_BOOTSTRAP_PROJECT_TAG}&quot;
+                                    //Build Products Bootstrap
+                                    sh &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${PRODUCTS_BOOTSTRAP_PROJECT_TAG} .&quot;
+                                    //Create Kubernetes Service
+                                    sh &apos;kubectl apply -f kubernets.yaml&apos;
+                                }
+                            } else {
+                                dir(&apos;Microservices\\ProductsBootstrap&apos;) {
+                                    echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                                    echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${PRODUCTS_BOOTSTRAP_PROJECT_TAG}&quot;
+                                    //Build Products Bootstrap
+                                    bat &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${PRODUCTS_BOOTSTRAP_PROJECT_TAG} .&quot;
+                                    //Create Kubernetes Service
+                                    bat &apos;kubectl apply -f kubernets.yaml&apos;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                stage(&apos;Build &amp; Deploy Votes Bootstrap&apos;) {
+                    steps{
+                        script {
+                            VOTES_BOOTSTRAP_PROJECT_TAG = &apos;votes-bootstrap&apos;
+                            echo &quot;${VOTES_BOOTSTRAP_PROJECT_TAG}&quot;
+                            if (isUnix()) {
+                                dir(&apos;Microservices/VotesBootstrap&apos;) {
+                                    echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                                    echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${VOTES_BOOTSTRAP_PROJECT_TAG}&quot;
+                                    //Build Votes Bootstrap
+                                    sh &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${VOTES_BOOTSTRAP_PROJECT_TAG} .&quot;
+                                    //Create Kubernetes Service
+                                    sh &apos;kubectl apply -f kubernets.yaml&apos;
+                                }
+                            } else {
+                                dir(&apos;Microservices\\VotesBootstrap&apos;) {
+                                    echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                                    echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${VOTES_BOOTSTRAP_PROJECT_TAG}&quot;
+                                    //Build Votes Bootstrap
+                                    bat &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${VOTES_BOOTSTRAP_PROJECT_TAG} .&quot;
+                                    //Create Kubernetes Service
+                                    bat &apos;kubectl apply -f kubernets.yaml&apos;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                stage(&apos;Build &amp; Deply Reviews Bootstrap&apos;) {
+                    steps{
+                        script {
+                            REVIEWS_BOOTSTRAP_PROJECT_TAG = &apos;reviews-bootstrap&apos;
+                            echo &quot;${REVIEWS_BOOTSTRAP_PROJECT_TAG}&quot;
+                            if (isUnix()) {
+                                dir(&apos;Microservices/ReviewsBootstrap&apos;) {
+                                    echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                                    echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${REVIEWS_BOOTSTRAP_PROJECT_TAG}&quot;
+                                    //Build Reviews Bootstrap
+                                    sh &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${REVIEWS_BOOTSTRAP_PROJECT_TAG} .&quot;
+                                    //Create Kubernetes Service
+                                    sh &apos;kubectl apply -f kubernets.yaml&apos;
+                                }
+                            } else {
+                                dir(&apos;Microservices\\ReviewsBootstrap&apos;) {
+                                    echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                                    echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${REVIEWS_BOOTSTRAP_PROJECT_TAG}&quot;
+                                    //Build Reviews Bootstrap
+                                    bat &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${REVIEWS_BOOTSTRAP_PROJECT_TAG} .&quot;
+                                    //Create Kubernetes Service
+                                    bat &apos;kubectl apply -f kubernets.yaml&apos;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        stage(&apos;Build Microservices&apos;) {
+            parallel{
+                stage(&apos;Build &amp; Deploy Products Queries&apos;) {
+                    steps{
+                        script {
+                            PRODUCTS_QUERIES_PROJECT_TAG = &apos;products-queries&apos;
+                            echo &quot;${PRODUCTS_QUERIES_PROJECT_TAG}&quot;
+                            if (isUnix()) {
+                                dir(&apos;Microservices/ProductsQueries&apos;) {
+                                    echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                                    echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${PRODUCTS_QUERIES_PROJECT_TAG}&quot;
+                                    //Build Products
+                                    sh &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${PRODUCTS_QUERIES_PROJECT_TAG} .&quot;
+                                    //Create Kubernetes Service
+                                    sh &apos;kubectl apply -f kubernets.yaml&apos;
+                                }
+                            } else {
+                                dir(&apos;Microservices\\ProductsQueries&apos;) {
+                                    echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                                    echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${PRODUCTS_QUERIES_PROJECT_TAG}&quot;
+                                    //Build Products
+                                    bat &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${PRODUCTS_QUERIES_PROJECT_TAG} .&quot;
+                                    //Create Kubernetes Service
+                                    bat &apos;kubectl apply -f kubernets.yaml&apos;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                stage(&apos;Build &amp; Deploy Products Commands&apos;) {
+                    steps{
+                        script {
+                            PRODUCTS_PROJECT_TAG = &apos;products&apos;
+                            echo &quot;${PRODUCTS_PROJECT_TAG}&quot;
+                            if (isUnix()) {
+                                dir(&apos;Microservices/Products&apos;) {
+                                    echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                                    echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${PRODUCTS_PROJECT_TAG}&quot;
+                                    //Build Products
+                                    sh &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${PRODUCTS_PROJECT_TAG} .&quot;
+                                    //Create Kubernetes Service
+                                    sh &apos;kubectl apply -f kubernets.yaml&apos;
+                                }
+                            } else {
+                                dir(&apos;Microservices\\Products&apos;) {
+                                    echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                                    echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${PRODUCTS_PROJECT_TAG}&quot;
+                                    //Build Products
+                                    bat &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${PRODUCTS_PROJECT_TAG} .&quot;
+                                    //Create Kubernetes Service
+                                    bat &apos;kubectl apply -f kubernets.yaml&apos;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                stage(&apos;Build &amp; Deploy Votes Queries&apos;) {
+                    steps{
+                        script {
+                            VOTES_QUERIES_PROJECT_TAG = &apos;votes-queries&apos;
+                            echo &quot;${VOTES_QUERIES_PROJECT_TAG}&quot;
+                            if (isUnix()) {
+                                dir(&apos;Microservices/VotesQueries&apos;) {
+                                    echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                                    echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${VOTES_QUERIES_PROJECT_TAG}&quot;
+                                    //Build Votes
+                                    sh &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${VOTES_QUERIES_PROJECT_TAG} .&quot;
+                                    //Create Kubernetes Service
+                                    sh &apos;kubectl apply -f kubernets.yaml&apos;
+                                }
+                            } else {
+                                dir(&apos;Microservices\\VotesQueries&apos;) {
+                                    echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                                    echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${VOTES_QUERIES_PROJECT_TAG}&quot;
+                                    //Build Votes
+                                    bat &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${VOTES_QUERIES_PROJECT_TAG} .&quot;
+                                    //Create Kubernetes Service
+                                    bat &apos;kubectl apply -f kubernets.yaml&apos;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                stage(&apos;Build &amp; Deploy Votes Commands&apos;) {
+                    steps{
+                        script {
+                            VOTES_PROJECT_TAG = &apos;votes&apos;
+                            echo &quot;${VOTES_PROJECT_TAG}&quot;
+                            if (isUnix()) {
+                                dir(&apos;Microservices/Votes&apos;) {
+                                    echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                                    echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${VOTES_PROJECT_TAG}&quot;
+                                    //Build Votes
+                                    sh &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${VOTES_PROJECT_TAG} .&quot;
+                                    //Create Kubernetes Service
+                                    sh &apos;kubectl apply -f kubernets.yaml&apos;
+                                }
+                            } else {
+                                dir(&apos;Microservices\\Votes&apos;) {
+                                    echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                                    echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${VOTES_PROJECT_TAG}&quot;
+                                    //Build Votes
+                                    bat &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${VOTES_PROJECT_TAG} .&quot;
+                                    //Create Kubernetes Service
+                                    bat &apos;kubectl apply -f kubernets.yaml&apos;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                stage(&apos;Build &amp; Deply Reviews Queries&apos;) {
+                    steps{
+                        script {
+                            REVIEWS_QUERIES_PROJECT_TAG = &apos;reviews-queries&apos;
+                            echo &quot;${REVIEWS_QUERIES_PROJECT_TAG}&quot;
+                            if (isUnix()) {
+                                dir(&apos;Microservices/ReviewsQueries&apos;) {
+                                    echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                                    echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${REVIEWS_QUERIES_PROJECT_TAG}&quot;
+                                    //Build Reviews
+                                    sh &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${REVIEWS_QUERIES_PROJECT_TAG} .&quot;
+                                    //Create Kubernetes Service
+                                    sh &apos;kubectl apply -f kubernets.yaml&apos;
+                                }
+                            } else {
+                                dir(&apos;Microservices\\ReviewsQueries&apos;) {
+                                    echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                                    echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${REVIEWS_QUERIES_PROJECT_TAG}&quot;
+                                    //Build Reviews
+                                    bat &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${REVIEWS_QUERIES_PROJECT_TAG} .&quot;
+                                    //Create Kubernetes Service
+                                    bat &apos;kubectl apply -f kubernets.yaml&apos;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                stage(&apos;Build &amp; Deply Reviews Commands&apos;) {
+                    steps{
+                        script {
+                            REVIEWS_PROJECT_TAG = &apos;reviews&apos;
+                            echo &quot;${REVIEWS_PROJECT_TAG}&quot;
+                            if (isUnix()) {
+                                dir(&apos;Microservices/Reviews&apos;) {
+                                    echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                                    echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${REVIEWS_PROJECT_TAG}&quot;
+                                    //Build Reviews
+                                    sh &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${REVIEWS_PROJECT_TAG} .&quot;
+                                    //Create Kubernetes Service
+                                    sh &apos;kubectl apply -f kubernets.yaml&apos;
+                                }
+                            } else {
+                                dir(&apos;Microservices\\Reviews&apos;) {
+                                    echo &quot;Current directory: ${pwd()}&quot; // Echo current directory
+                                    echo &quot;${DOCKERHUB_CREDENTIALS_USR}/${REVIEWS_PROJECT_TAG}&quot;
+                                    //Build Reviews
+                                    bat &quot;docker build -t ${DOCKERHUB_CREDENTIALS_USR}/${REVIEWS_PROJECT_TAG} .&quot;
+                                    //Create Kubernetes Service
+                                    bat &apos;kubectl apply -f kubernets.yaml&apos;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    post{
+        always {
+            script {
+                if (isUnix()) {
+                    sh &apos;docker logout&apos;
+                } else {
+                    bat &apos;docker logout&apos;
+                }
+            }
+        }
+    }
+}</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>
