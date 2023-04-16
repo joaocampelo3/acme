@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: products-deployment
+  name: products-queries-deployment
 spec:
   selector:
     matchLabels:
-      app: products
+      app: products-queries
   replicas: 2
   template:
     metadata:
       labels:
-        app: products
+        app: products-queries
     spec:
       containers:
-      - name: products-container
-        image: 1151386/products
+      - name: products-queries-container
+        image: 1151386/products-queries
         imagePullPolicy: Never
         ports:
         - containerPort: 8080
@@ -30,10 +30,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: products-service
+  name: products-queries-service
 spec:
   selector:
-    app: products
+    app: products-queries
   ports:
   - name: amqp
     port: 5672
@@ -48,12 +48,12 @@ spec:
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: products-service-hpa
+  name: products-queries-service-hpa
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: products
+    name: products-queries
   minReplicas: 2
   maxReplicas: 3
   metrics:
