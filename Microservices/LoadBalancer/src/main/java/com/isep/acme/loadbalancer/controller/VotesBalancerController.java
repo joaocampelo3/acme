@@ -38,26 +38,26 @@ public class VotesBalancerController {
     @PostMapping("/review/{reviewID}/votes")
     public VoteDTO create(@PathVariable(value = "reviewID") final Long reviewID, @RequestBody VoteDTO voteDTO) throws Exception{
         HttpEntity<VoteDTO> request = new HttpEntity<>(voteDTO);
-        return restTemplate.postForObject("http://REVIEWSACMEAPPLICATION/review/" + reviewID + "/votes/", request, VoteDTO.class);
+        return restTemplate.postForObject("http://VOTEACMEAPPLICATION/review/" + reviewID + "/votes", request, VoteDTO.class);
     }
 
     @PostMapping("/noreview/{sku}/votes")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public VoteTempDTO createTemp(@PathVariable(value = "sku") final String sku, @RequestBody VoteTempDTO voteTempDTO) throws Exception{
         HttpEntity<VoteTempDTO> request = new HttpEntity<>(voteTempDTO);
-        return restTemplate.postForObject("http://REVIEWSACMEAPPLICATION/noreview/" + sku + "/votes/", request, VoteTempDTO.class);
+        return restTemplate.postForObject("http://VOTEACMEAPPLICATION/noreview/" + sku + "/votes", request, VoteTempDTO.class);
     }
 
 
     @PatchMapping(value = "/votes/{voteID}")
     public VoteDTO Update(@PathVariable("voteID") final UUID voteID, @RequestBody final Vote vote) throws Exception {
-        return restTemplate.exchange("http://REVIEWSACMEAPPLICATION/votes/"+ voteID, HttpMethod.PUT, new HttpEntity<>(vote), VoteDTO.class).getBody();
+        return restTemplate.exchange("http://VOTEACMEAPPLICATION/votes/"+ voteID, HttpMethod.PUT, new HttpEntity<>(vote), VoteDTO.class).getBody();
     }
 
 
     @DeleteMapping(value = "/votes/{voteID}")
     public void delete(@PathVariable("voteID") final UUID voteID) throws Exception {
-        restTemplate.delete("http://REVIEWSACMEAPPLICATION/votes/" + voteID);
+        restTemplate.delete("http://VOTEACMEAPPLICATION/votes/" + voteID);
     }
 
 }

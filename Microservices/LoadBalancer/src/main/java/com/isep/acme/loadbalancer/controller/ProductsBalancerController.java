@@ -36,11 +36,11 @@ public class ProductsBalancerController {
         return restTemplate.getForObject("http://PRODUCTQUERIESACMEAPPLICATION/products/designation/" + designation, List.class);
     }
 
-    @PostMapping
+    @PostMapping(value = "/products")
     @ResponseStatus(HttpStatus.CREATED)
     public ProductDTO create(@RequestBody Product manager) {
         HttpEntity<Product> request = new HttpEntity<>(manager);
-        return restTemplate.postForObject("http://REVIEWSACMEAPPLICATION/products", request, ProductDTO.class);
+        return restTemplate.postForObject("http://PRODUCTACMEAPPLICATION/products", request, ProductDTO.class);
     }
 
     @PatchMapping(value = "/products/{sku}")
