@@ -41,6 +41,7 @@ public class Vote {
     }
 
     public Vote(String vote, Long userID, Long reviewID) {
+        setVoteUuid(UUID.randomUUID());
         this.vote = vote;
         this.userID = userID;
         this.reviewID = reviewID;

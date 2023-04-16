@@ -28,8 +28,8 @@ public class VoteTemp {
 
     }
 
-    public VoteTemp(UUID voteTempUuid, String vote, Long userID, String review) {
-        this.voteTempUuid = voteTempUuid;
+    public VoteTemp(String vote, Long userID, String review) {
+        setVoteTempUuid(UUID.randomUUID());
         this.vote = vote;
         this.userID = userID;
         this.review = review;

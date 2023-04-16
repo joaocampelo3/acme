@@ -62,7 +62,7 @@ public class VoteServiceImpl implements VoteService {
     @Override
     public VoteTempDTO createTemp(VoteTempDTO voteTempDTO, String sku) throws Exception {
 
-        final VoteTemp v = new VoteTemp(UUID.fromString(voteTempDTO.getVoteTempUuid()),voteTempDTO.getVote(), voteTempDTO.getUserID(), voteTempDTO.getReview());
+        final VoteTemp v = new VoteTemp(voteTempDTO.getVote(), voteTempDTO.getUserID(), voteTempDTO.getReview());
 
         VoteTempDTO voteTempDTOfinal = voteTempRepository.save(v).toDto();
 
