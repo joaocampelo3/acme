@@ -1,0 +1,491 @@
+openapi: 3.0.1
+info:
+  title: ACME_EN
+  version: 1.0.0
+servers:
+ -
+  url: /
+security:
+ -
+  default: []
+paths:
+  /products:
+    get:
+      parameters: []
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+    post:
+      parameters: []
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /products/{sku}:
+    get:
+      parameters:
+       -
+        name: sku
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+    delete:
+      parameters:
+       -
+        name: sku
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+    patch:
+      parameters:
+       -
+        name: sku
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /products/designation/{designation}:
+    get:
+      parameters:
+       -
+        name: designation
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /products/{sku}/reviews/{status}:
+    get:
+      parameters:
+       -
+        name: sku
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+       -
+        name: status
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /reviews/{userID}:
+    get:
+      parameters:
+       -
+        name: userID
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /reviews/pending:
+    get:
+      parameters: []
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /products/{sku}/reviews:
+    post:
+      parameters:
+       -
+        name: sku
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /reviews/{reviewID}:
+    delete:
+      parameters:
+       -
+        name: reviewID
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /reviews/acceptreject/{reviewID}:
+    put:
+      parameters:
+       -
+        name: reviewID
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /votes:
+    get:
+      parameters: []
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /votes/{voteID}:
+    get:
+      parameters:
+       -
+        name: voteID
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+    delete:
+      parameters:
+       -
+        name: voteID
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+    patch:
+      parameters:
+       -
+        name: voteID
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /review/{reviewUuid}/votes:
+    post:
+      parameters:
+       -
+        name: reviewUuid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /noreview/{sku}/votes:
+    post:
+      parameters:
+       -
+        name: sku
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+components:
+  securitySchemes:
+    default:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://test.com
+          scopes:
+            Admin: ""
+            User: ""
+          x-scopes-bindings:
+            User: Internal/integration_dev
+            Admin: admin
+x-wso2-auth-header: Authorization
+x-wso2-cors:
+  corsConfigurationEnabled: false
+  accessControlAllowOrigins:
+   - '*'
+  accessControlAllowCredentials: false
+  accessControlAllowHeaders:
+   - authorization
+   - Access-Control-Allow-Origin
+   - Content-Type
+   - SOAPAction
+   - apikey
+   - Internal-Key
+  accessControlAllowMethods:
+   - GET
+   - PUT
+   - POST
+   - DELETE
+   - PATCH
+   - OPTIONS
+x-wso2-production-endpoints:
+  urls:
+   - http://localhost:30004
+  type: http
+x-wso2-sandbox-endpoints:
+  urls:
+   - http://localhost:30004
+  type: http
+x-wso2-basePath: /acme/en/1.0.0
+x-wso2-transports:
+ - http
+ - https
+x-wso2-response-cache:
+  enabled: true
+  cacheTimeoutInSeconds: 900

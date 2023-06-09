@@ -1,0 +1,369 @@
+type: api
+version: v4.2.0
+data:
+  id: c6b17439-fa73-4d33-a618-bf5b18176cd8
+  name: ACME_PT
+  context: /acme_pt
+  version: 1.0.0
+  provider: admin
+  lifeCycleStatus: CREATED
+  responseCachingEnabled: true
+  cacheTimeout: 900
+  hasThumbnail: false
+  isDefaultVersion: false
+  isRevision: false
+  revisionId: 0
+  enableSchemaValidation: false
+  enableSubscriberVerification: false
+  type: HTTP
+  transport:
+   - http
+   - https
+  tags: []
+  policies: []
+  authorizationHeader: Authorization
+  securityScheme:
+   - oauth2
+   - oauth_basic_auth_api_key_mandatory
+  visibility: PUBLIC
+  visibleRoles: []
+  visibleTenants: []
+  mediationPolicies: []
+  subscriptionAvailability: CURRENT_TENANT
+  subscriptionAvailableTenants: []
+  additionalProperties: []
+  additionalPropertiesMap: {}
+  accessControl: NONE
+  accessControlRoles: []
+  businessInformation: {}
+  corsConfiguration:
+    corsConfigurationEnabled: false
+    accessControlAllowOrigins:
+     - '*'
+    accessControlAllowCredentials: false
+    accessControlAllowHeaders:
+     - authorization
+     - Access-Control-Allow-Origin
+     - Content-Type
+     - SOAPAction
+     - apikey
+     - Internal-Key
+    accessControlAllowMethods:
+     - GET
+     - PUT
+     - POST
+     - DELETE
+     - PATCH
+     - OPTIONS
+  websubSubscriptionConfiguration:
+    enable: false
+    secret: ""
+    signingAlgorithm: SHA1
+    signatureHeader: x-hub-signature
+  createdTime: "1686305212527"
+  lastUpdatedTime: 2023-06-09 11:49:03.703
+  endpointConfig:
+    endpoint_type: http
+    sandbox_endpoints:
+      url: http://localhost:30005
+    production_endpoints:
+      url: http://localhost:30005
+  endpointImplementationType: ENDPOINT
+  scopes:
+   -
+    scope:
+      name: Admin
+      displayName: Admin
+      description: ""
+      bindings:
+       - admin
+    shared: true
+   -
+    scope:
+      name: User
+      displayName: User
+      description: ""
+      bindings:
+       - Internal/integration_dev
+    shared: true
+  operations:
+   -
+    id: ""
+    target: /produtos
+    verb: GET
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request:
+       -
+        policyName: rewriteResourcePath
+        policyVersion: v3
+        policyId: ea62a9a4-46fa-47e4-80eb-8e0300d1cee2
+        parameters:
+          newResourcePath: /products
+          includeQueryParams: "true"
+      response: []
+      fault: []
+   -
+    id: ""
+    target: /produtos
+    verb: POST
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+    usedProductIds: []
+    operationPolicies:
+      request:
+       -
+        policyName: rewriteResourcePath
+        policyVersion: v3
+        policyId: ea62a9a4-46fa-47e4-80eb-8e0300d1cee2
+        parameters:
+          newResourcePath: /products
+          includeQueryParams: "true"
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/produtos/{sku}"
+    verb: GET
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/produtos/{sku}"
+    verb: DELETE
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/produtos/{sku}"
+    verb: PATCH
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/produtos/designacao/{designacao}"
+    verb: GET
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/produtos/{sku}/criticas/{status}"
+    verb: GET
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/criticas/{userID}"
+    verb: GET
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: /criticas/pendente
+    verb: GET
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/produtos/{sku}/criticas"
+    verb: POST
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/criticas/{criticaID}"
+    verb: DELETE
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/criticas/aceiterejeitada/{criticaID}"
+    verb: PUT
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: /votos
+    verb: GET
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request:
+       -
+        policyName: rewriteResourcePath
+        policyVersion: v3
+        policyId: ea62a9a4-46fa-47e4-80eb-8e0300d1cee2
+        parameters:
+          newResourcePath: /votes
+          includeQueryParams: "true"
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/votos/{voteID}"
+    verb: GET
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/votos/{voteID}"
+    verb: DELETE
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/votos/{voteID}"
+    verb: PATCH
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/critica/{criticaUuid}/votos"
+    verb: POST
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/semcritica/{sku}/votos"
+    verb: POST
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+  categories: []
+  keyManagers:
+   - all
+  advertiseInfo:
+    advertised: false
+    apiOwner: admin
+    vendor: WSO2
+  gatewayVendor: wso2
+  gatewayType: wso2/synapse
+  asyncTransportProtocols: []
+  organizationId: carbon.super
