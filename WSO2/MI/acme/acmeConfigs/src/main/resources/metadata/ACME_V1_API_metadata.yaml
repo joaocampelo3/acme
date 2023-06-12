@@ -1,0 +1,11 @@
+---
+key: "ACME_V1_API-1.0.0"
+name : "ACME_V1_API"
+displayName : "ACME_V1_API"
+description: "Sample API"
+version: "1.0.0"
+serviceUrl: "https://{MI_HOST}:{MI_PORT}/acme/v1"
+definitionType: "OAS3"
+securityType: "BASIC"
+mutualSSLEnabled: false
+apiId : "null"

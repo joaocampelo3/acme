@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/acme_pt" hostname="localhost" name="ACME_EN_API" port="30005" statistics="enable" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" uri-template="/products">
+        <inSequence>
+            <log description="request log" level="custom">
+                <property name="message" value="Welcome to ACME - Get Products"/>
+            </log>
+            <send>
+                <endpoint key="ProductsEndpoint"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/products/{sku}">
+        <inSequence>
+            <log description="request log" level="custom">
+                <property name="message" value="Welcome to ACME - Get Products by SKU"/>
+            </log>
+            <send>
+                <endpoint key="ProductsEndpoint"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/products/designation/{designation}">
+        <inSequence>
+            <log description="request log" level="custom">
+                <property name="message" value="Welcome to ACME - Get All Products by Designation"/>
+            </log>
+            <send>
+                <endpoint key="ProductsEndpoint"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" uri-template="/products">
+        <inSequence>
+            <log description="request log" level="custom">
+                <property name="message" value="Welcome to ACME - Post Products"/>
+            </log>
+            <send>
+                <endpoint key="ProductsEndpoint"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="PATCH" uri-template="/products/{sku}">
+        <inSequence>
+            <log description="request log" level="custom">
+                <property name="message" value="Welcome to ACME - Post Products"/>
+            </log>
+            <send>
+                <endpoint key="ProductsEndpoint"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>
