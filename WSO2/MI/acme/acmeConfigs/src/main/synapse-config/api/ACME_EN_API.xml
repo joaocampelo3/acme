@@ -320,4 +320,27 @@ mc.setPayloadJSON(filteredPayload);]]></script>
         <outSequence/>
         <faultSequence/>
     </resource>
+    <resource methods="GET" uri-template="/reviews/votesByReviewer/{reviewer}">
+        <inSequence>
+            <log description="request log">
+                <property name="message" value="Welcome to ACME - Get Votes of Reviews from a Reviewer"/>
+            </log>
+            <property description="reviwer ID" expression="$ctx:uri.var.reviewer" name="reviwerProperty" scope="default" type="INTEGER"/>
+            <call>
+                <endpoint key="VotesReviewsEndpoint"/>
+            </call>
+            <script language="js"><![CDATA[var payload = mc.getPayloadJSON();
+		                   
+		                    // Filter the payload based on the threshold
+		                    var filteredPayload = payload.filter(function(item) {
+		                        return item;
+		                    });
+		
+		                    // Replace the original payload with the filtered payload
+		                    mc.setPayloadJSON(filteredPayload);]]></script>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
 </api>
