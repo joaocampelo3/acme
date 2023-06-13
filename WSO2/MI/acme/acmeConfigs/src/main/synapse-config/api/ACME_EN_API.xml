@@ -238,28 +238,82 @@
         </outSequence>
         <faultSequence/>
     </resource>
-    <resource methods="GET" uri-template="/reviews/moreXvotes/{numberOfVotes}">
+    <resource methods="GET" uri-template="/reviews/{voteType}/moreXvotes/{numberOfVotes}">
         <inSequence>
             <log description="request log">
                 <property name="message" value="Welcome to ACME -Get Review with more than X up/down votes"/>
             </log>
-            <property description="SET numberOfVotes Property" expression="$ctx:uri.var.numberOfVotes" name="numberOfVotesProperty" scope="default" type="STRING"/>
-            <switch source="$ctx:numberOfVotesProperty">
-                <case regex="^(?!0$)\d+$">
-                    <log description="case greater than 0 log">
-                        <property name="message" value="Case numberOfVotesProperty is greater than 0"/>
-                    </log>
-                    <call>
-                        <endpoint key="ReviewsEndpoint"/>
-                    </call>
+            <property description="SET numberOfVotes Property" expression="$ctx:uri.var.numberOfVotes" name="numberOfVotesProperty" scope="default" type="INTEGER"/>
+            <call>
+                <endpoint key="ReviewsEndpoint"/>
+            </call>
+            <switch source="get-property('uri.var.voteType')">
+                <case regex="upvote">
+                    <script language="js"><![CDATA[var payload = mc.getPayloadJSON();
+var numberOfVotes = mc.getProperty('numberOfVotesProperty');
+
+ // Filter the payload based on the numberOfVotes
+var filteredPayload = payload.filter(function(item) {
+  return item.upVotes > numberOfVotes;
+});
+
+// Replace the original payload with the filtered payload
+mc.setPayloadJSON(filteredPayload);]]></script>
+                    <respond/>
                 </case>
                 <default>
-                    <log description="case less than or equal to 0 log">
-                        <property name="message" value="Case numberOfVotesProperty is less than or equal 0"/>
-                    </log>
-                    <send>
-                        <endpoint key="ReviewsEndpoint"/>
-                    </send>
+                    <script language="js"><![CDATA[var payload = mc.getPayloadJSON();
+var numberOfVotes = mc.getProperty('numberOfVotesProperty');
+		
+// Filter the payload based on the numberOfVotes
+var filteredPayload = payload.filter(function(item) {
+  return item.downVotes > numberOfVotes;
+});
+	
+// Replace the original payload with the filtered payload
+mc.setPayloadJSON(filteredPayload);]]></script>
+                    <respond/>
+                </default>
+            </switch>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/reviews/{voteType}/lessXvotes/{numberOfVotes}">
+        <inSequence>
+            <log description="request log">
+                <property name="message" value="Welcome to ACME - Get Review with less than X up/down votes"/>
+            </log>
+            <property description="SET numberOfVotes Property" expression="$ctx:uri.var.numberOfVotes" name="numberOfVotesProperty" scope="default" type="INTEGER"/>
+            <call>
+                <endpoint key="ReviewsEndpoint"/>
+            </call>
+            <switch source="get-property('uri.var.voteType')">
+                <case regex="upvote">
+                    <script language="js"><![CDATA[var payload = mc.getPayloadJSON();
+		                    var numberOfVotes = mc.getProperty('numberOfVotesProperty');
+		
+		                    // Filter the payload based on the numberOfVotes
+		                    var filteredPayload = payload.filter(function(item) {
+		                        return item.upVotes < numberOfVotes;
+		                    });
+		
+		                    // Replace the original payload with the filtered payload
+		                    mc.setPayloadJSON(filteredPayload);]]></script>
+                    <respond/>
+                </case>
+                <default>
+                    <script language="js"><![CDATA[var payload = mc.getPayloadJSON();
+		                    var numberOfVotes = mc.getProperty('numberOfVotesProperty');
+		
+		                    // Filter the payload based on the numberOfVotes
+		                    var filteredPayload = payload.filter(function(item) {
+		                        return item.downVotes < numberOfVotes;
+		                    });
+		
+		                    // Replace the original payload with the filtered payload
+		                    mc.setPayloadJSON(filteredPayload);]]></script>
+                    <respond/>
                 </default>
             </switch>
         </inSequence>

@@ -2,6 +2,7 @@ package com.isep.acme.model.DTO;
 
 import java.time.LocalDate;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class ReviewDTO {
 
@@ -12,6 +13,8 @@ public class ReviewDTO {
     private String approvalStatus;
     private String funFact;
     private Double rating;
+    private Integer upVotes;
+    private Integer downVotes;
 
     public ReviewDTO(Long idReview, UUID reviewUuid, String reviewText, LocalDate publishingDate, String approvalStatus, String funFact, Double rating) {
         this.idReview = idReview;
@@ -21,6 +24,8 @@ public class ReviewDTO {
         this.approvalStatus = approvalStatus;
         this.funFact = funFact;
         this.rating = rating;
+        this.upVotes = ThreadLocalRandom.current().nextInt(0, 10 + 1);
+        this.downVotes = ThreadLocalRandom.current().nextInt(0, 10 + 1);
     }
 
     public void setIdReview( Long idReview ) {
@@ -79,4 +84,19 @@ public class ReviewDTO {
         this.rating = rating;
     }
 
+    public Integer getUpVotes() {
+        return upVotes;
+    }
+
+    public void setUpVotes(Integer upVotes) {
+        this.upVotes = upVotes;
+    }
+
+    public Integer getDownVotes() {
+        return downVotes;
+    }
+
+    public void setDownVotes(Integer downVotes) {
+        this.downVotes = downVotes;
+    }
 }
