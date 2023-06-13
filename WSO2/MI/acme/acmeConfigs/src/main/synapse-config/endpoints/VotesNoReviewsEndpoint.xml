@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<endpoint name="VotesEndpoint" xmlns="http://ws.apache.org/ns/synapse">
+<endpoint name="VotesNoReviewsEndpoint" xmlns="http://ws.apache.org/ns/synapse">
     <address uri="http://localhost:30004/noreview/{sku}/votes">
         <suspendOnFailure>
             <initialDuration>-1</initialDuration>

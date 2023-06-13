@@ -1,37 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<api context="/acme/en" hostname="localhost" name="ACME_EN_API" port="30004" statistics="enable" version="1.0.0" version-type="url" xmlns="http://ws.apache.org/ns/synapse">
+<api context="/acme/en" hostname="localhost" name="ACME_EN_API" port="8243" statistics="enable" version="1.0.0" version-type="url" xmlns="http://ws.apache.org/ns/synapse">
     <resource methods="GET" uri-template="/products">
         <inSequence>
             <log description="request log" level="custom">
                 <property name="message" value="Welcome to ACME - Get Products"/>
-            </log>
-            <send>
-                <endpoint key="ProductsEndpoint"/>
-            </send>
-        </inSequence>
-        <outSequence>
-            <send/>
-        </outSequence>
-        <faultSequence/>
-    </resource>
-    <resource methods="GET" uri-template="/products/{sku}">
-        <inSequence>
-            <log description="request log" level="custom">
-                <property name="message" value="Welcome to ACME - Get Products by SKU"/>
-            </log>
-            <send>
-                <endpoint key="ProductsEndpoint"/>
-            </send>
-        </inSequence>
-        <outSequence>
-            <send/>
-        </outSequence>
-        <faultSequence/>
-    </resource>
-    <resource methods="GET" uri-template="/products/designation/{designation}">
-        <inSequence>
-            <log description="request log" level="custom">
-                <property name="message" value="Welcome to ACME - Get All Products by Designation"/>
             </log>
             <send>
                 <endpoint key="ProductsEndpoint"/>
@@ -56,10 +28,10 @@
         </outSequence>
         <faultSequence/>
     </resource>
-    <resource methods="PATCH" uri-template="/products/{sku}">
+    <resource methods="GET" uri-template="/products/{sku}">
         <inSequence>
             <log description="request log" level="custom">
-                <property name="message" value="Welcome to ACME - Post Products"/>
+                <property name="message" value="Welcome to ACME - Get Products by SKU"/>
             </log>
             <send>
                 <endpoint key="ProductsEndpoint"/>
@@ -68,6 +40,230 @@
         <outSequence>
             <send/>
         </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="DELETE" uri-template="/products/{sku}">
+        <inSequence>
+            <log description="request log" level="custom">
+                <property name="message" value="Welcome to ACME - Delete Products by SKU"/>
+            </log>
+            <send>
+                <endpoint key="ProductsEndpoint"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="PATCH" uri-template="/products/{sku}">
+        <inSequence>
+            <log description="request log" level="custom">
+                <property name="message" value="Welcome to ACME - Update Products by SKU"/>
+            </log>
+            <send>
+                <endpoint key="ProductsEndpoint"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/products/designation/{designation}">
+        <inSequence>
+            <log description="request log" level="custom">
+                <property name="message" value="Welcome to ACME - Get All Products by Designation"/>
+            </log>
+            <send>
+                <endpoint key="ProductsEndpoint"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/products/{sku}/reviews/{status}">
+        <inSequence>
+            <log description="request log" level="custom">
+                <property name="message" value="Welcome to ACME - Get Reviews by status of products by sku"/>
+            </log>
+            <send>
+                <endpoint key="ReviewsProductsEndpoint"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/reviews/pending">
+        <inSequence>
+            <log description="request log" level="custom">
+                <property name="message" value="Welcome to ACME - Get all Reviews with pending status"/>
+            </log>
+            <send>
+                <endpoint key="ReviewsEndpoint"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" uri-template="/products/{sku}/reviews">
+        <inSequence>
+            <log description="request log" level="custom">
+                <property name="message" value="Welcome to ACME - Create Reviews for a product"/>
+            </log>
+            <send>
+                <endpoint key="ReviewsEndpoint"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="DELETE" uri-template="/reviews/{reviewID}">
+        <inSequence>
+            <log description="request log" level="custom">
+                <property name="message" value="Welcome to ACME - Delete Reviews by ID"/>
+            </log>
+            <send>
+                <endpoint key="ReviewsEndpoint"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="PUT" uri-template="/reviews/acceptreject/{reviewID}">
+        <inSequence>
+            <log description="request log" level="custom">
+                <property name="message" value="Welcome to ACME - Accept or Reject Reviews by ID"/>
+            </log>
+            <send>
+                <endpoint key="ReviewsEndpoint"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/votes">
+        <inSequence>
+            <log description="request log" level="custom">
+                <property name="message" value="Welcome to ACME - Get all Votes"/>
+            </log>
+            <send>
+                <endpoint key="VotesEndpoint"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/votes/{voteID}">
+        <inSequence>
+            <log description="request log" level="custom">
+                <property name="message" value="Welcome to ACME - Get Vote by ID"/>
+            </log>
+            <send>
+                <endpoint key="VotesEndpoint"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="DELETE" uri-template="/votes/{voteID}">
+        <inSequence>
+            <log description="request log" level="custom">
+                <property name="message" value="Welcome to ACME - Delete Vote by ID"/>
+            </log>
+            <send>
+                <endpoint key="VotesEndpoint"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="PATCH" uri-template="/votes/{voteID}">
+        <inSequence>
+            <log description="request log" level="custom">
+                <property name="message" value="Welcome to ACME - Update Vote by ID"/>
+            </log>
+            <send>
+                <endpoint key="VotesEndpoint"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" uri-template="/review/{reviewUuid}/votes">
+        <inSequence>
+            <log description="request log" level="custom">
+                <property name="message" value="Welcome to ACME - Create Vote for Review"/>
+            </log>
+            <send>
+                <endpoint key="VotesReviewsEndpoint"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" uri-template="/noreview/{sku}/votes">
+        <inSequence>
+            <log description="request log" level="custom">
+                <property name="message" value="Welcome to ACME - Create Vote without Review"/>
+            </log>
+            <send>
+                <endpoint key="VotesNoReviewsEndpoint"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/reviews/moreXvotes/{numberOfVotes}">
+        <inSequence>
+            <log description="request log">
+                <property name="message" value="Welcome to ACME -Get Review with more than X up/down votes"/>
+            </log>
+            <property description="SET numberOfVotes Property" expression="$ctx:uri.var.numberOfVotes" name="numberOfVotesProperty" scope="default" type="STRING"/>
+            <switch source="$ctx:numberOfVotesProperty">
+                <case regex="^(?!0$)\d+$">
+                    <log description="case greater than 0 log">
+                        <property name="message" value="Case numberOfVotesProperty is greater than 0"/>
+                    </log>
+                    <call>
+                        <endpoint key="ReviewsEndpoint"/>
+                    </call>
+                </case>
+                <default>
+                    <log description="case less than or equal to 0 log">
+                        <property name="message" value="Case numberOfVotesProperty is less than or equal 0"/>
+                    </log>
+                    <send>
+                        <endpoint key="ReviewsEndpoint"/>
+                    </send>
+                </default>
+            </switch>
+        </inSequence>
+        <outSequence/>
         <faultSequence/>
     </resource>
 </api>
