@@ -441,6 +441,102 @@ paths:
         security-types:
          - oauth2
         optional: false
+  /critica/{tipoDeVoto}/maisXvotos/{numeroDeVotos}:
+    get:
+      parameters:
+       -
+        name: tipoDeVoto
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+       -
+        name: numeroDeVotos
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /critica/{tipoDeVoto}/menosXvotos/{numeroDeVotos}:
+    get:
+      parameters:
+       -
+        name: tipoDeVoto
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+       -
+        name: numeroDeVotos
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /critica/quantidadePorUtilizador/{utilizador}:
+    get:
+      parameters:
+       -
+        name: utilizador
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
 components:
   securitySchemes:
     default:
@@ -476,11 +572,11 @@ x-wso2-cors:
    - OPTIONS
 x-wso2-production-endpoints:
   urls:
-   - http://localhost:30005
+   - http://localhost:30004
   type: http
 x-wso2-sandbox-endpoints:
   urls:
-   - http://localhost:30005
+   - http://localhost:30004
   type: http
 x-wso2-basePath: /acme_pt/1.0.0
 x-wso2-transports:

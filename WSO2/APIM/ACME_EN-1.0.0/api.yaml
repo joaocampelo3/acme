@@ -64,7 +64,7 @@ data:
     signingAlgorithm: SHA1
     signatureHeader: x-hub-signature
   createdTime: "1684881253768"
-  lastUpdatedTime: 2023-06-09 10:59:40.708
+  lastUpdatedTime: 2023-06-14 21:36:34.242
   endpointConfig:
     endpoint_type: http
     sandbox_endpoints:
@@ -347,6 +347,48 @@ data:
     id: ""
     target: "/noreview/{sku}/votes"
     verb: POST
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/reviews/{voteType}/moreXvotes/{numberOfVotes}"
+    verb: GET
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/reviews/{voteType}/lessXvotes/{numberOfVotes}"
+    verb: GET
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/reviews/quantityByUser/{user}"
+    verb: GET
     authType: Application & Application User
     throttlingPolicy: Unlimited
     scopes:
