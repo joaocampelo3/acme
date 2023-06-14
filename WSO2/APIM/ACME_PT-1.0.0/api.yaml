@@ -6,7 +6,7 @@ data:
   context: /acme_pt
   version: 1.0.0
   provider: admin
-  lifeCycleStatus: CREATED
+  lifeCycleStatus: PUBLISHED
   responseCachingEnabled: true
   cacheTimeout: 900
   hasThumbnail: false
@@ -20,7 +20,10 @@ data:
    - http
    - https
   tags: []
-  policies: []
+  policies:
+   - Bronze
+   - Gold
+   - Silver
   authorizationHeader: Authorization
   securityScheme:
    - oauth2
@@ -61,13 +64,13 @@ data:
     signingAlgorithm: SHA1
     signatureHeader: x-hub-signature
   createdTime: "1686305212527"
-  lastUpdatedTime: 2023-06-09 11:49:03.703
+  lastUpdatedTime: 2023-06-14 21:36:54.681
   endpointConfig:
     endpoint_type: http
     sandbox_endpoints:
-      url: http://localhost:30005
+      url: http://localhost:30004
     production_endpoints:
-      url: http://localhost:30005
+      url: http://localhost:30004
   endpointImplementationType: ENDPOINT
   scopes:
    -
@@ -346,6 +349,48 @@ data:
     id: ""
     target: "/semcritica/{sku}/votos"
     verb: POST
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/critica/{tipoDeVoto}/maisXvotos/{numeroDeVotos}"
+    verb: GET
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/critica/{tipoDeVoto}/menosXvotos/{numeroDeVotos}"
+    verb: GET
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/critica/quantidadePorUtilizador/{utilizador}"
+    verb: GET
     authType: Application & Application User
     throttlingPolicy: Unlimited
     scopes:

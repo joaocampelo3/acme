@@ -441,6 +441,102 @@ paths:
         security-types:
          - oauth2
         optional: false
+  /reviews/{voteType}/moreXvotes/{numberOfVotes}:
+    get:
+      parameters:
+       -
+        name: voteType
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+       -
+        name: numberOfVotes
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /reviews/{voteType}/lessXvotes/{numberOfVotes}:
+    get:
+      parameters:
+       -
+        name: voteType
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+       -
+        name: numberOfVotes
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /reviews/quantityByUser/{user}:
+    get:
+      parameters:
+       -
+        name: user
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
 components:
   securitySchemes:
     default:
