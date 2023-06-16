@@ -64,11 +64,11 @@ data:
     signingAlgorithm: SHA1
     signatureHeader: x-hub-signature
   createdTime: "1684881253768"
-  lastUpdatedTime: 2023-06-14 21:36:34.242
+  lastUpdatedTime: 2023-06-17 00:10:35.295
   endpointConfig:
     endpoint_type: http
     sandbox_endpoints:
-      url: http://localhost:30004
+      url: http://localhost:8290/ACME
     endpoint_security:
       sandbox:
         password: ""
@@ -89,7 +89,7 @@ data:
         enabled: true
         username: admin
     production_endpoints:
-      url: http://localhost:30004
+      url: http://localhost:8290/ACME
   endpointImplementationType: ENDPOINT
   scopes:
    -
@@ -388,6 +388,34 @@ data:
    -
     id: ""
     target: "/reviews/quantityByUser/{user}"
+    verb: GET
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/products/{voteType}/moreThan/{percentage}"
+    verb: GET
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/products/{voteType}/lower/{percentage}"
     verb: GET
     authType: Application & Application User
     throttlingPolicy: Unlimited

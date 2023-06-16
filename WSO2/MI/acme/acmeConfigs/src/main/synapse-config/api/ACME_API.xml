@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <api context="/ACME" name="ACME_API" xmlns="http://ws.apache.org/ns/synapse">
-    <resource methods="GET" url-mapping="/products">
+    <resource methods="GET" uri-template="/products">
         <inSequence>
             <log description="request log" level="custom">
                 <property name="message" value="Welcome to ACME - Get Products"/>
@@ -332,12 +332,28 @@
                 <endpoint key="ACMEEndpoint"/>
             </call>
             <script language="js"><![CDATA[var payload = mc.getPayloadJSON();
-		    var Reviews = payload.length;
-		   	var responsePayload = {
-        			Total_Number_of_Reviews: Reviews,
-    		};
-		    // Set the response payload
-		    mc.setPayloadJSON(responsePayload);]]></script>
+var user = mc.getProperty('userProperty');
+print(user);
+
+var Reviews;
+
+if (payload === null || typeof payload === "undefined" || payload === "") {
+    Reviews = 0;
+} else if (Array.isArray(payload)) {
+    var filteredPayload = payload.filter(function(item) {
+        return item.userId == user;
+    });
+    Reviews = filteredPayload.length;
+} else {
+    // Handle the case when payload is not an array
+    Reviews = 0;
+}
+
+var responsePayload = {
+	Total_Number_of_Reviews: Reviews,
+};
+// Set the response payload
+mc.setPayloadJSON(responsePayload);]]></script>
             <respond/>
         </inSequence>
         <outSequence/>
