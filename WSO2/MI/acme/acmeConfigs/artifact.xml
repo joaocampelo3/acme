@@ -26,4 +26,16 @@
     <artifact name="VotesReviewsEndpoint" groupId="com.isep.acme.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
         <file>src/main/synapse-config/endpoints/VotesReviewsEndpoint.xml</file>
     </artifact>
+    <artifact name="ACME_API" groupId="com.isep.acme.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/ACME_API.xml</file>
+    </artifact>
+    <artifact name="ACME_API_swagger" groupId="com.isep.acme.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/ACME_API_swagger.yaml</file>
+    </artifact>
+    <artifact name="ACME_API_metadata" groupId="com.isep.acme.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/ACME_API_metadata.yaml</file>
+    </artifact>
+    <artifact name="ACMEEndpoint" groupId="com.isep.acme.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/ACMEEndpoint.xml</file>
+    </artifact>
 </artifacts>

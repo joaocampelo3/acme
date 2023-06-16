@@ -24,8 +24,8 @@ public class ReviewDTO {
         this.approvalStatus = approvalStatus;
         this.funFact = funFact;
         this.rating = rating;
-        this.upVotes = ThreadLocalRandom.current().nextInt(0, 10 + 1);
-        this.downVotes = ThreadLocalRandom.current().nextInt(0, 10 + 1);
+        this.upVotes = (int)(Math.random()*(10-0+1)+0);
+        this.downVotes = (int)(Math.random()*((this.upVotes*1.5)-0+1)+0);
     }
 
     public void setIdReview( Long idReview ) {
