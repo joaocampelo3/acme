@@ -16,7 +16,7 @@ public class ReviewDTO {
     private Integer upVotes;
     private Integer downVotes;
 
-    public ReviewDTO(Long idReview, UUID reviewUuid, String reviewText, LocalDate publishingDate, String approvalStatus, String funFact, Double rating) {
+    public ReviewDTO(Long idReview, UUID reviewUuid, String reviewText, LocalDate publishingDate, String approvalStatus, String funFact, Double rating, Integer upVotes, Integer downVotes) {
         this.idReview = idReview;
         this.reviewUuid = reviewUuid;
         this.reviewText = reviewText;
@@ -24,8 +24,8 @@ public class ReviewDTO {
         this.approvalStatus = approvalStatus;
         this.funFact = funFact;
         this.rating = rating;
-        this.upVotes = (int)(Math.random()*(10-0+1)+0);
-        this.downVotes = (int)(Math.random()*((this.upVotes*1.5)-0+1)+0);
+        this.upVotes = upVotes;
+        this.downVotes = downVotes;
     }
 
     public void setIdReview( Long idReview ) {
