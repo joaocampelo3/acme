@@ -29,6 +29,8 @@ public class ReviewEvent {
     private String sku;
     private Long userId;
     private Double rating;
+    private Integer upVotes;
+    private Integer downVotes;
     private EventTypeEnum eventTypeEnum;
 
     public ReviewEvent(final Long idReview, final String reviewUuid, final long version, final String approvalStatus, final String reviewText,

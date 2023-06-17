@@ -35,6 +35,12 @@ public class Review {
     @Column(name = "sku", nullable = false)
     private String sku;
 
+    @Column(nullable = false)
+    private Integer upVotes;
+
+    @Column(nullable = false)
+    private Integer downVotes;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -52,6 +58,8 @@ public class Review {
         setReviewText(reviewText);
         setPublishingDate(publishingDate);
         setFunFact(funFact);
+        this.upVotes  = 0;
+        this.downVotes = 0;
     }
 
     public Review(final Long idReview, final UUID reviewUuid, final long version, final String approvalStatus, final  String reviewText, final String report, final LocalDate publishingDate, final String funFact, String sku, Rating rating, User user) {
@@ -93,9 +101,9 @@ public class Review {
     public Boolean setApprovalStatus(String approvalStatus) {
 
         if( approvalStatus.equalsIgnoreCase("pending") ||
-            approvalStatus.equalsIgnoreCase("approved") ||
-            approvalStatus.equalsIgnoreCase("rejected")) {
-            
+                approvalStatus.equalsIgnoreCase("approved") ||
+                approvalStatus.equalsIgnoreCase("rejected")) {
+
             this.approvalStatus = approvalStatus;
             return true;
         }
@@ -171,4 +179,19 @@ public class Review {
         this.rating = rating;
     }
 
+    public Integer getUpVotes() {
+        return upVotes;
+    }
+
+    public void setUpVotes(Integer upVotes) {
+        this.upVotes = upVotes;
+    }
+
+    public Integer getDownVotes() {
+        return downVotes;
+    }
+
+    public void setDownVotes(Integer downVotes) {
+        this.downVotes = downVotes;
+    }
 }

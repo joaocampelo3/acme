@@ -79,16 +79,16 @@ public class ReviewEventSubscriber {
         // handle the review event
         if (eventType.equals("review_created")) {
             reviewEventRepo.save(new ReviewEvent(event.getIdReview(), event.getReviewUuid(), event.getVersion(), event.getApprovalStatus(), event.getReviewText(), event.getReport(),
-                    event.getPublishingDate(), event.getFunFact(), event.getSku(), event.getUserId(), event.getRating(), EventTypeEnum.CREATE));
+                    event.getPublishingDate(), event.getFunFact(), event.getSku(), event.getUserId(), event.getRating(), event.getUpVotes(), event.getDownVotes(), EventTypeEnum.CREATE));
         } else if (eventType.equals("reviewFromVote_created")) {
             reviewEventRepo.save(new ReviewEvent(event.getIdReview(), event.getReviewUuid(), event.getVersion(), event.getApprovalStatus(), event.getReviewText(), event.getReport(),
-                    event.getPublishingDate(), event.getFunFact(), event.getSku(), event.getUserId(), event.getRating(), EventTypeEnum.CREATE));
+                    event.getPublishingDate(), event.getFunFact(), event.getSku(), event.getUserId(), event.getRating(), event.getUpVotes(), event.getDownVotes(),  EventTypeEnum.CREATE));
         } else if (eventType.equals("review_updated")) {
             reviewEventRepo.save(new ReviewEvent(event.getIdReview(), event.getReviewUuid(), event.getVersion(), event.getApprovalStatus(), event.getReviewText(), event.getReport(),
-                    event.getPublishingDate(), event.getFunFact(), event.getSku(), event.getUserId(), event.getRating(), EventTypeEnum.UPDATE));
+                    event.getPublishingDate(), event.getFunFact(), event.getSku(), event.getUserId(), event.getRating(), event.getUpVotes(), event.getDownVotes(),  EventTypeEnum.UPDATE));
         } else if (eventType.equals("review_deleted")) {
             reviewEventRepo.save(new ReviewEvent(event.getIdReview(), event.getReviewUuid(), event.getVersion(), event.getApprovalStatus(), event.getReviewText(), event.getReport(),
-                    event.getPublishingDate(), event.getFunFact(), event.getSku(), event.getUserId(), event.getRating(), EventTypeEnum.DELETE));
+                    event.getPublishingDate(), event.getFunFact(), event.getSku(), event.getUserId(), event.getRating(), event.getUpVotes(), event.getDownVotes(),  EventTypeEnum.DELETE));
         }
     }
 

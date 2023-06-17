@@ -58,8 +58,8 @@ public class Review {
         setReviewText(reviewText);
         setPublishingDate(publishingDate);
         setFunFact(funFact);
-        this.upVotes  = (int)(Math.random()*(10-0+1)+0);
-        this.downVotes = (int)(Math.random()*((this.upVotes*1.5)-0+1)+0);
+        this.upVotes  = 0;
+        this.downVotes = 0;
     }
 
     public Review(final Long idReview, final UUID reviewUuid, final long version, final String approvalStatus, final  String reviewText, final String report, final LocalDate publishingDate, final String funFact, String sku, Rating rating, User user) {
@@ -76,7 +76,7 @@ public class Review {
         setReviewText(reviewText);
         setSku(sku);
         setPublishingDate(publishingDate);
-        setApprovalStatus("pending");
+        setApprovalStatus("approved");
         setFunFact(funFact);
         setRating(rating);
         setUser(user);
@@ -101,9 +101,9 @@ public class Review {
     public Boolean setApprovalStatus(String approvalStatus) {
 
         if( approvalStatus.equalsIgnoreCase("pending") ||
-            approvalStatus.equalsIgnoreCase("approved") ||
-            approvalStatus.equalsIgnoreCase("rejected")) {
-            
+                approvalStatus.equalsIgnoreCase("approved") ||
+                approvalStatus.equalsIgnoreCase("rejected")) {
+
             this.approvalStatus = approvalStatus;
             return true;
         }
