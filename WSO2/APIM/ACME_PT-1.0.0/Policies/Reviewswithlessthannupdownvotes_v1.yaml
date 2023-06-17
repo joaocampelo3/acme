@@ -1,0 +1,17 @@
+type: operation_policy_specification
+version: v4.2.0
+data:
+  category: Mediation
+  name: Reviewswithlessthannupdownvotes
+  version: v1
+  displayName: Reviews with less than n up/down-votes
+  description: ""
+  applicableFlows:
+   - request
+   - response
+   - fault
+  supportedGateways:
+   - Synapse
+  supportedApiTypes:
+   - HTTP
+  policyAttributes: []

@@ -24,6 +24,7 @@ data:
    - Bronze
    - Silver
    - Gold
+   - OneRequest
   authorizationHeader: Authorization
   securityScheme:
    - oauth2
@@ -64,7 +65,7 @@ data:
     signingAlgorithm: SHA1
     signatureHeader: x-hub-signature
   createdTime: "1684881253768"
-  lastUpdatedTime: 2023-06-17 00:10:35.295
+  lastUpdatedTime: 2023-06-17 21:58:25.951
   endpointConfig:
     endpoint_type: http
     sandbox_endpoints:
@@ -359,34 +360,6 @@ data:
       fault: []
    -
     id: ""
-    target: "/reviews/{voteType}/moreXvotes/{numberOfVotes}"
-    verb: GET
-    authType: Application & Application User
-    throttlingPolicy: Unlimited
-    scopes:
-     - Admin
-     - User
-    usedProductIds: []
-    operationPolicies:
-      request: []
-      response: []
-      fault: []
-   -
-    id: ""
-    target: "/reviews/{voteType}/lessXvotes/{numberOfVotes}"
-    verb: GET
-    authType: Application & Application User
-    throttlingPolicy: Unlimited
-    scopes:
-     - Admin
-     - User
-    usedProductIds: []
-    operationPolicies:
-      request: []
-      response: []
-      fault: []
-   -
-    id: ""
     target: "/reviews/quantityByUser/{user}"
     verb: GET
     authType: Application & Application User
@@ -416,6 +389,34 @@ data:
    -
     id: ""
     target: "/products/{voteType}/lower/{percentage}"
+    verb: GET
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/reviews/{userID}/{voteType}/moreXvotes/{numberOfVotes}"
+    verb: GET
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request: []
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/reviews/{userID}/{voteType}/lessXvotes/{numberOfVotes}"
     verb: GET
     authType: Application & Application User
     throttlingPolicy: Unlimited

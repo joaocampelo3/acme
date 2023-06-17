@@ -1,0 +1,17 @@
+type: operation_policy_specification
+version: v4.2.0
+data:
+  category: Mediation
+  name: ReviewsAcceptRejectReviewID
+  version: v1
+  displayName: ReviewsAcceptRejectReviewID
+  description: ""
+  applicableFlows:
+   - request
+   - response
+   - fault
+  supportedGateways:
+   - Synapse
+  supportedApiTypes:
+   - HTTP
+  policyAttributes: []

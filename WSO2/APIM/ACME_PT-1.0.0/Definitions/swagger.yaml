@@ -176,32 +176,6 @@ paths:
         security-types:
          - oauth2
         optional: false
-  /criticas/{userID}:
-    get:
-      parameters:
-       -
-        name: userID
-        in: path
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
-          format: string
-      responses:
-        "200":
-          description: ok
-      security:
-       -
-        default:
-         - Admin
-         - User
-      x-auth-type: Application & Application User
-      x-throttling-tier: Unlimited
-      x-wso2-application-security:
-        security-types:
-         - oauth2
-        optional: false
   /criticas/pendente:
     get:
       parameters: []
@@ -537,6 +511,102 @@ paths:
         security-types:
          - oauth2
         optional: false
+  /produtos/{tipoDeVoto}/maisDe/{percentagem}:
+    get:
+      parameters:
+       -
+        name: tipoDeVoto
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+       -
+        name: percentagem
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /produtos/{tipoDeVoto}/menos/{percentagem}:
+    get:
+      parameters:
+       -
+        name: tipoDeVoto
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+       -
+        name: percentagem
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
+  /criticas/{utilizador}:
+    get:
+      parameters:
+       -
+        name: utilizador
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          format: string
+      responses:
+        "200":
+          description: ok
+      security:
+       -
+        default:
+         - Admin
+         - User
+      x-auth-type: Application & Application User
+      x-throttling-tier: Unlimited
+      x-wso2-application-security:
+        security-types:
+         - oauth2
+        optional: false
 components:
   securitySchemes:
     default:
@@ -572,11 +642,11 @@ x-wso2-cors:
    - OPTIONS
 x-wso2-production-endpoints:
   urls:
-   - http://localhost:30004
+   - http://localhost:8290/ACME
   type: http
 x-wso2-sandbox-endpoints:
   urls:
-   - http://localhost:30004
+   - http://localhost:8290/ACME
   type: http
 x-wso2-basePath: /acme_pt/1.0.0
 x-wso2-transports:

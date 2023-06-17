@@ -1,0 +1,17 @@
+type: operation_policy_specification
+version: v4.2.0
+data:
+  category: Mediation
+  name: ProductSkuReviewsStatus
+  version: v1
+  displayName: ProductSkuReviewsStatus
+  description: ""
+  applicableFlows:
+   - request
+   - response
+   - fault
+  supportedGateways:
+   - Synapse
+  supportedApiTypes:
+   - HTTP
+  policyAttributes: []

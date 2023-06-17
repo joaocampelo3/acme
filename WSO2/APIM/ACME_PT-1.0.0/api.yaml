@@ -24,6 +24,7 @@ data:
    - Bronze
    - Gold
    - Silver
+   - OneRequest
   authorizationHeader: Authorization
   securityScheme:
    - oauth2
@@ -64,13 +65,13 @@ data:
     signingAlgorithm: SHA1
     signatureHeader: x-hub-signature
   createdTime: "1686305212527"
-  lastUpdatedTime: 2023-06-14 21:36:54.681
+  lastUpdatedTime: 2023-06-17 22:42:04.682
   endpointConfig:
     endpoint_type: http
     sandbox_endpoints:
-      url: http://localhost:30004
+      url: http://localhost:8290/ACME
     production_endpoints:
-      url: http://localhost:30004
+      url: http://localhost:8290/ACME
   endpointImplementationType: ENDPOINT
   scopes:
    -
@@ -142,7 +143,12 @@ data:
      - User
     usedProductIds: []
     operationPolicies:
-      request: []
+      request:
+       -
+        policyName: productsBySku
+        policyVersion: v1
+        policyId: 36ad4df9-fa56-4989-9832-587a88cf4395
+        parameters: {}
       response: []
       fault: []
    -
@@ -155,7 +161,12 @@ data:
      - Admin
     usedProductIds: []
     operationPolicies:
-      request: []
+      request:
+       -
+        policyName: productsBySku
+        policyVersion: v1
+        policyId: 36ad4df9-fa56-4989-9832-587a88cf4395
+        parameters: {}
       response: []
       fault: []
    -
@@ -168,7 +179,12 @@ data:
      - Admin
     usedProductIds: []
     operationPolicies:
-      request: []
+      request:
+       -
+        policyName: productsBySku
+        policyVersion: v1
+        policyId: 36ad4df9-fa56-4989-9832-587a88cf4395
+        parameters: {}
       response: []
       fault: []
    -
@@ -182,7 +198,12 @@ data:
      - User
     usedProductIds: []
     operationPolicies:
-      request: []
+      request:
+       -
+        policyName: productsDesignation
+        policyVersion: v1
+        policyId: aa7fde42-2c74-4fad-9195-9c1a2fcb991f
+        parameters: {}
       response: []
       fault: []
    -
@@ -196,21 +217,12 @@ data:
      - User
     usedProductIds: []
     operationPolicies:
-      request: []
-      response: []
-      fault: []
-   -
-    id: ""
-    target: "/criticas/{userID}"
-    verb: GET
-    authType: Application & Application User
-    throttlingPolicy: Unlimited
-    scopes:
-     - Admin
-     - User
-    usedProductIds: []
-    operationPolicies:
-      request: []
+      request:
+       -
+        policyName: ProductSkuReviewsStatus
+        policyVersion: v1
+        policyId: d5f455f6-b3a3-44ce-a6bb-818190e54984
+        parameters: {}
       response: []
       fault: []
    -
@@ -224,7 +236,14 @@ data:
      - User
     usedProductIds: []
     operationPolicies:
-      request: []
+      request:
+       -
+        policyName: rewriteResourcePath
+        policyVersion: v3
+        policyId: ea62a9a4-46fa-47e4-80eb-8e0300d1cee2
+        parameters:
+          newResourcePath: /reviews/pending
+          includeQueryParams: "true"
       response: []
       fault: []
    -
@@ -238,7 +257,12 @@ data:
      - User
     usedProductIds: []
     operationPolicies:
-      request: []
+      request:
+       -
+        policyName: ProductsSkuReviews
+        policyVersion: v1
+        policyId: cd66584d-a3c1-4eef-8c37-dc4a2d9f2191
+        parameters: {}
       response: []
       fault: []
    -
@@ -252,7 +276,12 @@ data:
      - User
     usedProductIds: []
     operationPolicies:
-      request: []
+      request:
+       -
+        policyName: ReviewID
+        policyVersion: v1
+        policyId: 34395c68-d0d6-4f09-9f3d-7c0642b540ed
+        parameters: {}
       response: []
       fault: []
    -
@@ -265,7 +294,12 @@ data:
      - Admin
     usedProductIds: []
     operationPolicies:
-      request: []
+      request:
+       -
+        policyName: ReviewsAcceptRejectReviewID
+        policyVersion: v1
+        policyId: c6c1fea0-b137-4833-a3c6-5041c142c153
+        parameters: {}
       response: []
       fault: []
    -
@@ -300,7 +334,12 @@ data:
      - User
     usedProductIds: []
     operationPolicies:
-      request: []
+      request:
+       -
+        policyName: VotesByID
+        policyVersion: v1
+        policyId: 8eb615cb-689d-4b81-a0e5-11adfc8abcbd
+        parameters: {}
       response: []
       fault: []
    -
@@ -314,7 +353,12 @@ data:
      - User
     usedProductIds: []
     operationPolicies:
-      request: []
+      request:
+       -
+        policyName: VotesByID
+        policyVersion: v1
+        policyId: 8eb615cb-689d-4b81-a0e5-11adfc8abcbd
+        parameters: {}
       response: []
       fault: []
    -
@@ -328,7 +372,12 @@ data:
      - User
     usedProductIds: []
     operationPolicies:
-      request: []
+      request:
+       -
+        policyName: VotesByID
+        policyVersion: v1
+        policyId: 8eb615cb-689d-4b81-a0e5-11adfc8abcbd
+        parameters: {}
       response: []
       fault: []
    -
@@ -342,7 +391,12 @@ data:
      - User
     usedProductIds: []
     operationPolicies:
-      request: []
+      request:
+       -
+        policyName: ReviewUUIDVotes
+        policyVersion: v1
+        policyId: b0ec4d5d-53a7-48b9-9f14-02b66a610602
+        parameters: {}
       response: []
       fault: []
    -
@@ -356,7 +410,12 @@ data:
      - User
     usedProductIds: []
     operationPolicies:
-      request: []
+      request:
+       -
+        policyName: VotesWithNoReview
+        policyVersion: v1
+        policyId: 5544f12a-bf18-4c72-90fa-c65972a1e6fe
+        parameters: {}
       response: []
       fault: []
    -
@@ -370,7 +429,12 @@ data:
      - User
     usedProductIds: []
     operationPolicies:
-      request: []
+      request:
+       -
+        policyName: Reviewswithmorethann1updownvotes
+        policyVersion: v1
+        policyId: 2a0dac85-8266-495d-8a17-ba0aeb87ac96
+        parameters: {}
       response: []
       fault: []
    -
@@ -384,7 +448,12 @@ data:
      - User
     usedProductIds: []
     operationPolicies:
-      request: []
+      request:
+       -
+        policyName: Reviewswithlessthannupdownvotes
+        policyVersion: v1
+        policyId: 4fe4ead4-a4ba-4985-a854-459babd6cfba
+        parameters: {}
       response: []
       fault: []
    -
@@ -398,7 +467,69 @@ data:
      - User
     usedProductIds: []
     operationPolicies:
-      request: []
+      request:
+       -
+        policyName: QuantityofReviewscreatedbyuseru1
+        policyVersion: v1
+        policyId: b80db792-e453-4f40-a525-2606c720e33c
+        parameters: {}
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/produtos/{tipoDeVoto}/maisDe/{percentagem}"
+    verb: GET
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request:
+       -
+        policyName: ProductsMoreVotePercentage
+        policyVersion: v1
+        policyId: 8c93b27b-5d4b-4a56-aad7-9bdca37bc9db
+        parameters: {}
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/produtos/{tipoDeVoto}/menos/{percentagem}"
+    verb: GET
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request:
+       -
+        policyName: ProductsLessVotePercentage
+        policyVersion: v1
+        policyId: b0cda141-1e3c-44a8-8acf-b1bb7ab950a7
+        parameters: {}
+      response: []
+      fault: []
+   -
+    id: ""
+    target: "/criticas/{utilizador}"
+    verb: GET
+    authType: Application & Application User
+    throttlingPolicy: Unlimited
+    scopes:
+     - Admin
+     - User
+    usedProductIds: []
+    operationPolicies:
+      request:
+       -
+        policyName: ReviewsByUser
+        policyVersion: v1
+        policyId: 5eb9f20a-b2aa-47e2-b852-ee82b36e9e29
+        parameters: {}
       response: []
       fault: []
   categories: []
