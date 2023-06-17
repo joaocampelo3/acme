@@ -146,6 +146,19 @@ paths:
       responses:
         default:
           description: Default response
+  /reviews/{userID}:
+    get:
+      parameters:
+      - name: userID
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default response
   /reviews/acceptreject/{reviewID}:
     put:
       parameters:
@@ -267,9 +280,16 @@ paths:
       responses:
         default:
           description: Default response
-  /reviews/{voteType}/moreXvotes/{numberOfVotes}:
+  /reviews/{userID}/{voteType}/moreXvotes/{numberOfVotes}:
     get:
       parameters:
+      - name: userID
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
       - name: voteType
         in: path
         required: true
@@ -287,9 +307,16 @@ paths:
       responses:
         default:
           description: Default response
-  /reviews/{voteType}/lessXvotes/{numberOfVotes}:
+  /reviews/{userID}/{voteType}/lessXvotes/{numberOfVotes}:
     get:
       parameters:
+      - name: userID
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
       - name: voteType
         in: path
         required: true

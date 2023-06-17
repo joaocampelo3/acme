@@ -140,6 +140,20 @@
         </outSequence>
         <faultSequence/>
     </resource>
+    <resource methods="GET" uri-template="/reviews/{userID}">
+        <inSequence>
+            <log description="request log" level="custom">
+                <property name="message" value="Welcome to ACME - Get Reviews by userID"/>
+            </log>
+            <send>
+                <endpoint key="ACMEEndpoint"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
     <resource methods="PUT" uri-template="/reviews/acceptreject/{reviewID}">
         <inSequence>
             <log description="request log" level="custom">
@@ -238,16 +252,31 @@
         </outSequence>
         <faultSequence/>
     </resource>
-    <resource methods="GET" uri-template="/reviews/{voteType}/moreXvotes/{numberOfVotes}">
+    <resource methods="GET" uri-template="/reviews/{userID}/{voteType}/moreXvotes/{numberOfVotes}">
         <inSequence>
             <log description="request log">
                 <property name="message" value="Welcome to ACME -Get Review with more than X up/down votes"/>
             </log>
             <property description="SET numberOfVotes Property" expression="$ctx:uri.var.numberOfVotes" name="numberOfVotesProperty" scope="default" type="INTEGER"/>
             <property description="SET voteType Property" expression="$ctx:uri.var.voteType" name="voteTypeProperty" scope="default" type="STRING"/>
+            <property expression="fn:concat('http://localhost:30004/reviews/', get-property('uri.var.userID'))" name="uri.var.reviewsendpoint" scope="default" type="STRING"/>
             <call>
-                <endpoint key="ACMEEndpoint"/>
+                <endpoint>
+                    <http method="get" uri-template="{uri.var.reviewsendpoint}">
+                        <suspendOnFailure>
+                            <initialDuration>-1</initialDuration>
+                            <progressionFactor>-1</progressionFactor>
+                            <maximumDuration>0</maximumDuration>
+                        </suspendOnFailure>
+                        <markForSuspension>
+                            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                        </markForSuspension>
+                    </http>
+                </endpoint>
             </call>
+            <log separator="---REVIEWS BY USER-----">
+                <property expression="json-eval($)" name="qweqwe"/>
+            </log>
             <switch source="get-property('voteTypeProperty')">
                 <case regex="upvote">
                     <script language="js"><![CDATA[var payload = mc.getPayloadJSON();
@@ -280,16 +309,31 @@
         <outSequence/>
         <faultSequence/>
     </resource>
-    <resource methods="GET" uri-template="/reviews/{voteType}/lessXvotes/{numberOfVotes}">
+    <resource methods="GET" uri-template="/reviews/{userID}/{voteType}/lessXvotes/{numberOfVotes}">
         <inSequence>
             <log description="request log">
                 <property name="message" value="Welcome to ACME - Get Review with less than X up/down votes"/>
             </log>
             <property description="SET numberOfVotes Property" expression="$ctx:uri.var.numberOfVotes" name="numberOfVotesProperty" scope="default" type="INTEGER"/>
             <property description="SET voteType Property" expression="$ctx:uri.var.voteType" name="voteTypeProperty" scope="default" type="STRING"/>
+            <property expression="fn:concat('http://localhost:30004/reviews/', get-property('uri.var.userID'))" name="uri.var.reviewsendpoint" scope="default" type="STRING"/>
             <call>
-                <endpoint key="ACMEEndpoint"/>
+                <endpoint>
+                    <http method="get" uri-template="{uri.var.reviewsendpoint}">
+                        <suspendOnFailure>
+                            <initialDuration>-1</initialDuration>
+                            <progressionFactor>-1</progressionFactor>
+                            <maximumDuration>0</maximumDuration>
+                        </suspendOnFailure>
+                        <markForSuspension>
+                            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                        </markForSuspension>
+                    </http>
+                </endpoint>
             </call>
+            <log separator="---REVIEWS BY USER-----">
+                <property expression="json-eval($)" name="qweqwe"/>
+            </log>
             <switch source="get-property('voteTypeProperty')">
                 <case regex="upvote">
                     <script language="js"><![CDATA[var payload = mc.getPayloadJSON();
@@ -297,7 +341,7 @@
 		
 		                    // Filter the payload based on the numberOfVotes
 		                    var filteredPayload = payload.filter(function(item) {
-		                        return item.upVotes < numberOfVotes;
+		                      return item.upVotes < numberOfVotes;
 		                    });
 		
 		                    // Replace the original payload with the filtered payload
@@ -310,7 +354,7 @@
 		
 		                    // Filter the payload based on the numberOfVotes
 		                    var filteredPayload = payload.filter(function(item) {
-		                        return item.downVotes < numberOfVotes;
+		                      return item.downVotes < numberOfVotes;
 		                    });
 		
 		                    // Replace the original payload with the filtered payload
@@ -328,8 +372,20 @@
                 <property name="message" value="Welcome to ACME - Get quantity of reviews by user"/>
             </log>
             <property description="SET User Property" expression="$ctx:uri.var.user" name="userProperty" scope="default" type="STRING"/>
+            <property expression="fn:concat('http://localhost:30004/reviews/',get-property('userProperty'))" name="uri.var.getUserReviewsEndpoint" scope="default" type="STRING"/>
             <call>
-                <endpoint key="ACMEEndpoint"/>
+                <endpoint>
+                    <http method="get" uri-template="{uri.var.getUserReviewsEndpoint}">
+                        <suspendOnFailure>
+                            <initialDuration>-1</initialDuration>
+                            <progressionFactor>-1</progressionFactor>
+                            <maximumDuration>0</maximumDuration>
+                        </suspendOnFailure>
+                        <markForSuspension>
+                            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                        </markForSuspension>
+                    </http>
+                </endpoint>
             </call>
             <script language="js"><![CDATA[var payload = mc.getPayloadJSON();
 var user = mc.getProperty('userProperty');
@@ -338,13 +394,13 @@ print(user);
 var Reviews;
 
 if (payload === null || typeof payload === "undefined" || payload === "") {
+    print("payload is null");
     Reviews = 0;
 } else if (Array.isArray(payload)) {
-    var filteredPayload = payload.filter(function(item) {
-        return item.userId == user;
-    });
-    Reviews = filteredPayload.length;
+	print("payload is not null");
+    Reviews = payload.length;
 } else {
+    print("else case");
     // Handle the case when payload is not an array
     Reviews = 0;
 }
@@ -366,15 +422,39 @@ mc.setPayloadJSON(responsePayload);]]></script>
             </log>
             <property description="SET percentage Property" expression="$ctx:uri.var.percentage" name="percentageProperty" scope="default" type="INTEGER"/>
             <property description="SET voteType Property" expression="$ctx:uri.var.voteType" name="voteTypeProperty" scope="default" type="STRING"/>
+            <property expression="fn:concat('http://localhost:30004/products','')" name="uri.var.getProductsEndpoint" scope="default" type="STRING"/>
+            <log description="request log">
+                <property name="message" value="Calling Products Endpoint"/>
+            </log>
             <call>
-                <endpoint key="ProductsEndpoint"/>
+                <endpoint>
+                    <http method="get" uri-template="{uri.var.getProductsEndpoint}">
+                        <suspendOnFailure>
+                            <initialDuration>-1</initialDuration>
+                            <progressionFactor>-1</progressionFactor>
+                            <maximumDuration>0</maximumDuration>
+                        </suspendOnFailure>
+                        <markForSuspension>
+                            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                        </markForSuspension>
+                    </http>
+                </endpoint>
             </call>
+            <log description="request log">
+                <property name="message" value="Before iterate"/>
+            </log>
             <iterate expression="json-eval($.*)">
                 <target>
                     <sequence>
                         <property expression="json-eval($.sku)" name="uri.var.productSKU" scope="default" type="STRING"/>
+                        <script language="js"><![CDATA[var sku = mc.getProperty('uri.var.productSKU');
+
+print("SKU --> "+sku);]]></script>
                         <property expression="fn:concat('http://localhost:30004/products/',get-property('uri.var.productSKU'))" name="uri.var.getProductEndpoint" scope="default" type="STRING"/>
                         <property expression="fn:concat('http://localhost:30004/products/',get-property('uri.var.productSKU'), '/reviews/approved')" name="uri.var.productsReviewEndpoint" scope="default" type="STRING"/>
+                        <log description="request log">
+                            <property name="message" value="Calling productsReview Endpoint"/>
+                        </log>
                         <call>
                             <endpoint>
                                 <http method="get" uri-template="{uri.var.productsReviewEndpoint}">
@@ -389,26 +469,43 @@ mc.setPayloadJSON(responsePayload);]]></script>
                                 </http>
                             </endpoint>
                         </call>
-                        <switch source="get-property('voteTypeProperty')">
+                        <log description="request log">
+                            <property name="message" value="Before switch"/>
+                        </log>
+                        <switch source="get-property('uri.var.voteType')">
                             <case regex="downvote">
+                                <log description="request log">
+                                    <property name="message" value="Case downvote"/>
+                                </log>
                                 <script language="js"><![CDATA[//print(JSON.stringify(mc.getPayloadJSON()));
                                         var payload = mc.getPayloadJSON();
-                                        var percentage = mc.getProperty('percentageProperty');
-                                        var filteredPayload = payload.filter(function(item) {
-                                            if((item.downVotes / (item.downVotes + item.vote)) * 100 > percentage){
-                                                return true;
-                                            }
-                                            return false;
-                                        }); 
-        
-                                        //mc.setPayloadJSON(filteredPayload);
-                                        mc.setPayloadJSON(filteredPayload);
-                                        print("filteredPayload -->"+filteredPayload.length);
-                                        if(filteredPayload.length > 0) {
-                                            mc.setPayloadJSON({result: "true"});
+                                        var percentage = mc.getProperty('uri.var.percentage');
+                                        print('before payload filter');
+
+                                        var filteredPayload = null;
+
+                                        if (payload === null || typeof payload === "undefined" || payload === "") {
+                                            print("payload is null");
+                                        } else if (Array.isArray(payload)) {
+                                            print("payload is not null");
+                                            filteredPayload = payload.filter(function(item) {
+                                                if((item.downVotes / (item.downVotes + item.upVotes)) * 100 > percentage){
+                                                    return true;
+                                                }
+                                                return false;
+                                            });
+                                        } else {
+                                            print("else case");
                                         }
-                                        else {
+
+                                        print('after payload filter');
+
+                                        if (filteredPayload === null || typeof filteredPayload === "undefined" || filteredPayload === "") {
                                             mc.setPayloadJSON({result: "false"});
+                                        } else {
+                                            mc.setPayloadJSON(filteredPayload);
+                                            
+                                            mc.setPayloadJSON({result: "true"});
                                         }]]></script>
                                 <switch source="json-eval($.result)">
                                     <case regex="true">
@@ -438,10 +535,13 @@ mc.setPayloadJSON(responsePayload);]]></script>
                                     </case>
                                     <default>
                                         <log separator="---------">
-                                            <property expression="json-eval($)" name="qweqwe"/>
+                                            <property name="message" value="empty response"/>
                                         </log>
                                     </default>
                                 </switch>
+                                <log separator="---------">
+                                    <property expression="json-eval($)" name="123123123"/>
+                                </log>
                                 <aggregate>
                                     <completeCondition>
                                         <messageCount max="-1" min="-1"/>
@@ -455,6 +555,7 @@ mc.setPayloadJSON(responsePayload);]]></script>
 									            });
 											
 											    var filteredPayloadJSON = JSON.stringify(filteredPayload);
+
 									            // Set the modified payload back to the message context
 									            mc.setPayloadJSON(filteredPayloadJSON);]]></script>
                                         <respond/>
@@ -462,30 +563,41 @@ mc.setPayloadJSON(responsePayload);]]></script>
                                 </aggregate>
                             </case>
                             <default>
+                                <log description="request log">
+                                    <property name="message" value="Case upvote"/>
+                                </log>
                                 <script language="js"><![CDATA[//print(JSON.stringify(mc.getPayloadJSON()));
                                         var payload = mc.getPayloadJSON();
-                                        var percentage = mc.getProperty('percentageProperty');
-                                        var filteredPayload = payload.filter(function(item) {
-                                            if((item.vote / (item.downVotes + item.vote)) * 100 > percentage){
-                                                return true;
-                                            }
-                                            return false;
-                                        }); 
-        
-                                        //mc.setPayloadJSON(filteredPayload);
-                                        mc.setPayloadJSON(filteredPayload);
-                                        print("filteredPayload -->"+filteredPayload.length);
-                                        if(filteredPayload.length > 0) {
-                                            mc.setPayloadJSON({result: "true"});
+                                        var percentage = mc.getProperty('uri.var.percentage');
+                                        print('before payload filter');
+
+                                        var filteredPayload = null;
+
+                                        if (payload === null || typeof payload === "undefined" || payload === "") {
+                                            print("payload is null");
+                                        } else if (Array.isArray(payload)) {
+                                            print("payload is not null");
+                                            filteredPayload = payload.filter(function(item) {
+                                                if((item.upVotes / (item.downVotes + item.upVotes)) * 100 > percentage){
+                                                    return true;
+                                                }
+                                                return false;
+                                            });
+                                        } else {
+                                            print("else case");
                                         }
-                                        else {
+
+                                        print('after payload filter');
+
+                                        if (filteredPayload === null || typeof filteredPayload === "undefined" || filteredPayload === "") {
                                             mc.setPayloadJSON({result: "false"});
+                                        } else {
+                                            mc.setPayloadJSON(filteredPayload);
+                                            
+                                            mc.setPayloadJSON({result: "true"});
                                         }]]></script>
                                 <switch source="json-eval($.result)">
                                     <case regex="true">
-                                        <log separator="---------">
-                                            <property expression="json-eval($)" name="qweqwe"/>
-                                        </log>
                                         <call>
                                             <endpoint>
                                                 <http method="get" uri-template="{uri.var.getProductEndpoint}">
@@ -507,7 +619,11 @@ mc.setPayloadJSON(responsePayload);]]></script>
                                             </args>
                                         </payloadFactory>
                                     </case>
-                                    <default/>
+                                    <default>
+                                        <log>
+                                            <property name="message" value="empty response"/>
+                                        </log>
+                                    </default>
                                 </switch>
                                 <aggregate>
                                     <completeCondition>
@@ -523,6 +639,7 @@ mc.setPayloadJSON(responsePayload);]]></script>
 									            });
 											
 											    var filteredPayloadJSON = JSON.stringify(filteredPayload);
+
 									            // Set the modified payload back to the message context
 									            mc.setPayloadJSON(filteredPayloadJSON);]]></script>
                                         <respond/>
@@ -540,17 +657,44 @@ mc.setPayloadJSON(responsePayload);]]></script>
     </resource>
     <resource methods="GET" uri-template="/products/{voteType}/lower/{percentage}">
         <inSequence>
+            <log description="request log">
+                <property name="message" value="Welcome to ACME - List the “Products” with “Reviews” with less than x% of up/down-votes"/>
+            </log>
             <property description="SET percentage Property" expression="$ctx:uri.var.percentage" name="percentageProperty" scope="default" type="INTEGER"/>
             <property description="SET voteType Property" expression="$ctx:uri.var.voteType" name="voteTypeProperty" scope="default" type="STRING"/>
+            <property expression="fn:concat('http://localhost:30004/products','')" name="uri.var.getProductsEndpoint" scope="default" type="STRING"/>
+            <log description="request log">
+                <property name="message" value="Calling Products Endpoint"/>
+            </log>
             <call>
-                <endpoint key="ProductsEndpoint"/>
+                <endpoint>
+                    <http method="get" uri-template="{uri.var.getProductsEndpoint}">
+                        <suspendOnFailure>
+                            <initialDuration>-1</initialDuration>
+                            <progressionFactor>-1</progressionFactor>
+                            <maximumDuration>0</maximumDuration>
+                        </suspendOnFailure>
+                        <markForSuspension>
+                            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                        </markForSuspension>
+                    </http>
+                </endpoint>
             </call>
+            <log description="request log">
+                <property name="message" value="Before iterate"/>
+            </log>
             <iterate expression="json-eval($.*)">
                 <target>
                     <sequence>
                         <property expression="json-eval($.sku)" name="uri.var.productSKU" scope="default" type="STRING"/>
+                        <script language="js"><![CDATA[var sku = mc.getProperty('uri.var.productSKU');
+
+print("SKU --> "+sku);]]></script>
                         <property expression="fn:concat('http://localhost:30004/products/',get-property('uri.var.productSKU'))" name="uri.var.getProductEndpoint" scope="default" type="STRING"/>
                         <property expression="fn:concat('http://localhost:30004/products/',get-property('uri.var.productSKU'), '/reviews/approved')" name="uri.var.productsReviewEndpoint" scope="default" type="STRING"/>
+                        <log description="request log">
+                            <property name="message" value="Calling productsReview Endpoint"/>
+                        </log>
                         <call>
                             <endpoint>
                                 <http method="get" uri-template="{uri.var.productsReviewEndpoint}">
@@ -565,26 +709,43 @@ mc.setPayloadJSON(responsePayload);]]></script>
                                 </http>
                             </endpoint>
                         </call>
-                        <switch source="get-property('voteTypeProperty')">
+                        <log description="request log">
+                            <property name="message" value="Before switch"/>
+                        </log>
+                        <switch source="get-property('uri.var.voteType')">
                             <case regex="downvote">
+                                <log description="request log">
+                                    <property name="message" value="Case downvote"/>
+                                </log>
                                 <script language="js"><![CDATA[//print(JSON.stringify(mc.getPayloadJSON()));
                                         var payload = mc.getPayloadJSON();
-                                        var percentage = mc.getProperty('percentageProperty');
-                                        var filteredPayload = payload.filter(function(item) {
-                                            if((item.downVotes / (item.downVotes + item.vote)) * 100 < percentage){
-                                                return true;
-                                            }
-                                            return false;
-                                        }); 
-        
-                                        //mc.setPayloadJSON(filteredPayload);
-                                        mc.setPayloadJSON(filteredPayload);
-                                        print("filteredPayload -->"+filteredPayload.length);
-                                        if(filteredPayload.length > 0) {
-                                            mc.setPayloadJSON({result: "true"});
+                                        var percentage = mc.getProperty('uri.var.percentage');
+                                        print('before payload filter');
+
+                                        var filteredPayload = null;
+
+                                        if (payload === null || typeof payload === "undefined" || payload === "") {
+                                            print("payload is null");
+                                        } else if (Array.isArray(payload)) {
+                                            print("payload is not null");
+                                            filteredPayload = payload.filter(function(item) {
+                                                if((item.downVotes / (item.downVotes + item.upVotes)) * 100 < percentage){
+                                                    return true;
+                                                }
+                                                return false;
+                                            });
+                                        } else {
+                                            print("else case");
                                         }
-                                        else {
+
+                                        print('after payload filter');
+
+                                        if (filteredPayload === null || typeof filteredPayload === "undefined" || filteredPayload === "") {
                                             mc.setPayloadJSON({result: "false"});
+                                        } else {
+                                            mc.setPayloadJSON(filteredPayload);
+                                            
+                                            mc.setPayloadJSON({result: "true"});
                                         }]]></script>
                                 <switch source="json-eval($.result)">
                                     <case regex="true">
@@ -614,10 +775,13 @@ mc.setPayloadJSON(responsePayload);]]></script>
                                     </case>
                                     <default>
                                         <log separator="---------">
-                                            <property expression="json-eval($)" name="qweqwe"/>
+                                            <property name="message" value="empty response"/>
                                         </log>
                                     </default>
                                 </switch>
+                                <log separator="---------">
+                                    <property expression="json-eval($)" name="123123123"/>
+                                </log>
                                 <aggregate>
                                     <completeCondition>
                                         <messageCount max="-1" min="-1"/>
@@ -631,6 +795,7 @@ mc.setPayloadJSON(responsePayload);]]></script>
 									            });
 											
 											    var filteredPayloadJSON = JSON.stringify(filteredPayload);
+
 									            // Set the modified payload back to the message context
 									            mc.setPayloadJSON(filteredPayloadJSON);]]></script>
                                         <respond/>
@@ -638,30 +803,41 @@ mc.setPayloadJSON(responsePayload);]]></script>
                                 </aggregate>
                             </case>
                             <default>
+                                <log description="request log">
+                                    <property name="message" value="Case upvote"/>
+                                </log>
                                 <script language="js"><![CDATA[//print(JSON.stringify(mc.getPayloadJSON()));
                                         var payload = mc.getPayloadJSON();
-                                        var percentage = mc.getProperty('percentageProperty');
-                                        var filteredPayload = payload.filter(function(item) {
-                                            if((item.vote / (item.downVotes + item.vote)) * 100 < percentage){
-                                                return true;
-                                            }
-                                            return false;
-                                        }); 
-        
-                                        //mc.setPayloadJSON(filteredPayload);
-                                        mc.setPayloadJSON(filteredPayload);
-                                        print("filteredPayload -->"+filteredPayload.length);
-                                        if(filteredPayload.length > 0) {
-                                            mc.setPayloadJSON({result: "true"});
+                                        var percentage = mc.getProperty('uri.var.percentage');
+                                        print('before payload filter');
+
+                                        var filteredPayload = null;
+
+                                        if (payload === null || typeof payload === "undefined" || payload === "") {
+                                            print("payload is null");
+                                        } else if (Array.isArray(payload)) {
+                                            print("payload is not null");
+                                            filteredPayload = payload.filter(function(item) {
+                                                if((item.upVotes / (item.downVotes + item.upVotes)) * 100 < percentage){
+                                                    return true;
+                                                }
+                                                return false;
+                                            });
+                                        } else {
+                                            print("else case");
                                         }
-                                        else {
+
+                                        print('after payload filter');
+
+                                        if (filteredPayload === null || typeof filteredPayload === "undefined" || filteredPayload === "") {
                                             mc.setPayloadJSON({result: "false"});
+                                        } else {
+                                            mc.setPayloadJSON(filteredPayload);
+                                            
+                                            mc.setPayloadJSON({result: "true"});
                                         }]]></script>
                                 <switch source="json-eval($.result)">
                                     <case regex="true">
-                                        <log separator="---------">
-                                            <property expression="json-eval($)" name="qweqwe"/>
-                                        </log>
                                         <call>
                                             <endpoint>
                                                 <http method="get" uri-template="{uri.var.getProductEndpoint}">
@@ -683,7 +859,11 @@ mc.setPayloadJSON(responsePayload);]]></script>
                                             </args>
                                         </payloadFactory>
                                     </case>
-                                    <default/>
+                                    <default>
+                                        <log>
+                                            <property name="message" value="empty response"/>
+                                        </log>
+                                    </default>
                                 </switch>
                                 <aggregate>
                                     <completeCondition>
@@ -693,11 +873,13 @@ mc.setPayloadJSON(responsePayload);]]></script>
                                         <script language="js"><![CDATA[print("123");
 												var payload = mc.getPayloadJSON();
 											    
+											    
 											    var filteredPayload = payload.filter(function(obj) {
 									                return JSON.stringify(obj) !== '{"result":"false"}';
 									            });
 											
 											    var filteredPayloadJSON = JSON.stringify(filteredPayload);
+
 									            // Set the modified payload back to the message context
 									            mc.setPayloadJSON(filteredPayloadJSON);]]></script>
                                         <respond/>
