@@ -1,0 +1,10 @@
+key: ACME_API-1.0.0
+name: ACME_API
+displayName: ACME_API
+description: Sample API
+version: 1.0.0
+serviceUrl: https://localhost:8253/ACME
+definitionType: OAS3
+securityType: BASIC
+mutualSSLEnabled: false
+apiId: 'null'

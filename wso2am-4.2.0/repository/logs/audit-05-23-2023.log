@@ -1,0 +1,241 @@
+TID: [-1234] [2023-05-23 22:51:07,735]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,735]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,735]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,735]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,735]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,735]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,735]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,735]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,735]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,741]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,741]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,741]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,741]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,741]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,741]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,741]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,741]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,741]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,741]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,741]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,741]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,741]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,741]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,741]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,741]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,741]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:07,742]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,543]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,543]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,544]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,579]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,579]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,581]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,581]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,588]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,589]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,600]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,601]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,601]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,615]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,616]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,616]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,623]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,624]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,624]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,670]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,671]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:08,672]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:09,014]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:09,017]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:09,017]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:09,074]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:09,075]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:09,075]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:09,184]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:09,186]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:09,186]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:09,370]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:09,371]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:09,371]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:09,594]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:09,594]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:09,595]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:09,595]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:09,595]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:09,595]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:09,608]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:09,609]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:51:09,609]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,478]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,478]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,478]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,498]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,498]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,498]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,498]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,498]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,498]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,498]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,498]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,498]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,498]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,498]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,498]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,498]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,498]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,498]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,498]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,498]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,498]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,498]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,498]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,499]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,499]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,499]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:13,499]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,061]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,061]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,061]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,061]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,061]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,061]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,061]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,061]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,062]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,062]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,062]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,062]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,062]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,062]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,062]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,062]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,062]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,062]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,062]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,062]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,062]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,062]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,062]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,062]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,064]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,064]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,065]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 22:51:18,105]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-Roles-of-User Target=admin Data={"Filter":"*","Roles":["Internal/subscriber","Internal/creator","Internal/publisher","Internal/everyone","Internal/devops","admin","Internal/analytics","Internal/observer","Internal/integration_dev"]} Outcome=Success
+TID: [-1234] [2023-05-23 22:52:10,366]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-List Target=null Data={"ServiceProviderName":"apim_publisher","Claim Value":"admin","Users":["admin"],"Claim":"http://wso2.org/claims/username"} Outcome=Success
+TID: [-1234] [2023-05-23 22:52:10,369]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"ServiceProviderName":"apim_publisher","Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:52:10,369]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"ServiceProviderName":"apim_publisher","Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:52:10,369]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"ServiceProviderName":"apim_publisher","Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:52:10,422]  INFO {AUDIT_LOG} - Initiator : admin | Action : LoginStepSuccess | Target : ApplicationAuthenticationFramework | Data : { "ContextIdentifier" : "bf7887df-7f3b-4585-8309-3a9be92d6da4","AuthenticatedUser" : "admin","AuthenticatedUserTenantDomain" : "carbon.super","ServiceProviderName" : "apim_publisher","RequestType" : "oidc","RelyingParty" : "bcnL5Jqa63Z3eEnQ8WMegfk9rKsa","AuthenticatedIdP" : "LOCAL","User Agent" : "null","RemoteAddress" : "null","UserStoreDomain" : "PRIMARY" } | Result : Success 
+TID: [-1234] [2023-05-23 22:52:10,424]  INFO {AUDIT_LOG} - Initiator : admin@carbon.super | Action : Authenticate | Target : ApplicationAuthenticationFramework | Data : { Step: 1, IDP: LOCAL, Authenticator:BasicAuthenticator } | Result : Success 
+TID: [-1234] [2023-05-23 22:52:10,428]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"ServiceProviderName":"apim_publisher","Claims":{"http://wso2.org/claims/username":"admin","http://wso2.org/claims/userid":"1d104770-8f1b-4bdb-94d1-2322f15843bf","http://wso2.org/claims/role":"Internal/subscriber,Internal/creator,Internal/publisher,Internal/everyone,Internal/devops,admin,Internal/analytics,Internal/observer,Internal/integration_dev","http://wso2.org/claims/userprincipal":"admin"}} Outcome=Success
+TID: [-1234] [2023-05-23 22:52:10,522]  INFO {AUDIT_LOG} - Initiator : admin | Action : StoreSession | Data : { {"traceId":"adf7dcd2-f51b-4c85-b661-36c56b57e99f","RememberMe":false,"sessionContextId":"a0ec52ed4c2f6dc088090a71fda6ab02cae8c4600e49a3758512f0047c2b00b3","AuthenticatedUserTenantDomain":"carbon.super","AuthenticatedUser":"admin","LastAccessedTimestamp":1684878730434} } | Result : Success 
+TID: [-1234] [2023-05-23 22:52:10,547]  INFO {AUDIT_LOG} - Initiator : admin | Action : Login | Target : ApplicationAuthenticationFramework | Data : { "ContextIdentifier" : "bf7887df-7f3b-4585-8309-3a9be92d6da4","AuthenticatedUser" : "admin","AuthenticatedUserTenantDomain" : "carbon.super","ServiceProviderName" : "apim_publisher","RequestType" : "oidc","RelyingParty" : "bcnL5Jqa63Z3eEnQ8WMegfk9rKsa","AuthenticatedIdPs" : "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3c28yIiwiZXhwIjoxNjg0ODc4NzMzNDI0LCJpYXQiOjE2ODQ4Nzg3MzA0MjQsImlkcHMiOlt7ImlkcCI6IkxPQ0FMIiwiYXV0aGVudGljYXRvciI6IkJhc2ljQXV0aGVudGljYXRvciJ9XX0.wrdVKE8c3vN3C-gBtf0Ubjo6HBIvxf4TRr5gIxSquQg","User Agent" : "null","RemoteAddress" : "null","UserStoreDomain" : "PRIMARY" } | Result : Success 
+TID: [-1234] [2023-05-23 22:52:11,065]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-List Target=null Data={"Claim Value":"admin","Users":["admin"],"Claim":"http://wso2.org/claims/username"} Outcome=Success
+TID: [-1234] [2023-05-23 22:52:11,068]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:52:11,068]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:52:11,068]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 22:52:13,251]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis?limit=10&offset=0 user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 22:52:15,986]  INFO {AUDIT_LOG} - GET /api/am/publisher/search?limit=1&offset=0&query=name%3APizzaShackAPI%20version%3A1.0%20context%3Apizzashack user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 22:52:16,080]  INFO {AUDIT_LOG} - GET /api/am/publisher/settings user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 22:52:54,988]  INFO {AUDIT_LOG} - GET /api/am/publisher/search?limit=10&offset=0&query=name%3Aacme user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 22:53:35,528]  INFO {AUDIT_LOG} - GET /api/am/publisher/search?limit=10&offset=0&query=name%3Aacme_en user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 22:54:02,031]  INFO {AUDIT_LOG} - GET /api/am/publisher/search?limit=10&offset=0&query=context%3A%2Facme%2Fen user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:11:42,318]  INFO {AUDIT_LOG} - GET /api/am/publisher/search?limit=10&offset=0&query=name%3Aacme_en user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:11:42,318]  INFO {AUDIT_LOG} - GET /api/am/publisher/search?limit=10&offset=0&query=context%3A%2Facme%2Fen user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:11:42,320]  INFO {AUDIT_LOG} - Initiator=admin@carbon.super Action=Get-Roles-of-User Target=admin Data={"Filter":"*","Roles":["Internal/subscriber","Internal/creator","Internal/publisher","Internal/everyone","Internal/devops","admin","Internal/analytics","Internal/observer","Internal/integration_dev"]} Outcome=Success
+TID: [-1234] [2023-05-23 23:11:42,320]  INFO {AUDIT_LOG} - Initiator=admin@carbon.super Action=Get-Roles-of-User Target=admin Data={"Filter":"*","Roles":["Internal/subscriber","Internal/creator","Internal/publisher","Internal/everyone","Internal/devops","admin","Internal/analytics","Internal/observer","Internal/integration_dev"]} Outcome=Success
+TID: [-1234] [2023-05-23 23:11:47,257]  INFO {AUDIT_LOG} - GET /api/am/publisher/throttling-policies/subscription user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:11:47,414]  INFO {AUDIT_LOG} - POST /api/am/publisher/apis?openAPIVersion=v3 user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:11:47,814]  INFO {AUDIT_LOG} - {"performedBy":"admin","action":"created","typ":"API","info":{"provider":"admin","name":"ACME_EN","context":"/acme/en/1.0.0","version":"1.0.0"}}
+TID: [] [2023-05-23 23:11:47,826]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 23:11:47,828]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 23:11:47,828]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 23:11:48,546]  INFO {AUDIT_LOG} - GET /api/am/publisher/tenants?state=active user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:11:48,546]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880 user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:11:48,829]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/revisions user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:11:48,829]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/revisions?query=deployed%3Atrue user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:11:48,829]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/swagger user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:11:48,895]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/revisions?query=deployed%3Atrue user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:11:48,934]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/revisions?query=deployed%3Atrue user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:11:48,934]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/swagger user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:11:49,017]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/revisions?query=deployed%3Atrue user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:11:49,017]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/swagger user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:11:49,096]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/revisions?query=deployed%3Atrue user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:11:49,096]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/swagger user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:11:50,590]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/swagger user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [] [2023-05-23 23:11:52,563]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 23:11:52,564]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 23:11:52,564]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 23:19:13,299]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/generated-mock-scripts user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:19:13,299]  INFO {AUDIT_LOG} - POST /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/generate-mock-scripts user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:19:13,299]  INFO {AUDIT_LOG} - POST /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/generate-mock-scripts user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:19:13,349]  INFO {AUDIT_LOG} - GET /api/am/service-catalog/v1/services user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:19:13,435]  INFO {AUDIT_LOG} - GET /api/am/service-catalog/v1/services user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:19:21,891]  INFO {AUDIT_LOG} - GET /api/am/publisher/endpoint-certificates?endpoint=default user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:19:31,302]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/swagger user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:19:31,302]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/revisions?query=deployed%3Atrue user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:19:33,795]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/revisions?query=deployed%3Atrue user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:19:33,795]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/swagger user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:19:34,580]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/revisions?query=deployed%3Atrue user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:19:34,580]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/swagger user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:19:52,985]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/swagger user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:19:52,985]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880/revisions?query=deployed%3Atrue user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:19:56,817]  INFO {AUDIT_LOG} - DELETE /api/am/publisher/apis/6750d576-d291-4b73-a95b-3d25bc938880 user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:19:56,887]  INFO {AUDIT_LOG} - {"performedBy":"admin","action":"deleted","typ":"API","info":{"provider":"admin","name":"ACME_EN","version":"1.0.0"}}
+TID: [-1234] [2023-05-23 23:19:56,979]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis?limit=10&offset=0 user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:19:58,214]  INFO {AUDIT_LOG} - GET /api/am/publisher/search?limit=1&offset=0&query=name%3APizzaShackAPI%20version%3A1.0%20context%3Apizzashack user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [] [2023-05-23 23:20:01,409]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 23:20:01,410]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 23:20:01,410]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 23:20:02,079]  INFO {AUDIT_LOG} - GET /api/am/publisher/search?limit=10&offset=0&query=name%3Aacme_en user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:20:10,498]  INFO {AUDIT_LOG} - GET /api/am/publisher/search?limit=10&offset=0&query=context%3A%2Facme%2Fen user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:22:18,399]  INFO {AUDIT_LOG} - GET /api/am/publisher/search?limit=10&offset=0&query=name%3Aacme_en user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:22:23,485]  INFO {AUDIT_LOG} - GET /api/am/publisher/search?limit=10&offset=0&query=name%3Aacme_en user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:22:42,407]  INFO {AUDIT_LOG} - GET /api/am/publisher/search?limit=10&offset=0&query=name%3Aacme_en user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:22:46,722]  INFO {AUDIT_LOG} - GET /api/am/publisher/search?limit=10&offset=0&query=context%3A%2Facme%2Fen user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:23:32,766]  INFO {AUDIT_LOG} - GET /api/am/publisher/search?limit=10&offset=0&query=context%3A%2Facme%2Fen user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:23:33,488]  INFO {AUDIT_LOG} - GET /api/am/publisher/search?limit=10&offset=0&query=name%3Aacme_en user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:24:04,535]  INFO {AUDIT_LOG} - GET /api/am/publisher/search?limit=10&offset=0&query=context%3A%2Facme%2Fen user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:30:46,059]  INFO {AUDIT_LOG} - GET /api/am/publisher/search?limit=10&offset=0&query=name%3Aacme_en user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:30:46,060]  INFO {AUDIT_LOG} - Initiator=admin@carbon.super Action=Get-Roles-of-User Target=admin Data={"Filter":"*","Roles":["Internal/subscriber","Internal/creator","Internal/publisher","Internal/everyone","Internal/devops","admin","Internal/analytics","Internal/observer","Internal/integration_dev"]} Outcome=Success
+TID: [-1234] [2023-05-23 23:34:09,042]  INFO {AUDIT_LOG} - GET /api/am/publisher/throttling-policies/subscription user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:34:13,701]  INFO {AUDIT_LOG} - POST /api/am/publisher/apis?openAPIVersion=v3 user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:34:13,866]  INFO {AUDIT_LOG} - {"performedBy":"admin","action":"created","typ":"API","info":{"provider":"admin","name":"ACME_EN","context":"/acme/en/1.0.0","version":"1.0.0"}}
+TID: [-1234] [2023-05-23 23:34:13,964]  INFO {AUDIT_LOG} - POST /api/am/publisher/apis/d02418ae-ab94-438a-87c1-83b37ef15067/revisions user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:34:14,106]  INFO {AUDIT_LOG} - POST /api/am/publisher/apis/d02418ae-ab94-438a-87c1-83b37ef15067/deploy-revision?revisionId=0db7aab1-6db1-41bf-91a2-bd334426b5af user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:34:14,151]  INFO {AUDIT_LOG} - POST /api/am/publisher/apis/change-lifecycle?action=Publish&apiId=d02418ae-ab94-438a-87c1-83b37ef15067 user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:34:14,254]  INFO {AUDIT_LOG} - {"performedBy":"admin","action":"lifecycle-changed","typ":"API","info":{"provider":"admin","name":"ACME_EN","context":"/acme/en/1.0.0","version":"1.0.0"}}
+TID: [-1234] [2023-05-23 23:34:14,395]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/d02418ae-ab94-438a-87c1-83b37ef15067 user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:34:14,403]  INFO {AUDIT_LOG} - GET /api/am/publisher/tenants?state=active user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:34:14,730]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/d02418ae-ab94-438a-87c1-83b37ef15067/revisions?query=deployed%3Atrue user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:34:14,730]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/d02418ae-ab94-438a-87c1-83b37ef15067/swagger user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:34:14,736]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/d02418ae-ab94-438a-87c1-83b37ef15067/revisions user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:34:14,736]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/d02418ae-ab94-438a-87c1-83b37ef15067/revisions?query=deployed%3Atrue user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:34:14,859]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/d02418ae-ab94-438a-87c1-83b37ef15067/revisions?query=deployed%3Atrue user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:34:14,859]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/d02418ae-ab94-438a-87c1-83b37ef15067/swagger user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:34:14,927]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/d02418ae-ab94-438a-87c1-83b37ef15067/swagger user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:34:14,927]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/d02418ae-ab94-438a-87c1-83b37ef15067/revisions?query=deployed%3Atrue user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [] [2023-05-23 23:34:18,425]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 23:34:18,426]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 23:34:18,426]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 23:34:18,673]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 23:34:18,674]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 23:34:18,674]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 23:34:18,797]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 23:34:18,798]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [] [2023-05-23 23:34:18,798]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 23:34:18,814]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 23:34:18,815]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 23:34:18,815]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 23:34:19,821]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 23:34:19,821]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 23:34:19,822]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 23:34:23,829]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 23:34:23,829]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 23:34:23,829]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 23:34:23,955]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 23:34:23,956]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 23:34:23,956]  INFO {AUDIT_LOG} - Initiator=wso2.system.user Action=Get-User-Claim-Values Target=admin Data={"Claims":{},"Profile":"default"} Outcome=Success
+TID: [-1234] [2023-05-23 23:39:17,666]  INFO {AUDIT_LOG} - GET /api/am/publisher/apis/d02418ae-ab94-438a-87c1-83b37ef15067/swagger user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa
+TID: [-1234] [2023-05-23 23:39:17,666]  INFO {AUDIT_LOG} - GET /api/am/publisher/endpoint-certificates?endpoint=http%3A%2F%2Flocalhost%3A30004 user: admin@carbon.super app: bcnL5Jqa63Z3eEnQ8WMegfk9rKsa

@@ -1,0 +1,45 @@
+// ------------------------------------------------------------------
+// Transitive dependencies of this project determined from the
+// maven pom organized by organization.
+// ------------------------------------------------------------------
+
+WSO2 Identity Server Apps - Recovery Portal
+
+
+From: 'an unknown organization'
+  - JSR107 API and SPI (https://github.com/jsr107/jsr107spec) javax.cache:cache-api:jar:1.1.0
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+
+From: 'Oracle Corporation' (http://www.oracle.com/)
+  - jersey-client (https://jersey.java.net/jersey-client/) com.sun.jersey:jersey-client:jar:1.19.1
+    License: CDDL 1.1  (http://glassfish.java.net/public/CDDL+GPL_1_1.html)    License: GPL2 w/ CPE  (http://glassfish.java.net/public/CDDL+GPL_1_1.html)
+  - jersey-core (https://jersey.java.net/jersey-core/) com.sun.jersey:jersey-core:jar:1.19.1
+    License: CDDL 1.1  (http://glassfish.java.net/public/CDDL+GPL_1_1.html)    License: GPL2 w/ CPE  (http://glassfish.java.net/public/CDDL+GPL_1_1.html)
+  - jersey-multipart (https://jersey.java.net/jersey-contribs/jersey-multipart/) com.sun.jersey.contribs:jersey-multipart:jar:1.19.1
+    License: CDDL 1.1  (http://glassfish.java.net/public/CDDL+GPL_1_1.html)    License: GPL2 w/ CPE  (http://glassfish.java.net/public/CDDL+GPL_1_1.html)
+  - MIME streaming extension (http://mimepull.java.net) org.jvnet.mimepull:mimepull:jar:1.9.3
+    License: CDDL 1.1  (https://glassfish.java.net/public/CDDL+GPL_1_1.html)    License: GPL2 w/ CPE  (https://glassfish.java.net/public/CDDL+GPL_1_1.html)
+
+From: 'OWASP (Open Web-Application Security Project)' (https://www.owasp.org/)
+  - Java Encoder (https://www.owasp.org/index.php/OWASP_Java_Encoder_Project/encoder) org.owasp.encoder:encoder:jar:1.2.2
+    License: The BSD 3-Clause License  (http://www.opensource.org/licenses/BSD-3-Clause)
+  - JSP Encoder (https://www.owasp.org/index.php/OWASP_Java_Encoder_Project/encoder-jsp) org.owasp.encoder:encoder-jsp:jar:1.2.2
+    License: The BSD 3-Clause License  (http://www.opensource.org/licenses/BSD-3-Clause)
+
+From: 'Terracotta Inc., a wholly-owned subsidiary of Software AG USA, Inc.' (http://terracotta.org)
+  - Ehcache (http://ehcache.org) org.ehcache:ehcache:jar:3.10.0
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+From: 'The Apache Software Foundation' (http://www.apache.org/)
+  - Apache Standard Taglib Implementation (http://tomcat.apache.org/taglibs/standard-1.2.5/taglibs-standard-impl) org.apache.taglibs:taglibs-standard-impl:bundle:1.2.5
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+From: 'WSO2' (http://www.wso2.org/)
+  - WSO2 Carbon - Identity Management Endpoint Util (http://wso2.org/org.wso2.carbon.identity.mgt.endpoint.util) org.wso2.carbon.identity.framework:org.wso2.carbon.identity.mgt.endpoint.util:bundle:5.21.30
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - WSO2 Identity Server Apps - Layout Controlling Tag Library (http://wso2.org) org.wso2.identity.apps:org.wso2.identity.apps.taglibs.layout.controller:jar:1.5.0
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+
+
+

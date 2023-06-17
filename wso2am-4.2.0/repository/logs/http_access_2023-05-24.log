@@ -1,0 +1,4 @@
+- 0:0:0:0:0:0:0:1  - [24/May/2023:23:14:52.409 +0100] "- - " 200 - "-" "-"
+- 0:0:0:0:0:0:0:1 - - [24/May/2023:23:14:52.409 +0100] "OPTIONS /acme/en/1.0.0/products HTTP/1.1" - - "https://localhost:9443/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
+- 0:0:0:0:0:0:0:1  - [24/May/2023:23:14:52.409 +0100] "- - " 500 - "-" "-"
+- 0:0:0:0:0:0:0:1 - - [24/May/2023:23:14:52.409 +0100] "GET /acme/en/1.0.0/products HTTP/1.1" - - "https://localhost:9443/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"

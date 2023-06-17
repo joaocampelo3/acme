@@ -1,0 +1,389 @@
+openapi: 3.0.1
+info:
+  title: ACME_API
+  description: API Definition of ACME_API
+  version: 1.0.0
+servers:
+- url: http://localhost:8290/ACME
+paths:
+  /products:
+    get:
+      responses:
+        default:
+          description: Default response
+    post:
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: object
+        required: false
+      responses:
+        default:
+          description: Default response
+  /products/{sku}:
+    get:
+      parameters:
+      - name: sku
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default response
+    delete:
+      parameters:
+      - name: sku
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default response
+    patch:
+      parameters:
+      - name: sku
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: object
+        required: false
+      responses:
+        default:
+          description: Default response
+  /products/designation/{designation}:
+    get:
+      parameters:
+      - name: designation
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default response
+  /products/{sku}/reviews/{status}:
+    get:
+      parameters:
+      - name: sku
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: status
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default response
+  /reviews/pending:
+    get:
+      responses:
+        default:
+          description: Default response
+  /products/{sku}/reviews:
+    post:
+      parameters:
+      - name: sku
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: object
+        required: false
+      responses:
+        default:
+          description: Default response
+  /reviews/{reviewID}:
+    delete:
+      parameters:
+      - name: reviewID
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default response
+  /reviews/{userID}:
+    get:
+      parameters:
+      - name: userID
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default response
+  /reviews/acceptreject/{reviewID}:
+    put:
+      parameters:
+      - name: reviewID
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: object
+        required: false
+      responses:
+        default:
+          description: Default response
+  /votes:
+    get:
+      responses:
+        default:
+          description: Default response
+  /votes/{voteID}:
+    get:
+      parameters:
+      - name: voteID
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default response
+    delete:
+      parameters:
+      - name: voteID
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default response
+    patch:
+      parameters:
+      - name: voteID
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: object
+        required: false
+      responses:
+        default:
+          description: Default response
+  /review/{reviewUuid}/votes:
+    post:
+      parameters:
+      - name: reviewUuid
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: object
+        required: false
+      responses:
+        default:
+          description: Default response
+  /noreview/{sku}/votes:
+    post:
+      parameters:
+      - name: sku
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Sample Payload
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: object
+        required: false
+      responses:
+        default:
+          description: Default response
+  /reviews/{userID}/{voteType}/moreXvotes/{numberOfVotes}:
+    get:
+      parameters:
+      - name: userID
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: voteType
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: numberOfVotes
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default response
+  /reviews/{userID}/{voteType}/lessXvotes/{numberOfVotes}:
+    get:
+      parameters:
+      - name: userID
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: voteType
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: numberOfVotes
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default response
+  /reviews/quantityByUser/{user}:
+    get:
+      parameters:
+      - name: user
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default response
+  /products/{voteType}/moreThan/{percentage}:
+    get:
+      parameters:
+      - name: voteType
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: percentage
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default response
+  /products/{voteType}/lower/{percentage}:
+    get:
+      parameters:
+      - name: voteType
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: percentage
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: Default response
