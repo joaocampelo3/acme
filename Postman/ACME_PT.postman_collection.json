@@ -1,0 +1,1721 @@
+{
+	"info": {
+		"_postman_id": "7ff6ac3f-93ce-4886-bbde-aa92d9bb88ef",
+		"name": "ACME_PT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26438459",
+		"_collection_link": "https://qesoft-22-23.postman.co/workspace/INSIS~0a014cc5-bfee-4185-b54d-a108e61a83e2/collection/26438459-7ff6ac3f-93ce-4886-bbde-aa92d9bb88ef?action=share&creator=26438459&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "produtos",
+			"item": [
+				{
+					"name": "{sku}",
+					"item": [
+						{
+							"name": "criticas",
+							"item": [
+								{
+									"name": "/produtos/:sku/criticas",
+									"request": {
+										"auth": {
+											"type": "oauth2"
+										},
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/produtos/:sku/criticas",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"produtos",
+												":sku",
+												"criticas"
+											],
+											"variable": [
+												{
+													"key": "sku",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "ok",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: oauth2",
+														"key": "Authorization",
+														"value": "<token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/produtos/:sku/criticas",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"produtos",
+														":sku",
+														"criticas"
+													],
+													"variable": [
+														{
+															"key": "sku",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "/produtos/:sku/criticas/:status",
+									"request": {
+										"auth": {
+											"type": "oauth2"
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/produtos/:sku/criticas/:status",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"produtos",
+												":sku",
+												"criticas",
+												":status"
+											],
+											"variable": [
+												{
+													"key": "sku",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "status",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "ok",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: oauth2",
+														"key": "Authorization",
+														"value": "<token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/produtos/:sku/criticas/:status",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"produtos",
+														":sku",
+														"criticas",
+														":status"
+													],
+													"variable": [
+														{
+															"key": "sku",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "status",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/produtos/:sku",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/produtos/:sku",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"produtos",
+										":sku"
+									],
+									"variable": [
+										{
+											"key": "sku",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: oauth2",
+												"key": "Authorization",
+												"value": "<token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/produtos/:sku",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"produtos",
+												":sku"
+											],
+											"variable": [
+												{
+													"key": "sku",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/produtos/:sku",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/produtos/:sku",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"produtos",
+										":sku"
+									],
+									"variable": [
+										{
+											"key": "sku",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: oauth2",
+												"key": "Authorization",
+												"value": "<token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/produtos/:sku",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"produtos",
+												":sku"
+											],
+											"variable": [
+												{
+													"key": "sku",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/produtos/:sku",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/produtos/:sku",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"produtos",
+										":sku"
+									],
+									"variable": [
+										{
+											"key": "sku",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: oauth2",
+												"key": "Authorization",
+												"value": "<token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/produtos/:sku",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"produtos",
+												":sku"
+											],
+											"variable": [
+												{
+													"key": "sku",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "{tipo De Voto}",
+					"item": [
+						{
+							"name": "/produtos/:tipoDeVoto/maisDe/:percentagem",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/produtos/:tipoDeVoto/maisDe/:percentagem",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"produtos",
+										":tipoDeVoto",
+										"maisDe",
+										":percentagem"
+									],
+									"variable": [
+										{
+											"key": "tipoDeVoto",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "percentagem",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: oauth2",
+												"key": "Authorization",
+												"value": "<token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/produtos/:tipoDeVoto/maisDe/:percentagem",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"produtos",
+												":tipoDeVoto",
+												"maisDe",
+												":percentagem"
+											],
+											"variable": [
+												{
+													"key": "tipoDeVoto",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "percentagem",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/produtos/:tipoDeVoto/menos/:percentagem",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/produtos/:tipoDeVoto/menos/:percentagem",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"produtos",
+										":tipoDeVoto",
+										"menos",
+										":percentagem"
+									],
+									"variable": [
+										{
+											"key": "tipoDeVoto",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "percentagem",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: oauth2",
+												"key": "Authorization",
+												"value": "<token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/produtos/:tipoDeVoto/menos/:percentagem",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"produtos",
+												":tipoDeVoto",
+												"menos",
+												":percentagem"
+											],
+											"variable": [
+												{
+													"key": "tipoDeVoto",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "percentagem",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/produtos",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/produtos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/produtos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"produtos"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/produtos",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/produtos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"produtos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/produtos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"produtos"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/produtos/designacao/:designacao",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/produtos/designacao/:designacao",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"produtos",
+								"designacao",
+								":designacao"
+							],
+							"variable": [
+								{
+									"key": "designacao",
+									"value": "<string>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/produtos/designacao/:designacao",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"produtos",
+										"designacao",
+										":designacao"
+									],
+									"variable": [
+										{
+											"key": "designacao",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "criticas",
+			"item": [
+				{
+					"name": "/criticas/pendente",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/criticas/pendente",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"criticas",
+								"pendente"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/criticas/pendente",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"criticas",
+										"pendente"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/criticas/:criticaID",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/criticas/:criticaID",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"criticas",
+								":criticaID"
+							],
+							"variable": [
+								{
+									"key": "criticaID",
+									"value": "<string>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/criticas/:criticaID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"criticas",
+										":criticaID"
+									],
+									"variable": [
+										{
+											"key": "criticaID",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/criticas/aceiterejeitada/:criticaID",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/criticas/aceiterejeitada/:criticaID",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"criticas",
+								"aceiterejeitada",
+								":criticaID"
+							],
+							"variable": [
+								{
+									"key": "criticaID",
+									"value": "<string>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/criticas/aceiterejeitada/:criticaID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"criticas",
+										"aceiterejeitada",
+										":criticaID"
+									],
+									"variable": [
+										{
+											"key": "criticaID",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/criticas/:utilizador",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/criticas/:utilizador",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"criticas",
+								":utilizador"
+							],
+							"variable": [
+								{
+									"key": "utilizador",
+									"value": "<string>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/criticas/:utilizador",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"criticas",
+										":utilizador"
+									],
+									"variable": [
+										{
+											"key": "utilizador",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "votos",
+			"item": [
+				{
+					"name": "{vote ID}",
+					"item": [
+						{
+							"name": "/votos/:voteID",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/votos/:voteID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"votos",
+										":voteID"
+									],
+									"variable": [
+										{
+											"key": "voteID",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: oauth2",
+												"key": "Authorization",
+												"value": "<token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/votos/:voteID",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"votos",
+												":voteID"
+											],
+											"variable": [
+												{
+													"key": "voteID",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/votos/:voteID",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/votos/:voteID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"votos",
+										":voteID"
+									],
+									"variable": [
+										{
+											"key": "voteID",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: oauth2",
+												"key": "Authorization",
+												"value": "<token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/votos/:voteID",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"votos",
+												":voteID"
+											],
+											"variable": [
+												{
+													"key": "voteID",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/votos/:voteID",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/votos/:voteID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"votos",
+										":voteID"
+									],
+									"variable": [
+										{
+											"key": "voteID",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: oauth2",
+												"key": "Authorization",
+												"value": "<token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/votos/:voteID",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"votos",
+												":voteID"
+											],
+											"variable": [
+												{
+													"key": "voteID",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/votos",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/votos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"votos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/votos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"votos"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "critica",
+			"item": [
+				{
+					"name": "{tipo De Voto}",
+					"item": [
+						{
+							"name": "/critica/:tipoDeVoto/maisXvotos/:numeroDeVotos",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/critica/:tipoDeVoto/maisXvotos/:numeroDeVotos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"critica",
+										":tipoDeVoto",
+										"maisXvotos",
+										":numeroDeVotos"
+									],
+									"variable": [
+										{
+											"key": "tipoDeVoto",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "numeroDeVotos",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: oauth2",
+												"key": "Authorization",
+												"value": "<token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/critica/:tipoDeVoto/maisXvotos/:numeroDeVotos",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"critica",
+												":tipoDeVoto",
+												"maisXvotos",
+												":numeroDeVotos"
+											],
+											"variable": [
+												{
+													"key": "tipoDeVoto",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "numeroDeVotos",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/critica/:tipoDeVoto/menosXvotos/:numeroDeVotos",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/critica/:tipoDeVoto/menosXvotos/:numeroDeVotos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"critica",
+										":tipoDeVoto",
+										"menosXvotos",
+										":numeroDeVotos"
+									],
+									"variable": [
+										{
+											"key": "tipoDeVoto",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "numeroDeVotos",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: oauth2",
+												"key": "Authorization",
+												"value": "<token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/critica/:tipoDeVoto/menosXvotos/:numeroDeVotos",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"critica",
+												":tipoDeVoto",
+												"menosXvotos",
+												":numeroDeVotos"
+											],
+											"variable": [
+												{
+													"key": "tipoDeVoto",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "numeroDeVotos",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/critica/:criticaUuid/votos",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/critica/:criticaUuid/votos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"critica",
+								":criticaUuid",
+								"votos"
+							],
+							"variable": [
+								{
+									"key": "criticaUuid",
+									"value": "<string>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/critica/:criticaUuid/votos",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"critica",
+										":criticaUuid",
+										"votos"
+									],
+									"variable": [
+										{
+											"key": "criticaUuid",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/critica/quantidadePorUtilizador/:utilizador",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/critica/quantidadePorUtilizador/:utilizador",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"critica",
+								"quantidadePorUtilizador",
+								":utilizador"
+							],
+							"variable": [
+								{
+									"key": "utilizador",
+									"value": "<string>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/critica/quantidadePorUtilizador/:utilizador",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"critica",
+										"quantidadePorUtilizador",
+										":utilizador"
+									],
+									"variable": [
+										{
+											"key": "utilizador",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "/semcritica/:sku/votos",
+			"request": {
+				"auth": {
+					"type": "oauth2"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/semcritica/:sku/votos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"semcritica",
+						":sku",
+						"votos"
+					],
+					"variable": [
+						{
+							"key": "sku",
+							"value": "<string>",
+							"description": "(Required) "
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/semcritica/:sku/votos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"semcritica",
+								":sku",
+								"votos"
+							],
+							"variable": [
+								{
+									"key": "sku",
+									"value": "<string>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://localhost:8243/acme_pt/1.0.0",
+			"type": "string"
+		},
+		{
+			"key": "auth",
+			"value": "eyJ4NXQiOiJNV0l5TkRJNVlqRTJaV1kxT0RNd01XSTNOR1ptTVRZeU5UTTJOVFZoWlRnMU5UTTNaVE5oTldKbVpERTFPVEE0TldFMVlUaGxNak5sTldFellqSXlZUSIsImtpZCI6Ik1XSXlOREk1WWpFMlpXWTFPRE13TVdJM05HWm1NVFl5TlRNMk5UVmhaVGcxTlRNM1pUTmhOV0ptWkRFMU9UQTROV0UxWVRobE1qTmxOV0V6WWpJeVlRX1JTMjU2IiwidHlwIjoiYXQrand0IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIxZDEwNDc3MC04ZjFiLTRiZGItOTRkMS0yMzIyZjE1ODQzYmYiLCJhdXQiOiJBUFBMSUNBVElPTiIsImF1ZCI6IkdXMDlsVWx1UjRVam5CQUVSY1ZlSHJNN0hHNGEiLCJuYmYiOjE2ODcwMzgyODIsImF6cCI6IkdXMDlsVWx1UjRVam5CQUVSY1ZlSHJNN0hHNGEiLCJzY29wZSI6IkFkbWluIFVzZXIiLCJpc3MiOiJodHRwczpcL1wvbG9jYWxob3N0Ojk0NDNcL29hdXRoMlwvdG9rZW4iLCJleHAiOjE2ODcwNDE4ODIsImlhdCI6MTY4NzAzODI4MiwianRpIjoiODkwNzg1MmQtOTM5Mi00ZDk1LWFkZjMtODMxNWUzZWRlNWFkIiwiY2xpZW50X2lkIjoiR1cwOWxVbHVSNFVqbkJBRVJjVmVIck03SEc0YSJ9.lf_3F9LNyUk_ZAkeDvqov9Kcg11Wpc5nZlBZ2237hnZr-P8krfW7OWcsns0CM8EtwC0oxrIYZ6_ue_IEGSHITvIaJjU7HjYmOKjQWesveQkylejVx0Z7Bogo8F3y4lqxPd4_glMkrlZ3u883O7DTrUYV4-x3QfVnVIarO2sYomGFHvR3hKGPZb19lLm7O8zepr3JATp1CzQOxLYMy_Ip1xQfc3sxBwf-h9H-w6OwBq4zSJB3MitFS9LKSxn12d8CyjWpzFIpZlBGVM5nN6cKEjcgs81c3-t-_YNlbAZTuFluJl47X2NAW2K96-JNjqxKwaVgFc2l1NqrOlFncBv6VA",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,1745 @@
+{
+	"info": {
+		"_postman_id": "ee3b1ad5-9fab-4958-a035-7e6982665622",
+		"name": "ACME_EN",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26438459",
+		"_collection_link": "https://qesoft-22-23.postman.co/workspace/INSIS~0a014cc5-bfee-4185-b54d-a108e61a83e2/collection/26438459-ee3b1ad5-9fab-4958-a035-7e6982665622?action=share&creator=26438459&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "{sku}",
+					"item": [
+						{
+							"name": "reviews",
+							"item": [
+								{
+									"name": "/products/:sku/reviews",
+									"request": {
+										"auth": {
+											"type": "oauth2"
+										},
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/products/:sku/reviews",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"products",
+												":sku",
+												"reviews"
+											],
+											"variable": [
+												{
+													"key": "sku",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "ok",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: oauth2",
+														"key": "Authorization",
+														"value": "<token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/products/:sku/reviews",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"products",
+														":sku",
+														"reviews"
+													],
+													"variable": [
+														{
+															"key": "sku",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "/products/:sku/reviews/:status",
+									"request": {
+										"auth": {
+											"type": "oauth2"
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/products/:sku/reviews/:status",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"products",
+												":sku",
+												"reviews",
+												":status"
+											],
+											"variable": [
+												{
+													"key": "sku",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "status",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "ok",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: oauth2",
+														"key": "Authorization",
+														"value": "<token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/products/:sku/reviews/:status",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"products",
+														":sku",
+														"reviews",
+														":status"
+													],
+													"variable": [
+														{
+															"key": "sku",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "status",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/products/:sku",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products/:sku",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										":sku"
+									],
+									"variable": [
+										{
+											"key": "sku",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: oauth2",
+												"key": "Authorization",
+												"value": "<token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/products/:sku",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"products",
+												":sku"
+											],
+											"variable": [
+												{
+													"key": "sku",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/products/:sku",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products/:sku",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										":sku"
+									],
+									"variable": [
+										{
+											"key": "sku",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: oauth2",
+												"key": "Authorization",
+												"value": "<token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/products/:sku",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"products",
+												":sku"
+											],
+											"variable": [
+												{
+													"key": "sku",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/products/:sku",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products/:sku",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										":sku"
+									],
+									"variable": [
+										{
+											"key": "sku",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: oauth2",
+												"key": "Authorization",
+												"value": "<token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/products/:sku",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"products",
+												":sku"
+											],
+											"variable": [
+												{
+													"key": "sku",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "{vote Type}",
+					"item": [
+						{
+							"name": "/products/:voteType/moreThan/:percentage",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products/:voteType/moreThan/:percentage",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										":voteType",
+										"moreThan",
+										":percentage"
+									],
+									"variable": [
+										{
+											"key": "voteType",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "percentage",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: oauth2",
+												"key": "Authorization",
+												"value": "<token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/products/:voteType/moreThan/:percentage",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"products",
+												":voteType",
+												"moreThan",
+												":percentage"
+											],
+											"variable": [
+												{
+													"key": "voteType",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "percentage",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/products/:voteType/lower/:percentage",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/products/:voteType/lower/:percentage",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										":voteType",
+										"lower",
+										":percentage"
+									],
+									"variable": [
+										{
+											"key": "voteType",
+											"value": "<string>",
+											"description": "(Required) "
+										},
+										{
+											"key": "percentage",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: oauth2",
+												"key": "Authorization",
+												"value": "<token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/products/:voteType/lower/:percentage",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"products",
+												":voteType",
+												"lower",
+												":percentage"
+											],
+											"variable": [
+												{
+													"key": "voteType",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "percentage",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/products",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/products",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/products",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/products",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/products/designation/:designation",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/products/designation/:designation",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"products",
+								"designation",
+								":designation"
+							],
+							"variable": [
+								{
+									"key": "designation",
+									"value": "<string>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/products/designation/:designation",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"products",
+										"designation",
+										":designation"
+									],
+									"variable": [
+										{
+											"key": "designation",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "reviews",
+			"item": [
+				{
+					"name": "{user ID}",
+					"item": [
+						{
+							"name": "{vote Type}",
+							"item": [
+								{
+									"name": "/reviews/:userID/:voteType/moreXvotes/:numberOfVotes",
+									"request": {
+										"auth": {
+											"type": "oauth2"
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/reviews/:userID/:voteType/moreXvotes/:numberOfVotes",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"reviews",
+												":userID",
+												":voteType",
+												"moreXvotes",
+												":numberOfVotes"
+											],
+											"variable": [
+												{
+													"key": "userID",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "voteType",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "numberOfVotes",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "ok",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: oauth2",
+														"key": "Authorization",
+														"value": "<token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/reviews/:userID/:voteType/moreXvotes/:numberOfVotes",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"reviews",
+														":userID",
+														":voteType",
+														"moreXvotes",
+														":numberOfVotes"
+													],
+													"variable": [
+														{
+															"key": "userID",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "voteType",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "numberOfVotes",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "/reviews/:userID/:voteType/lessXvotes/:numberOfVotes",
+									"request": {
+										"auth": {
+											"type": "oauth2"
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/reviews/:userID/:voteType/lessXvotes/:numberOfVotes",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"reviews",
+												":userID",
+												":voteType",
+												"lessXvotes",
+												":numberOfVotes"
+											],
+											"variable": [
+												{
+													"key": "userID",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "voteType",
+													"value": "<string>",
+													"description": "(Required) "
+												},
+												{
+													"key": "numberOfVotes",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "ok",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: oauth2",
+														"key": "Authorization",
+														"value": "<token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/reviews/:userID/:voteType/lessXvotes/:numberOfVotes",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"reviews",
+														":userID",
+														":voteType",
+														"lessXvotes",
+														":numberOfVotes"
+													],
+													"variable": [
+														{
+															"key": "userID",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "voteType",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "numberOfVotes",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/reviews/:userID",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/reviews/:userID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reviews",
+										":userID"
+									],
+									"variable": [
+										{
+											"key": "userID",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: oauth2",
+												"key": "Authorization",
+												"value": "<token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/reviews/:userID",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"reviews",
+												":userID"
+											],
+											"variable": [
+												{
+													"key": "userID",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/reviews/pending",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/reviews/pending",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reviews",
+								"pending"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/reviews/pending",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reviews",
+										"pending"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/reviews/:reviewID",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/reviews/:reviewID",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reviews",
+								":reviewID"
+							],
+							"variable": [
+								{
+									"key": "reviewID",
+									"value": "<string>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/reviews/:reviewID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reviews",
+										":reviewID"
+									],
+									"variable": [
+										{
+											"key": "reviewID",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/reviews/acceptreject/:reviewID",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/reviews/acceptreject/:reviewID",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reviews",
+								"acceptreject",
+								":reviewID"
+							],
+							"variable": [
+								{
+									"key": "reviewID",
+									"value": "<string>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/reviews/acceptreject/:reviewID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reviews",
+										"acceptreject",
+										":reviewID"
+									],
+									"variable": [
+										{
+											"key": "reviewID",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "/reviews/quantityByUser/:user",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/reviews/quantityByUser/:user",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reviews",
+								"quantityByUser",
+								":user"
+							],
+							"variable": [
+								{
+									"key": "user",
+									"value": "<string>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/reviews/quantityByUser/:user",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"reviews",
+										"quantityByUser",
+										":user"
+									],
+									"variable": [
+										{
+											"key": "user",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "votes",
+			"item": [
+				{
+					"name": "{vote ID}",
+					"item": [
+						{
+							"name": "/votes/:voteID",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/votes/:voteID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"votes",
+										":voteID"
+									],
+									"variable": [
+										{
+											"key": "voteID",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: oauth2",
+												"key": "Authorization",
+												"value": "<token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/votes/:voteID",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"votes",
+												":voteID"
+											],
+											"variable": [
+												{
+													"key": "voteID",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/votes/:voteID",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/votes/:voteID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"votes",
+										":voteID"
+									],
+									"variable": [
+										{
+											"key": "voteID",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: oauth2",
+												"key": "Authorization",
+												"value": "<token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/votes/:voteID",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"votes",
+												":voteID"
+											],
+											"variable": [
+												{
+													"key": "voteID",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "/votes/:voteID",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/votes/:voteID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"votes",
+										":voteID"
+									],
+									"variable": [
+										{
+											"key": "voteID",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: oauth2",
+												"key": "Authorization",
+												"value": "<token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/votes/:voteID",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"votes",
+												":voteID"
+											],
+											"variable": [
+												{
+													"key": "voteID",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "/votes",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/votes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"votes"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: oauth2",
+										"key": "Authorization",
+										"value": "<token>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/votes",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"votes"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "/review/:reviewUuid/votes",
+			"request": {
+				"auth": {
+					"type": "oauth2"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/review/:reviewUuid/votes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"review",
+						":reviewUuid",
+						"votes"
+					],
+					"variable": [
+						{
+							"key": "reviewUuid",
+							"value": "<string>",
+							"description": "(Required) "
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/review/:reviewUuid/votes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"review",
+								":reviewUuid",
+								"votes"
+							],
+							"variable": [
+								{
+									"key": "reviewUuid",
+									"value": "<string>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "/noreview/:sku/votes",
+			"request": {
+				"auth": {
+					"type": "oauth2"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/noreview/:sku/votes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"noreview",
+						":sku",
+						"votes"
+					],
+					"variable": [
+						{
+							"key": "sku",
+							"value": "<string>",
+							"description": "(Required) "
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "ok",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/noreview/:sku/votes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"noreview",
+								":sku",
+								"votes"
+							],
+							"variable": [
+								{
+									"key": "sku",
+									"value": "<string>",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://localhost:8243/acme/en/1.0.0",
+			"type": "string"
+		},
+		{
+			"key": "auth",
+			"value": "eyJ4NXQiOiJNV0l5TkRJNVlqRTJaV1kxT0RNd01XSTNOR1ptTVRZeU5UTTJOVFZoWlRnMU5UTTNaVE5oTldKbVpERTFPVEE0TldFMVlUaGxNak5sTldFellqSXlZUSIsImtpZCI6Ik1XSXlOREk1WWpFMlpXWTFPRE13TVdJM05HWm1NVFl5TlRNMk5UVmhaVGcxTlRNM1pUTmhOV0ptWkRFMU9UQTROV0UxWVRobE1qTmxOV0V6WWpJeVlRX1JTMjU2IiwidHlwIjoiYXQrand0IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIxZDEwNDc3MC04ZjFiLTRiZGItOTRkMS0yMzIyZjE1ODQzYmYiLCJhdXQiOiJBUFBMSUNBVElPTiIsImF1ZCI6IkdXMDlsVWx1UjRVam5CQUVSY1ZlSHJNN0hHNGEiLCJuYmYiOjE2ODcwMzgyODIsImF6cCI6IkdXMDlsVWx1UjRVam5CQUVSY1ZlSHJNN0hHNGEiLCJzY29wZSI6IkFkbWluIFVzZXIiLCJpc3MiOiJodHRwczpcL1wvbG9jYWxob3N0Ojk0NDNcL29hdXRoMlwvdG9rZW4iLCJleHAiOjE2ODcwNDE4ODIsImlhdCI6MTY4NzAzODI4MiwianRpIjoiODkwNzg1MmQtOTM5Mi00ZDk1LWFkZjMtODMxNWUzZWRlNWFkIiwiY2xpZW50X2lkIjoiR1cwOWxVbHVSNFVqbkJBRVJjVmVIck03SEc0YSJ9.lf_3F9LNyUk_ZAkeDvqov9Kcg11Wpc5nZlBZ2237hnZr-P8krfW7OWcsns0CM8EtwC0oxrIYZ6_ue_IEGSHITvIaJjU7HjYmOKjQWesveQkylejVx0Z7Bogo8F3y4lqxPd4_glMkrlZ3u883O7DTrUYV4-x3QfVnVIarO2sYomGFHvR3hKGPZb19lLm7O8zepr3JATp1CzQOxLYMy_Ip1xQfc3sxBwf-h9H-w6OwBq4zSJB3MitFS9LKSxn12d8CyjWpzFIpZlBGVM5nN6cKEjcgs81c3-t-_YNlbAZTuFluJl47X2NAW2K96-JNjqxKwaVgFc2l1NqrOlFncBv6VA",
+			"type": "string"
+		}
+	]
+}
