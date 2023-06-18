@@ -32,10 +32,6 @@
               <stringProp name="Header.name">Authorization</stringProp>
               <stringProp name="Header.value">Bearer eyJ4NXQiOiJNV0l5TkRJNVlqRTJaV1kxT0RNd01XSTNOR1ptTVRZeU5UTTJOVFZoWlRnMU5UTTNaVE5oTldKbVpERTFPVEE0TldFMVlUaGxNak5sTldFellqSXlZUSIsImtpZCI6Ik1XSXlOREk1WWpFMlpXWTFPRE13TVdJM05HWm1NVFl5TlRNMk5UVmhaVGcxTlRNM1pUTmhOV0ptWkRFMU9UQTROV0UxWVRobE1qTmxOV0V6WWpJeVlRX1JTMjU2IiwidHlwIjoiYXQrand0IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIxZDEwNDc3MC04ZjFiLTRiZGItOTRkMS0yMzIyZjE1ODQzYmYiLCJhdXQiOiJBUFBMSUNBVElPTiIsImF1ZCI6IkhHRW4zTGtDUG9FRHdTR3FUdGw2cXNxVWxqMGEiLCJuYmYiOjE2ODY4NjE3MjgsImF6cCI6IkhHRW4zTGtDUG9FRHdTR3FUdGw2cXNxVWxqMGEiLCJzY29wZSI6IkFkbWluIFVzZXIiLCJpc3MiOiJodHRwczpcL1wvbG9jYWxob3N0Ojk0NDNcL29hdXRoMlwvdG9rZW4iLCJleHAiOjE2ODY4NjUzMjgsImlhdCI6MTY4Njg2MTcyOCwianRpIjoiYjAzNTg5MTEtM2I3ZC00NDliLThkMWUtMWZiYzhmNDA5YmViIiwiY2xpZW50X2lkIjoiSEdFbjNMa0NQb0VEd1NHcVR0bDZxc3FVbGowYSJ9.xe-rEvPsc_9y82LDDLSzqcelHnKf8SsPtFL9YWXr1cC0kusVhsDozVjdL6x4kifRbUx2WR292Qv14tsc1LBuNoLLJoNxPMpOH6aUSKPLCM-u7EmD1DX1s7J6xfYkd2uagf01ZcDibMLpK9F3IHXtO05ikbEFqXY5xRxsh-dmrorMxw6vSQh028lmQVqDi9IGxi7F4BkwrVV3NcHWo-FtRql39ZAA4GtpvVckFe9vF3vj1AJWEursyS0_vrFeR15i0IKrb2QhgD8c3P5LmcpfH47gYcmxpv9hHi73GDZkQ2zma5E3rbcr_jyNh0iiINqWOlMGdCDj7LasVqYKKLJJzA</stringProp>
             </elementProp>
-            <elementProp name="" elementType="Header">
-              <stringProp name="Header.name"></stringProp>
-              <stringProp name="Header.value"></stringProp>
-            </elementProp>
           </collectionProp>
         </HeaderManager>
         <hashTree/>
@@ -47,7 +43,7 @@
           <stringProp name="HTTPSampler.port">8243</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/acme/en/1.0.0/products</stringProp>
+          <stringProp name="HTTPSampler.path">/acme_pt/1.0.0/produtos</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -99,12 +95,12 @@
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Products Designation" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="designation" elementType="HTTPArgument">
+              <elementProp name="designacao" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">&quot;xpto&quot;</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">designation</stringProp>
+                <stringProp name="Argument.name">designacao</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
@@ -112,7 +108,7 @@
           <stringProp name="HTTPSampler.port">8243</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/acme/en/1.0.0/products/designation/${designation}</stringProp>
+          <stringProp name="HTTPSampler.path">/acme_pt/1.0.0/produtos/designacao/${designacao}</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -177,7 +173,7 @@
           <stringProp name="HTTPSampler.port">8243</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/acme/en/1.0.0/products/${sku}</stringProp>
+          <stringProp name="HTTPSampler.path">/acme_pt/1.0.0/produtos/${sku}</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -229,12 +225,12 @@
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Reviews By UserID" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="userID" elementType="HTTPArgument">
+              <elementProp name="utilizador" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">1</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">userID</stringProp>
+                <stringProp name="Argument.name">utilizador</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
@@ -242,7 +238,7 @@
           <stringProp name="HTTPSampler.port">8243</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/acme/en/1.0.0/reviews/${userID}</stringProp>
+          <stringProp name="HTTPSampler.path">/acme_pt/1.0.0/criticas/${utilizador}</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -299,7 +295,7 @@
           <stringProp name="HTTPSampler.port">8243</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/acme/en/1.0.0/reviews/pending</stringProp>
+          <stringProp name="HTTPSampler.path">/acme_pt/1.0.0/criticas/pendente</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -351,12 +347,12 @@
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Reviews Qt By User" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="user" elementType="HTTPArgument">
+              <elementProp name="utilizador" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">1</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">user</stringProp>
+                <stringProp name="Argument.name">utilizador</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
@@ -364,7 +360,7 @@
           <stringProp name="HTTPSampler.port">8243</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/acme/en/1.0.0/reviews/quantityByUser/${user}</stringProp>
+          <stringProp name="HTTPSampler.path">/acme_pt/1.0.0/criticas/quantidadePorUtilizador/${utilizador}</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -416,19 +412,19 @@
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Reviews With more than X Up/Down Votes" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="voteType" elementType="HTTPArgument">
+              <elementProp name="tipoDeVoto" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">up vote</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">voteType</stringProp>
+                <stringProp name="Argument.name">tipoDeVoto</stringProp>
               </elementProp>
-              <elementProp name="numberOfVotes" elementType="HTTPArgument">
+              <elementProp name="numeroDeVotos" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">10</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">numberOfVotes</stringProp>
+                <stringProp name="Argument.name">numeroDeVotos</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
@@ -436,7 +432,7 @@
           <stringProp name="HTTPSampler.port">8243</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/acme/en/1.0.0/reviews/${voteType}/moreXvotes/${numberOfVotes}</stringProp>
+          <stringProp name="HTTPSampler.path">/acme_pt/1.0.0/criticas/${tipoDeVoto}/maisXvotos/${numeroDeVotos}</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -488,19 +484,19 @@
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Reviews With less than X Up/Down Votes" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="voteType" elementType="HTTPArgument">
+              <elementProp name="tipoDeVoto" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">up vote</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">voteType</stringProp>
+                <stringProp name="Argument.name">tipoDeVoto</stringProp>
               </elementProp>
-              <elementProp name="numberOfVotes" elementType="HTTPArgument">
+              <elementProp name="numeroDeVotos" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">10</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">numberOfVotes</stringProp>
+                <stringProp name="Argument.name">numeroDeVotos</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
@@ -508,7 +504,7 @@
           <stringProp name="HTTPSampler.port">8243</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/acme/en/1.0.0/reviews/${voteType}/lessXvotes/${numberOfVotes}</stringProp>
+          <stringProp name="HTTPSampler.path">/acme_pt/1.0.0/criticas/${tipoDeVoto}/menosXvotos/${numeroDeVotos}</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -565,7 +561,7 @@
           <stringProp name="HTTPSampler.port">8243</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/acme/en/1.0.0/votes</stringProp>
+          <stringProp name="HTTPSampler.path">/acme_pt/1.0.0/votos</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -617,12 +613,12 @@
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Votes By ID" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="voteID" elementType="HTTPArgument">
+              <elementProp name="votoID" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">1</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">voteID</stringProp>
+                <stringProp name="Argument.name">votoID</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
@@ -630,7 +626,7 @@
           <stringProp name="HTTPSampler.port">8243</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/acme/en/1.0.0/votes/${voteID}</stringProp>
+          <stringProp name="HTTPSampler.path">/acme_pt/1.0.0/votos/${votoID}</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -695,7 +691,7 @@
           <stringProp name="HTTPSampler.port">8243</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/acme/en/1.0.0/products/${sku}</stringProp>
+          <stringProp name="HTTPSampler.path">/acme_pt/1.0.0/produtos/${sku}</stringProp>
           <stringProp name="HTTPSampler.method">DELETE</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -747,12 +743,12 @@
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Delete Reviews" enabled="true">
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
             <collectionProp name="Arguments.arguments">
-              <elementProp name="reviewID" elementType="HTTPArgument">
+              <elementProp name="criticaID" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.value">2</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                <stringProp name="Argument.name">reviewID</stringProp>
+                <stringProp name="Argument.name">criticaID</stringProp>
               </elementProp>
             </collectionProp>
           </elementProp>
@@ -760,7 +756,7 @@
           <stringProp name="HTTPSampler.port">8243</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/acme/en/1.0.0/reviews/${reviewID}</stringProp>
+          <stringProp name="HTTPSampler.path">/acme_pt/1.0.0/criticas/${criticaID}</stringProp>
           <stringProp name="HTTPSampler.method">DELETE</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -828,7 +824,7 @@
           <stringProp name="HTTPSampler.port">8243</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/acme/en/1.0.0/products</stringProp>
+          <stringProp name="HTTPSampler.path">/acme_pt/1.0.0/produtos</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -895,7 +891,7 @@
           <stringProp name="HTTPSampler.port">8243</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/acme/en/1.0.0/review/2/votes</stringProp>
+          <stringProp name="HTTPSampler.path">/acme_pt/1.0.0/critica/2/votos</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -963,7 +959,7 @@
           <stringProp name="HTTPSampler.port">8243</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/acme/en/1.0.0/noreview/XPTO14521123/votes</stringProp>
+          <stringProp name="HTTPSampler.path">/acme_pt/1.0.0/semcritica/XPTO14521123/votos</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
