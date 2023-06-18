@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "7ff6ac3f-93ce-4886-bbde-aa92d9bb88ef",
+		"_postman_id": "e563cee0-8a1e-4786-a490-17fa094dd2be",
 		"name": "ACME_PT",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26438459",
-		"_collection_link": "https://qesoft-22-23.postman.co/workspace/INSIS~0a014cc5-bfee-4185-b54d-a108e61a83e2/collection/26438459-7ff6ac3f-93ce-4886-bbde-aa92d9bb88ef?action=share&creator=26438459&source=collection_link"
+		"_collection_link": "https://qesoft-22-23.postman.co/workspace/INSIS~0a014cc5-bfee-4185-b54d-a108e61a83e2/collection/26438459-e563cee0-8a1e-4786-a490-17fa094dd2be?action=share&creator=26438459&source=collection_link"
 	},
 	"item": [
 		{
@@ -745,6 +745,278 @@
 			"name": "criticas",
 			"item": [
 				{
+					"name": "{utilizador}",
+					"item": [
+						{
+							"name": "{tipo De Voto}",
+							"item": [
+								{
+									"name": "/criticas/:utilizador/:tipoDeVoto/maisXvotos/:numeroDeVotos",
+									"request": {
+										"auth": {
+											"type": "oauth2"
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/criticas/:utilizador/:tipoDeVoto/maisXvotos/:numeroDeVotos",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"criticas",
+												":utilizador",
+												":tipoDeVoto",
+												"maisXvotos",
+												":numeroDeVotos"
+											],
+											"variable": [
+												{
+													"key": "utilizador",
+													"value": "1",
+													"description": "(Required) "
+												},
+												{
+													"key": "tipoDeVoto",
+													"value": "upvote",
+													"description": "(Required) "
+												},
+												{
+													"key": "numeroDeVotos",
+													"value": "0",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "ok",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: oauth2",
+														"key": "Authorization",
+														"value": "<token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/criticas/:utilizador/:tipoDeVoto/maisXvotos/:numeroDeVotos",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"criticas",
+														":utilizador",
+														":tipoDeVoto",
+														"maisXvotos",
+														":numeroDeVotos"
+													],
+													"variable": [
+														{
+															"key": "utilizador",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "tipoDeVoto",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "numeroDeVotos",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								},
+								{
+									"name": "/criticas/:utilizador/:tipoDeVoto/menosXvotos/:numeroDeVotos",
+									"request": {
+										"auth": {
+											"type": "oauth2"
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/criticas/:utilizador/:tipoDeVoto/menosXvotos/:numeroDeVotos",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"criticas",
+												":utilizador",
+												":tipoDeVoto",
+												"menosXvotos",
+												":numeroDeVotos"
+											],
+											"variable": [
+												{
+													"key": "utilizador",
+													"value": "1",
+													"description": "(Required) "
+												},
+												{
+													"key": "tipoDeVoto",
+													"value": "upvote",
+													"description": "(Required) "
+												},
+												{
+													"key": "numeroDeVotos",
+													"value": "0",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "ok",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"description": "Added as a part of security scheme: oauth2",
+														"key": "Authorization",
+														"value": "<token>"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/criticas/:utilizador/:tipoDeVoto/menosXvotos/:numeroDeVotos",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"criticas",
+														":utilizador",
+														":tipoDeVoto",
+														"menosXvotos",
+														":numeroDeVotos"
+													],
+													"variable": [
+														{
+															"key": "utilizador",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "tipoDeVoto",
+															"value": "<string>",
+															"description": "(Required) "
+														},
+														{
+															"key": "numeroDeVotos",
+															"value": "<string>",
+															"description": "(Required) "
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "text",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "text/plain"
+												}
+											],
+											"cookie": [],
+											"body": ""
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "/criticas/:utilizador",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/criticas/:utilizador",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"criticas",
+										":utilizador"
+									],
+									"variable": [
+										{
+											"key": "utilizador",
+											"value": "<string>",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "ok",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: oauth2",
+												"key": "Authorization",
+												"value": "<token>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/criticas/:utilizador",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"criticas",
+												":utilizador"
+											],
+											"variable": [
+												{
+													"key": "utilizador",
+													"value": "<string>",
+													"description": "(Required) "
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					]
+				},
+				{
 					"name": "/criticas/pendente",
 					"request": {
 						"auth": {
@@ -943,7 +1215,7 @@
 					]
 				},
 				{
-					"name": "/criticas/:utilizador",
+					"name": "/criticas/quantidadePorUtilizador/:utilizador",
 					"request": {
 						"auth": {
 							"type": "oauth2"
@@ -951,18 +1223,19 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/criticas/:utilizador",
+							"raw": "{{baseUrl}}/criticas/quantidadePorUtilizador/:utilizador",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"criticas",
+								"quantidadePorUtilizador",
 								":utilizador"
 							],
 							"variable": [
 								{
 									"key": "utilizador",
-									"value": "<string>",
+									"value": "1",
 									"description": "(Required) "
 								}
 							]
@@ -981,12 +1254,13 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/criticas/:utilizador",
+									"raw": "{{baseUrl}}/criticas/quantidadePorUtilizador/:utilizador",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"criticas",
+										"quantidadePorUtilizador",
 										":utilizador"
 									],
 									"variable": [
@@ -1289,189 +1563,44 @@
 			]
 		},
 		{
-			"name": "critica",
-			"item": [
-				{
-					"name": "{tipo De Voto}",
-					"item": [
+			"name": "/critica/:criticaUuid/votos",
+			"request": {
+				"auth": {
+					"type": "oauth2"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/critica/:criticaUuid/votos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"critica",
+						":criticaUuid",
+						"votos"
+					],
+					"variable": [
 						{
-							"name": "/critica/:tipoDeVoto/maisXvotos/:numeroDeVotos",
-							"request": {
-								"auth": {
-									"type": "oauth2"
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/critica/:tipoDeVoto/maisXvotos/:numeroDeVotos",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"critica",
-										":tipoDeVoto",
-										"maisXvotos",
-										":numeroDeVotos"
-									],
-									"variable": [
-										{
-											"key": "tipoDeVoto",
-											"value": "<string>",
-											"description": "(Required) "
-										},
-										{
-											"key": "numeroDeVotos",
-											"value": "<string>",
-											"description": "(Required) "
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "ok",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: oauth2",
-												"key": "Authorization",
-												"value": "<token>"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/critica/:tipoDeVoto/maisXvotos/:numeroDeVotos",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"critica",
-												":tipoDeVoto",
-												"maisXvotos",
-												":numeroDeVotos"
-											],
-											"variable": [
-												{
-													"key": "tipoDeVoto",
-													"value": "<string>",
-													"description": "(Required) "
-												},
-												{
-													"key": "numeroDeVotos",
-													"value": "<string>",
-													"description": "(Required) "
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "text",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "text/plain"
-										}
-									],
-									"cookie": [],
-									"body": ""
-								}
-							]
-						},
-						{
-							"name": "/critica/:tipoDeVoto/menosXvotos/:numeroDeVotos",
-							"request": {
-								"auth": {
-									"type": "oauth2"
-								},
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/critica/:tipoDeVoto/menosXvotos/:numeroDeVotos",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"critica",
-										":tipoDeVoto",
-										"menosXvotos",
-										":numeroDeVotos"
-									],
-									"variable": [
-										{
-											"key": "tipoDeVoto",
-											"value": "<string>",
-											"description": "(Required) "
-										},
-										{
-											"key": "numeroDeVotos",
-											"value": "<string>",
-											"description": "(Required) "
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "ok",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: oauth2",
-												"key": "Authorization",
-												"value": "<token>"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/critica/:tipoDeVoto/menosXvotos/:numeroDeVotos",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"critica",
-												":tipoDeVoto",
-												"menosXvotos",
-												":numeroDeVotos"
-											],
-											"variable": [
-												{
-													"key": "tipoDeVoto",
-													"value": "<string>",
-													"description": "(Required) "
-												},
-												{
-													"key": "numeroDeVotos",
-													"value": "<string>",
-													"description": "(Required) "
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "text",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "text/plain"
-										}
-									],
-									"cookie": [],
-									"body": ""
-								}
-							]
+							"key": "criticaUuid",
+							"value": "<string>",
+							"description": "(Required) "
 						}
 					]
-				},
+				}
+			},
+			"response": [
 				{
-					"name": "/critica/:criticaUuid/votos",
-					"request": {
-						"auth": {
-							"type": "oauth2"
-						},
+					"name": "ok",
+					"originalRequest": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"description": "Added as a part of security scheme: oauth2",
+								"key": "Authorization",
+								"value": "<token>"
+							}
+						],
 						"url": {
 							"raw": "{{baseUrl}}/critica/:criticaUuid/votos",
 							"host": [
@@ -1491,122 +1620,17 @@
 							]
 						}
 					},
-					"response": [
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
 						{
-							"name": "ok",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"description": "Added as a part of security scheme: oauth2",
-										"key": "Authorization",
-										"value": "<token>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/critica/:criticaUuid/votos",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"critica",
-										":criticaUuid",
-										"votos"
-									],
-									"variable": [
-										{
-											"key": "criticaUuid",
-											"value": "<string>",
-											"description": "(Required) "
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
+							"key": "Content-Type",
+							"value": "text/plain"
 						}
-					]
-				},
-				{
-					"name": "/critica/quantidadePorUtilizador/:utilizador",
-					"request": {
-						"auth": {
-							"type": "oauth2"
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/critica/quantidadePorUtilizador/:utilizador",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"critica",
-								"quantidadePorUtilizador",
-								":utilizador"
-							],
-							"variable": [
-								{
-									"key": "utilizador",
-									"value": "<string>",
-									"description": "(Required) "
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "ok",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": "Added as a part of security scheme: oauth2",
-										"key": "Authorization",
-										"value": "<token>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/critica/quantidadePorUtilizador/:utilizador",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"critica",
-										"quantidadePorUtilizador",
-										":utilizador"
-									],
-									"variable": [
-										{
-											"key": "utilizador",
-											"value": "<string>",
-											"description": "(Required) "
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						}
-					]
+					],
+					"cookie": [],
+					"body": ""
 				}
 			]
 		},
@@ -1714,7 +1738,7 @@
 		},
 		{
 			"key": "auth",
-			"value": "eyJ4NXQiOiJNV0l5TkRJNVlqRTJaV1kxT0RNd01XSTNOR1ptTVRZeU5UTTJOVFZoWlRnMU5UTTNaVE5oTldKbVpERTFPVEE0TldFMVlUaGxNak5sTldFellqSXlZUSIsImtpZCI6Ik1XSXlOREk1WWpFMlpXWTFPRE13TVdJM05HWm1NVFl5TlRNMk5UVmhaVGcxTlRNM1pUTmhOV0ptWkRFMU9UQTROV0UxWVRobE1qTmxOV0V6WWpJeVlRX1JTMjU2IiwidHlwIjoiYXQrand0IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIxZDEwNDc3MC04ZjFiLTRiZGItOTRkMS0yMzIyZjE1ODQzYmYiLCJhdXQiOiJBUFBMSUNBVElPTiIsImF1ZCI6IkdXMDlsVWx1UjRVam5CQUVSY1ZlSHJNN0hHNGEiLCJuYmYiOjE2ODcwMzgyODIsImF6cCI6IkdXMDlsVWx1UjRVam5CQUVSY1ZlSHJNN0hHNGEiLCJzY29wZSI6IkFkbWluIFVzZXIiLCJpc3MiOiJodHRwczpcL1wvbG9jYWxob3N0Ojk0NDNcL29hdXRoMlwvdG9rZW4iLCJleHAiOjE2ODcwNDE4ODIsImlhdCI6MTY4NzAzODI4MiwianRpIjoiODkwNzg1MmQtOTM5Mi00ZDk1LWFkZjMtODMxNWUzZWRlNWFkIiwiY2xpZW50X2lkIjoiR1cwOWxVbHVSNFVqbkJBRVJjVmVIck03SEc0YSJ9.lf_3F9LNyUk_ZAkeDvqov9Kcg11Wpc5nZlBZ2237hnZr-P8krfW7OWcsns0CM8EtwC0oxrIYZ6_ue_IEGSHITvIaJjU7HjYmOKjQWesveQkylejVx0Z7Bogo8F3y4lqxPd4_glMkrlZ3u883O7DTrUYV4-x3QfVnVIarO2sYomGFHvR3hKGPZb19lLm7O8zepr3JATp1CzQOxLYMy_Ip1xQfc3sxBwf-h9H-w6OwBq4zSJB3MitFS9LKSxn12d8CyjWpzFIpZlBGVM5nN6cKEjcgs81c3-t-_YNlbAZTuFluJl47X2NAW2K96-JNjqxKwaVgFc2l1NqrOlFncBv6VA",
+			"value": "eyJ4NXQiOiJNV0l5TkRJNVlqRTJaV1kxT0RNd01XSTNOR1ptTVRZeU5UTTJOVFZoWlRnMU5UTTNaVE5oTldKbVpERTFPVEE0TldFMVlUaGxNak5sTldFellqSXlZUSIsImtpZCI6Ik1XSXlOREk1WWpFMlpXWTFPRE13TVdJM05HWm1NVFl5TlRNMk5UVmhaVGcxTlRNM1pUTmhOV0ptWkRFMU9UQTROV0UxWVRobE1qTmxOV0V6WWpJeVlRX1JTMjU2IiwidHlwIjoiYXQrand0IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIxZDEwNDc3MC04ZjFiLTRiZGItOTRkMS0yMzIyZjE1ODQzYmYiLCJhdXQiOiJBUFBMSUNBVElPTiIsImF1ZCI6IkdXMDlsVWx1UjRVam5CQUVSY1ZlSHJNN0hHNGEiLCJuYmYiOjE2ODcxMDM3MjgsImF6cCI6IkdXMDlsVWx1UjRVam5CQUVSY1ZlSHJNN0hHNGEiLCJzY29wZSI6IkFkbWluIFVzZXIiLCJpc3MiOiJodHRwczpcL1wvbG9jYWxob3N0Ojk0NDNcL29hdXRoMlwvdG9rZW4iLCJleHAiOjE2ODcxMDczMjgsImlhdCI6MTY4NzEwMzcyOCwianRpIjoiZDdlMDUyZTAtMTQ5ZS00MWNlLWEzNjMtZTQxNDNlZDVjNjgzIiwiY2xpZW50X2lkIjoiR1cwOWxVbHVSNFVqbkJBRVJjVmVIck03SEc0YSJ9.NZCdCnyiNMXsfAq_YlNy-Iu-mf0NxwK86n3Ez76tCj3kAZLG8gHbrxr1LCFH5Q6UpK246ZEdOWYBT4e5mw5aavQ-83qHeBtUm56O3Lskz8gQQCCcyqKA0H812q3uXO5-Ulb7Q01Av-gZ4yZlHd8k1zC4tzq6Z5WYnYjXZ2Y_WmHYd4xGj2jP_snIsDhosuJzh8MgRwG0dThxJFpvHA1OAX93hZitdhFK4TgwO3bB-o6Qam5nvuQ1BK-2oJvGBuCs9u_eURSIC9dAJWSozOoFukdfB2ZiHvEUu7yYACObl66RWs9sQ_8WW2IxR1P6A6NKLerUM9-DHD8ALAP-L6x3hQ",
 			"type": "string"
 		}
 	]

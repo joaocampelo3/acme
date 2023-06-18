@@ -411,12 +411,12 @@
 									"variable": [
 										{
 											"key": "voteType",
-											"value": "<string>",
+											"value": "upvote",
 											"description": "(Required) "
 										},
 										{
 											"key": "percentage",
-											"value": "<string>",
+											"value": "0",
 											"description": "(Required) "
 										}
 									]
@@ -688,7 +688,7 @@
 							"variable": [
 								{
 									"key": "designation",
-									"value": "<string>",
+									"value": "erases",
 									"description": "(Required) "
 								}
 							]
@@ -773,17 +773,17 @@
 											"variable": [
 												{
 													"key": "userID",
-													"value": "<string>",
+													"value": "1",
 													"description": "(Required) "
 												},
 												{
 													"key": "voteType",
-													"value": "<string>",
+													"value": "upvote",
 													"description": "(Required) "
 												},
 												{
 													"key": "numberOfVotes",
-													"value": "<string>",
+													"value": "0",
 													"description": "(Required) "
 												}
 											]
@@ -869,7 +869,7 @@
 											"variable": [
 												{
 													"key": "userID",
-													"value": "<string>",
+													"value": "1",
 													"description": "(Required) "
 												},
 												{
@@ -1738,7 +1738,7 @@
 		},
 		{
 			"key": "auth",
-			"value": "eyJ4NXQiOiJNV0l5TkRJNVlqRTJaV1kxT0RNd01XSTNOR1ptTVRZeU5UTTJOVFZoWlRnMU5UTTNaVE5oTldKbVpERTFPVEE0TldFMVlUaGxNak5sTldFellqSXlZUSIsImtpZCI6Ik1XSXlOREk1WWpFMlpXWTFPRE13TVdJM05HWm1NVFl5TlRNMk5UVmhaVGcxTlRNM1pUTmhOV0ptWkRFMU9UQTROV0UxWVRobE1qTmxOV0V6WWpJeVlRX1JTMjU2IiwidHlwIjoiYXQrand0IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIxZDEwNDc3MC04ZjFiLTRiZGItOTRkMS0yMzIyZjE1ODQzYmYiLCJhdXQiOiJBUFBMSUNBVElPTiIsImF1ZCI6IkdXMDlsVWx1UjRVam5CQUVSY1ZlSHJNN0hHNGEiLCJuYmYiOjE2ODcwMzgyODIsImF6cCI6IkdXMDlsVWx1UjRVam5CQUVSY1ZlSHJNN0hHNGEiLCJzY29wZSI6IkFkbWluIFVzZXIiLCJpc3MiOiJodHRwczpcL1wvbG9jYWxob3N0Ojk0NDNcL29hdXRoMlwvdG9rZW4iLCJleHAiOjE2ODcwNDE4ODIsImlhdCI6MTY4NzAzODI4MiwianRpIjoiODkwNzg1MmQtOTM5Mi00ZDk1LWFkZjMtODMxNWUzZWRlNWFkIiwiY2xpZW50X2lkIjoiR1cwOWxVbHVSNFVqbkJBRVJjVmVIck03SEc0YSJ9.lf_3F9LNyUk_ZAkeDvqov9Kcg11Wpc5nZlBZ2237hnZr-P8krfW7OWcsns0CM8EtwC0oxrIYZ6_ue_IEGSHITvIaJjU7HjYmOKjQWesveQkylejVx0Z7Bogo8F3y4lqxPd4_glMkrlZ3u883O7DTrUYV4-x3QfVnVIarO2sYomGFHvR3hKGPZb19lLm7O8zepr3JATp1CzQOxLYMy_Ip1xQfc3sxBwf-h9H-w6OwBq4zSJB3MitFS9LKSxn12d8CyjWpzFIpZlBGVM5nN6cKEjcgs81c3-t-_YNlbAZTuFluJl47X2NAW2K96-JNjqxKwaVgFc2l1NqrOlFncBv6VA",
+			"value": "eyJ4NXQiOiJNV0l5TkRJNVlqRTJaV1kxT0RNd01XSTNOR1ptTVRZeU5UTTJOVFZoWlRnMU5UTTNaVE5oTldKbVpERTFPVEE0TldFMVlUaGxNak5sTldFellqSXlZUSIsImtpZCI6Ik1XSXlOREk1WWpFMlpXWTFPRE13TVdJM05HWm1NVFl5TlRNMk5UVmhaVGcxTlRNM1pUTmhOV0ptWkRFMU9UQTROV0UxWVRobE1qTmxOV0V6WWpJeVlRX1JTMjU2IiwidHlwIjoiYXQrand0IiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiIxZDEwNDc3MC04ZjFiLTRiZGItOTRkMS0yMzIyZjE1ODQzYmYiLCJhdXQiOiJBUFBMSUNBVElPTiIsImF1ZCI6IkhHRW4zTGtDUG9FRHdTR3FUdGw2cXNxVWxqMGEiLCJuYmYiOjE2ODcxMDEwOTgsImF6cCI6IkhHRW4zTGtDUG9FRHdTR3FUdGw2cXNxVWxqMGEiLCJzY29wZSI6IkFkbWluIFVzZXIiLCJpc3MiOiJodHRwczpcL1wvbG9jYWxob3N0Ojk0NDNcL29hdXRoMlwvdG9rZW4iLCJleHAiOjE2ODcxMDQ2OTgsImlhdCI6MTY4NzEwMTA5OCwianRpIjoiZjA4ODY0MDktMTE3YS00ZGI0LWJlMDYtODVlOGMyNWNjNTM1IiwiY2xpZW50X2lkIjoiSEdFbjNMa0NQb0VEd1NHcVR0bDZxc3FVbGowYSJ9.nllfh4lhXX8qkXb31jQz9T5CT2hKlRAKz8rJApoASfS-If0viHgd0nyhyJYplnLUKeqYQTHjlG_Lry3eKdMtByBJmUOIxdAWvdKWON8915WeSW4cMCrldq3WR0EULx5DTk7Znyx1nbBzhT2-zQeqfgDHGUia-kd7nRr5GDBStNjhECCgXW_8yoRyqAY0YrGqPfSF4am_TcTMw8-xKHgUZd1uN7a80-x76MxGQ3SHPcniBmaTTm6AmfuZTz_Ub4UdFiVsdZgfHIAN-php60WXQPMzoPjPxY3ZJTeQZvjEnEU3uO9_p4wQkW0T3ghzJO5DPxiGclBvZNw8T5Kn2DUMNg",
 			"type": "string"
 		}
 	]
